@@ -4,16 +4,16 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
   
-  <title>Hugoで記事を書くまで</title>
-  <meta property="og:title" content="Hugoで記事を書くまで" />
-  <meta name="twitter:title" content="Hugoで記事を書くまで" />
+  <title>Mac OS X Lionのスクロール方向に今更はまる</title>
+  <meta property="og:title" content="Mac OS X Lionのスクロール方向に今更はまる" />
+  <meta name="twitter:title" content="Mac OS X Lionのスクロール方向に今更はまる" />
   
 
   
 
   <meta name="author" content=""/>
   <meta property="og:site_name" content="e9.github.io" />
-  <meta property="og:url" content="https://e9.github.io/posts/1535546215/" />
+  <meta property="og:url" content="https://e9.github.io/posts/1342870825/" />
 
   
   <meta name="twitter:card" content="summary" />
@@ -46,107 +46,28 @@
 
 <article class="p-article">
   <header>
-    <h1>Hugoで記事を書くまで</h1>
+    <h1>Mac OS X Lionのスクロール方向に今更はまる</h1>
     <div>
       <div class="c-time">
         Posted on
-        <time datetime="2018-08-29T21:36:55&#43;09:00">
-          Aug 29, 2018
+        <time datetime="2012-07-21T20:40:25&#43;09:00">
+          Jul 21, 2012
         </time>
       </div>
       
-      <a href="https://e9.github.io/tags/2018/08" class="c-tag">2018/08</a>
+      <a href="https://e9.github.io/tags/2012/07" class="c-tag">2012/07</a>
       
     </div>
   </header>
   
   <section id="js-article" class="p-article__body">
-    <p>マークダウンで書けるブログサービスの選択肢が少ないのでgithub.ioを使うことにした。
-いまどきはJekyllよりHugoらしい。わりと簡単に作れた。こんな感じで。</p>
+    <p>Lionにマウス挿してホイール使ったら、スクロール方向がWindowsと逆になってて面食らった。</p>
 
-<pre><code>hugo new site blog
-cd blog
-git init
-git remote add origin git@github.com:e9/blog.git
-</code></pre>
+<p>環境設定からホイールのスクロール方向を逆にしたら治ったけど、今度はそれに連動してトラックパッドのスクロール方向が今までの逆になった。</p>
 
-<p>空のディレクトリばかりなのでfirst commitの前に.gitkeepを置いておく。</p>
+<p>マウスとトラックパッドのスクロール方向を別々にはできないらしい。</p>
 
-<pre><code>for dir in `find . -not -path '*/\.*' -not -name '.*' -type d`; do touch $dir/.gitkeep; done
-git add .
-git commit -m 'hugo new site'
-</code></pre>
-
-<p>テーマはダウンロードして直接置いてもいいけど、gitのsubmoduleにしておくのがスマートだろう。</p>
-
-<pre><code>git submodule add https://github.com/mismith0227/hugo_theme_pickles.git themes/pickles
-git add .
-git commit -m 'Add themes/pickles'
-</code></pre>
-
-<p>あとはpublicをgithub.ioのレポジトリのsubmoduleにして、publicに出力したファイルをpushするのがオーソドックスなやり方らしいんだけど、せっかくなんでCIサービスから自動でデプロイさせることにした。</p>
-
-<p>いまどきはgithubのプライベートレポジトリは作り放題だし、Circle CIは1コンテナだけなら無料で使える。</p>
-
-<p>.circleci/config.ymlはこんな感じ。あらかじめCircleCIの鍵をGitHubに登録しておく。</p>
-
-<pre><code>version: 2
-jobs:
-  build:
-    branches:
-      only:
-        - master
-    docker:
-      - image: circleci/golang:stretch
-    steps:
-      - checkout
-      - run:
-          command: git submodule update --init --recursive
-      - run:
-          command: |
-            git clone https://github.com/e9/e9.github.io.git public
-            rm -rf public/*
-      - run:
-          command: |
-            wget https://github.com/gohugoio/hugo/releases/download/v0.47.1/hugo_0.47.1_Linux-64bit.tar.gz
-            tar xzf hugo_0.47.1_Linux-64bit.tar.gz
-            ./hugo -v
-      - run:
-          environment:
-            EMAIL: &lt;&gt;
-            GIT_AUTHOR_NAME: CircleCI
-            GIT_COMMITTER_NAME: CircleCI
-          command: |
-            cd public
-            git add .
-            git commit -m 'rebuilding site'
-            git push origin master
-</code></pre>
-
-<p>.travis.ymlならこんな感じ。あらかじめ環境変数CI_USER_TOKENに値を入れておく。</p>
-
-<pre><code>language: go
-sudo: false
-dist: trusty
-before_install:
-- echo -e &quot;machine github.com\n  login $CI_USER_TOKEN&quot; &gt; ~/.netrc
-install:
-- wget https://github.com/gohugoio/hugo/releases/download/v0.47.1/hugo_0.47.1_Linux-64bit.tar.gz
-- tar xzf hugo_0.47.1_Linux-64bit.tar.gz
-before_script:
-- git clone https://github.com/e9/e9.github.io.git public
-- rm -rf public/*
-script:
-- ./hugo -v
-deploy:
-  provider: script
-  script: (cd public &amp;&amp; git add . &amp;&amp; git commit -m 'rebuilding site' &amp;&amp; git push origin master)
-  skip_cleanup: true
-  on:
-    branch: master
-</code></pre>
-
-<p>新しい記事を書くときに<code>hugo new f.md</code>だとトップページに反映されなかった。<code>hugo new d/f.md</code>とひとつ階層を切らないといけないようだ。</p>
+<p>適当なソフト使えば改善できるらしいけど、それくらいは標準で対応しておいてほしいよ。</p>
 
   </section>
   <footer>
@@ -155,12 +76,12 @@ deploy:
       <div class="c-pagination__ctrl">
         <div class="c-pagination__newer">
           
-          <a href="https://e9.github.io/posts/1535977174/">Newer</a>
+          <a href="https://e9.github.io/posts/1342967909/">Newer</a>
           
         </div>
         <div class="c-pagination__older">
           
-          <a href="https://e9.github.io/posts/1458562442/">Older</a>
+          <a href="https://e9.github.io/posts/1342363851/">Older</a>
           
         </div>
       </div>

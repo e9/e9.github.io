@@ -4,16 +4,16 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
   
-  <title>Hugoで記事を書くまで</title>
-  <meta property="og:title" content="Hugoで記事を書くまで" />
-  <meta name="twitter:title" content="Hugoで記事を書くまで" />
+  <title>私がブログを書けない100の理由</title>
+  <meta property="og:title" content="私がブログを書けない100の理由" />
+  <meta name="twitter:title" content="私がブログを書けない100の理由" />
   
 
   
 
   <meta name="author" content=""/>
   <meta property="og:site_name" content="e9.github.io" />
-  <meta property="og:url" content="https://e9.github.io/posts/1535546215/" />
+  <meta property="og:url" content="https://e9.github.io/posts/1338214914/" />
 
   
   <meta name="twitter:card" content="summary" />
@@ -46,107 +46,34 @@
 
 <article class="p-article">
   <header>
-    <h1>Hugoで記事を書くまで</h1>
+    <h1>私がブログを書けない100の理由</h1>
     <div>
       <div class="c-time">
         Posted on
-        <time datetime="2018-08-29T21:36:55&#43;09:00">
-          Aug 29, 2018
+        <time datetime="2012-05-28T23:21:54&#43;09:00">
+          May 28, 2012
         </time>
       </div>
       
-      <a href="https://e9.github.io/tags/2018/08" class="c-tag">2018/08</a>
+      <a href="https://e9.github.io/tags/2012/05" class="c-tag">2012/05</a>
       
     </div>
   </header>
   
   <section id="js-article" class="p-article__body">
-    <p>マークダウンで書けるブログサービスの選択肢が少ないのでgithub.ioを使うことにした。
-いまどきはJekyllよりHugoらしい。わりと簡単に作れた。こんな感じで。</p>
+    <p>ブログに書きたいことは、つまり人に話したいことだから、ブログをどんどん書くと、いざ人に会ったときに話すことがなくなってしまう。</p>
 
-<pre><code>hugo new site blog
-cd blog
-git init
-git remote add origin git@github.com:e9/blog.git
-</code></pre>
+<p>「ねえねえ聞いてよこの前さあ――あ、ごめん、この話はブログに書いたんだった」</p>
 
-<p>空のディレクトリばかりなのでfirst commitの前に.gitkeepを置いておく。</p>
+<p>お前のブログなんて誰も読んでねーよと言われるだろうけど、でもそうは言ってもインターネットで（一応は）全世界に向けて発信した話を、もう一度誰かにするのは気が引ける。</p>
 
-<pre><code>for dir in `find . -not -path '*/\.*' -not -name '.*' -type d`; do touch $dir/.gitkeep; done
-git add .
-git commit -m 'hugo new site'
-</code></pre>
+<p>別に誰かに話したいわけでもない話をブログに書くのも、それはそれでなんのために書いてるんだか分からないし。</p>
 
-<p>テーマはダウンロードして直接置いてもいいけど、gitのsubmoduleにしておくのがスマートだろう。</p>
+<p>そこでひとつ思いついたのが「続きはリアルで」だ。</p>
 
-<pre><code>git submodule add https://github.com/mismith0227/hugo_theme_pickles.git themes/pickles
-git add .
-git commit -m 'Add themes/pickles'
-</code></pre>
+<p>ブログには途中まで書いておいて、肝心の部分は実際に会ったときに話す。これでブログも書けるし、話題も尽きない。</p>
 
-<p>あとはpublicをgithub.ioのレポジトリのsubmoduleにして、publicに出力したファイルをpushするのがオーソドックスなやり方らしいんだけど、せっかくなんでCIサービスから自動でデプロイさせることにした。</p>
-
-<p>いまどきはgithubのプライベートレポジトリは作り放題だし、Circle CIは1コンテナだけなら無料で使える。</p>
-
-<p>.circleci/config.ymlはこんな感じ。あらかじめCircleCIの鍵をGitHubに登録しておく。</p>
-
-<pre><code>version: 2
-jobs:
-  build:
-    branches:
-      only:
-        - master
-    docker:
-      - image: circleci/golang:stretch
-    steps:
-      - checkout
-      - run:
-          command: git submodule update --init --recursive
-      - run:
-          command: |
-            git clone https://github.com/e9/e9.github.io.git public
-            rm -rf public/*
-      - run:
-          command: |
-            wget https://github.com/gohugoio/hugo/releases/download/v0.47.1/hugo_0.47.1_Linux-64bit.tar.gz
-            tar xzf hugo_0.47.1_Linux-64bit.tar.gz
-            ./hugo -v
-      - run:
-          environment:
-            EMAIL: &lt;&gt;
-            GIT_AUTHOR_NAME: CircleCI
-            GIT_COMMITTER_NAME: CircleCI
-          command: |
-            cd public
-            git add .
-            git commit -m 'rebuilding site'
-            git push origin master
-</code></pre>
-
-<p>.travis.ymlならこんな感じ。あらかじめ環境変数CI_USER_TOKENに値を入れておく。</p>
-
-<pre><code>language: go
-sudo: false
-dist: trusty
-before_install:
-- echo -e &quot;machine github.com\n  login $CI_USER_TOKEN&quot; &gt; ~/.netrc
-install:
-- wget https://github.com/gohugoio/hugo/releases/download/v0.47.1/hugo_0.47.1_Linux-64bit.tar.gz
-- tar xzf hugo_0.47.1_Linux-64bit.tar.gz
-before_script:
-- git clone https://github.com/e9/e9.github.io.git public
-- rm -rf public/*
-script:
-- ./hugo -v
-deploy:
-  provider: script
-  script: (cd public &amp;&amp; git add . &amp;&amp; git commit -m 'rebuilding site' &amp;&amp; git push origin master)
-  skip_cleanup: true
-  on:
-    branch: master
-</code></pre>
-
-<p>新しい記事を書くときに<code>hugo new f.md</code>だとトップページに反映されなかった。<code>hugo new d/f.md</code>とひとつ階層を切らないといけないようだ。</p>
+<p>これ、かなり画期的な手法だろうと思ったけど、300年以上前にフェルマーがやってた。</p>
 
   </section>
   <footer>
@@ -155,12 +82,12 @@ deploy:
       <div class="c-pagination__ctrl">
         <div class="c-pagination__newer">
           
-          <a href="https://e9.github.io/posts/1535977174/">Newer</a>
+          <a href="https://e9.github.io/posts/1340200656/">Newer</a>
           
         </div>
         <div class="c-pagination__older">
           
-          <a href="https://e9.github.io/posts/1458562442/">Older</a>
+          <a href="https://e9.github.io/posts/1333213257/">Older</a>
           
         </div>
       </div>

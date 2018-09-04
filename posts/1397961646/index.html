@@ -4,16 +4,16 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
   
-  <title>Hugoで記事を書くまで</title>
-  <meta property="og:title" content="Hugoで記事を書くまで" />
-  <meta name="twitter:title" content="Hugoで記事を書くまで" />
+  <title>河添学部長がSFCの卒業式で浴びせた冷や水</title>
+  <meta property="og:title" content="河添学部長がSFCの卒業式で浴びせた冷や水" />
+  <meta name="twitter:title" content="河添学部長がSFCの卒業式で浴びせた冷や水" />
   
 
   
 
   <meta name="author" content=""/>
   <meta property="og:site_name" content="e9.github.io" />
-  <meta property="og:url" content="https://e9.github.io/posts/1535546215/" />
+  <meta property="og:url" content="https://e9.github.io/posts/1397961646/" />
 
   
   <meta name="twitter:card" content="summary" />
@@ -46,107 +46,46 @@
 
 <article class="p-article">
   <header>
-    <h1>Hugoで記事を書くまで</h1>
+    <h1>河添学部長がSFCの卒業式で浴びせた冷や水</h1>
     <div>
       <div class="c-time">
         Posted on
-        <time datetime="2018-08-29T21:36:55&#43;09:00">
-          Aug 29, 2018
+        <time datetime="2014-04-20T11:40:46&#43;09:00">
+          Apr 20, 2014
         </time>
       </div>
       
-      <a href="https://e9.github.io/tags/2018/08" class="c-tag">2018/08</a>
+      <a href="https://e9.github.io/tags/2014/04" class="c-tag">2014/04</a>
       
     </div>
   </header>
   
   <section id="js-article" class="p-article__body">
-    <p>マークダウンで書けるブログサービスの選択肢が少ないのでgithub.ioを使うことにした。
-いまどきはJekyllよりHugoらしい。わりと簡単に作れた。こんな感じで。</p>
+    <p>そういえば学生のころ、私は書き起こしが趣味だったのでした。</p>
 
-<pre><code>hugo new site blog
-cd blog
-git init
-git remote add origin git@github.com:e9/blog.git
-</code></pre>
+<blockquote>
+<p>これちゃんとした挨拶するの？じゃあ一応、式典らしくちゃんとした挨拶しますね。</p>
 
-<p>空のディレクトリばかりなのでfirst commitの前に.gitkeepを置いておく。</p>
+<p>みなさん卒業おめでとうございます。4年前をちょっと思い出してください。ひょっとしたら5、6年前の人いるかもしれないけど。</p>
 
-<pre><code>for dir in `find . -not -path '*/\.*' -not -name '.*' -type d`; do touch $dir/.gitkeep; done
-git add .
-git commit -m 'hugo new site'
-</code></pre>
+<p>たぶんみなさんはAO入試とか、一般入試とか、帰国とか、いろんな形で入ってきて、ワクワクドキドキしてたと思うんですね。で、いまみなさんの横にいるのは、たぶん友達だったり、ゼミ、研究会の仲間だったり、サークルの仲間だったと思うんですね。</p>
 
-<p>テーマはダウンロードして直接置いてもいいけど、gitのsubmoduleにしておくのがスマートだろう。</p>
+<p>まあ、この4年間、ずいぶんいろんなことがあったと思いますけども、まずいま横にいる人を非常に大切にして社会人になってください。またバラバラになっちゃうんだけども、また仲間をつくってですね、ぜひSFCらしさを世の中に広めていってほしいと思います。</p>
 
-<pre><code>git submodule add https://github.com/mismith0227/hugo_theme_pickles.git themes/pickles
-git add .
-git commit -m 'Add themes/pickles'
-</code></pre>
+<p>たぶんこういうスピーチには何か贈る言葉を用意しなきゃいけないんだけど。昨日いろいろ考えて、かっこいい言葉をひとつ言うと「因習は闇を生み、輝ける星は混沌に宿す」これコピペだからね、大丈夫。</p>
 
-<p>あとはpublicをgithub.ioのレポジトリのsubmoduleにして、publicに出力したファイルをpushするのがオーソドックスなやり方らしいんだけど、せっかくなんでCIサービスから自動でデプロイさせることにした。</p>
+<p>「因習は闇を生む」ってのはよく言われますけども、最近見た映画の中でもそういった言葉が使われてました。それから「輝ける星は混沌に宿す」というのは、ニーチェの言葉ですね。「ツァラトゥストラはかく語りき」の中に出てくる言葉です。因習っていうのは伝統とか慣習、トラディションですね。そういったものはネガティブな要素があると。闇を生むっていうことをみなさん自覚してほしいです。</p>
 
-<p>いまどきはgithubのプライベートレポジトリは作り放題だし、Circle CIは1コンテナだけなら無料で使える。</p>
+<p>私は数学を教えたんだけども、数学の命題、最初にみなさん習ったと思うけど、対偶って覚えてます？覚えてる？闇の否定は光で、因習の否定はカオス、混沌ですよね。だから「輝ける星は混沌に宿す」というのは、最初に言った「因習は闇を生む」のまったく同じ意味です。</p>
 
-<p>.circleci/config.ymlはこんな感じ。あらかじめCircleCIの鍵をGitHubに登録しておく。</p>
+<p>私はみなさんに輝ける星になってほしいと思ってます。ということはどういうことが大事かというと、カオスの中に、混沌の中にみなさんはいてほしい。で、最初に、4年前を思い出してもらったのは、4年前みなさんはたぶん混沌としてたと思うんですね。SFCでどう過ごしたらいいか。自分は何をしようかと。非常に混沌の中にあったと思うんです。</p>
 
-<pre><code>version: 2
-jobs:
-  build:
-    branches:
-      only:
-        - master
-    docker:
-      - image: circleci/golang:stretch
-    steps:
-      - checkout
-      - run:
-          command: git submodule update --init --recursive
-      - run:
-          command: |
-            git clone https://github.com/e9/e9.github.io.git public
-            rm -rf public/*
-      - run:
-          command: |
-            wget https://github.com/gohugoio/hugo/releases/download/v0.47.1/hugo_0.47.1_Linux-64bit.tar.gz
-            tar xzf hugo_0.47.1_Linux-64bit.tar.gz
-            ./hugo -v
-      - run:
-          environment:
-            EMAIL: &lt;&gt;
-            GIT_AUTHOR_NAME: CircleCI
-            GIT_COMMITTER_NAME: CircleCI
-          command: |
-            cd public
-            git add .
-            git commit -m 'rebuilding site'
-            git push origin master
-</code></pre>
+<p>でもいまみなさんは、もう因習の中に足を踏み入れてると思う。ね。それを自覚ほしいです。これから社会に出てって、たぶん大手の会社とか、非常にいいところに就職した人は、もっと因習の中に入っていくと思います。そういう人はたぶん輝ける星になれない。ね。ほんとほんと。</p>
 
-<p>.travis.ymlならこんな感じ。あらかじめ環境変数CI_USER_TOKENに値を入れておく。</p>
+<p>だから私が言いたいのは、もし人生でこれから選択することがあったら、右へ行こうか左へ行こうか、そういう時があったらば、ぜひ、混沌の方、カオスのある方を選んでください。それはもう失敗かもしれないし、損になるかもしれない。でも、みなさんが輝ける星になるには、混沌とした方をぜひ選んでほしい。</p>
 
-<pre><code>language: go
-sudo: false
-dist: trusty
-before_install:
-- echo -e &quot;machine github.com\n  login $CI_USER_TOKEN&quot; &gt; ~/.netrc
-install:
-- wget https://github.com/gohugoio/hugo/releases/download/v0.47.1/hugo_0.47.1_Linux-64bit.tar.gz
-- tar xzf hugo_0.47.1_Linux-64bit.tar.gz
-before_script:
-- git clone https://github.com/e9/e9.github.io.git public
-- rm -rf public/*
-script:
-- ./hugo -v
-deploy:
-  provider: script
-  script: (cd public &amp;&amp; git add . &amp;&amp; git commit -m 'rebuilding site' &amp;&amp; git push origin master)
-  skip_cleanup: true
-  on:
-    branch: master
-</code></pre>
-
-<p>新しい記事を書くときに<code>hugo new f.md</code>だとトップページに反映されなかった。<code>hugo new d/f.md</code>とひとつ階層を切らないといけないようだ。</p>
+<p>私が贈る言葉は以上です。卒業おめでとうございます。</p>
+</blockquote>
 
   </section>
   <footer>
@@ -155,12 +94,12 @@ deploy:
       <div class="c-pagination__ctrl">
         <div class="c-pagination__newer">
           
-          <a href="https://e9.github.io/posts/1535977174/">Newer</a>
+          <a href="https://e9.github.io/posts/1456752673/">Newer</a>
           
         </div>
         <div class="c-pagination__older">
           
-          <a href="https://e9.github.io/posts/1458562442/">Older</a>
+          <a href="https://e9.github.io/posts/1395825098/">Older</a>
           
         </div>
       </div>

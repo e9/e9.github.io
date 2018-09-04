@@ -4,16 +4,16 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
   
-  <title>Hugoで記事を書くまで</title>
-  <meta property="og:title" content="Hugoで記事を書くまで" />
-  <meta name="twitter:title" content="Hugoで記事を書くまで" />
+  <title>わたしは駅に住みたい</title>
+  <meta property="og:title" content="わたしは駅に住みたい" />
+  <meta name="twitter:title" content="わたしは駅に住みたい" />
   
 
   
 
   <meta name="author" content=""/>
   <meta property="og:site_name" content="e9.github.io" />
-  <meta property="og:url" content="https://e9.github.io/posts/1535546215/" />
+  <meta property="og:url" content="https://e9.github.io/posts/1340200656/" />
 
   
   <meta name="twitter:card" content="summary" />
@@ -46,107 +46,42 @@
 
 <article class="p-article">
   <header>
-    <h1>Hugoで記事を書くまで</h1>
+    <h1>わたしは駅に住みたい</h1>
     <div>
       <div class="c-time">
         Posted on
-        <time datetime="2018-08-29T21:36:55&#43;09:00">
-          Aug 29, 2018
+        <time datetime="2012-06-20T22:57:36&#43;09:00">
+          Jun 20, 2012
         </time>
       </div>
       
-      <a href="https://e9.github.io/tags/2018/08" class="c-tag">2018/08</a>
+      <a href="https://e9.github.io/tags/2012/06" class="c-tag">2012/06</a>
       
     </div>
   </header>
   
   <section id="js-article" class="p-article__body">
-    <p>マークダウンで書けるブログサービスの選択肢が少ないのでgithub.ioを使うことにした。
-いまどきはJekyllよりHugoらしい。わりと簡単に作れた。こんな感じで。</p>
+    <p>ホームレスになりたいというわけではない。</p>
 
-<pre><code>hugo new site blog
-cd blog
-git init
-git remote add origin git@github.com:e9/blog.git
-</code></pre>
+<p>先週末に熊本に行き、そこでJR水前寺駅というものを見たのだ。</p>
 
-<p>空のディレクトリばかりなのでfirst commitの前に.gitkeepを置いておく。</p>
+<blockquote>
+<p>直営駅で、みどりの窓口が設置されている。駅舎には美容室などの商業施設、3階以上にはマンションを併設している。改札口やみどりの窓口、キヨスクなど駅機能は2階にある。</p>
 
-<pre><code>for dir in `find . -not -path '*/\.*' -not -name '.*' -type d`; do touch $dir/.gitkeep; done
-git add .
-git commit -m 'hugo new site'
-</code></pre>
+<p><a href="http://ja.wikipedia.org/wiki/%E6%B0%B4%E5%89%8D%E5%AF%BA%E9%A7%85">http://ja.wikipedia.org/wiki/%E6%B0%B4%E5%89%8D%E5%AF%BA%E9%A7%85</a></p>
+</blockquote>
 
-<p>テーマはダウンロードして直接置いてもいいけど、gitのsubmoduleにしておくのがスマートだろう。</p>
+<p>駅の上にマンションが建ってる。徒歩何分というレベルではない。改札を抜けたらもう我が家だ。さすがにそれは言い過ぎだけど。</p>
 
-<pre><code>git submodule add https://github.com/mismith0227/hugo_theme_pickles.git themes/pickles
-git add .
-git commit -m 'Add themes/pickles'
-</code></pre>
+<p>これを見て、都内でも同じことができないか考えて、すこし検索したけどあまり出てこなかった。都民は駅に住みたくないのか？</p>
 
-<p>あとはpublicをgithub.ioのレポジトリのsubmoduleにして、publicに出力したファイルをpushするのがオーソドックスなやり方らしいんだけど、せっかくなんでCIサービスから自動でデプロイさせることにした。</p>
+<ul>
+<li><a href="http://www.goodrooms.jp//sch/detail.php/001/693406/?k_number=693406&amp;div=001">http://www.goodrooms.jp//sch/detail.php/001/693406/?k_number=693406&amp;div=001</a></li>
+<li><a href="http://www.mansion-catalog.com/minamiaoyama/">http://www.mansion-catalog.com/minamiaoyama/</a></li>
+<li><a href="http://www.m-standard.co.jp/rent/%E3%82%A2%E3%82%AF%E3%82%B7%E3%82%A2%E9%BA%BB%E5%B8%83/">http://www.m-standard.co.jp/rent/%E3%82%A2%E3%82%AF%E3%82%B7%E3%82%A2%E9%BA%BB%E5%B8%83/</a></li>
+</ul>
 
-<p>いまどきはgithubのプライベートレポジトリは作り放題だし、Circle CIは1コンテナだけなら無料で使える。</p>
-
-<p>.circleci/config.ymlはこんな感じ。あらかじめCircleCIの鍵をGitHubに登録しておく。</p>
-
-<pre><code>version: 2
-jobs:
-  build:
-    branches:
-      only:
-        - master
-    docker:
-      - image: circleci/golang:stretch
-    steps:
-      - checkout
-      - run:
-          command: git submodule update --init --recursive
-      - run:
-          command: |
-            git clone https://github.com/e9/e9.github.io.git public
-            rm -rf public/*
-      - run:
-          command: |
-            wget https://github.com/gohugoio/hugo/releases/download/v0.47.1/hugo_0.47.1_Linux-64bit.tar.gz
-            tar xzf hugo_0.47.1_Linux-64bit.tar.gz
-            ./hugo -v
-      - run:
-          environment:
-            EMAIL: &lt;&gt;
-            GIT_AUTHOR_NAME: CircleCI
-            GIT_COMMITTER_NAME: CircleCI
-          command: |
-            cd public
-            git add .
-            git commit -m 'rebuilding site'
-            git push origin master
-</code></pre>
-
-<p>.travis.ymlならこんな感じ。あらかじめ環境変数CI_USER_TOKENに値を入れておく。</p>
-
-<pre><code>language: go
-sudo: false
-dist: trusty
-before_install:
-- echo -e &quot;machine github.com\n  login $CI_USER_TOKEN&quot; &gt; ~/.netrc
-install:
-- wget https://github.com/gohugoio/hugo/releases/download/v0.47.1/hugo_0.47.1_Linux-64bit.tar.gz
-- tar xzf hugo_0.47.1_Linux-64bit.tar.gz
-before_script:
-- git clone https://github.com/e9/e9.github.io.git public
-- rm -rf public/*
-script:
-- ./hugo -v
-deploy:
-  provider: script
-  script: (cd public &amp;&amp; git add . &amp;&amp; git commit -m 'rebuilding site' &amp;&amp; git push origin master)
-  skip_cleanup: true
-  on:
-    branch: master
-</code></pre>
-
-<p>新しい記事を書くときに<code>hugo new f.md</code>だとトップページに反映されなかった。<code>hugo new d/f.md</code>とひとつ階層を切らないといけないようだ。</p>
+<p>（当たり前だけど）家賃が高かったり、駅上じゃなくて駅直結だったり、いまいち決定打に欠けるので、いつか暇なときに都内の駅の上を全て見てまわりたいと思う。</p>
 
   </section>
   <footer>
@@ -155,12 +90,12 @@ deploy:
       <div class="c-pagination__ctrl">
         <div class="c-pagination__newer">
           
-          <a href="https://e9.github.io/posts/1535977174/">Newer</a>
+          <a href="https://e9.github.io/posts/1342194237/">Newer</a>
           
         </div>
         <div class="c-pagination__older">
           
-          <a href="https://e9.github.io/posts/1458562442/">Older</a>
+          <a href="https://e9.github.io/posts/1338214914/">Older</a>
           
         </div>
       </div>

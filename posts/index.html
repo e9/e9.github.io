@@ -123,6 +123,183 @@ version: 2 jobs: build: branches: only: - master docker: - image: circleci/golan
 </article>
 
 
+
+
+<article class="c-article p-list-article">
+  <header>
+    <h2 class="c-title c-article__title"><a href="https://e9.github.io/posts/1458562442/">Rails5のマイグレーションファイル</a></h2>
+    <p class="c-article__meta">
+      Posted on
+      <time datetime="2016-03-21T21:14:02&#43;09:00">
+        Mar 21, 2016
+      </time>
+    </p>
+  </header>
+  <div class="c-article__summary">
+    rails5でマイグレーションファイルを作成すると、rails5で作成された印がつくようになった。 （まだベータ版だけど）
+class CreateApples &lt; ActiveRecord::Migration[5.0] def change  この[5.0]というのは、ぱっと見るとrubyの（隠された）機能のように見えるが、実は違う。
+ [https://github.com/rails/rails/commit/6940dc860c4b25bff2eded370f2af4316de15a30#diff-8d3c44120f7b67ff79e2fbe6a40d0ad6R492:title]  ActiveRecord::Migrationクラスに[]という名前のクラスメソッドが定義されており、そのメソッドが（別の）クラスを返すのだ。
+[1] pry(main)&gt; ActiveRecord::Migration[5.0] =&gt; ActiveRecord::Migration::Current  つまりこういうことだ。
+class CreateApples &lt; ActiveRecord::Migration.[](5.0)  もしくはこの方がわかりやすいか。
+class CreateApples &lt; ActiveRecord::Migration.send('[]', 5.0)  さすがrubyである。
+  </div>
+  
+</article>
+
+
+
+
+<article class="c-article p-list-article">
+  <header>
+    <h2 class="c-title c-article__title"><a href="https://e9.github.io/posts/1456752673/">before_actionで変数を代入する是非</a></h2>
+    <p class="c-article__meta">
+      Posted on
+      <time datetime="2016-02-29T22:31:13&#43;09:00">
+        Feb 29, 2016
+      </time>
+    </p>
+  </header>
+  <div class="c-article__summary">
+    いつの間にかrailsのscaffoldで作成したコントローラがbefore_actionで変数を仕込むようになっていた。普段まったく使わないので気付かなかった。
+ https://github.com/rails/rails/commit/339e4e80d514bd94fcb0e15689db43e5de83642a  class &lt;%= controller_class_name %&gt;Controller &lt; ApplicationController before_action :set_&lt;%= singular_table_name %&gt;, except: [ :index, :new, :create ] private # Use callbacks to share common setup or constraints between actions. def set_&lt;%= singular_table_name %&gt; @&lt;%= singular_table_name %&gt; = &lt;%= orm_class.find(class_name, &quot;params[:id]&quot;) %&gt; end   Let the scaffold example use the &ldquo;set shared record&rdquo; pattern to explain callbacks
+ だけどこれは経験的に知っていることなんだけど、before_actionで変数を代入すると見通しが悪くなるのだ。
+特に多人数で開発しているときに誰かがそれをやりだすと、before_actionに次ぐbefore_actionで、いったいどのアクションがどのbefore_actionを呼んでいるのか、わけがわからなくなる。
+同じことを考えてる人は結構いる。
+ http://craftingruby.com/posts/2015/05/31/dont-use-before-action-to-load-data.html http://blog.thefrontiergroup.com.au/2014/02/before_action_an_anti_pattern/ http://jgaskins.org/blog/2014/08/25/better-alternative-to-rails-before_action-to-load-objects http://stackoverflow.com/questions/31442005/rails-set-locals-via-before-action-without-using-instance-variables  だからrailsオフィシャルがscaffoldでbefore_actionを使ってくるのには違和感がある。
+  </div>
+  
+  <a href="https://e9.github.io/posts/1456752673/" class="c-article__btn p-list-article__btn">Read more</a>
+  
+</article>
+
+
+
+
+<article class="c-article p-list-article">
+  <header>
+    <h2 class="c-title c-article__title"><a href="https://e9.github.io/posts/1397961646/">河添学部長がSFCの卒業式で浴びせた冷や水</a></h2>
+    <p class="c-article__meta">
+      Posted on
+      <time datetime="2014-04-20T11:40:46&#43;09:00">
+        Apr 20, 2014
+      </time>
+    </p>
+  </header>
+  <div class="c-article__summary">
+    そういえば学生のころ、私は書き起こしが趣味だったのでした。
+ これちゃんとした挨拶するの？じゃあ一応、式典らしくちゃんとした挨拶しますね。
+みなさん卒業おめでとうございます。4年前をちょっと思い出してください。ひょっとしたら5、6年前の人いるかもしれないけど。
+たぶんみなさんはAO入試とか、一般入試とか、帰国とか、いろんな形で入ってきて、ワクワクドキドキしてたと思うんですね。で、いまみなさんの横にいるのは、たぶん友達だったり、ゼミ、研究会の仲間だったり、サークルの仲間だったと思うんですね。
+まあ、この4年間、ずいぶんいろんなことがあったと思いますけども、まずいま横にいる人を非常に大切にして社会人になってください。またバラバラになっちゃうんだけども、また仲間をつくってですね、ぜひSFCらしさを世の中に広めていってほしいと思います。
+たぶんこういうスピーチには何か贈る言葉を用意しなきゃいけないんだけど。昨日いろいろ考えて、かっこいい言葉をひとつ言うと「因習は闇を生み、輝ける星は混沌に宿す」これコピペだからね、大丈夫。
+「因習は闇を生む」ってのはよく言われますけども、最近見た映画の中でもそういった言葉が使われてました。それから「輝ける星は混沌に宿す」というのは、ニーチェの言葉ですね。「ツァラトゥストラはかく語りき」の中に出てくる言葉です。因習っていうのは伝統とか慣習、トラディションですね。そういったものはネガティブな要素があると。闇を生むっていうことをみなさん自覚してほしいです。
+私は数学を教えたんだけども、数学の命題、最初にみなさん習ったと思うけど、対偶って覚えてます？覚えてる？闇の否定は光で、因習の否定はカオス、混沌ですよね。だから「輝ける星は混沌に宿す」というのは、最初に言った「因習は闇を生む」のまったく同じ意味です。
+私はみなさんに輝ける星になってほしいと思ってます。ということはどういうことが大事かというと、カオスの中に、混沌の中にみなさんはいてほしい。で、最初に、4年前を思い出してもらったのは、4年前みなさんはたぶん混沌としてたと思うんですね。SFCでどう過ごしたらいいか。自分は何をしようかと。非常に混沌の中にあったと思うんです。
+でもいまみなさんは、もう因習の中に足を踏み入れてると思う。ね。それを自覚ほしいです。これから社会に出てって、たぶん大手の会社とか、非常にいいところに就職した人は、もっと因習の中に入っていくと思います。そういう人はたぶん輝ける星になれない。ね。ほんとほんと。
+だから私が言いたいのは、もし人生でこれから選択することがあったら、右へ行こうか左へ行こうか、そういう時があったらば、ぜひ、混沌の方、カオスのある方を選んでください。それはもう失敗かもしれないし、損になるかもしれない。でも、みなさんが輝ける星になるには、混沌とした方をぜひ選んでほしい。
+私が贈る言葉は以上です。卒業おめでとうございます。
+ 
+  </div>
+  
+</article>
+
+
+
+
+<article class="c-article p-list-article">
+  <header>
+    <h2 class="c-title c-article__title"><a href="https://e9.github.io/posts/1395825098/">rails4の感想</a></h2>
+    <p class="c-article__meta">
+      Posted on
+      <time datetime="2014-03-26T18:11:38&#43;09:00">
+        Mar 26, 2014
+      </time>
+    </p>
+  </header>
+  <div class="c-article__summary">
+    rails4のroutes.rbで
+resources :books, param: :name  とやると/books/:nameでアクセスできるようになる。でもその状態で
+form_for Book.find(1)  とかやってもformのactionは/books/1のまま。
+class Book &lt; ActiveRecord::Base def to_param name end end  を追加すればいいだけなんだけど冗長な気がした。
+  </div>
+  
+</article>
+
+
+
+
+<article class="c-article p-list-article">
+  <header>
+    <h2 class="c-title c-article__title"><a href="https://e9.github.io/posts/1344412089/">ニッチな将棋のウェブサービスつくりました</a></h2>
+    <p class="c-article__meta">
+      Posted on
+      <time datetime="2012-08-08T16:48:09&#43;09:00">
+        Aug 8, 2012
+      </time>
+    </p>
+  </header>
+  <div class="c-article__summary">
+    クラウドで将棋の局面図を提供するサイトをつくりました。
+ http://shogipic.jp  ひっそりこっそりリリースしたら数日後に若島さんに使ってもらえたのでだいぶ満足しました。
+ http://twitter.com/propara/status/230633209719844864  もういつ閉鎖してもいいです。嘘です。閉鎖はしないです。
+将棋ブログでも取り上げていただきました。ありがとうございます。
+ http://clickshogi.exblog.jp/16566340/
+ http://d.hatena.ne.jp/hokaze153/20120805/1344146598
+  最終手を強調表示する機能を追加しました。詰将棋の出題には不要なので省いてました。
+&ldquo;Done is better than perfect.&ldquo;の精神でやっています。今後もよろしくお願いします。
+  </div>
+  
+</article>
+
+
+
+
+<article class="c-article p-list-article">
+  <header>
+    <h2 class="c-title c-article__title"><a href="https://e9.github.io/posts/1342967909/">ミュージシャンジョーク</a></h2>
+    <p class="c-article__meta">
+      Posted on
+      <time datetime="2012-07-22T23:38:29&#43;09:00">
+        Jul 22, 2012
+      </time>
+    </p>
+  </header>
+  <div class="c-article__summary">
+    YouTubeで見たジェイク・シマブクロの発言がオシャレだった。
+ マイナーコードの中にも特に悲しい音がある
+ベートーベンはDマイナーが一番悲しい音だと言っていた
+Dマイナーに限らずDの音は全般的に人の心に訴える力があるね
+高校の成績はDが多かった
+いい面もある
+だからミュージシャンはDをよく取るのかな
+  http://www.youtube.com/watch?v=MJ4NxmawgzI  
+  </div>
+  
+</article>
+
+
+
+
+<article class="c-article p-list-article">
+  <header>
+    <h2 class="c-title c-article__title"><a href="https://e9.github.io/posts/1342870825/">Mac OS X Lionのスクロール方向に今更はまる</a></h2>
+    <p class="c-article__meta">
+      Posted on
+      <time datetime="2012-07-21T20:40:25&#43;09:00">
+        Jul 21, 2012
+      </time>
+    </p>
+  </header>
+  <div class="c-article__summary">
+    Lionにマウス挿してホイール使ったら、スクロール方向がWindowsと逆になってて面食らった。
+環境設定からホイールのスクロール方向を逆にしたら治ったけど、今度はそれに連動してトラックパッドのスクロール方向が今までの逆になった。
+マウスとトラックパッドのスクロール方向を別々にはできないらしい。
+適当なソフト使えば改善できるらしいけど、それくらいは標準で対応しておいてほしいよ。
+  </div>
+  
+</article>
+
+
 <nav class="c-pagination p-pagination">
   <div class="c-pagination__ctrl">
     <div class="c-pagination__newer">
@@ -130,9 +307,11 @@ version: 2 jobs: build: branches: only: - master docker: - image: circleci/golan
     </div>
     <div class="c-pagination__older">
       
+      <a href="/posts/page/2/">Older</a>
+      
     </div>
   </div>
-  <span class="c-pagination__count p-pagination__count">Page 1 of 1</span>
+  <span class="c-pagination__count p-pagination__count">Page 1 of 2</span>
 </nav>
 
 
