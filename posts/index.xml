@@ -6,10 +6,26 @@
     <description>Recent content in Posts on e9.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Wed, 29 Aug 2018 21:36:55 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 03 Sep 2018 21:19:34 +0900</lastBuildDate>
     
 	<atom:link href="https://e9.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>マージコミットだけの差分</title>
+      <link>https://e9.github.io/posts/1535977174/</link>
+      <pubDate>Mon, 03 Sep 2018 21:19:34 +0900</pubDate>
+      
+      <guid>https://e9.github.io/posts/1535977174/</guid>
+      <description>developをmasterに入れるときでも、masterをリリースブランチに入れるときでも、なんでもいいんだけど、2つのブランチの差分から、次に何がデプロイされるのかをだいたいで知りたいときがある。
+当然プルリクエストベースで開発しているはずなので、そういうときはマージコミットだけに注目すればよい。
+git log --first-parent --merges --reverse --pretty=&#39;%s %b&#39; origin/master..origin/develop  プルリクエストのマージコミットに余計なコメントを入れていると改行が入ってややこしいが、そんなところにコメント書いてる人は見たことが無いので大丈夫。
+こんな風に表示される。
+Merge pull request #1 from e9/second-branch second commit Merge pull request #2 from e9/third-branch third commit  これをコピーしてGitHubのイシューやプルリクエストに貼り付ければ#の部分がリンクになって都合がよい。
+だけど貼り付ける先がGitHubじゃないときもある。esaとかbacklogとか。そういうときはマークダウンでリンクにしてあげたい。#の数字を切り取るのは簡単だけど、レポジトリのURLを手に入れるのは大変なので、ここは横着してgit-openを使う。
+ https://github.com/paulirish/git-open  git-openを入れたら下記でよい。
+git log --first-parent --merges --reverse --pretty=&#39;%s %b&#39; origin/master..origin/develop | while read line || [ -n &amp;quot;$line&amp;quot; ] do url=`echo $line | sed -e &#39;s/^.*#\([0-9]*\).*$/\1/&#39; | BROWSER=echo xargs git open --issue origin` echo &amp;quot;- [$line]($url)&amp;quot; done  これでマークダウンのリンクになるので、どこにでも貼れる。</description>
+    </item>
     
     <item>
       <title>Hugoで記事を書くまで</title>

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>e9.github.io</title>
-    <link>https://e9.github.io/</link>
-    <description>Recent content on e9.github.io</description>
+    <title>2018/09 on e9.github.io</title>
+    <link>https://e9.github.io/tags/2018/09/</link>
+    <description>Recent content in 2018/09 on e9.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <lastBuildDate>Mon, 03 Sep 2018 21:19:34 +0900</lastBuildDate>
     
-	<atom:link href="https://e9.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://e9.github.io/tags/2018/09/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -25,21 +25,6 @@ Merge pull request #1 from e9/second-branch second commit Merge pull request #2 
 だけど貼り付ける先がGitHubじゃないときもある。esaとかbacklogとか。そういうときはマークダウンでリンクにしてあげたい。#の数字を切り取るのは簡単だけど、レポジトリのURLを手に入れるのは大変なので、ここは横着してgit-openを使う。
  https://github.com/paulirish/git-open  git-openを入れたら下記でよい。
 git log --first-parent --merges --reverse --pretty=&#39;%s %b&#39; origin/master..origin/develop | while read line || [ -n &amp;quot;$line&amp;quot; ] do url=`echo $line | sed -e &#39;s/^.*#\([0-9]*\).*$/\1/&#39; | BROWSER=echo xargs git open --issue origin` echo &amp;quot;- [$line]($url)&amp;quot; done  これでマークダウンのリンクになるので、どこにでも貼れる。</description>
-    </item>
-    
-    <item>
-      <title>Hugoで記事を書くまで</title>
-      <link>https://e9.github.io/posts/1535546215/</link>
-      <pubDate>Wed, 29 Aug 2018 21:36:55 +0900</pubDate>
-      
-      <guid>https://e9.github.io/posts/1535546215/</guid>
-      <description>マークダウンで書けるブログサービスの選択肢が少ないのでgithub.ioを使うことにした。 いまどきはJekyllよりHugoらしい。わりと簡単に作れた。こんな感じで。
-hugo new site blog cd blog git init git remote add origin git@github.com:e9/blog.git  空のディレクトリばかりなのでfirst commitの前に.gitkeepを置いておく。
-for dir in `find . -not -path &#39;*/\.*&#39; -not -name &#39;.*&#39; -type d`; do touch $dir/.gitkeep; done git add . git commit -m &#39;hugo new site&#39;  テーマはダウンロードして直接置いてもいいけど、gitのsubmoduleにしておくのがスマートだろう。
-git submodule add https://github.com/mismith0227/hugo_theme_pickles.git themes/pickles git add . git commit -m &#39;Add themes/pickles&#39;  あとはpublicをgithub.ioのレポジトリのsubmoduleにして、publicに出力したファイルをpushするのがオーソドックスなやり方らしいんだけど、せっかくなんでCIサービスから自動でデプロイさせることにした。
-いまどきはgithubのプライベートレポジトリは作り放題だし、Circle CIは1コンテナだけなら無料で使える。
-.circleci/config.ymlはこんな感じ。あらかじめCircleCIの鍵をGitHubに登録しておく。
-version: 2 jobs: build: branches: only: - master docker: - image: circleci/golang:stretch steps: - checkout - run: command: git submodule update --init --recursive - run: command: | git clone https://github.</description>
     </item>
     
   </channel>

@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://e9.github.io/posts/1535977174/</loc>
+    <lastmod>2018-09-03T21:19:34+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://e9.github.io/posts/1535546215/</loc>
     <lastmod>2018-08-29T21:36:55+09:00</lastmod>
   </url>
@@ -14,13 +19,19 @@
   </url>
   
   <url>
+    <loc>https://e9.github.io/tags/2018/09/</loc>
+    <lastmod>2018-09-03T21:19:34+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://e9.github.io/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://e9.github.io/posts/</loc>
-    <lastmod>2018-08-29T21:36:55+09:00</lastmod>
+    <lastmod>2018-09-03T21:19:34+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -32,7 +43,7 @@
   
   <url>
     <loc>https://e9.github.io/</loc>
-    <lastmod>2018-08-29T21:36:55+09:00</lastmod>
+    <lastmod>2018-09-03T21:19:34+09:00</lastmod>
     <priority>0</priority>
   </url>
   
