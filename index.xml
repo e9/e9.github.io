@@ -6,10 +6,25 @@
     <description>Recent content on e9.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Mon, 03 Sep 2018 21:19:34 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 04 Sep 2018 20:14:01 +0900</lastBuildDate>
     
 	<atom:link href="https://e9.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>テストでだけ使いたい共通関数はGolangの場合どこに置くのか</title>
+      <link>https://e9.github.io/posts/1536059641/</link>
+      <pubDate>Tue, 04 Sep 2018 20:14:01 +0900</pubDate>
+      
+      <guid>https://e9.github.io/posts/1536059641/</guid>
+      <description>例えばこんなパッケージがあったとして。
+package x func X() string { return &amp;quot;x&amp;quot; }  package x_test import ( &amp;quot;testing&amp;quot; &amp;quot;app/x&amp;quot; ) func TestX(t *testing.T) { if !assert(x.X(), &amp;quot;x&amp;quot;) { t.Fatal(&amp;quot;not x&amp;quot;) } } func assert(a string, b string) bool { return a == b }  assert関数を他のパッケージのテストでも使いたくなったとする。
+その場合、assertをAssertにしてimport x_testすれば他のパッケージからもx_test.Assertが使えるようになる。かと思いきやならない。
+もちろんpackage xの方に移して、x.Assertとすれば呼べる。当たり前だ。だけどテストでしか使わない関数がそこにいるのは気持ち悪い。
+どうするのがいいのかちょっと調べたところ、スタックオーバフローによれば*_testではない専用のパッケージを作ってそこに入れろと。
+ https://stackoverflow.com/a/31794241  つまりこういうことか。
+package x_test import ( &amp;quot;testing&amp;quot; &amp;quot;app/hogetest&amp;quot; ) func TestX(t *testing.T) { if !hogetest.Assert(x.X(), &amp;quot;x&amp;quot;) { t.Fatal(&amp;quot;not x&amp;quot;) } }  package hogetest func Assert(a string, b string) bool { return a == b }  ビルド時はhogetestをimportしなければいい。うーん、まあ、わかるけど、あまりすっきりとした気持ちにはならなかった。</description>
+    </item>
     
     <item>
       <title>マージコミットだけの差分</title>
