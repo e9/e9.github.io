@@ -4,16 +4,16 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
   
-  <title>e9.github.io</title>
-  <meta property="og:title" content="e9.github.io" />
-  <meta name="twitter:title" content="e9.github.io" />
+  <title>2016/05</title>
+  <meta property="og:title" content="2016/05" />
+  <meta name="twitter:title" content="2016/05" />
   
 
   
 
   <meta name="author" content=""/>
   <meta property="og:site_name" content="e9.github.io" />
-  <meta property="og:url" content="https://e9.github.io/" />
+  <meta property="og:url" content="https://e9.github.io/tags/2016/05/" />
 
   
   <meta name="twitter:card" content="summary" />
@@ -26,8 +26,6 @@
   
   <meta name="generator" content="Hugo 0.47.1" /><link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
   <link rel="stylesheet" href="https://e9.github.io/css/style.css" />
-  <link href="https://e9.github.io/index.xml" rel="alternate" type="application/rss+xml" title="e9.github.io" />
-  
   <script type="text/javascript" src="https://e9.github.io/js/bundle.js"></script>
   
 
@@ -44,139 +42,30 @@
   </header>
   <main id="main" class="l-main">
 
+<h2 class="c-title p-tag-title">2016/05</h2>
 
 
 <article class="c-article p-list-article">
   <header>
-    <h2 class="c-title c-article__title"><a href="https://e9.github.io/posts/1342870825/">Mac OS X Lionのスクロール方向に今更はまる</a></h2>
+    <h2 class="c-title c-article__title"><a href="https://e9.github.io/posts/1463633653/">ActiveRecordでattr_accessorとselectを併用すると</a></h2>
     <p class="c-article__meta">
       Posted on
-      <time datetime="2012-07-21T20:40:25&#43;09:00">
-        Jul 21, 2012
+      <time datetime="2016-05-19T13:54:13&#43;09:00">
+        May 19, 2016
       </time>
     </p>
   </header>
   <div class="c-article__summary">
-    Lionにマウス挿してホイール使ったら、スクロール方向がWindowsと逆になってて面食らった。
-環境設定からホイールのスクロール方向を逆にしたら治ったけど、今度はそれに連動してトラックパッドのスクロール方向が今までの逆になった。
-マウスとトラックパッドのスクロール方向を別々にはできないらしい。
-適当なソフト使えば改善できるらしいけど、それくらいは標準で対応しておいてほしいよ。
+    $ bin/rails -v Rails 5.0.0.rc1  こういうモデルがあるとする。
+class Apple &lt; ApplicationRecord attr_accessor :y end  実装内容の良し悪しはさておき、下記を実行する。
+irb(main):001:0&gt; apple = Apple.select(&quot;1 as x&quot;, &quot;2 as y&quot;).first irb(main):002:0&gt; apple.x =&gt; 1  ではapple.yには何が入っているか。
+irb(main):003:0&gt; apple.y =&gt; nil irb(main):004:0&gt; apple.as_json =&gt; {&quot;id&quot;=&gt;nil, &quot;x&quot;=&gt;1, &quot;y&quot;=&gt;nil}  nilなのだ。attr_accessorの#yが優先されるらしい。SELECTした結果にアクセスするには[:y]とすればよい。
+irb(main):005:0&gt; apple[:y] =&gt; 2  attr_accessorをひとつ置いただけで、既存のコードが動かなくなる可能性をはらんでいる。というか、それでさっきハマったのだ。
+このあとxとyにそれぞれ代入すると、さらにわけがわからない。
+irb(main):006:0&gt; apple.x = 3 irb(main):007:0&gt; apple.y = 4 irb(main):008:0&gt; apple.as_json =&gt; {&quot;id&quot;=&gt;nil, &quot;x&quot;=&gt;3, &quot;y&quot;=&gt;4} irb(main):009:0&gt; apple.x =&gt; 3 irb(main):010:0&gt; apple[:x] =&gt; 3 irb(main):011:0&gt; apple.
   </div>
   
-</article>
-
-
-
-
-<article class="c-article p-list-article">
-  <header>
-    <h2 class="c-title c-article__title"><a href="https://e9.github.io/posts/1342363851/">CM前にやたらモザイクがかかる謎</a></h2>
-    <p class="c-article__meta">
-      Posted on
-      <time datetime="2012-07-15T23:50:51&#43;09:00">
-        Jul 15, 2012
-      </time>
-    </p>
-  </header>
-  <div class="c-article__summary">
-    最近はバラエティ番組を見てると、スポンサーをアナウンスする場面で、後ろに映ってる出演者の着てるＴシャツのロゴとか、名札とか、とにかく文字すべてにモザイクがかかってることに気付く。
- http://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q1432189114 http://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q1232100427  まあ、普通に考えたらテロップとかぶって邪魔だから消してるんだろうけど、さっきガキの使いを見てたらテロップの出てないところでも文字にモザイクがかけられていて、あれ？と思った。
- CMってチャンネル変えるタイミングの上位ですので、またいでも見てもらうため敢えて興味をそそるようにしているんです。
-http://okwave.jp/qa/q5615956.html
- さすがにそれは無いだろと思うんだけど。
-文字へのモザイクがけが自動化されていて、提供テロップが入りそうな場面では勝手にモザイクがかかっちゃうのかなあ。
-  </div>
-  
-</article>
-
-
-
-
-<article class="c-article p-list-article">
-  <header>
-    <h2 class="c-title c-article__title"><a href="https://e9.github.io/posts/1342194237/">JavaScriptの即時関数パターンの書き方</a></h2>
-    <p class="c-article__meta">
-      Posted on
-      <time datetime="2012-07-14T00:43:57&#43;09:00">
-        Jul 14, 2012
-      </time>
-    </p>
-  </header>
-  <div class="c-article__summary">
-    よく見るのはこれ。
-(function(){})();  JSLintはカッコを中に入れろというらしい
-(function(){}());  knockout.jsでは初めの書き方と次の書き方が混在してる。
-!function(){}();  値を返さない即時関数はこれでバイト数を削減しようってことかな。
-  </div>
-  
-</article>
-
-
-
-
-<article class="c-article p-list-article">
-  <header>
-    <h2 class="c-title c-article__title"><a href="https://e9.github.io/posts/1340200656/">わたしは駅に住みたい</a></h2>
-    <p class="c-article__meta">
-      Posted on
-      <time datetime="2012-06-20T22:57:36&#43;09:00">
-        Jun 20, 2012
-      </time>
-    </p>
-  </header>
-  <div class="c-article__summary">
-    ホームレスになりたいというわけではない。
-先週末に熊本に行き、そこでJR水前寺駅というものを見たのだ。
- 直営駅で、みどりの窓口が設置されている。駅舎には美容室などの商業施設、3階以上にはマンションを併設している。改札口やみどりの窓口、キヨスクなど駅機能は2階にある。
-http://ja.wikipedia.org/wiki/%E6%B0%B4%E5%89%8D%E5%AF%BA%E9%A7%85
- 駅の上にマンションが建ってる。徒歩何分というレベルではない。改札を抜けたらもう我が家だ。さすがにそれは言い過ぎだけど。
-これを見て、都内でも同じことができないか考えて、すこし検索したけどあまり出てこなかった。都民は駅に住みたくないのか？
- http://www.goodrooms.jp//sch/detail.php/001/693406/?k_number=693406&amp;div=001 http://www.mansion-catalog.com/minamiaoyama/ http://www.m-standard.co.jp/rent/%E3%82%A2%E3%82%AF%E3%82%B7%E3%82%A2%E9%BA%BB%E5%B8%83/  （当たり前だけど）家賃が高かったり、駅上じゃなくて駅直結だったり、いまいち決定打に欠けるので、いつか暇なときに都内の駅の上を全て見てまわりたいと思う。
-  </div>
-  
-</article>
-
-
-
-
-<article class="c-article p-list-article">
-  <header>
-    <h2 class="c-title c-article__title"><a href="https://e9.github.io/posts/1338214914/">私がブログを書けない100の理由</a></h2>
-    <p class="c-article__meta">
-      Posted on
-      <time datetime="2012-05-28T23:21:54&#43;09:00">
-        May 28, 2012
-      </time>
-    </p>
-  </header>
-  <div class="c-article__summary">
-    ブログに書きたいことは、つまり人に話したいことだから、ブログをどんどん書くと、いざ人に会ったときに話すことがなくなってしまう。
-「ねえねえ聞いてよこの前さあ――あ、ごめん、この話はブログに書いたんだった」
-お前のブログなんて誰も読んでねーよと言われるだろうけど、でもそうは言ってもインターネットで（一応は）全世界に向けて発信した話を、もう一度誰かにするのは気が引ける。
-別に誰かに話したいわけでもない話をブログに書くのも、それはそれでなんのために書いてるんだか分からないし。
-そこでひとつ思いついたのが「続きはリアルで」だ。
-ブログには途中まで書いておいて、肝心の部分は実際に会ったときに話す。これでブログも書けるし、話題も尽きない。
-これ、かなり画期的な手法だろうと思ったけど、300年以上前にフェルマーがやってた。
-  </div>
-  
-</article>
-
-
-
-
-<article class="c-article p-list-article">
-  <header>
-    <h2 class="c-title c-article__title"><a href="https://e9.github.io/posts/1333213257/">ブログデビュー</a></h2>
-    <p class="c-article__meta">
-      Posted on
-      <time datetime="2012-04-01T02:00:57&#43;09:00">
-        Apr 1, 2012
-      </time>
-    </p>
-  </header>
-  <div class="c-article__summary">
-    ブログを始めたときに、ひとつめの記事に何を書くかというのは、すごく面倒な問題だ。
-  </div>
+  <a href="https://e9.github.io/posts/1463633653/" class="c-article__btn p-list-article__btn">Read more</a>
   
 </article>
 
@@ -185,14 +74,12 @@ http://ja.wikipedia.org/wiki/%E6%B0%B4%E5%89%8D%E5%AF%BA%E9%A7%85
   <div class="c-pagination__ctrl">
     <div class="c-pagination__newer">
       
-      <a href="/">Newer</a>
-      
     </div>
     <div class="c-pagination__older">
       
     </div>
   </div>
-  <span class="c-pagination__count p-pagination__count">Page 2 of 2</span>
+  <span class="c-pagination__count p-pagination__count">Page 1 of 1</span>
 </nav>
 
 

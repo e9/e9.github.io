@@ -18,6 +18,11 @@
   </url>
   
   <url>
+    <loc>https://e9.github.io/posts/1463633653/</loc>
+    <lastmod>2016-05-19T13:54:13+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://e9.github.io/posts/1458562442/</loc>
     <lastmod>2016-03-21T21:14:02+09:00</lastmod>
   </url>
@@ -128,6 +133,12 @@
   <url>
     <loc>https://e9.github.io/tags/2016/03/</loc>
     <lastmod>2016-03-21T21:14:02+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://e9.github.io/tags/2016/05/</loc>
+    <lastmod>2016-05-19T13:54:13+09:00</lastmod>
     <priority>0</priority>
   </url>
   
