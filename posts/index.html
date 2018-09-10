@@ -62,7 +62,7 @@ logger.debug(long_time_method())  どういう状況だこれは。
 query = query.where(...) logger.debug(query.all()) query = query.where(...)  このとき本番環境ではdebugログが出力されないとしても、query.all()は実行されてしまう。Pythonだとこれを回避するのは難しい。
 debugの行にログレベルを見るifを追加するとか、文字列化まで遅延評価されるクラスを間に挟むとか、苦しいアイデアがスタックオーバフローには書いてあった。
  https://stackoverflow.com/questions/4148790/lazy-logger-message-string-evaluation/22205835#22205835  一方、Rubyは簡単で、ブロックに入れて渡せばよい。
-logger.debug { quqery.all() }  
+logger.debug { query.all() }  
   </div>
   
 </article>
