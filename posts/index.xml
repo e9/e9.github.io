@@ -6,10 +6,25 @@
     <description>Recent content in Posts on e9.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Tue, 04 Sep 2018 20:14:01 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 10 Sep 2018 21:06:00 +0900</lastBuildDate>
     
 	<atom:link href="https://e9.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>loggerに重い処理を渡すと</title>
+      <link>https://e9.github.io/posts/1536581159/</link>
+      <pubDate>Mon, 10 Sep 2018 21:06:00 +0900</pubDate>
+      
+      <guid>https://e9.github.io/posts/1536581159/</guid>
+      <description>RubyにもPythonにもloggerはある。loggerに重い処理を渡してしまった場合を考えよう。
+logger.debug(long_time_method())  どういう状況だこれは。
+では遅延評価されるオブジェクトを途中でデバッグ出力してるとしよう。これならありそう。
+query = query.where(...) logger.debug(query.all()) query = query.where(...)  このとき本番環境ではdebugログが出力されないとしても、query.all()は実行されてしまう。Pythonだとこれを回避するのは難しい。
+debugの行にログレベルを見るifを追加するとか、文字列化まで遅延評価されるクラスを間に挟むとか、苦しいアイデアがスタックオーバフローには書いてあった。 - https://stackoverflow.com/questions/4148790/lazy-logger-message-string-evaluation/22205835#22205835
+一方、Rubyは簡単で、ブロックに入れて渡せばよい。
+logger.debug { quqery.all() }  </description>
+    </item>
     
     <item>
       <title>テストでだけ使いたい共通関数はGolangの場合どこに置くのか</title>
