@@ -77,8 +77,11 @@ query = query.where(...)
 
 <p>このとき本番環境ではdebugログが出力されないとしても、query.all()は実行されてしまう。Pythonだとこれを回避するのは難しい。</p>
 
-<p>debugの行にログレベルを見るifを追加するとか、文字列化まで遅延評価されるクラスを間に挟むとか、苦しいアイデアがスタックオーバフローには書いてあった。
-- <a href="https://stackoverflow.com/questions/4148790/lazy-logger-message-string-evaluation/22205835#22205835">https://stackoverflow.com/questions/4148790/lazy-logger-message-string-evaluation/22205835#22205835</a></p>
+<p>debugの行にログレベルを見るifを追加するとか、文字列化まで遅延評価されるクラスを間に挟むとか、苦しいアイデアがスタックオーバフローには書いてあった。</p>
+
+<ul>
+<li><a href="https://stackoverflow.com/questions/4148790/lazy-logger-message-string-evaluation/22205835#22205835">https://stackoverflow.com/questions/4148790/lazy-logger-message-string-evaluation/22205835#22205835</a></li>
+</ul>
 
 <p>一方、Rubyは簡単で、ブロックに入れて渡せばよい。</p>
 
