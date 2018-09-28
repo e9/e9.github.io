@@ -6,10 +6,23 @@
     <description>Recent content on e9.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Mon, 10 Sep 2018 21:06:00 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 28 Sep 2018 22:58:00 +0900</lastBuildDate>
     
 	<atom:link href="https://e9.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>forではないループ</title>
+      <link>https://e9.github.io/posts/1538143080/</link>
+      <pubDate>Fri, 28 Sep 2018 22:58:00 +0900</pubDate>
+      
+      <guid>https://e9.github.io/posts/1538143080/</guid>
+      <description>指定回数ループしたいときがある。Rubyだとわかりやすく10.times { }と書ける。範囲オブジェクトを作って回す手もある。for i in 0..&amp;lt;10 { }みたいな。いまのはSwiftだけど。
+JavaScriptについてぐぐると[...Array(10)].forEach(()=&amp;gt;{ })という、やや黒魔術的なコードが見つかる。Array(10)だけだと値が無なので[...Array(10)]と、わざわざスプレッドするひと手間が加わっていて、やや黒魔術的だ。
+ https://stackoverflow.com/a/37417004  だけどこれを、ターゲットをes5にしたTypeScriptで書くと途端に動かなくなる。[...Array(10)]がArray(10).slice()にトランスパイルされてしまうからだ。代わりにArray.from(Array(10))とかArray(10).fill()とかしてる人もいるけど、fromもfillもES6なので、だったらターゲットをes6にして[...Array(10)]を使えばよいのではと思う。
+ということでArray.apply(null, {length: 10})というテクニックがあることを知った。
+ https://stackoverflow.com/a/30452520 https://blog.scheakur.com/post/96000209437/javascriptで0からn-1までを要素にもつarrayを作成する方法  applyの第2引数がArray-like objectを要求するので、{length: 10}を渡すことで要素が10個ある配列が生成されるらしい。2018年に書くコードではない気もするが。</description>
+    </item>
     
     <item>
       <title>loggerに重い処理を渡すと</title>

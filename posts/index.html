@@ -47,6 +47,29 @@
 
 <article class="c-article p-list-article">
   <header>
+    <h2 class="c-title c-article__title"><a href="https://e9.github.io/posts/1538143080/">forではないループ</a></h2>
+    <p class="c-article__meta">
+      Posted on
+      <time datetime="2018-09-28T22:58:00&#43;09:00">
+        Sep 28, 2018
+      </time>
+    </p>
+  </header>
+  <div class="c-article__summary">
+    指定回数ループしたいときがある。Rubyだとわかりやすく10.times { }と書ける。範囲オブジェクトを作って回す手もある。for i in 0..&lt;10 { }みたいな。いまのはSwiftだけど。
+JavaScriptについてぐぐると[...Array(10)].forEach(()=&gt;{ })という、やや黒魔術的なコードが見つかる。Array(10)だけだと値が無なので[...Array(10)]と、わざわざスプレッドするひと手間が加わっていて、やや黒魔術的だ。
+ https://stackoverflow.com/a/37417004  だけどこれを、ターゲットをes5にしたTypeScriptで書くと途端に動かなくなる。[...Array(10)]がArray(10).slice()にトランスパイルされてしまうからだ。代わりにArray.from(Array(10))とかArray(10).fill()とかしてる人もいるけど、fromもfillもES6なので、だったらターゲットをes6にして[...Array(10)]を使えばよいのではと思う。
+ということでArray.apply(null, {length: 10})というテクニックがあることを知った。
+ https://stackoverflow.com/a/30452520 https://blog.scheakur.com/post/96000209437/javascriptで0からn-1までを要素にもつarrayを作成する方法  applyの第2引数がArray-like objectを要求するので、{length: 10}を渡すことで要素が10個ある配列が生成されるらしい。2018年に書くコードではない気もするが。
+  </div>
+  
+</article>
+
+
+
+
+<article class="c-article p-list-article">
+  <header>
     <h2 class="c-title c-article__title"><a href="https://e9.github.io/posts/1536581159/">loggerに重い処理を渡すと</a></h2>
     <p class="c-article__meta">
       Posted on
@@ -273,32 +296,6 @@ class CreateApples &lt; ActiveRecord::Migration.send('[]', 5.0)  さすがruby�
 resources :books, param: :name  とやると/books/:nameでアクセスできるようになる。でもその状態で
 form_for Book.find(1)  とかやってもformのactionは/books/1のまま。
 class Book &lt; ActiveRecord::Base def to_param name end end  を追加すればいいだけなんだけど冗長な気がした。
-  </div>
-  
-</article>
-
-
-
-
-<article class="c-article p-list-article">
-  <header>
-    <h2 class="c-title c-article__title"><a href="https://e9.github.io/posts/1344412089/">ニッチな将棋のウェブサービスつくりました</a></h2>
-    <p class="c-article__meta">
-      Posted on
-      <time datetime="2012-08-08T16:48:09&#43;09:00">
-        Aug 8, 2012
-      </time>
-    </p>
-  </header>
-  <div class="c-article__summary">
-    クラウドで将棋の局面図を提供するサイトをつくりました。
- http://shogipic.jp  ひっそりこっそりリリースしたら数日後に若島さんに使ってもらえたのでだいぶ満足しました。
- http://twitter.com/propara/status/230633209719844864  もういつ閉鎖してもいいです。嘘です。閉鎖はしないです。
-将棋ブログでも取り上げていただきました。ありがとうございます。
- http://clickshogi.exblog.jp/16566340/
- http://d.hatena.ne.jp/hokaze153/20120805/1344146598
-  最終手を強調表示する機能を追加しました。詰将棋の出題には不要なので省いてました。
-&ldquo;Done is better than perfect.&ldquo;の精神でやっています。今後もよろしくお願いします。
   </div>
   
 </article>

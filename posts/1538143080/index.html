@@ -4,16 +4,16 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
   
-  <title>loggerに重い処理を渡すと</title>
-  <meta property="og:title" content="loggerに重い処理を渡すと" />
-  <meta name="twitter:title" content="loggerに重い処理を渡すと" />
+  <title>forではないループ</title>
+  <meta property="og:title" content="forではないループ" />
+  <meta name="twitter:title" content="forではないループ" />
   
 
   
 
   <meta name="author" content=""/>
   <meta property="og:site_name" content="e9.github.io" />
-  <meta property="og:url" content="https://e9.github.io/posts/1536581159/" />
+  <meta property="og:url" content="https://e9.github.io/posts/1538143080/" />
 
   
   <meta name="twitter:card" content="summary" />
@@ -46,12 +46,12 @@
 
 <article class="p-article">
   <header>
-    <h1>loggerに重い処理を渡すと</h1>
+    <h1>forではないループ</h1>
     <div>
       <div class="c-time">
         Posted on
-        <time datetime="2018-09-10T21:06:00&#43;09:00">
-          Sep 10, 2018
+        <time datetime="2018-09-28T22:58:00&#43;09:00">
+          Sep 28, 2018
         </time>
       </div>
       
@@ -61,32 +61,24 @@
   </header>
   
   <section id="js-article" class="p-article__body">
-    <p>RubyにもPythonにもloggerはある。loggerに重い処理を渡してしまった場合を考えよう。</p>
+    <p>指定回数ループしたいときがある。Rubyだとわかりやすく<code>10.times { }</code>と書ける。範囲オブジェクトを作って回す手もある。<code>for i in 0..&lt;10 { }</code>みたいな。いまのはSwiftだけど。</p>
 
-<pre><code>logger.debug(long_time_method())
-</code></pre>
-
-<p>どういう状況だこれは。</p>
-
-<p>では遅延評価されるオブジェクトを途中でデバッグ出力してるとしよう。これならありそう。</p>
-
-<pre><code>query = query.where(...)
-logger.debug(query.all())
-query = query.where(...)
-</code></pre>
-
-<p>このとき本番環境ではdebugログが出力されないとしても、query.all()は実行されてしまう。Pythonだとこれを回避するのは難しい。</p>
-
-<p>debugの行にログレベルを見るifを追加するとか、文字列化まで遅延評価されるクラスを間に挟むとか、苦しいアイデアがスタックオーバフローには書いてあった。</p>
+<p>JavaScriptについてぐぐると<code>[...Array(10)].forEach(()=&gt;{ })</code>という、やや黒魔術的なコードが見つかる。<code>Array(10)</code>だけだと値が無なので<code>[...Array(10)]</code>と、わざわざスプレッドするひと手間が加わっていて、やや黒魔術的だ。</p>
 
 <ul>
-<li><a href="https://stackoverflow.com/questions/4148790/lazy-logger-message-string-evaluation/22205835#22205835">https://stackoverflow.com/questions/4148790/lazy-logger-message-string-evaluation/22205835#22205835</a></li>
+<li><a href="https://stackoverflow.com/a/37417004">https://stackoverflow.com/a/37417004</a></li>
 </ul>
 
-<p>一方、Rubyは簡単で、ブロックに入れて渡せばよい。</p>
+<p>だけどこれを、ターゲットをes5にしたTypeScriptで書くと途端に動かなくなる。<code>[...Array(10)]</code>が<code>Array(10).slice()</code>にトランスパイルされてしまうからだ。代わりに<code>Array.from(Array(10))</code>とか<code>Array(10).fill()</code>とかしてる人もいるけど、fromもfillもES6なので、だったらターゲットをes6にして<code>[...Array(10)]</code>を使えばよいのではと思う。</p>
 
-<pre><code>logger.debug { query.all() }
-</code></pre>
+<p>ということで<code>Array.apply(null, {length: 10})</code>というテクニックがあることを知った。</p>
+
+<ul>
+<li><a href="https://stackoverflow.com/a/30452520">https://stackoverflow.com/a/30452520</a></li>
+<li><a href="https://blog.scheakur.com/post/96000209437/javascriptで0からn-1までを要素にもつarrayを作成する方法">https://blog.scheakur.com/post/96000209437/javascriptで0からn-1までを要素にもつarrayを作成する方法</a></li>
+</ul>
+
+<p>applyの第2引数がArray-like objectを要求するので、{length: 10}を渡すことで要素が10個ある配列が生成されるらしい。2018年に書くコードではない気もするが。</p>
 
   </section>
   <footer>
@@ -95,12 +87,11 @@ query = query.where(...)
       <div class="c-pagination__ctrl">
         <div class="c-pagination__newer">
           
-          <a href="https://e9.github.io/posts/1538143080/">Newer</a>
           
         </div>
         <div class="c-pagination__older">
           
-          <a href="https://e9.github.io/posts/1536059641/">Older</a>
+          <a href="https://e9.github.io/posts/1536581159/">Older</a>
           
         </div>
       </div>
