@@ -48,6 +48,30 @@
 
 <article class="c-article p-list-article">
   <header>
+    <h2 class="c-title c-article__title"><a href="https://e9.github.io/posts/1539859215/">配列と連想配列を同じループで回したい</a></h2>
+    <p class="c-article__meta">
+      Posted on
+      <time datetime="2018-10-18T19:40:15&#43;09:00">
+        Oct 18, 2018
+      </time>
+    </p>
+  </header>
+  <div class="c-article__summary">
+    Python。dict か list のいずれかが入っている変数に対して、ループで回してある処理することになった。
+型が違うのだから違うコードで回すべきだという論もあるだろうが、せっかく LL で書いているのだから、全く同じコードで処理したいところ。
+結局自分はこうした。
+items = dict_or_list.items() if isinstance(dict_or_list, dict) else enumerate(dict_or_list) for key, value in items: print(key, value)  条件分岐があまり美しない気がしたけど、より良い方法が思いつかなかった。
+Ruby だともうちょっと美しく書ける。
+hash_or_array.each_with_index{ |(k, v), i| value, key = [v, k, i].compact p [key, value] }  まあ、これが美しいコードなのかは異論あるだろうけど、条件分岐が無いのが売りである。
+  </div>
+  
+</article>
+
+
+
+
+<article class="c-article p-list-article">
+  <header>
     <h2 class="c-title c-article__title"><a href="https://e9.github.io/posts/1538143080/">forではないループ</a></h2>
     <p class="c-article__meta">
       Posted on
@@ -275,28 +299,6 @@ class CreateApples &lt; ActiveRecord::Migration.send('[]', 5.0)  さすがruby�
 だから私が言いたいのは、もし人生でこれから選択することがあったら、右へ行こうか左へ行こうか、そういう時があったらば、ぜひ、混沌の方、カオスのある方を選んでください。それはもう失敗かもしれないし、損になるかもしれない。でも、みなさんが輝ける星になるには、混沌とした方をぜひ選んでほしい。
 私が贈る言葉は以上です。卒業おめでとうございます。
  
-  </div>
-  
-</article>
-
-
-
-
-<article class="c-article p-list-article">
-  <header>
-    <h2 class="c-title c-article__title"><a href="https://e9.github.io/posts/1395825098/">rails4の感想</a></h2>
-    <p class="c-article__meta">
-      Posted on
-      <time datetime="2014-03-26T18:11:38&#43;09:00">
-        Mar 26, 2014
-      </time>
-    </p>
-  </header>
-  <div class="c-article__summary">
-    rails4のroutes.rbで
-resources :books, param: :name  とやると/books/:nameでアクセスできるようになる。でもその状態で
-form_for Book.find(1)  とかやってもformのactionは/books/1のまま。
-class Book &lt; ActiveRecord::Base def to_param name end end  を追加すればいいだけなんだけど冗長な気がした。
   </div>
   
 </article>
