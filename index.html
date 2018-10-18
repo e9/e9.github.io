@@ -57,7 +57,7 @@
     </p>
   </header>
   <div class="c-article__summary">
-    Python。dict か list のいずれかが入っている変数に対して、ループで回してある処理することになった。
+    Python。dict か list のいずれかが入っている変数に対して、ループで回してある処理をすることになった。
 型が違うのだから違うコードで回すべきだという論もあるだろうが、せっかく LL で書いているのだから、全く同じコードで処理したいところ。
 結局自分はこうした。
 items = dict_or_list.items() if isinstance(dict_or_list, dict) else enumerate(dict_or_list) for key, value in items: print(key, value)  条件分岐があまり美しない気がしたけど、より良い方法が思いつかなかった。
