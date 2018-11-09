@@ -4,16 +4,16 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
   
-  <title>RedisのHGETALLの速さ</title>
-  <meta property="og:title" content="RedisのHGETALLの速さ" />
-  <meta name="twitter:title" content="RedisのHGETALLの速さ" />
+  <title>Create React AppのdistをRailsのassetsで使いたい</title>
+  <meta property="og:title" content="Create React AppのdistをRailsのassetsで使いたい" />
+  <meta name="twitter:title" content="Create React AppのdistをRailsのassetsで使いたい" />
   
 
   
 
   <meta name="author" content=""/>
   <meta property="og:site_name" content="e9.github.io" />
-  <meta property="og:url" content="https://e9.github.io/posts/1540982193/" />
+  <meta property="og:url" content="https://e9.github.io/posts/1541765899/" />
 
   
   <meta name="twitter:card" content="summary" />
@@ -46,38 +46,81 @@
 
 <article class="p-article">
   <header>
-    <h1>RedisのHGETALLの速さ</h1>
+    <h1>Create React AppのdistをRailsのassetsで使いたい</h1>
     <div>
       <div class="c-time">
         Posted on
-        <time datetime="2018-10-31T19:36:34&#43;09:00">
-          Oct 31, 2018
+        <time datetime="2018-11-09T21:18:20&#43;09:00">
+          Nov 9, 2018
         </time>
       </div>
       
-      <a href="https://e9.github.io/tags/2018/10" class="c-tag">2018/10</a>
+      <a href="https://e9.github.io/tags/2018/11" class="c-tag">2018/11</a>
       
     </div>
   </header>
   
   <section id="js-article" class="p-article__body">
-    <p>普段は Redis の読み書きなんてフレームワークにまかせていて、オブジェクトならだいたいシリアライズして保存されているわけだけど、今回たまたま Redis を直で使うことがあった。ハッシュ、連想配列、辞書、まあとにかくそんなものを保存したい。</p>
+    <p>数年放置したRailsプロジェクトのフロントエンドをどうにかしたくなったので、手っ取り早くfrontendディレクトリの中で create-react-appして、その成果物をRailsのアセットパイプラインから参照することにした。</p>
 
-<p>単純にやるなら JSON 文字列に変換して保存すればいいわけだけど、シリアライズには多少なりとも時間がかかる。そもそも Redis はハッシュが扱えるので、そのままハッシュとして保存すればいいんじゃないか？と思った。</p>
+<pre><code class="language-config/initializers/assets.rb">Rails.application.config.assets.paths &lt;&lt; Rails.root.join('frontend')
+</code></pre>
 
-<p>で、ドキュメントを見たんだけど、Redis のハッシュは O(N)らしいのだ。</p>
+<pre><code class="language-app/assets/javascripts/application.css.scss">//= require_tree ./../../../frontend/build/static/js
+</code></pre>
+
+<pre><code class="language-app/assets/stylesheets/application.css.scss">//= require_tree ./../../../frontend/build/static/css
+</code></pre>
+
+<p>雑だけど、とりあえずまあこれで動いた。</p>
+
+<p>数年放置したプロジェクトだけあってRails4系なので、Rails5だとちょっと違うかもしれないけど
+、今回の話の本質はそこではない。</p>
+
+<p>問題はCSSが参照している画像だ。</p>
+
+<p>アセットパイプラインを通すと画像のファイル名にフィンガープリントがつく。RailsでCSSに画像のパスを記述するときはimage-urlやasset-urlといったヘルパを使うことになっている。今回のCSSはcreate-react-appが自動生成しており、これはちょっと大変そうだ。</p>
+
+<p>フィンガープリント無しでアセットを作るのが一番シンプルな解決策な気もするが、ここではすべての画像をCSSの中にData URI schemeで埋め込んでみることにする。create-react-appは標準で、小さな画像ならCSSの中に埋め込んでいるからだ。それがここ。</p>
 
 <ul>
-<li><a href="http://redis.shibu.jp/commandreference/hashes.html">http://redis.shibu.jp/commandreference/hashes.html</a></li>
+<li><a href="https://github.com/facebook/create-react-app/blob/30ee52c/packages/react-scripts/config/webpack.config.js#L336-L343">https://github.com/facebook/create-react-app/blob/30ee52c/packages/react-scripts/config/webpack.config.js#L336-L343</a></li>
 </ul>
 
-<p>うーん、それじゃあ JSON とどっちが速いのかは分からない。</p>
+<p>limitが10000なので10KBまでの画像なら埋め込まれる設定になっている。したがって、このlimitを増やせれば、画像をすべてCSSの中に埋め込むことができる。</p>
 
-<p>ちゃんと調べた人もいて、それによると JSON の方が速いらしい。まあ、微々たるもんだからどっちでもいいんだけど。</p>
+<p>といってもこのwebpack.config.jsはcreate-react-appの中に隠蔽されていて、手を入れるには普通はejectするしかない。しかしせっかくcreate-react-appを使っているのにejectはしたくない。そこでreact-app-rewiredを使うことにしよう。</p>
 
 <ul>
-<li><a href="https://symfoware.blog.fc2.com/blog-entry-1446.html">https://symfoware.blog.fc2.com/blog-entry-1446.html</a></li>
+<li><a href="https://github.com/timarney/react-app-rewired">https://github.com/timarney/react-app-rewired</a></li>
 </ul>
+
+<p>READMEにCRA2.0はサポートしていないと書いてあるけど、limitを書き換えるくらいなら問題なく使えた。</p>
+
+<ul>
+<li><a href="https://github.com/timarney/react-app-rewired/blob/74480b2/README.md">https://github.com/timarney/react-app-rewired/blob/74480b2/README.md</a></li>
+</ul>
+
+<p>だいたいこんな感じ。</p>
+
+<pre><code class="language-frontend/config-overrides.js">const rewired = require(&quot;react-app-rewired&quot;)
+
+module.exports = {
+  webpack: function(config, env) {
+    const loader = rewired.getLoader(
+      config.module.rules,
+      rule =&gt;
+        rule.test &amp;&amp;
+        String(rule.test) ===
+          String([/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/])
+    )
+    loader.options.limit = 500000
+    return config
+  }
+}
+</code></pre>
+
+<p>とりあえず今回使っている画像は最大でも300KB程度だったので、limitを500KBまで増やすことで無事にすべての画像をCSSに埋め込むことができた。そのおかげでCSSファイルだけで1MBになっちゃったけど。</p>
 
   </section>
   <footer>
@@ -86,12 +129,11 @@
       <div class="c-pagination__ctrl">
         <div class="c-pagination__newer">
           
-          <a href="https://e9.github.io/posts/1541765899/">Newer</a>
           
         </div>
         <div class="c-pagination__older">
           
-          <a href="https://e9.github.io/posts/1539859215/">Older</a>
+          <a href="https://e9.github.io/posts/1540982193/">Older</a>
           
         </div>
       </div>

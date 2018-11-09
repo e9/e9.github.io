@@ -47,6 +47,35 @@
 
 <article class="c-article p-list-article">
   <header>
+    <h2 class="c-title c-article__title"><a href="https://e9.github.io/posts/1541765899/">Create React AppのdistをRailsのassetsで使いたい</a></h2>
+    <p class="c-article__meta">
+      Posted on
+      <time datetime="2018-11-09T21:18:20&#43;09:00">
+        Nov 9, 2018
+      </time>
+    </p>
+  </header>
+  <div class="c-article__summary">
+    数年放置したRailsプロジェクトのフロントエンドをどうにかしたくなったので、手っ取り早くfrontendディレクトリの中で create-react-appして、その成果物をRailsのアセットパイプラインから参照することにした。
+Rails.application.config.assets.paths &lt;&lt; Rails.root.join('frontend')  //= require_tree ./../../../frontend/build/static/js  //= require_tree ./../../../frontend/build/static/css  雑だけど、とりあえずまあこれで動いた。
+数年放置したプロジェクトだけあってRails4系なので、Rails5だとちょっと違うかもしれないけど 、今回の話の本質はそこではない。
+問題はCSSが参照している画像だ。
+アセットパイプラインを通すと画像のファイル名にフィンガープリントがつく。RailsでCSSに画像のパスを記述するときはimage-urlやasset-urlといったヘルパを使うことになっている。今回のCSSはcreate-react-appが自動生成しており、これはちょっと大変そうだ。
+フィンガープリント無しでアセットを作るのが一番シンプルな解決策な気もするが、ここではすべての画像をCSSの中にData URI schemeで埋め込んでみることにする。create-react-appは標準で、小さな画像ならCSSの中に埋め込んでいるからだ。それがここ。
+ https://github.com/facebook/create-react-app/blob/30ee52c/packages/react-scripts/config/webpack.config.js#L336-L343  limitが10000なので10KBまでの画像なら埋め込まれる設定になっている。したがって、このlimitを増やせれば、画像をすべてCSSの中に埋め込むことができる。
+といってもこのwebpack.config.jsはcreate-react-appの中に隠蔽されていて、手を入れるには普通はejectするしかない。しかしせっかくcreate-react-appを使っているのにejectはしたくない。そこでreact-app-rewiredを使うことにしよう。
+ https://github.com/timarney/react-app-rewired  READMEにCRA2.0はサポートしていないと書いてあるけど、limitを書き換えるくらいなら問題なく使えた。
+ https://github.com/timarney/react-app-rewired/blob/74480b2/README.md  だいたいこんな感じ。
+const rewired = require(&quot;react-app-rewired&quot;) module.exports = { webpack: function(config, env) { const loader = rewired.getLoader( config.module.rules, rule =&gt; rule.test &amp;&amp; String(rule.test) === String([/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/]) ) loader.options.limit = 500000 return config } }  とりあえず今回使っている画像は最大でも300KB程度だったので、limitを500KBまで増やすことで無事にすべての画像をCSSに埋め込むことができた。そのおかげでCSSファイルだけで1MBになっちゃったけど。
+  </div>
+  
+</article>
+
+
+
+
+<article class="c-article p-list-article">
+  <header>
     <h2 class="c-title c-article__title"><a href="https://e9.github.io/posts/1540982193/">RedisのHGETALLの速さ</a></h2>
     <p class="c-article__meta">
       Posted on
@@ -270,32 +299,6 @@ class CreateApples &lt; ActiveRecord::Migration.send('[]', 5.0)  さすがruby�
 </article>
 
 
-
-
-<article class="c-article p-list-article">
-  <header>
-    <h2 class="c-title c-article__title"><a href="https://e9.github.io/posts/1456752673/">before_actionで変数を代入する是非</a></h2>
-    <p class="c-article__meta">
-      Posted on
-      <time datetime="2016-02-29T22:31:13&#43;09:00">
-        Feb 29, 2016
-      </time>
-    </p>
-  </header>
-  <div class="c-article__summary">
-    いつの間にかrailsのscaffoldで作成したコントローラがbefore_actionで変数を仕込むようになっていた。普段まったく使わないので気付かなかった。
- https://github.com/rails/rails/commit/339e4e80d514bd94fcb0e15689db43e5de83642a  class &lt;%= controller_class_name %&gt;Controller &lt; ApplicationController before_action :set_&lt;%= singular_table_name %&gt;, except: [ :index, :new, :create ] private # Use callbacks to share common setup or constraints between actions. def set_&lt;%= singular_table_name %&gt; @&lt;%= singular_table_name %&gt; = &lt;%= orm_class.find(class_name, &quot;params[:id]&quot;) %&gt; end   Let the scaffold example use the &ldquo;set shared record&rdquo; pattern to explain callbacks
- だけどこれは経験的に知っていることなんだけど、before_actionで変数を代入すると見通しが悪くなるのだ。
-特に多人数で開発しているときに誰かがそれをやりだすと、before_actionに次ぐbefore_actionで、いったいどのアクションがどのbefore_actionを呼んでいるのか、わけがわからなくなる。
-同じことを考えてる人は結構いる。
- http://craftingruby.com/posts/2015/05/31/dont-use-before-action-to-load-data.html http://blog.thefrontiergroup.com.au/2014/02/before_action_an_anti_pattern/ http://jgaskins.org/blog/2014/08/25/better-alternative-to-rails-before_action-to-load-objects http://stackoverflow.com/questions/31442005/rails-set-locals-via-before-action-without-using-instance-variables  だからrailsオフィシャルがscaffoldでbefore_actionを使ってくるのには違和感がある。
-  </div>
-  
-  <a href="https://e9.github.io/posts/1456752673/" class="c-article__btn p-list-article__btn">Read more</a>
-  
-</article>
-
-
 <nav class="c-pagination p-pagination">
   <div class="c-pagination__ctrl">
     <div class="c-pagination__newer">
@@ -307,7 +310,7 @@ class CreateApples &lt; ActiveRecord::Migration.send('[]', 5.0)  さすがruby�
       
     </div>
   </div>
-  <span class="c-pagination__count p-pagination__count">Page 1 of 2</span>
+  <span class="c-pagination__count p-pagination__count">Page 1 of 3</span>
 </nav>
 
 
