@@ -81,7 +81,7 @@
 
 <p>アセットパイプラインを通すと画像のファイル名にフィンガープリントがつく。RailsでCSSに画像のパスを記述するときはimage-urlやasset-urlといったヘルパを使うことになっている。今回のCSSはcreate-react-appが自動生成しており、これはちょっと大変そうだ。</p>
 
-<p>フィンガープリント無しでアセットを作るのが一番シンプルな解決策な気もするが、ここではすべての画像をCSSの中にData URI schemeで埋め込んでみることにする。create-react-appは標準で、小さな画像ならCSSの中に埋め込んでいるからだ。それがここ。</p>
+<p>create-react-appが書き出した画像をpublic下に置く手もあるが、ここではすべての画像をCSSの中にData URI schemeで埋め込んでみることにする。create-react-appは標準で、小さな画像ならCSSの中に埋め込んでいるからだ。それがここ。</p>
 
 <ul>
 <li><a href="https://github.com/facebook/create-react-app/blob/30ee52c/packages/react-scripts/config/webpack.config.js#L336-L343">https://github.com/facebook/create-react-app/blob/30ee52c/packages/react-scripts/config/webpack.config.js#L336-L343</a></li>

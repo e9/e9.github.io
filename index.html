@@ -62,7 +62,7 @@ Rails.application.config.assets.paths &lt;&lt; Rails.root.join('frontend')  //= 
 数年放置したプロジェクトだけあってRails4系なので、Rails5だとちょっと違うかもしれないけど 、今回の話の本質はそこではない。
 問題はCSSが参照している画像だ。
 アセットパイプラインを通すと画像のファイル名にフィンガープリントがつく。RailsでCSSに画像のパスを記述するときはimage-urlやasset-urlといったヘルパを使うことになっている。今回のCSSはcreate-react-appが自動生成しており、これはちょっと大変そうだ。
-フィンガープリント無しでアセットを作るのが一番シンプルな解決策な気もするが、ここではすべての画像をCSSの中にData URI schemeで埋め込んでみることにする。create-react-appは標準で、小さな画像ならCSSの中に埋め込んでいるからだ。それがここ。
+create-react-appが書き出した画像をpublic下に置く手もあるが、ここではすべての画像をCSSの中にData URI schemeで埋め込んでみることにする。create-react-appは標準で、小さな画像ならCSSの中に埋め込んでいるからだ。それがここ。
  https://github.com/facebook/create-react-app/blob/30ee52c/packages/react-scripts/config/webpack.config.js#L336-L343  limitが10000なので10KBまでの画像なら埋め込まれる設定になっている。したがって、このlimitを増やせれば、画像をすべてCSSの中に埋め込むことができる。
 といってもこのwebpack.config.jsはcreate-react-appの中に隠蔽されていて、手を入れるには普通はejectするしかない。しかしせっかくcreate-react-appを使っているのにejectはしたくない。そこでreact-app-rewiredを使うことにしよう。
  https://github.com/timarney/react-app-rewired  READMEにCRA2.0はサポートしていないと書いてあるけど、limitを書き換えるくらいなら問題なく使えた。
