@@ -47,6 +47,30 @@
 
 <article class="c-article p-list-article">
   <header>
+    <h2 class="c-title c-article__title"><a href="https://e9.github.io/posts/1458562442/">Rails5のマイグレーションファイル</a></h2>
+    <p class="c-article__meta">
+      Posted on
+      <time datetime="2016-03-21T21:14:02&#43;09:00">
+        Mar 21, 2016
+      </time>
+    </p>
+  </header>
+  <div class="c-article__summary">
+    rails5でマイグレーションファイルを作成すると、rails5で作成された印がつくようになった。 （まだベータ版だけど）
+class CreateApples &lt; ActiveRecord::Migration[5.0] def change  この[5.0]というのは、ぱっと見るとrubyの（隠された）機能のように見えるが、実は違う。
+ [https://github.com/rails/rails/commit/6940dc860c4b25bff2eded370f2af4316de15a30#diff-8d3c44120f7b67ff79e2fbe6a40d0ad6R492:title]  ActiveRecord::Migrationクラスに[]という名前のクラスメソッドが定義されており、そのメソッドが（別の）クラスを返すのだ。
+[1] pry(main)&gt; ActiveRecord::Migration[5.0] =&gt; ActiveRecord::Migration::Current  つまりこういうことだ。
+class CreateApples &lt; ActiveRecord::Migration.[](5.0)  もしくはこの方がわかりやすいか。
+class CreateApples &lt; ActiveRecord::Migration.send('[]', 5.0)  さすがrubyである。
+  </div>
+  
+</article>
+
+
+
+
+<article class="c-article p-list-article">
+  <header>
     <h2 class="c-title c-article__title"><a href="https://e9.github.io/posts/1456752673/">before_actionで変数を代入する是非</a></h2>
     <p class="c-article__meta">
       Posted on
@@ -262,31 +286,6 @@ http://ja.wikipedia.org/wiki/%E6%B0%B4%E5%89%8D%E5%AF%BA%E9%A7%85
  駅の上にマンションが建ってる。徒歩何分というレベルではない。改札を抜けたらもう我が家だ。さすがにそれは言い過ぎだけど。
 これを見て、都内でも同じことができないか考えて、すこし検索したけどあまり出てこなかった。都民は駅に住みたくないのか？
  http://www.goodrooms.jp//sch/detail.php/001/693406/?k_number=693406&amp;div=001 http://www.mansion-catalog.com/minamiaoyama/ http://www.m-standard.co.jp/rent/%E3%82%A2%E3%82%AF%E3%82%B7%E3%82%A2%E9%BA%BB%E5%B8%83/  （当たり前だけど）家賃が高かったり、駅上じゃなくて駅直結だったり、いまいち決定打に欠けるので、いつか暇なときに都内の駅の上を全て見てまわりたいと思う。
-  </div>
-  
-</article>
-
-
-
-
-<article class="c-article p-list-article">
-  <header>
-    <h2 class="c-title c-article__title"><a href="https://e9.github.io/posts/1338214914/">私がブログを書けない100の理由</a></h2>
-    <p class="c-article__meta">
-      Posted on
-      <time datetime="2012-05-28T23:21:54&#43;09:00">
-        May 28, 2012
-      </time>
-    </p>
-  </header>
-  <div class="c-article__summary">
-    ブログに書きたいことは、つまり人に話したいことだから、ブログをどんどん書くと、いざ人に会ったときに話すことがなくなってしまう。
-「ねえねえ聞いてよこの前さあ――あ、ごめん、この話はブログに書いたんだった」
-お前のブログなんて誰も読んでねーよと言われるだろうけど、でもそうは言ってもインターネットで（一応は）全世界に向けて発信した話を、もう一度誰かにするのは気が引ける。
-別に誰かに話したいわけでもない話をブログに書くのも、それはそれでなんのために書いてるんだか分からないし。
-そこでひとつ思いついたのが「続きはリアルで」だ。
-ブログには途中まで書いておいて、肝心の部分は実際に会ったときに話す。これでブログも書けるし、話題も尽きない。
-これ、かなり画期的な手法だろうと思ったけど、300年以上前にフェルマーがやってた。
   </div>
   
 </article>
