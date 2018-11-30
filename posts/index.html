@@ -47,6 +47,30 @@
 
 <article class="c-article p-list-article">
   <header>
+    <h2 class="c-title c-article__title"><a href="https://e9.github.io/posts/1543580512/">リダイレクトでクッキーが消える</a></h2>
+    <p class="c-article__meta">
+      Posted on
+      <time datetime="2018-11-30T21:21:52&#43;09:00">
+        Nov 30, 2018
+      </time>
+    </p>
+  </header>
+  <div class="c-article__summary">
+    XとYという2つのウェブサイトを開発している。ユーザーはXでアクションAを起こすと、Yにリダイレクトされ、YでアクションBを起こすと、再びXにリダイレクトで帰ってこなけばならない。まあ、単純な話だ。
+だけどそれを普通に作ったら、なぜかはじめにXで張ったセッションが帰ってきたときには消えていて、別のユーザーとして扱われるという不可解なバグに悩まされた。
+セッションを張るというのは、仕組みとしてはセッションIDをクッキーに書き込んでいるだけなので、つまり行って帰ってくるとクッキーが消えるのだ。不思議。
+リクエスト、レスポンスを確認すると、YからXに遷移してXにリクエストを送る際、リクエストヘッダにクッキーが含まれていないことが分かった。つまり消えてるわけではなくて、無視されているのだ。Xはクッキー無しでアクセスしてきた未知のユーザーに新たなセッションIDを作り、レスポンスヘッダでセットクッキーしていた。
+YからXにリダイレクトする方法を、レスポンスヘッダでやったり、HTMLのmetaタグでやったり、JavaScriptのlocation.href書き換えでやったり、リンクを表示して自分でクリックしたりしても、同じ結果だった。唯一セッションが継続するのはリダイレクト先のXのURLを、自分でアドレスバーに貼り付けてアクセスしたときだけ。Refererを見てるのか……？
+解決編。クッキーにはSame Site属性があるんですって。知らなかったー。Xで使ってるフレームワークがデフォルトでSame Siteでクッキーに書き込んでいるのでした。
+  </div>
+  
+</article>
+
+
+
+
+<article class="c-article p-list-article">
+  <header>
     <h2 class="c-title c-article__title"><a href="https://e9.github.io/posts/1542712026/">expectedとactualの順序</a></h2>
     <p class="c-article__meta">
       Posted on
@@ -266,33 +290,6 @@ version: 2 jobs: build: branches: only: - master docker: - image: circleci/golan
   </div>
   
   <a href="https://e9.github.io/posts/1535546215/" class="c-article__btn p-list-article__btn">Read more</a>
-  
-</article>
-
-
-
-
-<article class="c-article p-list-article">
-  <header>
-    <h2 class="c-title c-article__title"><a href="https://e9.github.io/posts/1463633653/">ActiveRecordでattr_accessorとselectを併用すると</a></h2>
-    <p class="c-article__meta">
-      Posted on
-      <time datetime="2016-05-19T13:54:13&#43;09:00">
-        May 19, 2016
-      </time>
-    </p>
-  </header>
-  <div class="c-article__summary">
-    $ bin/rails -v Rails 5.0.0.rc1  こういうモデルがあるとする。
-class Apple &lt; ApplicationRecord attr_accessor :y end  実装内容の良し悪しはさておき、下記を実行する。
-irb(main):001:0&gt; apple = Apple.select(&quot;1 as x&quot;, &quot;2 as y&quot;).first irb(main):002:0&gt; apple.x =&gt; 1  ではapple.yには何が入っているか。
-irb(main):003:0&gt; apple.y =&gt; nil irb(main):004:0&gt; apple.as_json =&gt; {&quot;id&quot;=&gt;nil, &quot;x&quot;=&gt;1, &quot;y&quot;=&gt;nil}  nilなのだ。attr_accessorの#yが優先されるらしい。SELECTした結果にアクセスするには[:y]とすればよい。
-irb(main):005:0&gt; apple[:y] =&gt; 2  attr_accessorをひとつ置いただけで、既存のコードが動かなくなる可能性をはらんでいる。というか、それでさっきハマったのだ。
-このあとxとyにそれぞれ代入すると、さらにわけがわからない。
-irb(main):006:0&gt; apple.x = 3 irb(main):007:0&gt; apple.y = 4 irb(main):008:0&gt; apple.as_json =&gt; {&quot;id&quot;=&gt;nil, &quot;x&quot;=&gt;3, &quot;y&quot;=&gt;4} irb(main):009:0&gt; apple.x =&gt; 3 irb(main):010:0&gt; apple[:x] =&gt; 3 irb(main):011:0&gt; apple.
-  </div>
-  
-  <a href="https://e9.github.io/posts/1463633653/" class="c-article__btn p-list-article__btn">Read more</a>
   
 </article>
 

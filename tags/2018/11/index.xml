@@ -6,10 +6,24 @@
     <description>Recent content in 2018/11 on e9.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Tue, 20 Nov 2018 20:07:07 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 30 Nov 2018 21:21:52 +0900</lastBuildDate>
     
 	<atom:link href="https://e9.github.io/tags/2018/11/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>リダイレクトでクッキーが消える</title>
+      <link>https://e9.github.io/posts/1543580512/</link>
+      <pubDate>Fri, 30 Nov 2018 21:21:52 +0900</pubDate>
+      
+      <guid>https://e9.github.io/posts/1543580512/</guid>
+      <description>XとYという2つのウェブサイトを開発している。ユーザーはXでアクションAを起こすと、Yにリダイレクトされ、YでアクションBを起こすと、再びXにリダイレクトで帰ってこなけばならない。まあ、単純な話だ。
+だけどそれを普通に作ったら、なぜかはじめにXで張ったセッションが帰ってきたときには消えていて、別のユーザーとして扱われるという不可解なバグに悩まされた。
+セッションを張るというのは、仕組みとしてはセッションIDをクッキーに書き込んでいるだけなので、つまり行って帰ってくるとクッキーが消えるのだ。不思議。
+リクエスト、レスポンスを確認すると、YからXに遷移してXにリクエストを送る際、リクエストヘッダにクッキーが含まれていないことが分かった。つまり消えてるわけではなくて、無視されているのだ。Xはクッキー無しでアクセスしてきた未知のユーザーに新たなセッションIDを作り、レスポンスヘッダでセットクッキーしていた。
+YからXにリダイレクトする方法を、レスポンスヘッダでやったり、HTMLのmetaタグでやったり、JavaScriptのlocation.href書き換えでやったり、リンクを表示して自分でクリックしたりしても、同じ結果だった。唯一セッションが継続するのはリダイレクト先のXのURLを、自分でアドレスバーに貼り付けてアクセスしたときだけ。Refererを見てるのか……？
+解決編。クッキーにはSame Site属性があるんですって。知らなかったー。Xで使ってるフレームワークがデフォルトでSame Siteでクッキーに書き込んでいるのでした。</description>
+    </item>
     
     <item>
       <title>expectedとactualの順序</title>

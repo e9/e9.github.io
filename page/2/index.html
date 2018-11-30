@@ -48,6 +48,33 @@
 
 <article class="c-article p-list-article">
   <header>
+    <h2 class="c-title c-article__title"><a href="https://e9.github.io/posts/1463633653/">ActiveRecordでattr_accessorとselectを併用すると</a></h2>
+    <p class="c-article__meta">
+      Posted on
+      <time datetime="2016-05-19T13:54:13&#43;09:00">
+        May 19, 2016
+      </time>
+    </p>
+  </header>
+  <div class="c-article__summary">
+    $ bin/rails -v Rails 5.0.0.rc1  こういうモデルがあるとする。
+class Apple &lt; ApplicationRecord attr_accessor :y end  実装内容の良し悪しはさておき、下記を実行する。
+irb(main):001:0&gt; apple = Apple.select(&quot;1 as x&quot;, &quot;2 as y&quot;).first irb(main):002:0&gt; apple.x =&gt; 1  ではapple.yには何が入っているか。
+irb(main):003:0&gt; apple.y =&gt; nil irb(main):004:0&gt; apple.as_json =&gt; {&quot;id&quot;=&gt;nil, &quot;x&quot;=&gt;1, &quot;y&quot;=&gt;nil}  nilなのだ。attr_accessorの#yが優先されるらしい。SELECTした結果にアクセスするには[:y]とすればよい。
+irb(main):005:0&gt; apple[:y] =&gt; 2  attr_accessorをひとつ置いただけで、既存のコードが動かなくなる可能性をはらんでいる。というか、それでさっきハマったのだ。
+このあとxとyにそれぞれ代入すると、さらにわけがわからない。
+irb(main):006:0&gt; apple.x = 3 irb(main):007:0&gt; apple.y = 4 irb(main):008:0&gt; apple.as_json =&gt; {&quot;id&quot;=&gt;nil, &quot;x&quot;=&gt;3, &quot;y&quot;=&gt;4} irb(main):009:0&gt; apple.x =&gt; 3 irb(main):010:0&gt; apple[:x] =&gt; 3 irb(main):011:0&gt; apple.
+  </div>
+  
+  <a href="https://e9.github.io/posts/1463633653/" class="c-article__btn p-list-article__btn">Read more</a>
+  
+</article>
+
+
+
+
+<article class="c-article p-list-article">
+  <header>
     <h2 class="c-title c-article__title"><a href="https://e9.github.io/posts/1458562442/">Rails5のマイグレーションファイル</a></h2>
     <p class="c-article__meta">
       Posted on
@@ -262,31 +289,6 @@ http://okwave.jp/qa/q5615956.html
 (function(){})();  JSLintはカッコを中に入れろというらしい
 (function(){}());  knockout.jsでは初めの書き方と次の書き方が混在してる。
 !function(){}();  値を返さない即時関数はこれでバイト数を削減しようってことかな。
-  </div>
-  
-</article>
-
-
-
-
-<article class="c-article p-list-article">
-  <header>
-    <h2 class="c-title c-article__title"><a href="https://e9.github.io/posts/1340200656/">わたしは駅に住みたい</a></h2>
-    <p class="c-article__meta">
-      Posted on
-      <time datetime="2012-06-20T22:57:36&#43;09:00">
-        Jun 20, 2012
-      </time>
-    </p>
-  </header>
-  <div class="c-article__summary">
-    ホームレスになりたいというわけではない。
-先週末に熊本に行き、そこでJR水前寺駅というものを見たのだ。
- 直営駅で、みどりの窓口が設置されている。駅舎には美容室などの商業施設、3階以上にはマンションを併設している。改札口やみどりの窓口、キヨスクなど駅機能は2階にある。
-http://ja.wikipedia.org/wiki/%E6%B0%B4%E5%89%8D%E5%AF%BA%E9%A7%85
- 駅の上にマンションが建ってる。徒歩何分というレベルではない。改札を抜けたらもう我が家だ。さすがにそれは言い過ぎだけど。
-これを見て、都内でも同じことができないか考えて、すこし検索したけどあまり出てこなかった。都民は駅に住みたくないのか？
- http://www.goodrooms.jp//sch/detail.php/001/693406/?k_number=693406&amp;div=001 http://www.mansion-catalog.com/minamiaoyama/ http://www.m-standard.co.jp/rent/%E3%82%A2%E3%82%AF%E3%82%B7%E3%82%A2%E9%BA%BB%E5%B8%83/  （当たり前だけど）家賃が高かったり、駅上じゃなくて駅直結だったり、いまいち決定打に欠けるので、いつか暇なときに都内の駅の上を全て見てまわりたいと思う。
   </div>
   
 </article>
