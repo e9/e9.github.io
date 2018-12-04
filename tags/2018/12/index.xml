@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>2018/12 on e9.github.io</title>
+    <link>https://e9.github.io/tags/2018/12/</link>
+    <description>Recent content in 2018/12 on e9.github.io</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Tue, 04 Dec 2018 22:57:36 +0900</lastBuildDate>
+    
+	<atom:link href="https://e9.github.io/tags/2018/12/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>x, y = 1 if True else 2, 3</title>
+      <link>https://e9.github.io/posts/1543931855/</link>
+      <pubDate>Tue, 04 Dec 2018 22:57:36 +0900</pubDate>
+      
+      <guid>https://e9.github.io/posts/1543931855/</guid>
+      <description>Pythonで
+x, y = 1 if true_or_false else 2, 3  というコードを目にした。ぱっと見での自分の解釈ではこうなる。
+x, y = (1) if true_or_false else (2, 3)  これはtrue_or_falseがTrueのときにyの値が足りずランタイムエラーになる。
+ので、レビューにそう書こうと思ったんだけど、ちゃんと確かめると、実際にはこのように動くらしい。
+x, y = ((1 if true_or_false else 2), 3)  なのでエラーにならない。なるほどー。これは気付きづらい。
+だけど、まあ、普通はこう書きますわな。 
+x = 1 if true_or_false else 2 y = 3  </description>
+    </item>
+    
+  </channel>
+</rss>

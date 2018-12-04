@@ -4,16 +4,16 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
   
-  <title>リダイレクトでクッキーが消える</title>
-  <meta property="og:title" content="リダイレクトでクッキーが消える" />
-  <meta name="twitter:title" content="リダイレクトでクッキーが消える" />
+  <title>x, y = 1 if True else 2, 3</title>
+  <meta property="og:title" content="x, y = 1 if True else 2, 3" />
+  <meta name="twitter:title" content="x, y = 1 if True else 2, 3" />
   
 
   
 
   <meta name="author" content=""/>
   <meta property="og:site_name" content="e9.github.io" />
-  <meta property="og:url" content="https://e9.github.io/posts/1543580512/" />
+  <meta property="og:url" content="https://e9.github.io/posts/1543931855/" />
 
   
   <meta name="twitter:card" content="summary" />
@@ -47,32 +47,46 @@
 
 <article class="p-article">
   <header>
-    <h1>リダイレクトでクッキーが消える</h1>
+    <h1>x, y = 1 if True else 2, 3</h1>
     <div>
       <div class="c-time">
         Posted on
-        <time datetime="2018-11-30T21:21:52&#43;09:00">
-          Nov 30, 2018
+        <time datetime="2018-12-04T22:57:36&#43;09:00">
+          Dec 4, 2018
         </time>
       </div>
       
-      <a href="https://e9.github.io/tags/2018/11" class="c-tag">2018/11</a>
+      <a href="https://e9.github.io/tags/2018/12" class="c-tag">2018/12</a>
       
     </div>
   </header>
   
   <section id="js-article" class="p-article__body">
-    <p>XとYという2つのウェブサイトを開発している。ユーザーはXでアクションAを起こすと、Yにリダイレクトされ、YでアクションBを起こすと、再びXにリダイレクトで帰ってくる。まあ、単純な話だ。</p>
+    <p>Pythonで</p>
 
-<p>だけどそれを普通に作ったら、なぜかはじめにXで張ったセッションが帰ってきたときには消えていて、別のユーザーとして扱われるという不可解なバグに悩まされた。</p>
+<pre><code>x, y = 1 if true_or_false else 2, 3
+</code></pre>
 
-<p>セッションを張るというのは、仕組みとしてはセッションIDをクッキーに書き込んでいるだけなので、つまり行って帰ってくるとクッキーが消えるのだ。不思議。</p>
+<p>というコードを目にした。ぱっと見での自分の解釈ではこうなる。</p>
 
-<p>リクエスト、レスポンスを確認すると、YからXに遷移してXにリクエストを送る際、リクエストヘッダにクッキーが含まれていないことが分かった。つまり消えてるわけではなくて、無視されているのだ。Xはクッキー無しでアクセスしてきた未知のユーザーに新たなセッションIDを作り、レスポンスヘッダでセットクッキーしていた。</p>
+<pre><code>x, y = (1) if true_or_false else (2, 3)
+</code></pre>
 
-<p>YからXにリダイレクトする方法を、レスポンスヘッダでやったり、HTMLのmetaタグでやったり、JavaScriptのlocation.href書き換えでやったり、リンクを表示して自分でクリックしたりしても、同じ結果だった。唯一セッションが継続するのはリダイレクト先のXのURLを、自分でアドレスバーに貼り付けてアクセスしたときだけ。Refererを見てるのか……？</p>
+<p>これはtrue_or_falseがTrueのときにyの値が足りずランタイムエラーになる。</p>
 
-<p>解決編。クッキーにはSame Site属性があるんですって。知らなかったー。Xで使ってるフレームワークがデフォルトでSame Siteでクッキーに書き込んでいるのでした。</p>
+<p>ので、レビューにそう書こうと思ったんだけど、ちゃんと確かめると、実際にはこのように動くらしい。</p>
+
+<pre><code>x, y = ((1 if true_or_false else 2), 3)
+</code></pre>
+
+<p>なのでエラーにならない。なるほどー。これは気付きづらい。</p>
+
+<p>だけど、まあ、普通はこう書きますわな。
+</p>
+
+<pre><code>x = 1 if true_or_false else 2
+y = 3
+</code></pre>
 
   </section>
   <footer>
@@ -81,12 +95,11 @@
       <div class="c-pagination__ctrl">
         <div class="c-pagination__newer">
           
-          <a href="https://e9.github.io/posts/1543931855/">Newer</a>
           
         </div>
         <div class="c-pagination__older">
           
-          <a href="https://e9.github.io/posts/1542712026/">Older</a>
+          <a href="https://e9.github.io/posts/1543580512/">Older</a>
           
         </div>
       </div>

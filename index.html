@@ -49,6 +49,31 @@
 
 <article class="c-article p-list-article">
   <header>
+    <h2 class="c-title c-article__title"><a href="https://e9.github.io/posts/1543931855/">x, y = 1 if True else 2, 3</a></h2>
+    <p class="c-article__meta">
+      Posted on
+      <time datetime="2018-12-04T22:57:36&#43;09:00">
+        Dec 4, 2018
+      </time>
+    </p>
+  </header>
+  <div class="c-article__summary">
+    Pythonで
+x, y = 1 if true_or_false else 2, 3  というコードを目にした。ぱっと見での自分の解釈ではこうなる。
+x, y = (1) if true_or_false else (2, 3)  これはtrue_or_falseがTrueのときにyの値が足りずランタイムエラーになる。
+ので、レビューにそう書こうと思ったんだけど、ちゃんと確かめると、実際にはこのように動くらしい。
+x, y = ((1 if true_or_false else 2), 3)  なのでエラーにならない。なるほどー。これは気付きづらい。
+だけど、まあ、普通はこう書きますわな。 
+x = 1 if true_or_false else 2 y = 3  
+  </div>
+  
+</article>
+
+
+
+
+<article class="c-article p-list-article">
+  <header>
     <h2 class="c-title c-article__title"><a href="https://e9.github.io/posts/1543580512/">リダイレクトでクッキーが消える</a></h2>
     <p class="c-article__meta">
       Posted on
@@ -265,33 +290,6 @@ git log --first-parent --merges --reverse --pretty='%s %b' origin/master..origin
   </div>
   
   <a href="https://e9.github.io/posts/1535977174/" class="c-article__btn p-list-article__btn">Read more</a>
-  
-</article>
-
-
-
-
-<article class="c-article p-list-article">
-  <header>
-    <h2 class="c-title c-article__title"><a href="https://e9.github.io/posts/1535546215/">Hugoで記事を書くまで</a></h2>
-    <p class="c-article__meta">
-      Posted on
-      <time datetime="2018-08-29T21:36:55&#43;09:00">
-        Aug 29, 2018
-      </time>
-    </p>
-  </header>
-  <div class="c-article__summary">
-    マークダウンで書けるブログサービスの選択肢が少ないのでgithub.ioを使うことにした。 いまどきはJekyllよりHugoらしい。わりと簡単に作れた。こんな感じで。
-hugo new site blog cd blog git init git remote add origin git@github.com:e9/blog.git  空のディレクトリばかりなのでfirst commitの前に.gitkeepを置いておく。
-for dir in `find . -not -path '*/\.*' -not -name '.*' -type d`; do touch $dir/.gitkeep; done git add . git commit -m 'hugo new site'  テーマはダウンロードして直接置いてもいいけど、gitのsubmoduleにしておくのがスマートだろう。
-git submodule add https://github.com/mismith0227/hugo_theme_pickles.git themes/pickles git add . git commit -m 'Add themes/pickles'  あとはpublicをgithub.ioのレポジトリのsubmoduleにして、publicに出力したファイルをpushするのがオーソドックスなやり方らしいんだけど、せっかくなんでCIサービスから自動でデプロイさせることにした。
-いまどきはgithubのプライベートレポジトリは作り放題だし、Circle CIは1コンテナだけなら無料で使える。
-.circleci/config.ymlはこんな感じ。あらかじめCircleCIの鍵をGitHubに登録しておく。
-version: 2 jobs: build: branches: only: - master docker: - image: circleci/golang:stretch steps: - checkout - run: command: git submodule update --init --recursive - run: command: | git clone https://github.
-  </div>
-  
-  <a href="https://e9.github.io/posts/1535546215/" class="c-article__btn p-list-article__btn">Read more</a>
   
 </article>
 

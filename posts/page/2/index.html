@@ -48,6 +48,33 @@
 
 <article class="c-article p-list-article">
   <header>
+    <h2 class="c-title c-article__title"><a href="https://e9.github.io/posts/1535546215/">Hugoで記事を書くまで</a></h2>
+    <p class="c-article__meta">
+      Posted on
+      <time datetime="2018-08-29T21:36:55&#43;09:00">
+        Aug 29, 2018
+      </time>
+    </p>
+  </header>
+  <div class="c-article__summary">
+    マークダウンで書けるブログサービスの選択肢が少ないのでgithub.ioを使うことにした。 いまどきはJekyllよりHugoらしい。わりと簡単に作れた。こんな感じで。
+hugo new site blog cd blog git init git remote add origin git@github.com:e9/blog.git  空のディレクトリばかりなのでfirst commitの前に.gitkeepを置いておく。
+for dir in `find . -not -path '*/\.*' -not -name '.*' -type d`; do touch $dir/.gitkeep; done git add . git commit -m 'hugo new site'  テーマはダウンロードして直接置いてもいいけど、gitのsubmoduleにしておくのがスマートだろう。
+git submodule add https://github.com/mismith0227/hugo_theme_pickles.git themes/pickles git add . git commit -m 'Add themes/pickles'  あとはpublicをgithub.ioのレポジトリのsubmoduleにして、publicに出力したファイルをpushするのがオーソドックスなやり方らしいんだけど、せっかくなんでCIサービスから自動でデプロイさせることにした。
+いまどきはgithubのプライベートレポジトリは作り放題だし、Circle CIは1コンテナだけなら無料で使える。
+.circleci/config.ymlはこんな感じ。あらかじめCircleCIの鍵をGitHubに登録しておく。
+version: 2 jobs: build: branches: only: - master docker: - image: circleci/golang:stretch steps: - checkout - run: command: git submodule update --init --recursive - run: command: | git clone https://github.
+  </div>
+  
+  <a href="https://e9.github.io/posts/1535546215/" class="c-article__btn p-list-article__btn">Read more</a>
+  
+</article>
+
+
+
+
+<article class="c-article p-list-article">
+  <header>
     <h2 class="c-title c-article__title"><a href="https://e9.github.io/posts/1463633653/">ActiveRecordでattr_accessorとselectを併用すると</a></h2>
     <p class="c-article__meta">
       Posted on
@@ -267,28 +294,6 @@ Dマイナーに限らずDの音は全般的に人の心に訴える力がある
 http://okwave.jp/qa/q5615956.html
  さすがにそれは無いだろと思うんだけど。
 文字へのモザイクがけが自動化されていて、提供テロップが入りそうな場面では勝手にモザイクがかかっちゃうのかなあ。
-  </div>
-  
-</article>
-
-
-
-
-<article class="c-article p-list-article">
-  <header>
-    <h2 class="c-title c-article__title"><a href="https://e9.github.io/posts/1342194237/">JavaScriptの即時関数パターンの書き方</a></h2>
-    <p class="c-article__meta">
-      Posted on
-      <time datetime="2012-07-14T00:43:57&#43;09:00">
-        Jul 14, 2012
-      </time>
-    </p>
-  </header>
-  <div class="c-article__summary">
-    よく見るのはこれ。
-(function(){})();  JSLintはカッコを中に入れろというらしい
-(function(){}());  knockout.jsでは初めの書き方と次の書き方が混在してる。
-!function(){}();  値を返さない即時関数はこれでバイト数を削減しようってことかな。
   </div>
   
 </article>
