@@ -48,6 +48,34 @@
 
 <article class="c-article p-list-article">
   <header>
+    <h2 class="c-title c-article__title"><a href="https://e9.github.io/posts/1535977174/">マージコミットだけの差分</a></h2>
+    <p class="c-article__meta">
+      Posted on
+      <time datetime="2018-09-03T21:19:34&#43;09:00">
+        Sep 3, 2018
+      </time>
+    </p>
+  </header>
+  <div class="c-article__summary">
+    developをmasterに入れるときでも、masterをリリースブランチに入れるときでも、なんでもいいんだけど、2つのブランチの差分から、次に何がデプロイされるのかをだいたいで知りたいときがある。
+当然プルリクエストベースで開発しているはずなので、そういうときはマージコミットだけに注目すればよい。
+git log --first-parent --merges --reverse --pretty='%s %b' origin/master..origin/develop  プルリクエストのマージコミットに余計なコメントを入れていると改行が入ってややこしいが、そんなところにコメント書いてる人は見たことが無いので大丈夫。
+こんな風に表示される。
+Merge pull request #1 from e9/second-branch second commit Merge pull request #2 from e9/third-branch third commit  これをコピーしてGitHubのイシューやプルリクエストに貼り付ければ#の部分がリンクになって都合がよい。
+だけど貼り付ける先がGitHubじゃないときもある。esaとかbacklogとか。そういうときはマークダウンでリンクにしてあげたい。#の数字を切り取るのは簡単だけど、レポジトリのURLを手に入れるのは大変なので、ここは横着してgit-openを使う。
+ https://github.com/paulirish/git-open  git-openを入れたら下記でよい。
+git log --first-parent --merges --reverse --pretty='%s %b' origin/master..origin/develop | while read line || [ -n &quot;$line&quot; ] do url=`echo $line | sed -e 's/^.*#\([0-9]*\).*$/\1/' | BROWSER=echo xargs git open --issue origin` echo &quot;- [$line]($url)&quot; done  これでマークダウンのリンクになるので、どこにでも貼れる。
+  </div>
+  
+  <a href="https://e9.github.io/posts/1535977174/" class="c-article__btn p-list-article__btn">Read more</a>
+  
+</article>
+
+
+
+
+<article class="c-article p-list-article">
+  <header>
     <h2 class="c-title c-article__title"><a href="https://e9.github.io/posts/1535546215/">Hugoで記事を書くまで</a></h2>
     <p class="c-article__meta">
       Posted on
@@ -275,30 +303,6 @@ Dマイナーに限らずDの音は全般的に人の心に訴える力がある
 </article>
 
 
-
-
-<article class="c-article p-list-article">
-  <header>
-    <h2 class="c-title c-article__title"><a href="https://e9.github.io/posts/1342363851/">CM前にやたらモザイクがかかる謎</a></h2>
-    <p class="c-article__meta">
-      Posted on
-      <time datetime="2012-07-15T23:50:51&#43;09:00">
-        Jul 15, 2012
-      </time>
-    </p>
-  </header>
-  <div class="c-article__summary">
-    最近はバラエティ番組を見てると、スポンサーをアナウンスする場面で、後ろに映ってる出演者の着てるＴシャツのロゴとか、名札とか、とにかく文字すべてにモザイクがかかってることに気付く。
- http://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q1432189114 http://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q1232100427  まあ、普通に考えたらテロップとかぶって邪魔だから消してるんだろうけど、さっきガキの使いを見てたらテロップの出てないところでも文字にモザイクがかけられていて、あれ？と思った。
- CMってチャンネル変えるタイミングの上位ですので、またいでも見てもらうため敢えて興味をそそるようにしているんです。
-http://okwave.jp/qa/q5615956.html
- さすがにそれは無いだろと思うんだけど。
-文字へのモザイクがけが自動化されていて、提供テロップが入りそうな場面では勝手にモザイクがかかっちゃうのかなあ。
-  </div>
-  
-</article>
-
-
 <nav class="c-pagination p-pagination">
   <div class="c-pagination__ctrl">
     <div class="c-pagination__newer">
@@ -340,7 +344,7 @@ http://okwave.jp/qa/q5615956.html
       
         
         &nbsp;&bull;&nbsp;
-        2018
+        2019
 
         
           &nbsp;&bull;&nbsp;
