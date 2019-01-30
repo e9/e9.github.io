@@ -58,7 +58,7 @@
   </header>
   <div class="c-article__summary">
     gomobileでiOS向けのライブラリを書いている。
-$ gomobile version gomobile version +dc07713 Mon Jan 7 16:22:57 2019 +0000 (android,ios); androidSDK=  package main import &quot;app/x&quot; func main() { x.X() }  package x func X() { }  この関数Xが非同期で動くとして、その結果をメインに返したい。どうするか。コールバックを追加すればよい。
+$ gomobile version gomobile version +dc07713 Mon Jan 7 16:22:57 2019 +0000 (android,ios); androidSDK=  package main import &quot;app/x&quot; func main() { x.X() }  package x func X() { }  この関数Xが非同期で動くとして、その結果をメインに返したいとき、セオリーとしてはコールバックの追加だろう。
 package main import ( &quot;app/x&quot; &quot;log&quot; ) func main() { c := make(chan struct{}, 0) x.X(func() { log.Println(&quot;two&quot;) close(c) }) log.Println(&quot;one&quot;) &lt;-c }  package x import &quot;time&quot; func X(callback func()) { go (func() { time.Sleep(1 * time.
   </div>
   
