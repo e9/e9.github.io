@@ -18,9 +18,9 @@
       
       <guid>https://e9.github.io/posts/1395825098/</guid>
       <description>rails4のroutes.rbで
-resources :books, param: :name  とやると/books/:nameでアクセスできるようになる。でもその状態で
-form_for Book.find(1)  とかやってもformのactionは/books/1のまま。
-class Book &amp;lt; ActiveRecord::Base def to_param name end end  を追加すればいいだけなんだけど冗長な気がした。</description>
+resources :books, param: :name とやると/books/:nameでアクセスできるようになる。でもその状態で
+form_for Book.find(1) とかやってもformのactionは/books/1のまま。
+class Book &amp;lt; ActiveRecord::Base def to_param name end end を追加すればいいだけなんだけど冗長な気がした。</description>
     </item>
     
   </channel>

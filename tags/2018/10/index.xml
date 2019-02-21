@@ -34,9 +34,9 @@
       <description>Python。dict か list のいずれかが入っている変数に対して、ループで回してある処理をすることになった。
 型が違うのだから違うコードで回すべきだという論もあるだろうが、せっかく LL で書いているのだから、全く同じコードで処理したいところ。
 結局自分はこうした。
-items = dict_or_list.items() if isinstance(dict_or_list, dict) else enumerate(dict_or_list) for key, value in items: print(key, value)  条件分岐があまり美しくない気がしたけど、より良い方法が思いつかなかった。
+items = dict_or_list.items() if isinstance(dict_or_list, dict) else enumerate(dict_or_list) for key, value in items: print(key, value) 条件分岐があまり美しくない気がしたけど、より良い方法が思いつかなかった。
 Ruby だともうちょっと美しく書ける。
-hash_or_array.each_with_index{ |(k, v), i| value, key = [v, k, i].compact p [key, value] }  まあ、これが美しいコードなのかは異論あるだろうけど、条件分岐が無いのが売りである。</description>
+hash_or_array.each_with_index{ |(k, v), i| value, key = [v, k, i].compact p [key, value] } まあ、これが美しいコードなのかは異論あるだろうけど、条件分岐が無いのが売りである。</description>
     </item>
     
   </channel>

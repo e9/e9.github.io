@@ -26,7 +26,7 @@
   
   <meta name="generator" content="Hugo 0.47.1" /><link rel="stylesheet" href="https://e9.github.io/css/style.css" />
   
-  
+  <link rel="stylesheet" href="https://e9.github.io/css/chromastyle.css">
   <link href="https://e9.github.io/index.xml" rel="alternate" type="application/rss+xml" title="e9.github.io" />
   
   <script type="text/javascript" src="https://e9.github.io/js/bundle.js"></script>
@@ -222,9 +222,9 @@ class CreateApples &lt; ActiveRecord::Migration.send('[]', 5.0)  さすがruby�
   </header>
   <div class="c-article__summary">
     rails4のroutes.rbで
-resources :books, param: :name  とやると/books/:nameでアクセスできるようになる。でもその状態で
-form_for Book.find(1)  とかやってもformのactionは/books/1のまま。
-class Book &lt; ActiveRecord::Base def to_param name end end  を追加すればいいだけなんだけど冗長な気がした。
+resources :books, param: :name とやると/books/:nameでアクセスできるようになる。でもその状態で
+form_for Book.find(1) とかやってもformのactionは/books/1のまま。
+class Book &lt; ActiveRecord::Base def to_param name end end を追加すればいいだけなんだけど冗長な気がした。
   </div>
   
 </article>

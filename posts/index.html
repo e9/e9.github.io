@@ -26,7 +26,7 @@
   
   <meta name="generator" content="Hugo 0.47.1" /><link rel="stylesheet" href="https://e9.github.io/css/style.css" />
   
-  
+  <link rel="stylesheet" href="https://e9.github.io/css/chromastyle.css">
   <script type="text/javascript" src="https://e9.github.io/js/bundle.js"></script>
   
 
@@ -152,7 +152,7 @@ YからXにリダイレクトする方法を、レスポンスヘッダでやっ
   </header>
   <div class="c-article__summary">
     数年放置したRailsプロジェクトのフロントエンドをどうにかしたくなったので、手っ取り早くfrontendディレクトリの中で create-react-appして、その成果物をRailsのアセットパイプラインから参照することにした。
-Rails.application.config.assets.paths &lt;&lt; Rails.root.join('frontend')  //= require_tree ./../../../frontend/build/static/js  //= require_tree ./../../../frontend/build/static/css  雑だけど、とりあえずまあこれで動いた。
+Rails.application.config.assets.paths &lt;&lt; Rails.root.join(&#39;frontend&#39;)//= require_tree ./../../../frontend/build/static/js//= require_tree ./../../../frontend/build/static/css 雑だけど、とりあえずまあこれで動いた。
 数年放置したプロジェクトだけあってRails4系なので、Rails5だとちょっと違うかもしれないけど 、今回の話の本質はそこではない。
 問題はCSSが参照している画像だ。
 アセットパイプラインを通すと画像のファイル名にフィンガープリントがつく。RailsでCSSに画像のパスを記述するときはimage-urlやasset-urlといったヘルパを使うことになっている。今回のCSSはcreate-react-appが自動生成しており、これはちょっと大変そうだ。
@@ -161,7 +161,7 @@ create-react-appが書き出した画像をpublic下に置く手もあるが、�
 といってもこのwebpack.config.jsはcreate-react-appの中に隠蔽されていて、手を入れるには普通はejectするしかない。しかしせっかくcreate-react-appを使っているのにejectはしたくない。そこでreact-app-rewiredを使うことにしよう。
  https://github.com/timarney/react-app-rewired  READMEにCRA2.0はサポートしていないと書いてあるけど、limitを書き換えるくらいなら問題なく使えた。
  https://github.com/timarney/react-app-rewired/blob/74480b2/README.md  だいたいこんな感じ。
-const rewired = require(&quot;react-app-rewired&quot;) module.exports = { webpack: function(config, env) { const loader = rewired.getLoader( config.module.rules, rule =&gt; rule.test &amp;&amp; String(rule.test) === String([/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/]) ) loader.options.limit = 500000 return config } }  とりあえず今回使っている画像は最大でも300KB程度だったので、limitを500KBまで増やすことで無事にすべての画像をCSSに埋め込むことができた。そのおかげでCSSファイルだけで1MBになっちゃったけど。
+const rewired = require(&#34;react-app-rewired&#34;) module.exports = { webpack: function(config, env) { const loader = rewired.getLoader( config.module.rules, rule =&gt; rule.test &amp;&amp; String(rule.test) === String([/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/]) ) loader.options.limit = 500000 return config } }  とりあえず今回使っている画像は最大でも300KB程度だったので、limitを500KBまで増やすことで無事にすべての画像をCSSに埋め込むことができた。そのおかげでCSSファイルだけで1MBになっちゃったけど。
   </div>
   
 </article>
@@ -207,9 +207,9 @@ const rewired = require(&quot;react-app-rewired&quot;) module.exports = { webpac
     Python。dict か list のいずれかが入っている変数に対して、ループで回してある処理をすることになった。
 型が違うのだから違うコードで回すべきだという論もあるだろうが、せっかく LL で書いているのだから、全く同じコードで処理したいところ。
 結局自分はこうした。
-items = dict_or_list.items() if isinstance(dict_or_list, dict) else enumerate(dict_or_list) for key, value in items: print(key, value)  条件分岐があまり美しくない気がしたけど、より良い方法が思いつかなかった。
+items = dict_or_list.items() if isinstance(dict_or_list, dict) else enumerate(dict_or_list) for key, value in items: print(key, value) 条件分岐があまり美しくない気がしたけど、より良い方法が思いつかなかった。
 Ruby だともうちょっと美しく書ける。
-hash_or_array.each_with_index{ |(k, v), i| value, key = [v, k, i].compact p [key, value] }  まあ、これが美しいコードなのかは異論あるだろうけど、条件分岐が無いのが売りである。
+hash_or_array.each_with_index{ |(k, v), i| value, key = [v, k, i].compact p [key, value] } まあ、これが美しいコードなのかは異論あるだろうけど、条件分岐が無いのが売りである。
   </div>
   
 </article>

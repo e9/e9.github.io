@@ -27,7 +27,7 @@
   
   <meta name="generator" content="Hugo 0.47.1" /><link rel="stylesheet" href="https://e9.github.io/css/style.css" />
   
-  
+  <link rel="stylesheet" href="https://e9.github.io/css/chromastyle.css">
   <script type="text/javascript" src="https://e9.github.io/js/bundle.js"></script>
   
 
@@ -63,16 +63,7 @@
   
   <section id="js-article" class="p-article__body">
     <p>数年放置したRailsプロジェクトのフロントエンドをどうにかしたくなったので、手っ取り早くfrontendディレクトリの中で create-react-appして、その成果物をRailsのアセットパイプラインから参照することにした。</p>
-
-<pre><code class="language-config/initializers/assets.rb">Rails.application.config.assets.paths &lt;&lt; Rails.root.join('frontend')
-</code></pre>
-
-<pre><code class="language-app/assets/javascripts/application.css.scss">//= require_tree ./../../../frontend/build/static/js
-</code></pre>
-
-<pre><code class="language-app/assets/stylesheets/application.css.scss">//= require_tree ./../../../frontend/build/static/css
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-config/initializers/assets.rb" data-lang="config/initializers/assets.rb"><span class="no">Rails</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">assets</span><span class="o">.</span><span class="n">paths</span> <span class="o">&lt;&lt;</span> <span class="no">Rails</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;frontend&#39;</span><span class="p">)</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-app/assets/javascripts/application.css.scss" data-lang="app/assets/javascripts/application.css.scss"><span class="o">//=</span> <span class="nt">require_tree</span> <span class="nc">.</span><span class="o">/</span><span class="nc">..</span><span class="o">/</span><span class="nc">..</span><span class="o">/</span><span class="nc">..</span><span class="o">/</span><span class="nt">frontend</span><span class="o">/</span><span class="nt">build</span><span class="o">/</span><span class="nt">static</span><span class="o">/</span><span class="nt">js</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-app/assets/stylesheets/application.css.scss" data-lang="app/assets/stylesheets/application.css.scss"><span class="o">//=</span> <span class="nt">require_tree</span> <span class="nc">.</span><span class="o">/</span><span class="nc">..</span><span class="o">/</span><span class="nc">..</span><span class="o">/</span><span class="nc">..</span><span class="o">/</span><span class="nt">frontend</span><span class="o">/</span><span class="nt">build</span><span class="o">/</span><span class="nt">static</span><span class="o">/</span><span class="nt">css</span></code></pre></div>
 <p>雑だけど、とりあえずまあこれで動いた。</p>
 
 <p>数年放置したプロジェクトだけあってRails4系なので、Rails5だとちょっと違うかもしれないけど
@@ -103,24 +94,22 @@
 </ul>
 
 <p>だいたいこんな感じ。</p>
+<div class="highlight"><pre class="chroma"><code class="language-frontend/config-overrides.js" data-lang="frontend/config-overrides.js"><span class="k">const</span> <span class="nx">rewired</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;react-app-rewired&#34;</span><span class="p">)</span>
 
-<pre><code class="language-frontend/config-overrides.js">const rewired = require(&quot;react-app-rewired&quot;)
-
-module.exports = {
-  webpack: function(config, env) {
-    const loader = rewired.getLoader(
-      config.module.rules,
-      rule =&gt;
-        rule.test &amp;&amp;
-        String(rule.test) ===
-          String([/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/])
-    )
-    loader.options.limit = 500000
-    return config
-  }
-}
-</code></pre>
-
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">webpack</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">config</span><span class="p">,</span> <span class="nx">env</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">const</span> <span class="nx">loader</span> <span class="o">=</span> <span class="nx">rewired</span><span class="p">.</span><span class="nx">getLoader</span><span class="p">(</span>
+      <span class="nx">config</span><span class="p">.</span><span class="nx">module</span><span class="p">.</span><span class="nx">rules</span><span class="p">,</span>
+      <span class="nx">rule</span> <span class="p">=&gt;</span>
+        <span class="nx">rule</span><span class="p">.</span><span class="nx">test</span> <span class="o">&amp;&amp;</span>
+        <span class="nb">String</span><span class="p">(</span><span class="nx">rule</span><span class="p">.</span><span class="nx">test</span><span class="p">)</span> <span class="o">===</span>
+          <span class="nb">String</span><span class="p">([</span><span class="sr">/\.bmp$/</span><span class="p">,</span> <span class="sr">/\.gif$/</span><span class="p">,</span> <span class="sr">/\.jpe?g$/</span><span class="p">,</span> <span class="sr">/\.png$/</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="nx">loader</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">limit</span> <span class="o">=</span> <span class="mi">500000</span>
+    <span class="k">return</span> <span class="nx">config</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>とりあえず今回使っている画像は最大でも300KB程度だったので、limitを500KBまで増やすことで無事にすべての画像をCSSに埋め込むことができた。そのおかげでCSSファイルだけで1MBになっちゃったけど。</p>
 
   </section>
