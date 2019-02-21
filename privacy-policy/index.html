@@ -4,16 +4,16 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
   
-  <title>マージコミットだけの差分</title>
-  <meta property="og:title" content="マージコミットだけの差分" />
-  <meta name="twitter:title" content="マージコミットだけの差分" />
+  <title>プライバシーポリシー</title>
+  <meta property="og:title" content="プライバシーポリシー" />
+  <meta name="twitter:title" content="プライバシーポリシー" />
   
 
   
 
   <meta name="author" content=""/>
   <meta property="og:site_name" content="e9.github.io" />
-  <meta property="og:url" content="https://e9.github.io/posts/1535977174/" />
+  <meta property="og:url" content="https://e9.github.io/privacy-policy/" />
 
   
   <meta name="twitter:card" content="summary" />
@@ -47,74 +47,28 @@
 
 <article class="p-article">
   <header>
-    <h1>マージコミットだけの差分</h1>
+    <h1>プライバシーポリシー</h1>
     <div>
       <div class="c-time">
         Posted on
-        <time datetime="2018-09-03T21:19:34&#43;09:00">
-          Sep 3, 2018
+        <time datetime="2019-02-21T00:00:00Z">
+          Feb 21, 2019
         </time>
       </div>
-      
-      <a href="https://e9.github.io/tags/2018/09" class="c-tag">2018/09</a>
       
     </div>
   </header>
   
   <section id="js-article" class="p-article__body">
-    <p>developをmasterに入れるときでも、masterをリリースブランチに入れるときでも、なんでもいいんだけど、2つのブランチの差分から、次に何がデプロイされるのかをだいたいで知りたいときがある。</p>
+    <p>個人を特定できる情報を第三者に提供することはありません。</p>
 
-<p>当然プルリクエストベースで開発しているはずなので、そういうときはマージコミットだけに注目すればよい。</p>
-<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">git log --first-parent --merges --reverse --pretty<span class="o">=</span><span class="s1">&#39;%s %b&#39;</span> origin/master..origin/develop</code></pre></div>
-<p>プルリクエストのマージコミットに余計なコメントを入れていると改行が入ってややこしいが、そんなところにコメント書いてる人は見たことが無いので大丈夫。</p>
+<p>利用者の許可なく将棋の図面を端末外に送信することはありません。また、利用者の許可のもと送信された場合も、その情報を第三者に提供することはありません。</p>
 
-<p>こんな風に表示される。</p>
-
-<pre><code>Merge pull request #1 from e9/second-branch second commit
-Merge pull request #2 from e9/third-branch third commit
-</code></pre>
-
-<p>これをコピーしてGitHubのイシューやプルリクエストに貼り付ければ#の部分がリンクになって都合がよい。</p>
-
-<p>だけど貼り付ける先がGitHubじゃないときもある。esaとかbacklogとか。そういうときはマークダウンでリンクにしてあげたい。#の数字を切り取るのは簡単だけど、レポジトリのURLを手に入れるのは大変なので、ここは横着してgit-openを使う。</p>
-
-<ul>
-<li><a href="https://github.com/paulirish/git-open">https://github.com/paulirish/git-open</a></li>
-</ul>
-
-<p>git-openを入れたら下記でよい。</p>
-<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">git log --first-parent --merges --reverse --pretty<span class="o">=</span><span class="s1">&#39;%s %b&#39;</span> origin/master..origin/develop <span class="p">|</span>
-<span class="k">while</span> <span class="nb">read</span> line <span class="o">||</span> <span class="o">[</span> -n <span class="s2">&#34;</span><span class="nv">$line</span><span class="s2">&#34;</span> <span class="o">]</span>
-<span class="k">do</span>
-<span class="nv">url</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="nv">$line</span> <span class="p">|</span> sed -e <span class="s1">&#39;s/^.*#\([0-9]*\).*$/\1/&#39;</span> <span class="p">|</span> <span class="nv">BROWSER</span><span class="o">=</span><span class="nb">echo</span> xargs git open --issue origin<span class="sb">`</span>
-<span class="nb">echo</span> <span class="s2">&#34;- [</span><span class="nv">$line</span><span class="s2">](</span><span class="nv">$url</span><span class="s2">)&#34;</span>
-<span class="k">done</span></code></pre></div>
-<p>これでマークダウンのリンクになるので、どこにでも貼れる。</p>
-
-<pre><code>- [Merge pull request #1 from e9/second-branch second commit](https://github.com/e9/xxx/issues/1)
-- [Merge pull request #2 from e9/third-branch third commit](https://github.com/e9/xxx/issues/2)
-</code></pre>
-
-<p>イシューへのリンクになっているけど、リダイレクトされるので大丈夫。</p>
+<p>アプリの改善に役立てるため、個人を特定できない範囲でアプリの動作ログを収集しています。</p>
 
   </section>
   <footer>
     
-    
-    <nav class="p-pagination c-pagination">
-      <div class="c-pagination__ctrl">
-        <div class="c-pagination__newer">
-          
-          <a href="https://e9.github.io/posts/1535546215/">Newer</a>
-          
-        </div>
-        <div class="c-pagination__older">
-          
-          <a href="https://e9.github.io/posts/1536059641/">Older</a>
-          
-        </div>
-      </div>
-    </nav>
     
     
 
