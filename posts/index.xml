@@ -18,8 +18,8 @@
       
       <guid>https://e9.github.io/posts/1548328800/</guid>
       <description>gomobileでiOS向けのライブラリを書いている。
-$ gomobile version gomobile version +dc07713 Mon Jan 7 16:22:57 2019 +0000 (android,ios); androidSDK=  package main import &amp;quot;app/x&amp;quot; func main() { x.X() }  package x func X() { }  この関数Xが非同期で動くとして、その結果をメインに返したいとき、セオリーとしてはコールバックの追加だろう。
-package main import ( &amp;quot;app/x&amp;quot; &amp;quot;log&amp;quot; ) func main() { c := make(chan struct{}, 0) x.X(func() { log.Println(&amp;quot;two&amp;quot;) close(c) }) log.Println(&amp;quot;one&amp;quot;) &amp;lt;-c }  package x import &amp;quot;time&amp;quot; func X(callback func()) { go (func() { time.Sleep(1 * time.</description>
+$ gomobile version gomobile version +dc07713 Mon Jan 7 16:22:57 2019 +0000 (android,ios); androidSDK=  package main import &amp;#34;app/x&amp;#34; func main() { x.X() }package x func X() { } この関数Xが非同期で動くとして、その結果をメインに返したいとき、セオリーとしてはコールバックの追加だろう。
+package main import ( &amp;#34;app/x&amp;#34; &amp;#34;log&amp;#34; ) func main() { c := make(chan struct{}, 0) x.X(func() { log.Println(&amp;#34;two&amp;#34;) close(c) }) log.Println(&amp;#34;one&amp;#34;) &amp;lt;-c }package x import &amp;#34;time&amp;#34; func X(callback func()) { go (func() { time.Sleep(1 * time.Second) callback() })() } ところがどっこいこの関数はgomobile bindの対象にはならないのだ。</description>
     </item>
     
     <item>
@@ -29,12 +29,12 @@ package main import ( &amp;quot;app/x&amp;quot; &amp;quot;log&amp;quot; ) func m
       
       <guid>https://e9.github.io/posts/1543931855/</guid>
       <description>Pythonで
-x, y = 1 if true_or_false else 2, 3  というコードを目にした。ぱっと見での自分の解釈ではこうなる。
-x, y = (1) if true_or_false else (2, 3)  これはtrue_or_falseがTrueのときにyの値が足りずランタイムエラーになる。
+x, y = 1 if true_or_false else 2, 3 というコードを目にした。ぱっと見での自分の解釈ではこうなる。
+x, y = (1) if true_or_false else (2, 3) これはtrue_or_falseがTrueのときにyの値が足りずランタイムエラーになる。
 ので、レビューにそう書こうと思ったんだけど、ちゃんと確かめると、実際にはこのように動くらしい。
-x, y = ((1 if true_or_false else 2), 3)  なのでエラーにならない。なるほどー。これは気付きづらい。
+x, y = ((1 if true_or_false else 2), 3) なのでエラーにならない。なるほどー。これは気付きづらい。
 だけど、まあ、普通はこう書きますわな。 
-x = 1 if true_or_false else 2 y = 3  </description>
+x = 1 if true_or_false else 2 y = 3</description>
     </item>
     
     <item>
@@ -130,12 +130,12 @@ JavaScriptについてぐぐると[...Array(10)].forEach(()=&amp;gt;{ })とい�
       
       <guid>https://e9.github.io/posts/1536581159/</guid>
       <description>RubyにもPythonにもloggerはある。loggerに重い処理を渡してしまった場合を考えよう。
-logger.debug(long_time_method())  どういう状況だこれは。
+logger.debug(long_time_method()) どういう状況だこれは。
 では遅延評価されるオブジェクトを途中でデバッグ出力してるとしよう。これならありそう。
-query = query.where(...) logger.debug(query.all()) query = query.where(...)  このとき本番環境ではdebugログが出力されないとしても、query.all()は実行されてしまう。Pythonだとこれを回避するのは難しい。
+query = query.where(...) logger.debug(query.all()) query = query.where(...) このとき本番環境ではdebugログが出力されないとしても、query.all()は実行されてしまう。Pythonだとこれを回避するのは難しい。
 debugの行にログレベルを見るifを追加するとか、文字列化まで遅延評価されるクラスを間に挟むとか、苦しいアイデアがスタックオーバフローには書いてあった。
  https://stackoverflow.com/questions/4148790/lazy-logger-message-string-evaluation/22205835#22205835  一方、Rubyは簡単で、ブロックに入れて渡せばよい。
-logger.debug { query.all() }  </description>
+logger.debug { query.all() }</description>
     </item>
     
     <item>
@@ -145,12 +145,12 @@ logger.debug { query.all() }  </description>
       
       <guid>https://e9.github.io/posts/1536059641/</guid>
       <description>例えばこんなパッケージがあったとして。
-package x func X() string { return &amp;quot;x&amp;quot; }  package x_test import ( &amp;quot;testing&amp;quot; &amp;quot;app/x&amp;quot; ) func TestX(t *testing.T) { if !assert(x.X(), &amp;quot;x&amp;quot;) { t.Fatal(&amp;quot;not x&amp;quot;) } } func assert(a string, b string) bool { return a == b }  assert関数を他のパッケージのテストでも使いたくなったとする。
+package x func X() string { return &amp;#34;x&amp;#34; }package x_test import ( &amp;#34;testing&amp;#34; &amp;#34;app/x&amp;#34; ) func TestX(t *testing.T) { if !assert(x.X(), &amp;#34;x&amp;#34;) { t.Fatal(&amp;#34;not x&amp;#34;) } } func assert(a string, b string) bool { return a == b } assert関数を他のパッケージのテストでも使いたくなったとする。
 その場合、assertをAssertにしてimport x_testすれば他のパッケージからもx_test.Assertが使えるようになる。かと思いきやならない。
 もちろんpackage xの方に移して、x.Assertとすれば呼べる。当たり前だ。だけどテストでしか使わない関数がそこにいるのは気持ち悪い。
 どうするのがいいのかちょっと調べたところ、スタックオーバフローによれば*_testではない専用のパッケージを作ってそこに入れろと。
  https://stackoverflow.com/a/31794241  つまりこういうことか。
-package x_test import ( &amp;quot;testing&amp;quot; &amp;quot;app/hogetest&amp;quot; ) func TestX(t *testing.T) { if !hogetest.Assert(x.X(), &amp;quot;x&amp;quot;) { t.Fatal(&amp;quot;not x&amp;quot;) } }  package hogetest func Assert(a string, b string) bool { return a == b }  ビルド時はhogetestをimportしなければいい。うーん、まあ、わかるけど、あまりすっきりとした気持ちにはならなかった。</description>
+package x_test import ( &amp;#34;testing&amp;#34; &amp;#34;app/hogetest&amp;#34; ) func TestX(t *testing.T) { if !hogetest.Assert(x.X(), &amp;#34;x&amp;#34;) { t.Fatal(&amp;#34;not x&amp;#34;) } }package hogetest func Assert(a string, b string) bool { return a == b } ビルド時はhogetestをimportしなければいい。うーん、まあ、わかるけど、あまりすっきりとした気持ちにはならなかった。</description>
     </item>
     
     <item>
@@ -161,12 +161,12 @@ package x_test import ( &amp;quot;testing&amp;quot; &amp;quot;app/hogetest&amp;q
       <guid>https://e9.github.io/posts/1535977174/</guid>
       <description>developをmasterに入れるときでも、masterをリリースブランチに入れるときでも、なんでもいいんだけど、2つのブランチの差分から、次に何がデプロイされるのかをだいたいで知りたいときがある。
 当然プルリクエストベースで開発しているはずなので、そういうときはマージコミットだけに注目すればよい。
-git log --first-parent --merges --reverse --pretty=&#39;%s %b&#39; origin/master..origin/develop  プルリクエストのマージコミットに余計なコメントを入れていると改行が入ってややこしいが、そんなところにコメント書いてる人は見たことが無いので大丈夫。
+git log --first-parent --merges --reverse --pretty=&amp;#39;%s %b&amp;#39; origin/master..origin/develop プルリクエストのマージコミットに余計なコメントを入れていると改行が入ってややこしいが、そんなところにコメント書いてる人は見たことが無いので大丈夫。
 こんな風に表示される。
 Merge pull request #1 from e9/second-branch second commit Merge pull request #2 from e9/third-branch third commit  これをコピーしてGitHubのイシューやプルリクエストに貼り付ければ#の部分がリンクになって都合がよい。
 だけど貼り付ける先がGitHubじゃないときもある。esaとかbacklogとか。そういうときはマークダウンでリンクにしてあげたい。#の数字を切り取るのは簡単だけど、レポジトリのURLを手に入れるのは大変なので、ここは横着してgit-openを使う。
  https://github.com/paulirish/git-open  git-openを入れたら下記でよい。
-git log --first-parent --merges --reverse --pretty=&#39;%s %b&#39; origin/master..origin/develop | while read line || [ -n &amp;quot;$line&amp;quot; ] do url=`echo $line | sed -e &#39;s/^.*#\([0-9]*\).*$/\1/&#39; | BROWSER=echo xargs git open --issue origin` echo &amp;quot;- [$line]($url)&amp;quot; done  これでマークダウンのリンクになるので、どこにでも貼れる。</description>
+git log --first-parent --merges --reverse --pretty=&amp;#39;%s %b&amp;#39; origin/master..origin/develop | while read line || [ -n &amp;#34;$line&amp;#34; ] do url=`echo $line | sed -e &amp;#39;s/^.*#\([0-9]*\).*$/\1/&amp;#39; | BROWSER=echo xargs git open --issue origin` echo &amp;#34;- [$line]($url)&amp;#34; done これでマークダウンのリンクになるので、どこにでも貼れる。</description>
     </item>
     
     <item>
@@ -176,12 +176,12 @@ git log --first-parent --merges --reverse --pretty=&#39;%s %b&#39; origin/master
       
       <guid>https://e9.github.io/posts/1535546215/</guid>
       <description>マークダウンで書けるブログサービスの選択肢が少ないのでgithub.ioを使うことにした。 いまどきはJekyllよりHugoらしい。わりと簡単に作れた。こんな感じで。
-hugo new site blog cd blog git init git remote add origin git@github.com:e9/blog.git  空のディレクトリばかりなのでfirst commitの前に.gitkeepを置いておく。
-for dir in `find . -not -path &#39;*/\.*&#39; -not -name &#39;.*&#39; -type d`; do touch $dir/.gitkeep; done git add . git commit -m &#39;hugo new site&#39;  テーマはダウンロードして直接置いてもいいけど、gitのsubmoduleにしておくのがスマートだろう。
-git submodule add https://github.com/mismith0227/hugo_theme_pickles.git themes/pickles git add . git commit -m &#39;Add themes/pickles&#39;  あとはpublicをgithub.ioのレポジトリのsubmoduleにして、publicに出力したファイルをpushするのがオーソドックスなやり方らしいんだけど、せっかくなんでCIサービスから自動でデプロイさせることにした。
+hugo new site blog cd blog git init git remote add origin git@github.com:e9/blog.git 空のディレクトリばかりなのでfirst commitの前に.gitkeepを置いておく。
+for dir in `find . -not -path &amp;#39;*/\.*&amp;#39; -not -name &amp;#39;.*&amp;#39; -type d`; do touch $dir/.gitkeep; done git add . git commit -m &amp;#39;hugo new site&amp;#39; テーマはダウンロードして直接置いてもいいけど、gitのsubmoduleにしておくのがスマートだろう。
+git submodule add https://github.com/mismith0227/hugo_theme_pickles.git themes/pickles git add . git commit -m &amp;#39;Add themes/pickles&amp;#39; あとはpublicをgithub.ioのレポジトリのsubmoduleにして、publicに出力したファイルをpushするのがオーソドックスなやり方らしいんだけど、せっかくなんでCIサービスから自動でデプロイさせることにした。
 いまどきはgithubのプライベートレポジトリは作り放題だし、Circle CIは1コンテナだけなら無料で使える。
 .circleci/config.ymlはこんな感じ。あらかじめCircleCIの鍵をGitHubに登録しておく。
-version: 2 jobs: build: branches: only: - master docker: - image: circleci/golang:stretch steps: - checkout - run: command: git submodule update --init --recursive - run: command: | git clone https://github.</description>
+version:2jobs:build:branches:only:-masterdocker:-image:circleci/golang:stretchsteps:-checkout-run:command:gitsubmoduleupdate--init--recursive-run:command:| git clone https://github.com/e9/e9.github.io.git public rm -rf public/*-run:command:| wget https://github.</description>
     </item>
     
     <item>
@@ -191,12 +191,12 @@ version: 2 jobs: build: branches: only: - master docker: - image: circleci/golan
       
       <guid>https://e9.github.io/posts/1463633653/</guid>
       <description>$ bin/rails -v Rails 5.0.0.rc1  こういうモデルがあるとする。
-class Apple &amp;lt; ApplicationRecord attr_accessor :y end  実装内容の良し悪しはさておき、下記を実行する。
-irb(main):001:0&amp;gt; apple = Apple.select(&amp;quot;1 as x&amp;quot;, &amp;quot;2 as y&amp;quot;).first irb(main):002:0&amp;gt; apple.x =&amp;gt; 1  ではapple.yには何が入っているか。
-irb(main):003:0&amp;gt; apple.y =&amp;gt; nil irb(main):004:0&amp;gt; apple.as_json =&amp;gt; {&amp;quot;id&amp;quot;=&amp;gt;nil, &amp;quot;x&amp;quot;=&amp;gt;1, &amp;quot;y&amp;quot;=&amp;gt;nil}  nilなのだ。attr_accessorの#yが優先されるらしい。SELECTした結果にアクセスするには[:y]とすればよい。
-irb(main):005:0&amp;gt; apple[:y] =&amp;gt; 2  attr_accessorをひとつ置いただけで、既存のコードが動かなくなる可能性をはらんでいる。というか、それでさっきハマったのだ。
+class Apple &amp;lt; ApplicationRecord attr_accessor :y end 実装内容の良し悪しはさておき、下記を実行する。
+irb(main):001:0&amp;gt; apple = Apple.select(&amp;#34;1 as x&amp;#34;, &amp;#34;2 as y&amp;#34;).first irb(main):002:0&amp;gt; apple.x =&amp;gt; 1 ではapple.yには何が入っているか。
+irb(main):003:0&amp;gt; apple.y =&amp;gt; nil irb(main):004:0&amp;gt; apple.as_json =&amp;gt; {&amp;#34;id&amp;#34;=&amp;gt;nil, &amp;#34;x&amp;#34;=&amp;gt;1, &amp;#34;y&amp;#34;=&amp;gt;nil} nilなのだ。attr_accessorの#yが優先されるらしい。SELECTした結果にアクセスするには[:y]とすればよい。
+irb(main):005:0&amp;gt; apple[:y] =&amp;gt; 2 attr_accessorをひとつ置いただけで、既存のコードが動かなくなる可能性をはらんでいる。というか、それでさっきハマったのだ。
 このあとxとyにそれぞれ代入すると、さらにわけがわからない。
-irb(main):006:0&amp;gt; apple.x = 3 irb(main):007:0&amp;gt; apple.y = 4 irb(main):008:0&amp;gt; apple.as_json =&amp;gt; {&amp;quot;id&amp;quot;=&amp;gt;nil, &amp;quot;x&amp;quot;=&amp;gt;3, &amp;quot;y&amp;quot;=&amp;gt;4} irb(main):009:0&amp;gt; apple.x =&amp;gt; 3 irb(main):010:0&amp;gt; apple[:x] =&amp;gt; 3 irb(main):011:0&amp;gt; apple.</description>
+irb(main):006:0&amp;gt; apple.x = 3 irb(main):007:0&amp;gt; apple.y = 4 irb(main):008:0&amp;gt; apple.as_json =&amp;gt; {&amp;#34;id&amp;#34;=&amp;gt;nil, &amp;#34;x&amp;#34;=&amp;gt;3, &amp;#34;y&amp;#34;=&amp;gt;4} irb(main):009:0&amp;gt; apple.x =&amp;gt; 3 irb(main):010:0&amp;gt; apple[:x] =&amp;gt; 3 irb(main):011:0&amp;gt; apple.y =&amp;gt; 4 irb(main):012:0&amp;gt; apple[:y] =&amp;gt; 1 動的言語は強力だが、ときに怖い。</description>
     </item>
     
     <item>
@@ -206,11 +206,11 @@ irb(main):006:0&amp;gt; apple.x = 3 irb(main):007:0&amp;gt; apple.y = 4 irb(main
       
       <guid>https://e9.github.io/posts/1458562442/</guid>
       <description>rails5でマイグレーションファイルを作成すると、rails5で作成された印がつくようになった。 （まだベータ版だけど）
-class CreateApples &amp;lt; ActiveRecord::Migration[5.0] def change  この[5.0]というのは、ぱっと見るとrubyの（隠された）機能のように見えるが、実は違う。
+class CreateApples &amp;lt; ActiveRecord::Migration[5.0] def change この[5.0]というのは、ぱっと見るとrubyの（隠された）機能のように見えるが、実は違う。
  [https://github.com/rails/rails/commit/6940dc860c4b25bff2eded370f2af4316de15a30#diff-8d3c44120f7b67ff79e2fbe6a40d0ad6R492:title]  ActiveRecord::Migrationクラスに[]という名前のクラスメソッドが定義されており、そのメソッドが（別の）クラスを返すのだ。
-[1] pry(main)&amp;gt; ActiveRecord::Migration[5.0] =&amp;gt; ActiveRecord::Migration::Current  つまりこういうことだ。
-class CreateApples &amp;lt; ActiveRecord::Migration.[](5.0)  もしくはこの方がわかりやすいか。
-class CreateApples &amp;lt; ActiveRecord::Migration.send(&#39;[]&#39;, 5.0)  さすがrubyである。</description>
+[1] pry(main)&amp;gt; ActiveRecord::Migration[5.0] =&amp;gt; ActiveRecord::Migration::Current つまりこういうことだ。
+class CreateApples &amp;lt; ActiveRecord::Migration.[](5.0) もしくはこの方がわかりやすいか。
+class CreateApples &amp;lt; ActiveRecord::Migration.send(&amp;#39;[]&amp;#39;, 5.0) さすがrubyである。</description>
     </item>
     
     <item>
@@ -220,7 +220,7 @@ class CreateApples &amp;lt; ActiveRecord::Migration.send(&#39;[]&#39;, 5.0)  さ
       
       <guid>https://e9.github.io/posts/1456752673/</guid>
       <description>いつの間にかrailsのscaffoldで作成したコントローラがbefore_actionで変数を仕込むようになっていた。普段まったく使わないので気付かなかった。
- https://github.com/rails/rails/commit/339e4e80d514bd94fcb0e15689db43e5de83642a  class &amp;lt;%= controller_class_name %&amp;gt;Controller &amp;lt; ApplicationController before_action :set_&amp;lt;%= singular_table_name %&amp;gt;, except: [ :index, :new, :create ] private # Use callbacks to share common setup or constraints between actions. def set_&amp;lt;%= singular_table_name %&amp;gt; @&amp;lt;%= singular_table_name %&amp;gt; = &amp;lt;%= orm_class.find(class_name, &amp;quot;params[:id]&amp;quot;) %&amp;gt; end   Let the scaffold example use the &amp;ldquo;set shared record&amp;rdquo; pattern to explain callbacks
+ https://github.com/rails/rails/commit/339e4e80d514bd94fcb0e15689db43e5de83642a  class &amp;lt;%= controller_class_name %&amp;gt;Controller &amp;lt; ApplicationController before_action :set_&amp;lt;%= singular_table_name %&amp;gt;, except: [ :index, :new, :create ] private # Use callbacks to share common setup or constraints between actions. def set_&amp;lt;%= singular_table_name %&amp;gt; @&amp;lt;%= singular_table_name %&amp;gt; = &amp;lt;%= orm_class.find(class_name, &amp;#34;params[:id]&amp;#34;) %&amp;gt; end  Let the scaffold example use the &amp;ldquo;set shared record&amp;rdquo; pattern to explain callbacks
  だけどこれは経験的に知っていることなんだけど、before_actionで変数を代入すると見通しが悪くなるのだ。
 特に多人数で開発しているときに誰かがそれをやりだすと、before_actionに次ぐbefore_actionで、いったいどのアクションがどのbefore_actionを呼んでいるのか、わけがわからなくなる。
 同じことを考えてる人は結構いる。

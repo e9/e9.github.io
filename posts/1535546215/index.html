@@ -64,89 +64,74 @@
   <section id="js-article" class="p-article__body">
     <p>マークダウンで書けるブログサービスの選択肢が少ないのでgithub.ioを使うことにした。
 いまどきはJekyllよりHugoらしい。わりと簡単に作れた。こんな感じで。</p>
-
-<pre><code>hugo new site blog
-cd blog
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">hugo new site blog
+<span class="nb">cd</span> blog
 git init
-git remote add origin git@github.com:e9/blog.git
-</code></pre>
-
+git remote add origin git@github.com:e9/blog.git</code></pre></div>
 <p>空のディレクトリばかりなのでfirst commitの前に.gitkeepを置いておく。</p>
-
-<pre><code>for dir in `find . -not -path '*/\.*' -not -name '.*' -type d`; do touch $dir/.gitkeep; done
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="k">for</span> dir in <span class="sb">`</span>find . -not -path <span class="s1">&#39;*/\.*&#39;</span> -not -name <span class="s1">&#39;.*&#39;</span> -type d<span class="sb">`</span><span class="p">;</span> <span class="k">do</span> touch <span class="nv">$dir</span>/.gitkeep<span class="p">;</span> <span class="k">done</span>
 git add .
-git commit -m 'hugo new site'
-</code></pre>
-
+git commit -m <span class="s1">&#39;hugo new site&#39;</span></code></pre></div>
 <p>テーマはダウンロードして直接置いてもいいけど、gitのsubmoduleにしておくのがスマートだろう。</p>
-
-<pre><code>git submodule add https://github.com/mismith0227/hugo_theme_pickles.git themes/pickles
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">git submodule add https://github.com/mismith0227/hugo_theme_pickles.git themes/pickles
 git add .
-git commit -m 'Add themes/pickles'
-</code></pre>
-
+git commit -m <span class="s1">&#39;Add themes/pickles&#39;</span></code></pre></div>
 <p>あとはpublicをgithub.ioのレポジトリのsubmoduleにして、publicに出力したファイルをpushするのがオーソドックスなやり方らしいんだけど、せっかくなんでCIサービスから自動でデプロイさせることにした。</p>
 
 <p>いまどきはgithubのプライベートレポジトリは作り放題だし、Circle CIは1コンテナだけなら無料で使える。</p>
 
 <p>.circleci/config.ymlはこんな感じ。あらかじめCircleCIの鍵をGitHubに登録しておく。</p>
-
-<pre><code>version: 2
-jobs:
-  build:
-    branches:
-      only:
-        - master
-    docker:
-      - image: circleci/golang:stretch
-    steps:
-      - checkout
-      - run:
-          command: git submodule update --init --recursive
-      - run:
-          command: |
-            git clone https://github.com/e9/e9.github.io.git public
-            rm -rf public/*
-      - run:
-          command: |
-            wget https://github.com/gohugoio/hugo/releases/download/v0.47.1/hugo_0.47.1_Linux-64bit.tar.gz
-            tar xzf hugo_0.47.1_Linux-64bit.tar.gz
-            ./hugo -v
-      - run:
-          environment:
-            EMAIL: &lt;&gt;
-            GIT_AUTHOR_NAME: CircleCI
-            GIT_COMMITTER_NAME: CircleCI
-          command: |
-            cd public
-            git add .
-            git commit -m 'rebuilding site'
-            git push origin master
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml">version<span class="p">:</span><span class="w"> </span><span class="m">2</span><span class="w">
+</span><span class="w"></span>jobs<span class="p">:</span><span class="w">
+</span><span class="w">  </span>build<span class="p">:</span><span class="w">
+</span><span class="w">    </span>branches<span class="p">:</span><span class="w">
+</span><span class="w">      </span>only<span class="p">:</span><span class="w">
+</span><span class="w">        </span>-<span class="w"> </span>master<span class="w">
+</span><span class="w">    </span>docker<span class="p">:</span><span class="w">
+</span><span class="w">      </span>-<span class="w"> </span>image<span class="p">:</span><span class="w"> </span>circleci/golang<span class="p">:</span>stretch<span class="w">
+</span><span class="w">    </span>steps<span class="p">:</span><span class="w">
+</span><span class="w">      </span>-<span class="w"> </span>checkout<span class="w">
+</span><span class="w">      </span>-<span class="w"> </span>run<span class="p">:</span><span class="w">
+</span><span class="w">          </span>command<span class="p">:</span><span class="w"> </span>git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--init<span class="w"> </span>--recursive<span class="w">
+</span><span class="w">      </span>-<span class="w"> </span>run<span class="p">:</span><span class="w">
+</span><span class="w">          </span>command<span class="p">:</span><span class="w"> </span><span class="sd">|
+</span><span class="sd">            git clone https://github.com/e9/e9.github.io.git public
+</span><span class="sd">            rm -rf public/*</span><span class="w">
+</span><span class="w">      </span>-<span class="w"> </span>run<span class="p">:</span><span class="w">
+</span><span class="w">          </span>command<span class="p">:</span><span class="w"> </span><span class="sd">|
+</span><span class="sd">            wget https://github.com/gohugoio/hugo/releases/download/v0.47.1/hugo_0.47.1_Linux-64bit.tar.gz
+</span><span class="sd">            tar xzf hugo_0.47.1_Linux-64bit.tar.gz
+</span><span class="sd">            ./hugo -v</span><span class="w">
+</span><span class="w">      </span>-<span class="w"> </span>run<span class="p">:</span><span class="w">
+</span><span class="w">          </span>environment<span class="p">:</span><span class="w">
+</span><span class="w">            </span>EMAIL<span class="p">:</span><span class="w"> </span>&lt;<span class="sd">&gt;
+</span><span class="sd">            GIT_AUTHOR_NAME: CircleCI
+</span><span class="sd">            GIT_COMMITTER_NAME: CircleCI</span><span class="w">
+</span><span class="w">          </span>command<span class="p">:</span><span class="w"> </span><span class="sd">|
+</span><span class="sd">            cd public
+</span><span class="sd">            git add .
+</span><span class="sd">            git commit -m &#39;rebuilding site&#39;
+</span><span class="sd">            git push origin master</span></code></pre></div>
 <p>.travis.ymlならこんな感じ。あらかじめ環境変数CI_USER_TOKENに値を入れておく。</p>
-
-<pre><code>language: go
-sudo: false
-dist: trusty
-before_install:
-- echo -e &quot;machine github.com\n  login $CI_USER_TOKEN&quot; &gt; ~/.netrc
-install:
-- wget https://github.com/gohugoio/hugo/releases/download/v0.47.1/hugo_0.47.1_Linux-64bit.tar.gz
-- tar xzf hugo_0.47.1_Linux-64bit.tar.gz
-before_script:
-- git clone https://github.com/e9/e9.github.io.git public
-- rm -rf public/*
-script:
-- ./hugo -v
-deploy:
-  provider: script
-  script: (cd public &amp;&amp; git add . &amp;&amp; git commit -m 'rebuilding site' &amp;&amp; git push origin master)
-  skip_cleanup: true
-  on:
-    branch: master
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml">language<span class="p">:</span><span class="w"> </span>go<span class="w">
+</span><span class="w"></span>sudo<span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w"></span>dist<span class="p">:</span><span class="w"> </span>trusty<span class="w">
+</span><span class="w"></span>before_install<span class="p">:</span><span class="w">
+</span><span class="w"></span>-<span class="w"> </span>echo<span class="w"> </span>-e<span class="w"> </span><span class="s2">&#34;machine github.com\n  login $CI_USER_TOKEN&#34;</span><span class="w"> </span><span class="sd">&gt; ~/.netrc</span><span class="w">
+</span><span class="w"></span>install<span class="p">:</span><span class="w">
+</span><span class="w"></span>-<span class="w"> </span>wget<span class="w"> </span>https<span class="p">:</span>//github.com/gohugoio/hugo/releases/download/v0.<span class="m">47.1</span>/hugo_0.<span class="m">47.</span>1_Linux-64bit.tar.gz<span class="w">
+</span><span class="w"></span>-<span class="w"> </span>tar<span class="w"> </span>xzf<span class="w"> </span>hugo_0.<span class="m">47.</span>1_Linux-64bit.tar.gz<span class="w">
+</span><span class="w"></span>before_script<span class="p">:</span><span class="w">
+</span><span class="w"></span>-<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https<span class="p">:</span>//github.com/e9/e9.github.io.git<span class="w"> </span>public<span class="w">
+</span><span class="w"></span>-<span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>public/*<span class="w">
+</span><span class="w"></span>script<span class="p">:</span><span class="w">
+</span><span class="w"></span>-<span class="w"> </span>./hugo<span class="w"> </span>-v<span class="w">
+</span><span class="w"></span>deploy<span class="p">:</span><span class="w">
+</span><span class="w">  </span>provider<span class="p">:</span><span class="w"> </span>script<span class="w">
+</span><span class="w">  </span>script<span class="p">:</span><span class="w"> </span>(cd<span class="w"> </span>public<span class="w"> </span><span class="cp">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>.<span class="w"> </span><span class="cp">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s1">&#39;rebuilding site&#39;</span><span class="w"> </span><span class="cp">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>master)<span class="w">
+</span><span class="w">  </span>skip_cleanup<span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">  </span>on<span class="p">:</span><span class="w">
+</span><span class="w">    </span>branch<span class="p">:</span><span class="w"> </span>master</code></pre></div>
 <p>新しい記事を書くときに<code>hugo new f.md</code>だとトップページに反映されなかった。<code>hugo new d/f.md</code>とひとつ階層を切らないといけないようだ。</p>
 
   </section>

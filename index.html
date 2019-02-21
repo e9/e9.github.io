@@ -59,8 +59,8 @@
   </header>
   <div class="c-article__summary">
     gomobileでiOS向けのライブラリを書いている。
-$ gomobile version gomobile version +dc07713 Mon Jan 7 16:22:57 2019 +0000 (android,ios); androidSDK=  package main import &quot;app/x&quot; func main() { x.X() }  package x func X() { }  この関数Xが非同期で動くとして、その結果をメインに返したいとき、セオリーとしてはコールバックの追加だろう。
-package main import ( &quot;app/x&quot; &quot;log&quot; ) func main() { c := make(chan struct{}, 0) x.X(func() { log.Println(&quot;two&quot;) close(c) }) log.Println(&quot;one&quot;) &lt;-c }  package x import &quot;time&quot; func X(callback func()) { go (func() { time.Sleep(1 * time.
+$ gomobile version gomobile version +dc07713 Mon Jan 7 16:22:57 2019 +0000 (android,ios); androidSDK=  package main import &#34;app/x&#34; func main() { x.X() }package x func X() { } この関数Xが非同期で動くとして、その結果をメインに返したいとき、セオリーとしてはコールバックの追加だろう。
+package main import ( &#34;app/x&#34; &#34;log&#34; ) func main() { c := make(chan struct{}, 0) x.X(func() { log.Println(&#34;two&#34;) close(c) }) log.Println(&#34;one&#34;) &lt;-c }package x import &#34;time&#34; func X(callback func()) { go (func() { time.Sleep(1 * time.Second) callback() })() } ところがどっこいこの関数はgomobile bindの対象にはならないのだ。
   </div>
   
   <a href="https://e9.github.io/posts/1548328800/" class="c-article__btn p-list-article__btn">Read more</a>
@@ -82,12 +82,12 @@ package main import ( &quot;app/x&quot; &quot;log&quot; ) func main() { c := mak
   </header>
   <div class="c-article__summary">
     Pythonで
-x, y = 1 if true_or_false else 2, 3  というコードを目にした。ぱっと見での自分の解釈ではこうなる。
-x, y = (1) if true_or_false else (2, 3)  これはtrue_or_falseがTrueのときにyの値が足りずランタイムエラーになる。
+x, y = 1 if true_or_false else 2, 3 というコードを目にした。ぱっと見での自分の解釈ではこうなる。
+x, y = (1) if true_or_false else (2, 3) これはtrue_or_falseがTrueのときにyの値が足りずランタイムエラーになる。
 ので、レビューにそう書こうと思ったんだけど、ちゃんと確かめると、実際にはこのように動くらしい。
-x, y = ((1 if true_or_false else 2), 3)  なのでエラーにならない。なるほどー。これは気付きづらい。
+x, y = ((1 if true_or_false else 2), 3) なのでエラーにならない。なるほどー。これは気付きづらい。
 だけど、まあ、普通はこう書きますわな。 
-x = 1 if true_or_false else 2 y = 3  
+x = 1 if true_or_false else 2 y = 3
   </div>
   
 </article>
@@ -253,12 +253,12 @@ JavaScriptについてぐぐると[...Array(10)].forEach(()=&gt;{ })というコ
   </header>
   <div class="c-article__summary">
     RubyにもPythonにもloggerはある。loggerに重い処理を渡してしまった場合を考えよう。
-logger.debug(long_time_method())  どういう状況だこれは。
+logger.debug(long_time_method()) どういう状況だこれは。
 では遅延評価されるオブジェクトを途中でデバッグ出力してるとしよう。これならありそう。
-query = query.where(...) logger.debug(query.all()) query = query.where(...)  このとき本番環境ではdebugログが出力されないとしても、query.all()は実行されてしまう。Pythonだとこれを回避するのは難しい。
+query = query.where(...) logger.debug(query.all()) query = query.where(...) このとき本番環境ではdebugログが出力されないとしても、query.all()は実行されてしまう。Pythonだとこれを回避するのは難しい。
 debugの行にログレベルを見るifを追加するとか、文字列化まで遅延評価されるクラスを間に挟むとか、苦しいアイデアがスタックオーバフローには書いてあった。
  https://stackoverflow.com/questions/4148790/lazy-logger-message-string-evaluation/22205835#22205835  一方、Rubyは簡単で、ブロックに入れて渡せばよい。
-logger.debug { query.all() }  
+logger.debug { query.all() }
   </div>
   
 </article>
@@ -278,12 +278,12 @@ logger.debug { query.all() }
   </header>
   <div class="c-article__summary">
     例えばこんなパッケージがあったとして。
-package x func X() string { return &quot;x&quot; }  package x_test import ( &quot;testing&quot; &quot;app/x&quot; ) func TestX(t *testing.T) { if !assert(x.X(), &quot;x&quot;) { t.Fatal(&quot;not x&quot;) } } func assert(a string, b string) bool { return a == b }  assert関数を他のパッケージのテストでも使いたくなったとする。
+package x func X() string { return &#34;x&#34; }package x_test import ( &#34;testing&#34; &#34;app/x&#34; ) func TestX(t *testing.T) { if !assert(x.X(), &#34;x&#34;) { t.Fatal(&#34;not x&#34;) } } func assert(a string, b string) bool { return a == b } assert関数を他のパッケージのテストでも使いたくなったとする。
 その場合、assertをAssertにしてimport x_testすれば他のパッケージからもx_test.Assertが使えるようになる。かと思いきやならない。
 もちろんpackage xの方に移して、x.Assertとすれば呼べる。当たり前だ。だけどテストでしか使わない関数がそこにいるのは気持ち悪い。
 どうするのがいいのかちょっと調べたところ、スタックオーバフローによれば*_testではない専用のパッケージを作ってそこに入れろと。
  https://stackoverflow.com/a/31794241  つまりこういうことか。
-package x_test import ( &quot;testing&quot; &quot;app/hogetest&quot; ) func TestX(t *testing.T) { if !hogetest.Assert(x.X(), &quot;x&quot;) { t.Fatal(&quot;not x&quot;) } }  package hogetest func Assert(a string, b string) bool { return a == b }  ビルド時はhogetestをimportしなければいい。うーん、まあ、わかるけど、あまりすっきりとした気持ちにはならなかった。
+package x_test import ( &#34;testing&#34; &#34;app/hogetest&#34; ) func TestX(t *testing.T) { if !hogetest.Assert(x.X(), &#34;x&#34;) { t.Fatal(&#34;not x&#34;) } }package hogetest func Assert(a string, b string) bool { return a == b } ビルド時はhogetestをimportしなければいい。うーん、まあ、わかるけど、あまりすっきりとした気持ちにはならなかった。
   </div>
   
 </article>

@@ -18,7 +18,7 @@
       
       <guid>https://e9.github.io/posts/1456752673/</guid>
       <description>いつの間にかrailsのscaffoldで作成したコントローラがbefore_actionで変数を仕込むようになっていた。普段まったく使わないので気付かなかった。
- https://github.com/rails/rails/commit/339e4e80d514bd94fcb0e15689db43e5de83642a  class &amp;lt;%= controller_class_name %&amp;gt;Controller &amp;lt; ApplicationController before_action :set_&amp;lt;%= singular_table_name %&amp;gt;, except: [ :index, :new, :create ] private # Use callbacks to share common setup or constraints between actions. def set_&amp;lt;%= singular_table_name %&amp;gt; @&amp;lt;%= singular_table_name %&amp;gt; = &amp;lt;%= orm_class.find(class_name, &amp;quot;params[:id]&amp;quot;) %&amp;gt; end   Let the scaffold example use the &amp;ldquo;set shared record&amp;rdquo; pattern to explain callbacks
+ https://github.com/rails/rails/commit/339e4e80d514bd94fcb0e15689db43e5de83642a  class &amp;lt;%= controller_class_name %&amp;gt;Controller &amp;lt; ApplicationController before_action :set_&amp;lt;%= singular_table_name %&amp;gt;, except: [ :index, :new, :create ] private # Use callbacks to share common setup or constraints between actions. def set_&amp;lt;%= singular_table_name %&amp;gt; @&amp;lt;%= singular_table_name %&amp;gt; = &amp;lt;%= orm_class.find(class_name, &amp;#34;params[:id]&amp;#34;) %&amp;gt; end  Let the scaffold example use the &amp;ldquo;set shared record&amp;rdquo; pattern to explain callbacks
  だけどこれは経験的に知っていることなんだけど、before_actionで変数を代入すると見通しが悪くなるのだ。
 特に多人数で開発しているときに誰かがそれをやりだすと、before_actionに次ぐbefore_actionで、いったいどのアクションがどのbefore_actionを呼んでいるのか、わけがわからなくなる。
 同じことを考えてる人は結構いる。

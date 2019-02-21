@@ -58,11 +58,11 @@
   </header>
   <div class="c-article__summary">
     rails5でマイグレーションファイルを作成すると、rails5で作成された印がつくようになった。 （まだベータ版だけど）
-class CreateApples &lt; ActiveRecord::Migration[5.0] def change  この[5.0]というのは、ぱっと見るとrubyの（隠された）機能のように見えるが、実は違う。
+class CreateApples &lt; ActiveRecord::Migration[5.0] def change この[5.0]というのは、ぱっと見るとrubyの（隠された）機能のように見えるが、実は違う。
  [https://github.com/rails/rails/commit/6940dc860c4b25bff2eded370f2af4316de15a30#diff-8d3c44120f7b67ff79e2fbe6a40d0ad6R492:title]  ActiveRecord::Migrationクラスに[]という名前のクラスメソッドが定義されており、そのメソッドが（別の）クラスを返すのだ。
-[1] pry(main)&gt; ActiveRecord::Migration[5.0] =&gt; ActiveRecord::Migration::Current  つまりこういうことだ。
-class CreateApples &lt; ActiveRecord::Migration.[](5.0)  もしくはこの方がわかりやすいか。
-class CreateApples &lt; ActiveRecord::Migration.send('[]', 5.0)  さすがrubyである。
+[1] pry(main)&gt; ActiveRecord::Migration[5.0] =&gt; ActiveRecord::Migration::Current つまりこういうことだ。
+class CreateApples &lt; ActiveRecord::Migration.[](5.0) もしくはこの方がわかりやすいか。
+class CreateApples &lt; ActiveRecord::Migration.send(&#39;[]&#39;, 5.0) さすがrubyである。
   </div>
   
 </article>

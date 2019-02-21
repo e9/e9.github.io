@@ -58,12 +58,12 @@
   </header>
   <div class="c-article__summary">
     Pythonで
-x, y = 1 if true_or_false else 2, 3  というコードを目にした。ぱっと見での自分の解釈ではこうなる。
-x, y = (1) if true_or_false else (2, 3)  これはtrue_or_falseがTrueのときにyの値が足りずランタイムエラーになる。
+x, y = 1 if true_or_false else 2, 3 というコードを目にした。ぱっと見での自分の解釈ではこうなる。
+x, y = (1) if true_or_false else (2, 3) これはtrue_or_falseがTrueのときにyの値が足りずランタイムエラーになる。
 ので、レビューにそう書こうと思ったんだけど、ちゃんと確かめると、実際にはこのように動くらしい。
-x, y = ((1 if true_or_false else 2), 3)  なのでエラーにならない。なるほどー。これは気付きづらい。
+x, y = ((1 if true_or_false else 2), 3) なのでエラーにならない。なるほどー。これは気付きづらい。
 だけど、まあ、普通はこう書きますわな。 
-x = 1 if true_or_false else 2 y = 3  
+x = 1 if true_or_false else 2 y = 3
   </div>
   
 </article>

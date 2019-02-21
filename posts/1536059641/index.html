@@ -63,32 +63,26 @@
   
   <section id="js-article" class="p-article__body">
     <p>例えばこんなパッケージがあったとして。</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">x</span>
 
-<pre><code>package x
+<span class="kd">func</span> <span class="nx">X</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="s">&#34;x&#34;</span>
+<span class="p">}</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">x_test</span>
 
-func X() string {
-	return &quot;x&quot;
-}
-</code></pre>
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">&#34;testing&#34;</span>
+	<span class="s">&#34;app/x&#34;</span>
+<span class="p">)</span>
 
-<pre><code>package x_test
+<span class="kd">func</span> <span class="nx">TestX</span><span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">if</span> <span class="p">!</span><span class="nx">assert</span><span class="p">(</span><span class="nx">x</span><span class="p">.</span><span class="nx">X</span><span class="p">(),</span> <span class="s">&#34;x&#34;</span><span class="p">)</span> <span class="p">{</span>
+		<span class="nx">t</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="s">&#34;not x&#34;</span><span class="p">)</span>
+	<span class="p">}</span>
+<span class="p">}</span>
 
-import (
-	&quot;testing&quot;
-	&quot;app/x&quot;
-)
-
-func TestX(t *testing.T) {
-	if !assert(x.X(), &quot;x&quot;) {
-		t.Fatal(&quot;not x&quot;)
-	}
-}
-
-func assert(a string, b string) bool {
-	return a == b
-}
-</code></pre>
-
+<span class="kd">func</span> <span class="nx">assert</span><span class="p">(</span><span class="nx">a</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">b</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="nx">a</span> <span class="o">==</span> <span class="nx">b</span>
+<span class="p">}</span></code></pre></div>
 <p>assert関数を他のパッケージのテストでも使いたくなったとする。</p>
 
 <p>その場合、assertをAssertにしてimport x_testすれば他のパッケージからもx_test.Assertが使えるようになる。かと思いきやならない。</p>
@@ -102,28 +96,22 @@ func assert(a string, b string) bool {
 </ul>
 
 <p>つまりこういうことか。</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">x_test</span>
 
-<pre><code>package x_test
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">&#34;testing&#34;</span>
+	<span class="s">&#34;app/hogetest&#34;</span>
+<span class="p">)</span>
 
-import (
-	&quot;testing&quot;
-	&quot;app/hogetest&quot;
-)
+<span class="kd">func</span> <span class="nx">TestX</span><span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">if</span> <span class="p">!</span><span class="nx">hogetest</span><span class="p">.</span><span class="nx">Assert</span><span class="p">(</span><span class="nx">x</span><span class="p">.</span><span class="nx">X</span><span class="p">(),</span> <span class="s">&#34;x&#34;</span><span class="p">)</span> <span class="p">{</span>
+		<span class="nx">t</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="s">&#34;not x&#34;</span><span class="p">)</span>
+	<span class="p">}</span>
+<span class="p">}</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">hogetest</span>
 
-func TestX(t *testing.T) {
-	if !hogetest.Assert(x.X(), &quot;x&quot;) {
-		t.Fatal(&quot;not x&quot;)
-	}
-}
-</code></pre>
-
-<pre><code>package hogetest
-
-func Assert(a string, b string) bool {
-	return a == b
-}
-</code></pre>
-
+<span class="kd">func</span> <span class="nx">Assert</span><span class="p">(</span><span class="nx">a</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">b</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="nx">a</span> <span class="o">==</span> <span class="nx">b</span>
+<span class="p">}</span></code></pre></div>
 <p>ビルド時はhogetestをimportしなければいい。うーん、まあ、わかるけど、あまりすっきりとした気持ちにはならなかった。</p>
 
   </section>

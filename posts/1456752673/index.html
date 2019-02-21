@@ -67,17 +67,14 @@
 <ul>
 <li><a href="https://github.com/rails/rails/commit/339e4e80d514bd94fcb0e15689db43e5de83642a">https://github.com/rails/rails/commit/339e4e80d514bd94fcb0e15689db43e5de83642a</a></li>
 </ul>
-
-<pre><code>class &lt;%= controller_class_name %&gt;Controller &lt; ApplicationController
-  before_action :set_&lt;%= singular_table_name %&gt;, except: [ :index, :new, :create ]
-
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_&lt;%= singular_table_name %&gt;
-      @&lt;%= singular_table_name %&gt; = &lt;%= orm_class.find(class_name, &quot;params[:id]&quot;) %&gt;
-    end
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-rb" data-lang="rb"><span class="k">class</span> <span class="o">&lt;</span><span class="s">%= controller_class_name %&gt;Controller &lt; ApplicationController
+</span><span class="s">  before_action :set_&lt;%=</span> <span class="n">singular_table_name</span> <span class="s">%&gt;, except: [ :index, :new, :create ]
+</span><span class="s">
+</span><span class="s">  private
+</span><span class="s">    # Use callbacks to share common setup or constraints between actions.
+</span><span class="s">    def set_&lt;%= singular_table_name %&gt;</span>
+      <span class="err">@</span><span class="o">&lt;</span><span class="s">%= singular_table_name %&gt; =</span> <span class="o">&lt;%=</span> <span class="n">orm_class</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">class_name</span><span class="p">,</span> <span class="s2">&#34;params[:id]&#34;</span><span class="p">)</span> <span class="o">%&gt;</span>
+    <span class="k">end</span></code></pre></div>
 <blockquote>
 <p>Let the scaffold example use the &ldquo;set shared record&rdquo; pattern to explain callbacks</p>
 </blockquote>

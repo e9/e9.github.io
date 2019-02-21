@@ -63,31 +63,19 @@
   
   <section id="js-article" class="p-article__body">
     <p>Pythonで</p>
-
-<pre><code>x, y = 1 if true_or_false else 2, 3
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-py" data-lang="py"><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">true_or_false</span> <span class="k">else</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span></code></pre></div>
 <p>というコードを目にした。ぱっと見での自分の解釈ではこうなる。</p>
-
-<pre><code>x, y = (1) if true_or_false else (2, 3)
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-py" data-lang="py"><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">if</span> <span class="n">true_or_false</span> <span class="k">else</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span></code></pre></div>
 <p>これはtrue_or_falseがTrueのときにyの値が足りずランタイムエラーになる。</p>
 
 <p>ので、レビューにそう書こうと思ったんだけど、ちゃんと確かめると、実際にはこのように動くらしい。</p>
-
-<pre><code>x, y = ((1 if true_or_false else 2), 3)
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-py" data-lang="py"><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="p">((</span><span class="mi">1</span> <span class="k">if</span> <span class="n">true_or_false</span> <span class="k">else</span> <span class="mi">2</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span></code></pre></div>
 <p>なのでエラーにならない。なるほどー。これは気付きづらい。</p>
 
 <p>だけど、まあ、普通はこう書きますわな。
 </p>
-
-<pre><code>x = 1 if true_or_false else 2
-y = 3
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-py" data-lang="py"><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">true_or_false</span> <span class="k">else</span> <span class="mi">2</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">3</span></code></pre></div>
   </section>
   <footer>
     

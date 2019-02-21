@@ -58,8 +58,8 @@
   </header>
   <div class="c-article__summary">
     gomobileでiOS向けのライブラリを書いている。
-$ gomobile version gomobile version +dc07713 Mon Jan 7 16:22:57 2019 +0000 (android,ios); androidSDK=  package main import &quot;app/x&quot; func main() { x.X() }  package x func X() { }  この関数Xが非同期で動くとして、その結果をメインに返したいとき、セオリーとしてはコールバックの追加だろう。
-package main import ( &quot;app/x&quot; &quot;log&quot; ) func main() { c := make(chan struct{}, 0) x.X(func() { log.Println(&quot;two&quot;) close(c) }) log.Println(&quot;one&quot;) &lt;-c }  package x import &quot;time&quot; func X(callback func()) { go (func() { time.Sleep(1 * time.
+$ gomobile version gomobile version +dc07713 Mon Jan 7 16:22:57 2019 +0000 (android,ios); androidSDK=  package main import &#34;app/x&#34; func main() { x.X() }package x func X() { } この関数Xが非同期で動くとして、その結果をメインに返したいとき、セオリーとしてはコールバックの追加だろう。
+package main import ( &#34;app/x&#34; &#34;log&#34; ) func main() { c := make(chan struct{}, 0) x.X(func() { log.Println(&#34;two&#34;) close(c) }) log.Println(&#34;one&#34;) &lt;-c }package x import &#34;time&#34; func X(callback func()) { go (func() { time.Sleep(1 * time.Second) callback() })() } ところがどっこいこの関数はgomobile bindの対象にはならないのだ。
   </div>
   
   <a href="https://e9.github.io/posts/1548328800/" class="c-article__btn p-list-article__btn">Read more</a>

@@ -31,12 +31,12 @@ JavaScriptについてぐぐると[...Array(10)].forEach(()=&amp;gt;{ })とい�
       
       <guid>https://e9.github.io/posts/1536581159/</guid>
       <description>RubyにもPythonにもloggerはある。loggerに重い処理を渡してしまった場合を考えよう。
-logger.debug(long_time_method())  どういう状況だこれは。
+logger.debug(long_time_method()) どういう状況だこれは。
 では遅延評価されるオブジェクトを途中でデバッグ出力してるとしよう。これならありそう。
-query = query.where(...) logger.debug(query.all()) query = query.where(...)  このとき本番環境ではdebugログが出力されないとしても、query.all()は実行されてしまう。Pythonだとこれを回避するのは難しい。
+query = query.where(...) logger.debug(query.all()) query = query.where(...) このとき本番環境ではdebugログが出力されないとしても、query.all()は実行されてしまう。Pythonだとこれを回避するのは難しい。
 debugの行にログレベルを見るifを追加するとか、文字列化まで遅延評価されるクラスを間に挟むとか、苦しいアイデアがスタックオーバフローには書いてあった。
  https://stackoverflow.com/questions/4148790/lazy-logger-message-string-evaluation/22205835#22205835  一方、Rubyは簡単で、ブロックに入れて渡せばよい。
-logger.debug { query.all() }  </description>
+logger.debug { query.all() }</description>
     </item>
     
     <item>
@@ -46,12 +46,12 @@ logger.debug { query.all() }  </description>
       
       <guid>https://e9.github.io/posts/1536059641/</guid>
       <description>例えばこんなパッケージがあったとして。
-package x func X() string { return &amp;quot;x&amp;quot; }  package x_test import ( &amp;quot;testing&amp;quot; &amp;quot;app/x&amp;quot; ) func TestX(t *testing.T) { if !assert(x.X(), &amp;quot;x&amp;quot;) { t.Fatal(&amp;quot;not x&amp;quot;) } } func assert(a string, b string) bool { return a == b }  assert関数を他のパッケージのテストでも使いたくなったとする。
+package x func X() string { return &amp;#34;x&amp;#34; }package x_test import ( &amp;#34;testing&amp;#34; &amp;#34;app/x&amp;#34; ) func TestX(t *testing.T) { if !assert(x.X(), &amp;#34;x&amp;#34;) { t.Fatal(&amp;#34;not x&amp;#34;) } } func assert(a string, b string) bool { return a == b } assert関数を他のパッケージのテストでも使いたくなったとする。
 その場合、assertをAssertにしてimport x_testすれば他のパッケージからもx_test.Assertが使えるようになる。かと思いきやならない。
 もちろんpackage xの方に移して、x.Assertとすれば呼べる。当たり前だ。だけどテストでしか使わない関数がそこにいるのは気持ち悪い。
 どうするのがいいのかちょっと調べたところ、スタックオーバフローによれば*_testではない専用のパッケージを作ってそこに入れろと。
  https://stackoverflow.com/a/31794241  つまりこういうことか。
-package x_test import ( &amp;quot;testing&amp;quot; &amp;quot;app/hogetest&amp;quot; ) func TestX(t *testing.T) { if !hogetest.Assert(x.X(), &amp;quot;x&amp;quot;) { t.Fatal(&amp;quot;not x&amp;quot;) } }  package hogetest func Assert(a string, b string) bool { return a == b }  ビルド時はhogetestをimportしなければいい。うーん、まあ、わかるけど、あまりすっきりとした気持ちにはならなかった。</description>
+package x_test import ( &amp;#34;testing&amp;#34; &amp;#34;app/hogetest&amp;#34; ) func TestX(t *testing.T) { if !hogetest.Assert(x.X(), &amp;#34;x&amp;#34;) { t.Fatal(&amp;#34;not x&amp;#34;) } }package hogetest func Assert(a string, b string) bool { return a == b } ビルド時はhogetestをimportしなければいい。うーん、まあ、わかるけど、あまりすっきりとした気持ちにはならなかった。</description>
     </item>
     
     <item>
@@ -62,12 +62,12 @@ package x_test import ( &amp;quot;testing&amp;quot; &amp;quot;app/hogetest&amp;q
       <guid>https://e9.github.io/posts/1535977174/</guid>
       <description>developをmasterに入れるときでも、masterをリリースブランチに入れるときでも、なんでもいいんだけど、2つのブランチの差分から、次に何がデプロイされるのかをだいたいで知りたいときがある。
 当然プルリクエストベースで開発しているはずなので、そういうときはマージコミットだけに注目すればよい。
-git log --first-parent --merges --reverse --pretty=&#39;%s %b&#39; origin/master..origin/develop  プルリクエストのマージコミットに余計なコメントを入れていると改行が入ってややこしいが、そんなところにコメント書いてる人は見たことが無いので大丈夫。
+git log --first-parent --merges --reverse --pretty=&amp;#39;%s %b&amp;#39; origin/master..origin/develop プルリクエストのマージコミットに余計なコメントを入れていると改行が入ってややこしいが、そんなところにコメント書いてる人は見たことが無いので大丈夫。
 こんな風に表示される。
 Merge pull request #1 from e9/second-branch second commit Merge pull request #2 from e9/third-branch third commit  これをコピーしてGitHubのイシューやプルリクエストに貼り付ければ#の部分がリンクになって都合がよい。
 だけど貼り付ける先がGitHubじゃないときもある。esaとかbacklogとか。そういうときはマークダウンでリンクにしてあげたい。#の数字を切り取るのは簡単だけど、レポジトリのURLを手に入れるのは大変なので、ここは横着してgit-openを使う。
  https://github.com/paulirish/git-open  git-openを入れたら下記でよい。
-git log --first-parent --merges --reverse --pretty=&#39;%s %b&#39; origin/master..origin/develop | while read line || [ -n &amp;quot;$line&amp;quot; ] do url=`echo $line | sed -e &#39;s/^.*#\([0-9]*\).*$/\1/&#39; | BROWSER=echo xargs git open --issue origin` echo &amp;quot;- [$line]($url)&amp;quot; done  これでマークダウンのリンクになるので、どこにでも貼れる。</description>
+git log --first-parent --merges --reverse --pretty=&amp;#39;%s %b&amp;#39; origin/master..origin/develop | while read line || [ -n &amp;#34;$line&amp;#34; ] do url=`echo $line | sed -e &amp;#39;s/^.*#\([0-9]*\).*$/\1/&amp;#39; | BROWSER=echo xargs git open --issue origin` echo &amp;#34;- [$line]($url)&amp;#34; done これでマークダウンのリンクになるので、どこにでも貼れる。</description>
     </item>
     
   </channel>

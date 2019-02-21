@@ -65,10 +65,7 @@
     <p>developをmasterに入れるときでも、masterをリリースブランチに入れるときでも、なんでもいいんだけど、2つのブランチの差分から、次に何がデプロイされるのかをだいたいで知りたいときがある。</p>
 
 <p>当然プルリクエストベースで開発しているはずなので、そういうときはマージコミットだけに注目すればよい。</p>
-
-<pre><code>git log --first-parent --merges --reverse --pretty='%s %b' origin/master..origin/develop
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">git log --first-parent --merges --reverse --pretty<span class="o">=</span><span class="s1">&#39;%s %b&#39;</span> origin/master..origin/develop</code></pre></div>
 <p>プルリクエストのマージコミットに余計なコメントを入れていると改行が入ってややこしいが、そんなところにコメント書いてる人は見たことが無いので大丈夫。</p>
 
 <p>こんな風に表示される。</p>
@@ -86,15 +83,12 @@ Merge pull request #2 from e9/third-branch third commit
 </ul>
 
 <p>git-openを入れたら下記でよい。</p>
-
-<pre><code>git log --first-parent --merges --reverse --pretty='%s %b' origin/master..origin/develop |
-while read line || [ -n &quot;$line&quot; ]
-do
-url=`echo $line | sed -e 's/^.*#\([0-9]*\).*$/\1/' | BROWSER=echo xargs git open --issue origin`
-echo &quot;- [$line]($url)&quot;
-done
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">git log --first-parent --merges --reverse --pretty<span class="o">=</span><span class="s1">&#39;%s %b&#39;</span> origin/master..origin/develop <span class="p">|</span>
+<span class="k">while</span> <span class="nb">read</span> line <span class="o">||</span> <span class="o">[</span> -n <span class="s2">&#34;</span><span class="nv">$line</span><span class="s2">&#34;</span> <span class="o">]</span>
+<span class="k">do</span>
+<span class="nv">url</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="nv">$line</span> <span class="p">|</span> sed -e <span class="s1">&#39;s/^.*#\([0-9]*\).*$/\1/&#39;</span> <span class="p">|</span> <span class="nv">BROWSER</span><span class="o">=</span><span class="nb">echo</span> xargs git open --issue origin<span class="sb">`</span>
+<span class="nb">echo</span> <span class="s2">&#34;- [</span><span class="nv">$line</span><span class="s2">](</span><span class="nv">$url</span><span class="s2">)&#34;</span>
+<span class="k">done</span></code></pre></div>
 <p>これでマークダウンのリンクになるので、どこにでも貼れる。</p>
 
 <pre><code>- [Merge pull request #1 from e9/second-branch second commit](https://github.com/e9/xxx/issues/1)

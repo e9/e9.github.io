@@ -67,56 +67,44 @@
 <pre><code>$ gomobile version
 gomobile version +dc07713 Mon Jan 7 16:22:57 2019 +0000 (android,ios); androidSDK=
 </code></pre>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
 
-<pre><code>package main
+<span class="kn">import</span> <span class="s">&#34;app/x&#34;</span>
 
-import &quot;app/x&quot;
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">x</span><span class="p">.</span><span class="nx">X</span><span class="p">()</span>
+<span class="p">}</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">x</span>
 
-func main() {
-	x.X()
-}
-</code></pre>
-
-<pre><code>package x
-
-func X() {
-}
-</code></pre>
-
+<span class="kd">func</span> <span class="nx">X</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span></code></pre></div>
 <p>この関数Xが非同期で動くとして、その結果をメインに返したいとき、セオリーとしてはコールバックの追加だろう。</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
 
-<pre><code>package main
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">&#34;app/x&#34;</span>
+	<span class="s">&#34;log&#34;</span>
+<span class="p">)</span>
 
-import (
-	&quot;app/x&quot;
-	&quot;log&quot;
-)
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">c</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kd">struct</span><span class="p">{},</span> <span class="mi">0</span><span class="p">)</span>
 
-func main() {
-	c := make(chan struct{}, 0)
+	<span class="nx">x</span><span class="p">.</span><span class="nx">X</span><span class="p">(</span><span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+		<span class="nx">log</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&#34;two&#34;</span><span class="p">)</span>
+		<span class="nb">close</span><span class="p">(</span><span class="nx">c</span><span class="p">)</span>
+	<span class="p">})</span>
 
-	x.X(func() {
-		log.Println(&quot;two&quot;)
-		close(c)
-	})
+	<span class="nx">log</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&#34;one&#34;</span><span class="p">)</span>
+	<span class="o">&lt;-</span><span class="nx">c</span>
+<span class="p">}</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">x</span>
 
-	log.Println(&quot;one&quot;)
-	&lt;-c
-}
-</code></pre>
+<span class="kn">import</span> <span class="s">&#34;time&#34;</span>
 
-<pre><code>package x
-
-import &quot;time&quot;
-
-func X(callback func()) {
-	go (func() {
-		time.Sleep(1 * time.Second)
-		callback()
-	})()
-}
-</code></pre>
-
+<span class="kd">func</span> <span class="nx">X</span><span class="p">(</span><span class="nx">callback</span> <span class="kd">func</span><span class="p">())</span> <span class="p">{</span>
+	<span class="k">go</span> <span class="p">(</span><span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+		<span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="mi">1</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+		<span class="nx">callback</span><span class="p">()</span>
+	<span class="p">})()</span>
+<span class="p">}</span></code></pre></div>
 <p>ところがどっこいこの関数はgomobile bindの対象にはならないのだ。</p>
 
 <pre><code>// skipped function X with unsupported parameter or return types
@@ -126,34 +114,25 @@ func X(callback func()) {
 - <a href="https://godoc.org/golang.org/x/mobile/cmd/gobind#hdr-Type_restrictions">https://godoc.org/golang.org/x/mobile/cmd/gobind#hdr-Type_restrictions</a></p>
 
 <p>どうするかというとinterfaceを使う。</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">x</span>
 
-<pre><code>package x
+<span class="kn">import</span> <span class="s">&#34;time&#34;</span>
 
-import &quot;time&quot;
+<span class="kd">type</span> <span class="nx">I</span> <span class="kd">interface</span> <span class="p">{</span>
+	<span class="nx">Callback</span><span class="p">()</span>
+<span class="p">}</span>
 
-type I interface {
-	Callback()
-}
-
-func X(p I) {
-	go (func() {
-		time.Sleep(1 * time.Second)
-		p.Callback()
-	})()
-}
-</code></pre>
-
+<span class="kd">func</span> <span class="nx">X</span><span class="p">(</span><span class="nx">p</span> <span class="nx">I</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">go</span> <span class="p">(</span><span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+		<span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="mi">1</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+		<span class="nx">p</span><span class="p">.</span><span class="nx">Callback</span><span class="p">()</span>
+	<span class="p">})()</span>
+<span class="p">}</span></code></pre></div>
 <p>このとき生成されたX.objc.hにはXIプロトコルと共に、同名のクラスが定義されているので</p>
-
-<pre><code>@protocol XI;
-@class XI;
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-objc" data-lang="objc"><span class="k">@protocol</span> <span class="nc">XI</span>;
+<span class="k">@class</span> <span class="nc">XI</span>;</code></pre></div>
 <p>Swiftでコールバック用のクラスを実装する場合はXIではなくXIProtocolを継承する必要がある。</p>
-
-<pre><code>class Callback: NSObject, XIProtocol {
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kd">class</span> <span class="nc">Callback</span><span class="p">:</span> <span class="n">NSObject</span><span class="p">,</span> <span class="n">XIProtocol</span> <span class="p">{</span></code></pre></div>
 <p>この罠にうっかりハマって大変だった。</p>
 
   </section>

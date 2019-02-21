@@ -67,51 +67,36 @@ Rails 5.0.0.rc1
 </code></pre>
 
 <p>こういうモデルがあるとする。</p>
-
-<pre><code>class Apple &lt; ApplicationRecord
-  attr_accessor :y
-end
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-rb" data-lang="rb"><span class="k">class</span> <span class="nc">Apple</span> <span class="o">&lt;</span> <span class="no">ApplicationRecord</span>
+  <span class="kp">attr_accessor</span> <span class="ss">:y</span>
+<span class="k">end</span></code></pre></div>
 <p>実装内容の良し悪しはさておき、下記を実行する。</p>
-
-<pre><code>irb(main):001:0&gt; apple = Apple.select(&quot;1 as x&quot;, &quot;2 as y&quot;).first
-irb(main):002:0&gt; apple.x
-=&gt; 1
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-rb" data-lang="rb"><span class="n">irb</span><span class="p">(</span><span class="n">main</span><span class="p">):</span><span class="mo">001</span><span class="p">:</span><span class="mi">0</span><span class="o">&gt;</span> <span class="n">apple</span> <span class="o">=</span> <span class="no">Apple</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&#34;1 as x&#34;</span><span class="p">,</span> <span class="s2">&#34;2 as y&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span>
+<span class="n">irb</span><span class="p">(</span><span class="n">main</span><span class="p">):</span><span class="mo">002</span><span class="p">:</span><span class="mi">0</span><span class="o">&gt;</span> <span class="n">apple</span><span class="o">.</span><span class="n">x</span>
+<span class="o">=&gt;</span> <span class="mi">1</span></code></pre></div>
 <p>では<code>apple.y</code>には何が入っているか。</p>
-
-<pre><code>irb(main):003:0&gt; apple.y
-=&gt; nil
-irb(main):004:0&gt; apple.as_json
-=&gt; {&quot;id&quot;=&gt;nil, &quot;x&quot;=&gt;1, &quot;y&quot;=&gt;nil}
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-rb" data-lang="rb"><span class="n">irb</span><span class="p">(</span><span class="n">main</span><span class="p">):</span><span class="mo">003</span><span class="p">:</span><span class="mi">0</span><span class="o">&gt;</span> <span class="n">apple</span><span class="o">.</span><span class="n">y</span>
+<span class="o">=&gt;</span> <span class="kp">nil</span>
+<span class="n">irb</span><span class="p">(</span><span class="n">main</span><span class="p">):</span><span class="mo">004</span><span class="p">:</span><span class="mi">0</span><span class="o">&gt;</span> <span class="n">apple</span><span class="o">.</span><span class="n">as_json</span>
+<span class="o">=&gt;</span> <span class="p">{</span><span class="s2">&#34;id&#34;</span><span class="o">=&gt;</span><span class="kp">nil</span><span class="p">,</span> <span class="s2">&#34;x&#34;</span><span class="o">=&gt;</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&#34;y&#34;</span><span class="o">=&gt;</span><span class="kp">nil</span><span class="p">}</span></code></pre></div>
 <p>nilなのだ。attr_accessorの<code>#y</code>が優先されるらしい。SELECTした結果にアクセスするには<code>[:y]</code>とすればよい。</p>
-
-<pre><code>irb(main):005:0&gt; apple[:y]
-=&gt; 2
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-rb" data-lang="rb"><span class="n">irb</span><span class="p">(</span><span class="n">main</span><span class="p">):</span><span class="mo">005</span><span class="p">:</span><span class="mi">0</span><span class="o">&gt;</span> <span class="n">apple</span><span class="o">[</span><span class="ss">:y</span><span class="o">]</span>
+<span class="o">=&gt;</span> <span class="mi">2</span></code></pre></div>
 <p>attr_accessorをひとつ置いただけで、既存のコードが動かなくなる可能性をはらんでいる。というか、それでさっきハマったのだ。</p>
 
 <p>このあとxとyにそれぞれ代入すると、さらにわけがわからない。</p>
-
-<pre><code>irb(main):006:0&gt; apple.x = 3
-irb(main):007:0&gt; apple.y = 4
-irb(main):008:0&gt; apple.as_json
-=&gt; {&quot;id&quot;=&gt;nil, &quot;x&quot;=&gt;3, &quot;y&quot;=&gt;4}
-irb(main):009:0&gt; apple.x
-=&gt; 3
-irb(main):010:0&gt; apple[:x]
-=&gt; 3
-irb(main):011:0&gt; apple.y
-=&gt; 4
-irb(main):012:0&gt; apple[:y]
-=&gt; 1
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-rb" data-lang="rb"><span class="n">irb</span><span class="p">(</span><span class="n">main</span><span class="p">):</span><span class="mo">006</span><span class="p">:</span><span class="mi">0</span><span class="o">&gt;</span> <span class="n">apple</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">irb</span><span class="p">(</span><span class="n">main</span><span class="p">):</span><span class="mo">007</span><span class="p">:</span><span class="mi">0</span><span class="o">&gt;</span> <span class="n">apple</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">irb</span><span class="p">(</span><span class="n">main</span><span class="p">):</span><span class="mo">00</span><span class="mi">8</span><span class="p">:</span><span class="mi">0</span><span class="o">&gt;</span> <span class="n">apple</span><span class="o">.</span><span class="n">as_json</span>
+<span class="o">=&gt;</span> <span class="p">{</span><span class="s2">&#34;id&#34;</span><span class="o">=&gt;</span><span class="kp">nil</span><span class="p">,</span> <span class="s2">&#34;x&#34;</span><span class="o">=&gt;</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&#34;y&#34;</span><span class="o">=&gt;</span><span class="mi">4</span><span class="p">}</span>
+<span class="n">irb</span><span class="p">(</span><span class="n">main</span><span class="p">):</span><span class="mo">00</span><span class="mi">9</span><span class="p">:</span><span class="mi">0</span><span class="o">&gt;</span> <span class="n">apple</span><span class="o">.</span><span class="n">x</span>
+<span class="o">=&gt;</span> <span class="mi">3</span>
+<span class="n">irb</span><span class="p">(</span><span class="n">main</span><span class="p">):</span><span class="mo">010</span><span class="p">:</span><span class="mi">0</span><span class="o">&gt;</span> <span class="n">apple</span><span class="o">[</span><span class="ss">:x</span><span class="o">]</span>
+<span class="o">=&gt;</span> <span class="mi">3</span>
+<span class="n">irb</span><span class="p">(</span><span class="n">main</span><span class="p">):</span><span class="mo">011</span><span class="p">:</span><span class="mi">0</span><span class="o">&gt;</span> <span class="n">apple</span><span class="o">.</span><span class="n">y</span>
+<span class="o">=&gt;</span> <span class="mi">4</span>
+<span class="n">irb</span><span class="p">(</span><span class="n">main</span><span class="p">):</span><span class="mo">012</span><span class="p">:</span><span class="mi">0</span><span class="o">&gt;</span> <span class="n">apple</span><span class="o">[</span><span class="ss">:y</span><span class="o">]</span>
+<span class="o">=&gt;</span> <span class="mi">1</span></code></pre></div>
 <p>動的言語は強力だが、ときに怖い。</p>
 
   </section>

@@ -64,11 +64,8 @@
   <section id="js-article" class="p-article__body">
     <p>rails5でマイグレーションファイルを作成すると、rails5で作成された印がつくようになった。
 （まだベータ版だけど）</p>
-
-<pre><code>class CreateApples &lt; ActiveRecord::Migration[5.0]
-  def change
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-rb" data-lang="rb"><span class="k">class</span> <span class="nc">CreateApples</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span><span class="o">[</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span><span class="o">]</span>
+  <span class="k">def</span> <span class="nf">change</span></code></pre></div>
 <p>この<code>[5.0]</code>というのは、ぱっと見るとrubyの（隠された）機能のように見えるが、実は違う。</p>
 
 <ul>
@@ -76,21 +73,12 @@
 </ul>
 
 <p>ActiveRecord::Migrationクラスに[]という名前のクラスメソッドが定義されており、そのメソッドが（別の）クラスを返すのだ。</p>
-
-<pre><code>[1] pry(main)&gt; ActiveRecord::Migration[5.0]
-=&gt; ActiveRecord::Migration::Current
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-rb" data-lang="rb"><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span><span class="o">[</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span><span class="o">]</span>
+<span class="o">=&gt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span><span class="o">::</span><span class="no">Current</span></code></pre></div>
 <p>つまりこういうことだ。</p>
-
-<pre><code>class CreateApples &lt; ActiveRecord::Migration.[](5.0)
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-rb" data-lang="rb"><span class="k">class</span> <span class="nc">CreateApples</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span><span class="o">.</span><span class="n">[]</span><span class="p">(</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span><span class="p">)</span></code></pre></div>
 <p>もしくはこの方がわかりやすいか。</p>
-
-<pre><code>class CreateApples &lt; ActiveRecord::Migration.send('[]', 5.0)
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-rb" data-lang="rb"><span class="k">class</span> <span class="nc">CreateApples</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s1">&#39;[]&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="o">.</span><span class="mi">0</span><span class="p">)</span></code></pre></div>
 <p>さすがrubyである。</p>
 
   </section>

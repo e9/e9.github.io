@@ -63,19 +63,13 @@
   
   <section id="js-article" class="p-article__body">
     <p>RubyにもPythonにもloggerはある。loggerに重い処理を渡してしまった場合を考えよう。</p>
-
-<pre><code>logger.debug(long_time_method())
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-py" data-lang="py"><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">long_time_method</span><span class="p">())</span></code></pre></div>
 <p>どういう状況だこれは。</p>
 
 <p>では遅延評価されるオブジェクトを途中でデバッグ出力してるとしよう。これならありそう。</p>
-
-<pre><code>query = query.where(...)
-logger.debug(query.all())
-query = query.where(...)
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-py" data-lang="py"><span class="n">query</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">query</span><span class="o">.</span><span class="nb">all</span><span class="p">())</span>
+<span class="n">query</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="o">...</span><span class="p">)</span></code></pre></div>
 <p>このとき本番環境ではdebugログが出力されないとしても、query.all()は実行されてしまう。Pythonだとこれを回避するのは難しい。</p>
 
 <p>debugの行にログレベルを見るifを追加するとか、文字列化まで遅延評価されるクラスを間に挟むとか、苦しいアイデアがスタックオーバフローには書いてあった。</p>
@@ -85,10 +79,7 @@ query = query.where(...)
 </ul>
 
 <p>一方、Rubyは簡単で、ブロックに入れて渡せばよい。</p>
-
-<pre><code>logger.debug { query.all() }
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-rb" data-lang="rb"><span class="n">logger</span><span class="o">.</span><span class="n">debug</span> <span class="p">{</span> <span class="n">query</span><span class="o">.</span><span class="n">all</span><span class="p">()</span> <span class="p">}</span></code></pre></div>
   </section>
   <footer>
     

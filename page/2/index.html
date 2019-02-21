@@ -60,12 +60,12 @@
   <div class="c-article__summary">
     developをmasterに入れるときでも、masterをリリースブランチに入れるときでも、なんでもいいんだけど、2つのブランチの差分から、次に何がデプロイされるのかをだいたいで知りたいときがある。
 当然プルリクエストベースで開発しているはずなので、そういうときはマージコミットだけに注目すればよい。
-git log --first-parent --merges --reverse --pretty='%s %b' origin/master..origin/develop  プルリクエストのマージコミットに余計なコメントを入れていると改行が入ってややこしいが、そんなところにコメント書いてる人は見たことが無いので大丈夫。
+git log --first-parent --merges --reverse --pretty=&#39;%s %b&#39; origin/master..origin/develop プルリクエストのマージコミットに余計なコメントを入れていると改行が入ってややこしいが、そんなところにコメント書いてる人は見たことが無いので大丈夫。
 こんな風に表示される。
 Merge pull request #1 from e9/second-branch second commit Merge pull request #2 from e9/third-branch third commit  これをコピーしてGitHubのイシューやプルリクエストに貼り付ければ#の部分がリンクになって都合がよい。
 だけど貼り付ける先がGitHubじゃないときもある。esaとかbacklogとか。そういうときはマークダウンでリンクにしてあげたい。#の数字を切り取るのは簡単だけど、レポジトリのURLを手に入れるのは大変なので、ここは横着してgit-openを使う。
  https://github.com/paulirish/git-open  git-openを入れたら下記でよい。
-git log --first-parent --merges --reverse --pretty='%s %b' origin/master..origin/develop | while read line || [ -n &quot;$line&quot; ] do url=`echo $line | sed -e 's/^.*#\([0-9]*\).*$/\1/' | BROWSER=echo xargs git open --issue origin` echo &quot;- [$line]($url)&quot; done  これでマークダウンのリンクになるので、どこにでも貼れる。
+git log --first-parent --merges --reverse --pretty=&#39;%s %b&#39; origin/master..origin/develop | while read line || [ -n &#34;$line&#34; ] do url=`echo $line | sed -e &#39;s/^.*#\([0-9]*\).*$/\1/&#39; | BROWSER=echo xargs git open --issue origin` echo &#34;- [$line]($url)&#34; done これでマークダウンのリンクになるので、どこにでも貼れる。
   </div>
   
   <a href="https://e9.github.io/posts/1535977174/" class="c-article__btn p-list-article__btn">Read more</a>
@@ -87,12 +87,12 @@ git log --first-parent --merges --reverse --pretty='%s %b' origin/master..origin
   </header>
   <div class="c-article__summary">
     マークダウンで書けるブログサービスの選択肢が少ないのでgithub.ioを使うことにした。 いまどきはJekyllよりHugoらしい。わりと簡単に作れた。こんな感じで。
-hugo new site blog cd blog git init git remote add origin git@github.com:e9/blog.git  空のディレクトリばかりなのでfirst commitの前に.gitkeepを置いておく。
-for dir in `find . -not -path '*/\.*' -not -name '.*' -type d`; do touch $dir/.gitkeep; done git add . git commit -m 'hugo new site'  テーマはダウンロードして直接置いてもいいけど、gitのsubmoduleにしておくのがスマートだろう。
-git submodule add https://github.com/mismith0227/hugo_theme_pickles.git themes/pickles git add . git commit -m 'Add themes/pickles'  あとはpublicをgithub.ioのレポジトリのsubmoduleにして、publicに出力したファイルをpushするのがオーソドックスなやり方らしいんだけど、せっかくなんでCIサービスから自動でデプロイさせることにした。
+hugo new site blog cd blog git init git remote add origin git@github.com:e9/blog.git 空のディレクトリばかりなのでfirst commitの前に.gitkeepを置いておく。
+for dir in `find . -not -path &#39;*/\.*&#39; -not -name &#39;.*&#39; -type d`; do touch $dir/.gitkeep; done git add . git commit -m &#39;hugo new site&#39; テーマはダウンロードして直接置いてもいいけど、gitのsubmoduleにしておくのがスマートだろう。
+git submodule add https://github.com/mismith0227/hugo_theme_pickles.git themes/pickles git add . git commit -m &#39;Add themes/pickles&#39; あとはpublicをgithub.ioのレポジトリのsubmoduleにして、publicに出力したファイルをpushするのがオーソドックスなやり方らしいんだけど、せっかくなんでCIサービスから自動でデプロイさせることにした。
 いまどきはgithubのプライベートレポジトリは作り放題だし、Circle CIは1コンテナだけなら無料で使える。
 .circleci/config.ymlはこんな感じ。あらかじめCircleCIの鍵をGitHubに登録しておく。
-version: 2 jobs: build: branches: only: - master docker: - image: circleci/golang:stretch steps: - checkout - run: command: git submodule update --init --recursive - run: command: | git clone https://github.
+version:2jobs:build:branches:only:-masterdocker:-image:circleci/golang:stretchsteps:-checkout-run:command:gitsubmoduleupdate--init--recursive-run:command:| git clone https://github.com/e9/e9.github.io.git public rm -rf public/*-run:command:| wget https://github.
   </div>
   
   <a href="https://e9.github.io/posts/1535546215/" class="c-article__btn p-list-article__btn">Read more</a>
@@ -114,15 +114,13 @@ version: 2 jobs: build: branches: only: - master docker: - image: circleci/golan
   </header>
   <div class="c-article__summary">
     $ bin/rails -v Rails 5.0.0.rc1  こういうモデルがあるとする。
-class Apple &lt; ApplicationRecord attr_accessor :y end  実装内容の良し悪しはさておき、下記を実行する。
-irb(main):001:0&gt; apple = Apple.select(&quot;1 as x&quot;, &quot;2 as y&quot;).first irb(main):002:0&gt; apple.x =&gt; 1  ではapple.yには何が入っているか。
-irb(main):003:0&gt; apple.y =&gt; nil irb(main):004:0&gt; apple.as_json =&gt; {&quot;id&quot;=&gt;nil, &quot;x&quot;=&gt;1, &quot;y&quot;=&gt;nil}  nilなのだ。attr_accessorの#yが優先されるらしい。SELECTした結果にアクセスするには[:y]とすればよい。
-irb(main):005:0&gt; apple[:y] =&gt; 2  attr_accessorをひとつ置いただけで、既存のコードが動かなくなる可能性をはらんでいる。というか、それでさっきハマったのだ。
+class Apple &lt; ApplicationRecord attr_accessor :y end 実装内容の良し悪しはさておき、下記を実行する。
+irb(main):001:0&gt; apple = Apple.select(&#34;1 as x&#34;, &#34;2 as y&#34;).first irb(main):002:0&gt; apple.x =&gt; 1 ではapple.yには何が入っているか。
+irb(main):003:0&gt; apple.y =&gt; nil irb(main):004:0&gt; apple.as_json =&gt; {&#34;id&#34;=&gt;nil, &#34;x&#34;=&gt;1, &#34;y&#34;=&gt;nil} nilなのだ。attr_accessorの#yが優先されるらしい。SELECTした結果にアクセスするには[:y]とすればよい。
+irb(main):005:0&gt; apple[:y] =&gt; 2 attr_accessorをひとつ置いただけで、既存のコードが動かなくなる可能性をはらんでいる。というか、それでさっきハマったのだ。
 このあとxとyにそれぞれ代入すると、さらにわけがわからない。
-irb(main):006:0&gt; apple.x = 3 irb(main):007:0&gt; apple.y = 4 irb(main):008:0&gt; apple.as_json =&gt; {&quot;id&quot;=&gt;nil, &quot;x&quot;=&gt;3, &quot;y&quot;=&gt;4} irb(main):009:0&gt; apple.x =&gt; 3 irb(main):010:0&gt; apple[:x] =&gt; 3 irb(main):011:0&gt; apple.
+irb(main):006:0&gt; apple.x = 3 irb(main):007:0&gt; apple.y = 4 irb(main):008:0&gt; apple.as_json =&gt; {&#34;id&#34;=&gt;nil, &#34;x&#34;=&gt;3, &#34;y&#34;=&gt;4} irb(main):009:0&gt; apple.x =&gt; 3 irb(main):010:0&gt; apple[:x] =&gt; 3 irb(main):011:0&gt; apple.y =&gt; 4 irb(main):012:0&gt; apple[:y] =&gt; 1 動的言語は強力だが、ときに怖い。
   </div>
-  
-  <a href="https://e9.github.io/posts/1463633653/" class="c-article__btn p-list-article__btn">Read more</a>
   
 </article>
 
@@ -141,11 +139,11 @@ irb(main):006:0&gt; apple.x = 3 irb(main):007:0&gt; apple.y = 4 irb(main):008:0&
   </header>
   <div class="c-article__summary">
     rails5でマイグレーションファイルを作成すると、rails5で作成された印がつくようになった。 （まだベータ版だけど）
-class CreateApples &lt; ActiveRecord::Migration[5.0] def change  この[5.0]というのは、ぱっと見るとrubyの（隠された）機能のように見えるが、実は違う。
+class CreateApples &lt; ActiveRecord::Migration[5.0] def change この[5.0]というのは、ぱっと見るとrubyの（隠された）機能のように見えるが、実は違う。
  [https://github.com/rails/rails/commit/6940dc860c4b25bff2eded370f2af4316de15a30#diff-8d3c44120f7b67ff79e2fbe6a40d0ad6R492:title]  ActiveRecord::Migrationクラスに[]という名前のクラスメソッドが定義されており、そのメソッドが（別の）クラスを返すのだ。
-[1] pry(main)&gt; ActiveRecord::Migration[5.0] =&gt; ActiveRecord::Migration::Current  つまりこういうことだ。
-class CreateApples &lt; ActiveRecord::Migration.[](5.0)  もしくはこの方がわかりやすいか。
-class CreateApples &lt; ActiveRecord::Migration.send('[]', 5.0)  さすがrubyである。
+[1] pry(main)&gt; ActiveRecord::Migration[5.0] =&gt; ActiveRecord::Migration::Current つまりこういうことだ。
+class CreateApples &lt; ActiveRecord::Migration.[](5.0) もしくはこの方がわかりやすいか。
+class CreateApples &lt; ActiveRecord::Migration.send(&#39;[]&#39;, 5.0) さすがrubyである。
   </div>
   
 </article>
@@ -165,7 +163,7 @@ class CreateApples &lt; ActiveRecord::Migration.send('[]', 5.0)  さすがruby�
   </header>
   <div class="c-article__summary">
     いつの間にかrailsのscaffoldで作成したコントローラがbefore_actionで変数を仕込むようになっていた。普段まったく使わないので気付かなかった。
- https://github.com/rails/rails/commit/339e4e80d514bd94fcb0e15689db43e5de83642a  class &lt;%= controller_class_name %&gt;Controller &lt; ApplicationController before_action :set_&lt;%= singular_table_name %&gt;, except: [ :index, :new, :create ] private # Use callbacks to share common setup or constraints between actions. def set_&lt;%= singular_table_name %&gt; @&lt;%= singular_table_name %&gt; = &lt;%= orm_class.find(class_name, &quot;params[:id]&quot;) %&gt; end   Let the scaffold example use the &ldquo;set shared record&rdquo; pattern to explain callbacks
+ https://github.com/rails/rails/commit/339e4e80d514bd94fcb0e15689db43e5de83642a  class &lt;%= controller_class_name %&gt;Controller &lt; ApplicationController before_action :set_&lt;%= singular_table_name %&gt;, except: [ :index, :new, :create ] private # Use callbacks to share common setup or constraints between actions. def set_&lt;%= singular_table_name %&gt; @&lt;%= singular_table_name %&gt; = &lt;%= orm_class.find(class_name, &#34;params[:id]&#34;) %&gt; end  Let the scaffold example use the &ldquo;set shared record&rdquo; pattern to explain callbacks
  だけどこれは経験的に知っていることなんだけど、before_actionで変数を代入すると見通しが悪くなるのだ。
 特に多人数で開発しているときに誰かがそれをやりだすと、before_actionに次ぐbefore_actionで、いったいどのアクションがどのbefore_actionを呼んでいるのか、わけがわからなくなる。
 同じことを考えてる人は結構いる。
