@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://e9.github.io/privacy-policy/</loc>
+    <loc>https://e9.github.io/tsumelt/privacy-policy/</loc>
     <lastmod>2019-02-21T00:00:00+00:00</lastmod>
   </url>
   
@@ -249,6 +249,11 @@
     <loc>https://e9.github.io/</loc>
     <lastmod>2019-02-21T00:00:00+00:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://e9.github.io/tsumelt/</loc>
+    <lastmod>2019-02-21T00:00:00+00:00</lastmod>
   </url>
   
 </urlset>
