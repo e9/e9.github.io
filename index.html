@@ -59,7 +59,7 @@
   </header>
   <div class="c-article__summary">
     単純に実装すると、webworkerの中からwasmはimportできない。エラーメッセージでググれば同じ轍を踏んだ先人が何人も見つかる。
- https://github.com/webpack/webpack/issues/7647 https://www.mizdra.net/entry/2018/10/17/080000 https://imasanari.github.io/blog/wasm-bindgen-with-worker/  craをejecetすれば解決はできるんだけど、信条としてそれはやりたくない。じゃあどうすればいいのかというと、worker-loaderでもcomlink-loaderでもreact-app-rewire-multiple-entryでもなく、worker-pluginを使うのが正解だ。（これにたどり着くのに2日くらいかかった）
+ https://github.com/webpack/webpack/issues/7647 https://www.mizdra.net/entry/2018/10/17/080000 https://imasanari.github.io/blog/wasm-bindgen-with-worker/  craをejectすれば解決はできるんだけど、信条としてそれはやりたくない。じゃあどうすればいいのかというと、worker-loaderでもcomlink-loaderでもreact-app-rewire-multiple-entryでもなく、worker-pluginを使うのが正解だ。（これにたどり着くのに2日くらいかかった）
  https://github.com/GoogleChromeLabs/worker-plugin  customize-craを入れて
 const path = require(&#39;path&#39;); const { override, addWebpackPlugin } = require(&#39;customize-cra&#39;); const WorkerPlugin = require(&#39;worker-plugin&#39;); module.exports = override( addWebpackPlugin(new WorkerPlugin()), config =&gt; { const wasmExtensionRegExp = /.wasm$/; config.resolve.extensions.push(&#39;.wasm&#39;); config.module.rules.forEach(rule =&gt; { (rule.oneOf || []).forEach(oneOf =&gt; { if (oneOf.loader &amp;&amp; oneOf.loader.indexOf(&#39;file-loader&#39;) &gt;= 0) { oneOf.exclude.push(wasmExtensionRegExp); } }); }); config.module.rules.push({ test: wasmExtensionRegExp, include: path.resolve(__dirname, &#39;src&#39;), use: [{ loader: require.resolve(&#39;wasm-loader&#39;), options: {} }], }); return config; } );  こうするだけ。
   </div>
