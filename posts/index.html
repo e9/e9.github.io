@@ -48,6 +48,28 @@
 
 <article class="c-article p-list-article">
   <header>
+    <h2 class="c-title c-article__title"><a href="https://e9.github.io/posts/1586883947/">create-react-appをejectせずwebworkerからwasmを実行することはできる</a></h2>
+    <p class="c-article__meta">
+      Posted on
+      <time datetime="2020-04-15T02:05:47&#43;09:00">
+        Apr 15, 2020
+      </time>
+    </p>
+  </header>
+  <div class="c-article__summary">
+    単純に実装すると、webworkerの中からwasmはimportできない。エラーメッセージでググれば同じ轍を踏んだ先人が何人も見つかる。
+ https://github.com/webpack/webpack/issues/7647 https://www.mizdra.net/entry/2018/10/17/080000 https://imasanari.github.io/blog/wasm-bindgen-with-worker/  craをejecetすれば解決はできるんだけど、信条としてそれはやりたくない。じゃあどうすればいいのかというと、worker-loaderでもcomlink-loaderでもreact-app-rewire-multiple-entryでもなく、worker-pluginを使うのが正解だ。（これにたどり着くのに2日くらいかかった）
+ https://github.com/GoogleChromeLabs/worker-plugin  customize-craを入れて
+const path = require(&#39;path&#39;); const { override, addWebpackPlugin } = require(&#39;customize-cra&#39;); const WorkerPlugin = require(&#39;worker-plugin&#39;); module.exports = override( addWebpackPlugin(new WorkerPlugin()), config =&gt; { const wasmExtensionRegExp = /.wasm$/; config.resolve.extensions.push(&#39;.wasm&#39;); config.module.rules.forEach(rule =&gt; { (rule.oneOf || []).forEach(oneOf =&gt; { if (oneOf.loader &amp;&amp; oneOf.loader.indexOf(&#39;file-loader&#39;) &gt;= 0) { oneOf.exclude.push(wasmExtensionRegExp); } }); }); config.module.rules.push({ test: wasmExtensionRegExp, include: path.resolve(__dirname, &#39;src&#39;), use: [{ loader: require.resolve(&#39;wasm-loader&#39;), options: {} }], }); return config; } );  こうするだけ。
+  </div>
+  
+</article>
+
+
+
+
+<article class="c-article p-list-article">
+  <header>
     <h2 class="c-title c-article__title"><a href="https://e9.github.io/posts/1548328800/">gomobileで非同期な関数を扱いたい</a></h2>
     <p class="c-article__meta">
       Posted on
@@ -263,31 +285,6 @@ logger.debug { query.all() }
 </article>
 
 
-
-
-<article class="c-article p-list-article">
-  <header>
-    <h2 class="c-title c-article__title"><a href="https://e9.github.io/posts/1536059641/">テストでだけ使いたい共通関数はGolangの場合どこに置くのか</a></h2>
-    <p class="c-article__meta">
-      Posted on
-      <time datetime="2018-09-04T20:14:01&#43;09:00">
-        Sep 4, 2018
-      </time>
-    </p>
-  </header>
-  <div class="c-article__summary">
-    例えばこんなパッケージがあったとして。
-package x func X() string { return &#34;x&#34; }package x_test import ( &#34;testing&#34; &#34;app/x&#34; ) func TestX(t *testing.T) { if !assert(x.X(), &#34;x&#34;) { t.Fatal(&#34;not x&#34;) } } func assert(a string, b string) bool { return a == b } assert関数を他のパッケージのテストでも使いたくなったとする。
-その場合、assertをAssertにしてimport x_testすれば他のパッケージからもx_test.Assertが使えるようになる。かと思いきやならない。
-もちろんpackage xの方に移して、x.Assertとすれば呼べる。当たり前だ。だけどテストでしか使わない関数がそこにいるのは気持ち悪い。
-どうするのがいいのかちょっと調べたところ、スタックオーバフローによれば*_testではない専用のパッケージを作ってそこに入れろと。
- https://stackoverflow.com/a/31794241  つまりこういうことか。
-package x_test import ( &#34;testing&#34; &#34;app/hogetest&#34; ) func TestX(t *testing.T) { if !hogetest.Assert(x.X(), &#34;x&#34;) { t.Fatal(&#34;not x&#34;) } }package hogetest func Assert(a string, b string) bool { return a == b } ビルド時はhogetestをimportしなければいい。うーん、まあ、わかるけど、あまりすっきりとした気持ちにはならなかった。
-  </div>
-  
-</article>
-
-
 <nav class="c-pagination p-pagination">
   <div class="c-pagination__ctrl">
     <div class="c-pagination__newer">
@@ -327,7 +324,7 @@ package x_test import ( &#34;testing&#34; &#34;app/hogetest&#34; ) func TestX(t 
       
         
         &nbsp;&bull;&nbsp;
-        2019
+        2020
 
         
           &nbsp;&bull;&nbsp;

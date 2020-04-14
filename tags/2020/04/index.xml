@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>2020/04 on e9.github.io</title>
+    <link>https://e9.github.io/tags/2020/04/</link>
+    <description>Recent content in 2020/04 on e9.github.io</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Wed, 15 Apr 2020 02:05:47 +0900</lastBuildDate>
+    
+	<atom:link href="https://e9.github.io/tags/2020/04/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>create-react-appをejectせずwebworkerからwasmを実行することはできる</title>
+      <link>https://e9.github.io/posts/1586883947/</link>
+      <pubDate>Wed, 15 Apr 2020 02:05:47 +0900</pubDate>
+      
+      <guid>https://e9.github.io/posts/1586883947/</guid>
+      <description>単純に実装すると、webworkerの中からwasmはimportできない。エラーメッセージでググれば同じ轍を踏んだ先人が何人も見つかる。
+ https://github.com/webpack/webpack/issues/7647 https://www.mizdra.net/entry/2018/10/17/080000 https://imasanari.github.io/blog/wasm-bindgen-with-worker/  craをejecetすれば解決はできるんだけど、信条としてそれはやりたくない。じゃあどうすればいいのかというと、worker-loaderでもcomlink-loaderでもreact-app-rewire-multiple-entryでもなく、worker-pluginを使うのが正解だ。（これにたどり着くのに2日くらいかかった）
+ https://github.com/GoogleChromeLabs/worker-plugin  customize-craを入れて
+const path = require(&amp;#39;path&amp;#39;); const { override, addWebpackPlugin } = require(&amp;#39;customize-cra&amp;#39;); const WorkerPlugin = require(&amp;#39;worker-plugin&amp;#39;); module.exports = override( addWebpackPlugin(new WorkerPlugin()), config =&amp;gt; { const wasmExtensionRegExp = /.wasm$/; config.resolve.extensions.push(&amp;#39;.wasm&amp;#39;); config.module.rules.forEach(rule =&amp;gt; { (rule.oneOf || []).forEach(oneOf =&amp;gt; { if (oneOf.loader &amp;amp;&amp;amp; oneOf.loader.indexOf(&amp;#39;file-loader&amp;#39;) &amp;gt;= 0) { oneOf.exclude.push(wasmExtensionRegExp); } }); }); config.module.rules.push({ test: wasmExtensionRegExp, include: path.resolve(__dirname, &amp;#39;src&amp;#39;), use: [{ loader: require.resolve(&amp;#39;wasm-loader&amp;#39;), options: {} }], }); return config; } );  こうするだけ。</description>
+    </item>
+    
+  </channel>
+</rss>
