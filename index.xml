@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>e9.github.io</title>
@@ -12,26 +12,21 @@
     
     
     <item>
+      <title>私について</title>
+      <link>https://e9.github.io/about/</link>
+      <pubDate>Mon, 27 Jul 2020 03:42:00 +0900</pubDate>
+      
+      <guid>https://e9.github.io/about/</guid>
+      <description>ばけらった。</description>
+    </item>
+    
+    <item>
       <title>create-react-appをejectせずwebworkerからwasmを実行することはできる</title>
       <link>https://e9.github.io/posts/1586883947/</link>
       <pubDate>Wed, 15 Apr 2020 02:05:47 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1586883947/</guid>
-      <description>単純に実装すると、webworkerの中からwasmはimportできない。エラーメッセージでググれば同じ轍を踏んだ先人が何人も見つかる。
- https://github.com/webpack/webpack/issues/7647 https://www.mizdra.net/entry/2018/10/17/080000 https://imasanari.github.io/blog/wasm-bindgen-with-worker/  craをejectすれば解決はできるんだけど、信条としてそれはやりたくない。じゃあどうすればいいのかというと、worker-loaderでもcomlink-loaderでもreact-app-rewire-multiple-entryでもなく、worker-pluginを使うのが正解だ。（これにたどり着くのに2日くらいかかった）
- https://github.com/GoogleChromeLabs/worker-plugin  customize-craを入れて
-const path = require(&amp;#39;path&amp;#39;); const { override, addWebpackPlugin } = require(&amp;#39;customize-cra&amp;#39;); const WorkerPlugin = require(&amp;#39;worker-plugin&amp;#39;); module.exports = override( addWebpackPlugin(new WorkerPlugin()), config =&amp;gt; { const wasmExtensionRegExp = /.wasm$/; config.resolve.extensions.push(&amp;#39;.wasm&amp;#39;); config.module.rules.forEach(rule =&amp;gt; { (rule.oneOf || []).forEach(oneOf =&amp;gt; { if (oneOf.loader &amp;amp;&amp;amp; oneOf.loader.indexOf(&amp;#39;file-loader&amp;#39;) &amp;gt;= 0) { oneOf.exclude.push(wasmExtensionRegExp); } }); }); config.module.rules.push({ test: wasmExtensionRegExp, include: path.resolve(__dirname, &amp;#39;src&amp;#39;), use: [{ loader: require.resolve(&amp;#39;wasm-loader&amp;#39;), options: {} }], }); return config; } );  こうするだけ。</description>
-    </item>
-    
-    <item>
-      <title>プライバシーポリシー</title>
-      <link>https://e9.github.io/tsumelt/privacy-policy/</link>
-      <pubDate>Thu, 21 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://e9.github.io/tsumelt/privacy-policy/</guid>
-      <description>個人を特定できる情報を第三者に提供することはありません。
-利用者の許可なく将棋の図面を端末外に送信することはありません。また、利用者の許可のもと送信された場合も、その情報を第三者に提供することはありません。
-アプリの改善に役立てるため、個人を特定できない範囲でアプリの動作ログを収集しています。</description>
+      <description>単純に実装すると、webworkerの中からwasmはimportできない。エラーメッセージでググれば同じ轍を踏んだ先人が何人も見つかる。 https://github.com/webpack/webpack/issues/7647 https://www.mizdra.net/entry/2018/10/17/080000 https://imasanari.github.io/blog/wasm-bindgen-with-worker/ craをejectすれば解決はできるんだけど、信条として</description>
     </item>
     
     <item>
@@ -40,9 +35,7 @@ const path = require(&amp;#39;path&amp;#39;); const { override, addWebpackPlugin
       <pubDate>Thu, 24 Jan 2019 20:20:00 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1548328800/</guid>
-      <description>gomobileでiOS向けのライブラリを書いている。
-$ gomobile version gomobile version +dc07713 Mon Jan 7 16:22:57 2019 +0000 (android,ios); androidSDK=  package main import &amp;#34;app/x&amp;#34; func main() { x.X() }package x func X() { } この関数Xが非同期で動くとして、その結果をメインに返したいとき、セオリーとしてはコールバックの追加だろう。
-package main import ( &amp;#34;app/x&amp;#34; &amp;#34;log&amp;#34; ) func main() { c := make(chan struct{}, 0) x.X(func() { log.Println(&amp;#34;two&amp;#34;) close(c) }) log.Println(&amp;#34;one&amp;#34;) &amp;lt;-c }package x import &amp;#34;time&amp;#34; func X(callback func()) { go (func() { time.Sleep(1 * time.Second) callback() })() } ところがどっこいこの関数はgomobile bindの対象にはならないのだ。</description>
+      <description>gomobileでiOS向けのライブラリを書いている。 $ gomobile version gomobile version +dc07713 Mon Jan 7 16:22:57 2019 +0000 (android,ios); androidSDK= package main import &amp;quot;app/x&amp;quot; func main() { x.X() } package x func X() { } この関数Xが非同期で動くとして、その結果をメインに返したいとき、セオリーとしてはコールバ</description>
     </item>
     
     <item>
@@ -51,13 +44,7 @@ package main import ( &amp;#34;app/x&amp;#34; &amp;#34;log&amp;#34; ) func main(
       <pubDate>Tue, 04 Dec 2018 22:57:36 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1543931855/</guid>
-      <description>Pythonで
-x, y = 1 if true_or_false else 2, 3 というコードを目にした。ぱっと見での自分の解釈ではこうなる。
-x, y = (1) if true_or_false else (2, 3) これはtrue_or_falseがTrueのときにyの値が足りずランタイムエラーになる。
-ので、レビューにそう書こうと思ったんだけど、ちゃんと確かめると、実際にはこのように動くらしい。
-x, y = ((1 if true_or_false else 2), 3) なのでエラーにならない。なるほどー。これは気付きづらい。
-だけど、まあ、普通はこう書きますわな。 
-x = 1 if true_or_false else 2 y = 3</description>
+      <description>Pythonで x, y = 1 if true_or_false else 2, 3 というコードを目にした。ぱっと見での自分の解釈ではこうなる。 x, y = (1) if true_or_false else (2, 3) これはtrue_or_falseがTrueのときにyの値が足りずランタイムエラーになる</description>
     </item>
     
     <item>
@@ -66,12 +53,7 @@ x = 1 if true_or_false else 2 y = 3</description>
       <pubDate>Fri, 30 Nov 2018 21:21:52 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1543580512/</guid>
-      <description>XとYという2つのウェブサイトを開発している。ユーザーはXでアクションAを起こすと、Yにリダイレクトされ、YでアクションBを起こすと、再びXにリダイレクトで帰ってくる。まあ、単純な話だ。
-だけどそれを普通に作ったら、なぜかはじめにXで張ったセッションが帰ってきたときには消えていて、別のユーザーとして扱われるという不可解なバグに悩まされた。
-セッションを張るというのは、仕組みとしてはセッションIDをクッキーに書き込んでいるだけなので、つまり行って帰ってくるとクッキーが消えるのだ。不思議。
-リクエスト、レスポンスを確認すると、YからXに遷移してXにリクエストを送る際、リクエストヘッダにクッキーが含まれていないことが分かった。つまり消えてるわけではなくて、無視されているのだ。Xはクッキー無しでアクセスしてきた未知のユーザーに新たなセッションIDを作り、レスポンスヘッダでセットクッキーしていた。
-YからXにリダイレクトする方法を、レスポンスヘッダでやったり、HTMLのmetaタグでやったり、JavaScriptのlocation.href書き換えでやったり、リンクを表示して自分でクリックしたりしても、同じ結果だった。唯一セッションが継続するのはリダイレクト先のXのURLを、自分でアドレスバーに貼り付けてアクセスしたときだけ。Refererを見てるのか……？
-解決編。クッキーにはSame Site属性があるんですって。知らなかったー。Xで使ってるフレームワークがデフォルトでSame Siteでクッキーに書き込んでいるのでした。</description>
+      <description>XとYという2つのウェブサイトを開発している。ユーザーはXでアクションAを起こすと、Yにリダイレクトされ、YでアクションBを起こすと、再びXにリダイレクトで帰ってくる。まあ、単純な話だ。 だけどそれを普</description>
     </item>
     
     <item>
@@ -80,10 +62,7 @@ YからXにリダイレクトする方法を、レスポンスヘッダでやっ
       <pubDate>Tue, 20 Nov 2018 20:07:07 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1542712026/</guid>
-      <description>assert_equalの引数は、だいたいの言語ではexpectedが先で
- http://test-unit.github.io/test-unit/en/Test/Unit/Assertions.html#assert_equal-instance_method https://phpunit.de/manual/6.5/en/appendixes.assertions.html#appendixes.assertions.assertEquals http://junit.sourceforge.net/javadoc/org/junit/Assert.html#assertEquals(double,%20double)  めずらしくnodeはactualが先なんだけど
- https://nodejs.org/api/assert.html#assert_assert_equal_actual_expected_message  Pythonはfirstとsecondになっていて、すごい割り切り方だと思った。
- https://docs.python.jp/3/library/unittest.html#unittest.TestCase.assertEqual  </description>
+      <description>assert_equalの引数は、だいたいの言語ではexpectedが先で http://test-unit.github.io/test-unit/en/Test/Unit/Assertions.html#assert_equal-instance_method https://phpunit.de/manual/6.5/en/appendixes.assertions.html#appendixes.assertions.assertEquals http://junit.sourceforge.net/javadoc/org/junit/Assert.html#assertEquals(double,%20double) めずらしくnodeはactualが先なんだけど https://nodejs.org/api/assert.html#assert_assert_equal_actual_expected_message Pythonはfirstとsecondになっていて、すごい割り切り方だと</description>
     </item>
     
     <item>
@@ -92,17 +71,7 @@ YからXにリダイレクトする方法を、レスポンスヘッダでやっ
       <pubDate>Fri, 09 Nov 2018 21:18:20 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1541765899/</guid>
-      <description>数年放置したRailsプロジェクトのフロントエンドをどうにかしたくなったので、手っ取り早くfrontendディレクトリの中で create-react-appして、その成果物をRailsのアセットパイプラインから参照することにした。
-Rails.application.config.assets.paths &amp;lt;&amp;lt; Rails.root.join(&amp;#39;frontend&amp;#39;)//= require_tree ./../../../frontend/build/static/js//= require_tree ./../../../frontend/build/static/css 雑だけど、とりあえずまあこれで動いた。
-数年放置したプロジェクトだけあってRails4系なので、Rails5だとちょっと違うかもしれないけど 、今回の話の本質はそこではない。
-問題はCSSが参照している画像だ。
-アセットパイプラインを通すと画像のファイル名にフィンガープリントがつく。RailsでCSSに画像のパスを記述するときはimage-urlやasset-urlといったヘルパを使うことになっている。今回のCSSはcreate-react-appが自動生成しており、これはちょっと大変そうだ。
-create-react-appが書き出した画像をpublic下に置く手もあるが、ここではすべての画像をCSSの中にData URI schemeで埋め込んでみることにする。create-react-appは標準で、小さな画像ならCSSの中に埋め込んでいるからだ。それがここ。
- https://github.com/facebook/create-react-app/blob/30ee52c/packages/react-scripts/config/webpack.config.js#L336-L343  limitが10000なので10KBまでの画像なら埋め込まれる設定になっている。したがって、このlimitを増やせれば、画像をすべてCSSの中に埋め込むことができる。
-といってもこのwebpack.config.jsはcreate-react-appの中に隠蔽されていて、手を入れるには普通はejectするしかない。しかしせっかくcreate-react-appを使っているのにejectはしたくない。そこでreact-app-rewiredを使うことにしよう。
- https://github.com/timarney/react-app-rewired  READMEにCRA2.0はサポートしていないと書いてあるけど、limitを書き換えるくらいなら問題なく使えた。
- https://github.com/timarney/react-app-rewired/blob/74480b2/README.md  だいたいこんな感じ。
-const rewired = require(&amp;#34;react-app-rewired&amp;#34;) module.exports = { webpack: function(config, env) { const loader = rewired.getLoader( config.module.rules, rule =&amp;gt; rule.test &amp;amp;&amp;amp; String(rule.test) === String([/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/]) ) loader.options.limit = 500000 return config } }  とりあえず今回使っている画像は最大でも300KB程度だったので、limitを500KBまで増やすことで無事にすべての画像をCSSに埋め込むことができた。そのおかげでCSSファイルだけで1MBになっちゃったけど。</description>
+      <description>数年放置したRailsプロジェクトのフロントエンドをどうにかしたくなったので、手っ取り早くfrontendディレクトリの中で create-react-appして、その成果物をRailsのアセットパイプ</description>
     </item>
     
     <item>
@@ -111,12 +80,7 @@ const rewired = require(&amp;#34;react-app-rewired&amp;#34;) module.exports = { 
       <pubDate>Wed, 31 Oct 2018 19:36:34 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1540982193/</guid>
-      <description>普段は Redis の読み書きなんてフレームワークにまかせていて、オブジェクトならだいたいシリアライズして保存されているわけだけど、今回たまたま Redis を直で使うことがあった。ハッシュ、連想配列、辞書、まあとにかくそんなものを保存したい。
-単純にやるなら JSON 文字列に変換して保存すればいいわけだけど、シリアライズには多少なりとも時間がかかる。そもそも Redis はハッシュが扱えるので、そのままハッシュとして保存すればいいんじゃないか？と思った。
-で、ドキュメントを見たんだけど、Redis のハッシュは O(N)らしいのだ。
- http://redis.shibu.jp/commandreference/hashes.html  うーん、それじゃあ JSON とどっちが速いのかは分からない。
-ちゃんと調べた人もいて、それによると JSON の方が速いらしい。まあ、微々たるもんだからどっちでもいいんだけど。
- https://symfoware.blog.fc2.com/blog-entry-1446.html  </description>
+      <description>普段は Redis の読み書きなんてフレームワークにまかせていて、オブジェクトならだいたいシリアライズして保存されているわけだけど、今回たまたま Redis を直で使うことがあった。ハッシュ、連想配列、辞書、まあとにかくそん</description>
     </item>
     
     <item>
@@ -125,12 +89,7 @@ const rewired = require(&amp;#34;react-app-rewired&amp;#34;) module.exports = { 
       <pubDate>Thu, 18 Oct 2018 19:40:15 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1539859215/</guid>
-      <description>Python。dict か list のいずれかが入っている変数に対して、ループで回してある処理をすることになった。
-型が違うのだから違うコードで回すべきだという論もあるだろうが、せっかく LL で書いているのだから、全く同じコードで処理したいところ。
-結局自分はこうした。
-items = dict_or_list.items() if isinstance(dict_or_list, dict) else enumerate(dict_or_list) for key, value in items: print(key, value) 条件分岐があまり美しくない気がしたけど、より良い方法が思いつかなかった。
-Ruby だともうちょっと美しく書ける。
-hash_or_array.each_with_index{ |(k, v), i| value, key = [v, k, i].compact p [key, value] } まあ、これが美しいコードなのかは異論あるだろうけど、条件分岐が無いのが売りである。</description>
+      <description>Python。dict か list のいずれかが入っている変数に対して、ループで回してある処理をすることになった。 型が違うのだから違うコードで回すべきだという論もあるだろうが、せっかく LL で書いているのだから、全</description>
     </item>
     
     <item>
@@ -139,11 +98,7 @@ hash_or_array.each_with_index{ |(k, v), i| value, key = [v, k, i].compact p [key
       <pubDate>Fri, 28 Sep 2018 22:58:00 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1538143080/</guid>
-      <description>指定回数ループしたいときがある。Rubyだとわかりやすく10.times { }と書ける。範囲オブジェクトを作って回す手もある。for i in 0..&amp;lt;10 { }みたいな。いまのはSwiftだけど。
-JavaScriptについてぐぐると[...Array(10)].forEach(()=&amp;gt;{ })というコードが見つかる。Array(10)だけだと値が無なので[...Array(10)]と、わざわざスプレッドするひと手間が加わっていて、やや黒魔術的だ。
- https://stackoverflow.com/a/37417004  だけどこれを、ターゲットをes5にしたTypeScriptで書くと途端に動かなくなる。[...Array(10)]がArray(10).slice()にトランスパイルされてしまうからだ。代わりにArray.from(Array(10))とかArray(10).fill()とかしてる人もいるけど、fromもfillもES6なので、だったらターゲットをes6にして[...Array(10)]を使えばよいのではと思う。
-ということでArray.apply(null, {length: 10})というテクニックがあることを知った。
- https://stackoverflow.com/a/30452520 https://blog.scheakur.com/post/96000209437/javascriptで0からn-1までを要素にもつarrayを作成する方法  applyの第2引数がArray-like objectを要求するので{length: 10}を渡すことで要素が10個ある配列が生成されるらしい。2018年に書くコードではない気もするが。</description>
+      <description>指定回数ループしたいときがある。Rubyだとわかりやすく10.times { }と書ける。範囲オブジェクトを作って回す手もある。for i in 0..&amp;lt;10 { }みたいな。いまのはSwiftだけど。 JavaScriptにつ</description>
     </item>
     
     <item>
@@ -152,13 +107,7 @@ JavaScriptについてぐぐると[...Array(10)].forEach(()=&amp;gt;{ })とい�
       <pubDate>Mon, 10 Sep 2018 21:06:00 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1536581159/</guid>
-      <description>RubyにもPythonにもloggerはある。loggerに重い処理を渡してしまった場合を考えよう。
-logger.debug(long_time_method()) どういう状況だこれは。
-では遅延評価されるオブジェクトを途中でデバッグ出力してるとしよう。これならありそう。
-query = query.where(...) logger.debug(query.all()) query = query.where(...) このとき本番環境ではdebugログが出力されないとしても、query.all()は実行されてしまう。Pythonだとこれを回避するのは難しい。
-debugの行にログレベルを見るifを追加するとか、文字列化まで遅延評価されるクラスを間に挟むとか、苦しいアイデアがスタックオーバフローには書いてあった。
- https://stackoverflow.com/questions/4148790/lazy-logger-message-string-evaluation/22205835#22205835  一方、Rubyは簡単で、ブロックに入れて渡せばよい。
-logger.debug { query.all() }</description>
+      <description>RubyにもPythonにもloggerはある。loggerに重い処理を渡してしまった場合を考えよう。 logger.debug(long_time_method()) どういう状況だこれは。 では遅延評価されるオブジェクトを途中でデバッグ出力してるとしよう。これなら</description>
     </item>
     
     <item>
@@ -167,13 +116,7 @@ logger.debug { query.all() }</description>
       <pubDate>Tue, 04 Sep 2018 20:14:01 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1536059641/</guid>
-      <description>例えばこんなパッケージがあったとして。
-package x func X() string { return &amp;#34;x&amp;#34; }package x_test import ( &amp;#34;testing&amp;#34; &amp;#34;app/x&amp;#34; ) func TestX(t *testing.T) { if !assert(x.X(), &amp;#34;x&amp;#34;) { t.Fatal(&amp;#34;not x&amp;#34;) } } func assert(a string, b string) bool { return a == b } assert関数を他のパッケージのテストでも使いたくなったとする。
-その場合、assertをAssertにしてimport x_testすれば他のパッケージからもx_test.Assertが使えるようになる。かと思いきやならない。
-もちろんpackage xの方に移して、x.Assertとすれば呼べる。当たり前だ。だけどテストでしか使わない関数がそこにいるのは気持ち悪い。
-どうするのがいいのかちょっと調べたところ、スタックオーバフローによれば*_testではない専用のパッケージを作ってそこに入れろと。
- https://stackoverflow.com/a/31794241  つまりこういうことか。
-package x_test import ( &amp;#34;testing&amp;#34; &amp;#34;app/hogetest&amp;#34; ) func TestX(t *testing.T) { if !hogetest.Assert(x.X(), &amp;#34;x&amp;#34;) { t.Fatal(&amp;#34;not x&amp;#34;) } }package hogetest func Assert(a string, b string) bool { return a == b } ビルド時はhogetestをimportしなければいい。うーん、まあ、わかるけど、あまりすっきりとした気持ちにはならなかった。</description>
+      <description>例えばこんなパッケージがあったとして。 package x func X() string { return &amp;quot;x&amp;quot; } package x_test import ( &amp;quot;testing&amp;quot; &amp;quot;app/x&amp;quot; ) func TestX(t *testing.T) { if !assert(x.X(), &amp;quot;x&amp;quot;) { t.Fatal(&amp;quot;not x&amp;quot;) } } func assert(a string, b string) bool { return a == b } assert関数を他のパッケージのテストでも使いたくなったとする。 その場合、ass</description>
     </item>
     
     <item>
@@ -182,14 +125,7 @@ package x_test import ( &amp;#34;testing&amp;#34; &amp;#34;app/hogetest&amp;#34;
       <pubDate>Mon, 03 Sep 2018 21:19:34 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1535977174/</guid>
-      <description>developをmasterに入れるときでも、masterをリリースブランチに入れるときでも、なんでもいいんだけど、2つのブランチの差分から、次に何がデプロイされるのかをだいたいで知りたいときがある。
-当然プルリクエストベースで開発しているはずなので、そういうときはマージコミットだけに注目すればよい。
-git log --first-parent --merges --reverse --pretty=&amp;#39;%s %b&amp;#39; origin/master..origin/develop プルリクエストのマージコミットに余計なコメントを入れていると改行が入ってややこしいが、そんなところにコメント書いてる人は見たことが無いので大丈夫。
-こんな風に表示される。
-Merge pull request #1 from e9/second-branch second commit Merge pull request #2 from e9/third-branch third commit  これをコピーしてGitHubのイシューやプルリクエストに貼り付ければ#の部分がリンクになって都合がよい。
-だけど貼り付ける先がGitHubじゃないときもある。esaとかbacklogとか。そういうときはマークダウンでリンクにしてあげたい。#の数字を切り取るのは簡単だけど、レポジトリのURLを手に入れるのは大変なので、ここは横着してgit-openを使う。
- https://github.com/paulirish/git-open  git-openを入れたら下記でよい。
-git log --first-parent --merges --reverse --pretty=&amp;#39;%s %b&amp;#39; origin/master..origin/develop | while read line || [ -n &amp;#34;$line&amp;#34; ] do url=`echo $line | sed -e &amp;#39;s/^.*#\([0-9]*\).*$/\1/&amp;#39; | BROWSER=echo xargs git open --issue origin` echo &amp;#34;- [$line]($url)&amp;#34; done これでマークダウンのリンクになるので、どこにでも貼れる。</description>
+      <description>developをmasterに入れるときでも、masterをリリースブランチに入れるときでも、なんでもいいんだけど、2つのブランチの差分から、次に何がデプロイされるのかをだいたいで知りたいときがある。</description>
     </item>
     
     <item>
@@ -198,13 +134,7 @@ git log --first-parent --merges --reverse --pretty=&amp;#39;%s %b&amp;#39; origi
       <pubDate>Wed, 29 Aug 2018 21:36:55 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1535546215/</guid>
-      <description>マークダウンで書けるブログサービスの選択肢が少ないのでgithub.ioを使うことにした。 いまどきはJekyllよりHugoらしい。わりと簡単に作れた。こんな感じで。
-hugo new site blog cd blog git init git remote add origin git@github.com:e9/blog.git 空のディレクトリばかりなのでfirst commitの前に.gitkeepを置いておく。
-for dir in `find . -not -path &amp;#39;*/\.*&amp;#39; -not -name &amp;#39;.*&amp;#39; -type d`; do touch $dir/.gitkeep; done git add . git commit -m &amp;#39;hugo new site&amp;#39; テーマはダウンロードして直接置いてもいいけど、gitのsubmoduleにしておくのがスマートだろう。
-git submodule add https://github.com/mismith0227/hugo_theme_pickles.git themes/pickles git add . git commit -m &amp;#39;Add themes/pickles&amp;#39; あとはpublicをgithub.ioのレポジトリのsubmoduleにして、publicに出力したファイルをpushするのがオーソドックスなやり方らしいんだけど、せっかくなんでCIサービスから自動でデプロイさせることにした。
-いまどきはgithubのプライベートレポジトリは作り放題だし、Circle CIは1コンテナだけなら無料で使える。
-.circleci/config.ymlはこんな感じ。あらかじめCircleCIの鍵をGitHubに登録しておく。
-version:2jobs:build:branches:only:-masterdocker:-image:circleci/golang:stretchsteps:-checkout-run:command:gitsubmoduleupdate--init--recursive-run:command:| git clone https://github.com/e9/e9.github.io.git public rm -rf public/*-run:command:| wget https://github.</description>
+      <description>マークダウンで書けるブログサービスの選択肢が少ないのでgithub.ioを使うことにした。 いまどきはJekyllよりHugoらしい。わりと簡単に作れた。こんな感じで。 hugo new site blog cd blog git init git remote add origin git@github.com:e9/blog.git 空のディ</description>
     </item>
     
     <item>
@@ -213,13 +143,7 @@ version:2jobs:build:branches:only:-masterdocker:-image:circleci/golang:stretchst
       <pubDate>Thu, 19 May 2016 13:54:13 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1463633653/</guid>
-      <description>$ bin/rails -v Rails 5.0.0.rc1  こういうモデルがあるとする。
-class Apple &amp;lt; ApplicationRecord attr_accessor :y end 実装内容の良し悪しはさておき、下記を実行する。
-irb(main):001:0&amp;gt; apple = Apple.select(&amp;#34;1 as x&amp;#34;, &amp;#34;2 as y&amp;#34;).first irb(main):002:0&amp;gt; apple.x =&amp;gt; 1 ではapple.yには何が入っているか。
-irb(main):003:0&amp;gt; apple.y =&amp;gt; nil irb(main):004:0&amp;gt; apple.as_json =&amp;gt; {&amp;#34;id&amp;#34;=&amp;gt;nil, &amp;#34;x&amp;#34;=&amp;gt;1, &amp;#34;y&amp;#34;=&amp;gt;nil} nilなのだ。attr_accessorの#yが優先されるらしい。SELECTした結果にアクセスするには[:y]とすればよい。
-irb(main):005:0&amp;gt; apple[:y] =&amp;gt; 2 attr_accessorをひとつ置いただけで、既存のコードが動かなくなる可能性をはらんでいる。というか、それでさっきハマったのだ。
-このあとxとyにそれぞれ代入すると、さらにわけがわからない。
-irb(main):006:0&amp;gt; apple.x = 3 irb(main):007:0&amp;gt; apple.y = 4 irb(main):008:0&amp;gt; apple.as_json =&amp;gt; {&amp;#34;id&amp;#34;=&amp;gt;nil, &amp;#34;x&amp;#34;=&amp;gt;3, &amp;#34;y&amp;#34;=&amp;gt;4} irb(main):009:0&amp;gt; apple.x =&amp;gt; 3 irb(main):010:0&amp;gt; apple[:x] =&amp;gt; 3 irb(main):011:0&amp;gt; apple.y =&amp;gt; 4 irb(main):012:0&amp;gt; apple[:y] =&amp;gt; 1 動的言語は強力だが、ときに怖い。</description>
+      <description>$ bin/rails -v Rails 5.0.0.rc1 こういうモデルがあるとする。 class Apple &amp;lt; ApplicationRecord attr_accessor :y end 実装内容の良し悪しはさておき、下記を実行する。 irb(main):001:0&amp;gt; apple = Apple.select(&amp;quot;1 as x&amp;quot;, &amp;quot;2 as y&amp;quot;).first irb(main):002:0&amp;gt; apple.x =&amp;gt; 1 ではapple.yには何が入っているか。 irb(main):003:0&amp;gt; apple.y =&amp;gt; nil irb(main):004:0&amp;gt; apple.as_json =&amp;gt; {&amp;quot;id&amp;quot;=&amp;gt;nil, &amp;quot;x&amp;quot;=&amp;gt;1, &amp;quot;y&amp;quot;=&amp;gt;nil} nilなのだ。a</description>
     </item>
     
     <item>
@@ -228,12 +152,7 @@ irb(main):006:0&amp;gt; apple.x = 3 irb(main):007:0&amp;gt; apple.y = 4 irb(main
       <pubDate>Mon, 21 Mar 2016 21:14:02 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1458562442/</guid>
-      <description>rails5でマイグレーションファイルを作成すると、rails5で作成された印がつくようになった。 （まだベータ版だけど）
-class CreateApples &amp;lt; ActiveRecord::Migration[5.0] def change この[5.0]というのは、ぱっと見るとrubyの（隠された）機能のように見えるが、実は違う。
- [https://github.com/rails/rails/commit/6940dc860c4b25bff2eded370f2af4316de15a30#diff-8d3c44120f7b67ff79e2fbe6a40d0ad6R492:title]  ActiveRecord::Migrationクラスに[]という名前のクラスメソッドが定義されており、そのメソッドが（別の）クラスを返すのだ。
-[1] pry(main)&amp;gt; ActiveRecord::Migration[5.0] =&amp;gt; ActiveRecord::Migration::Current つまりこういうことだ。
-class CreateApples &amp;lt; ActiveRecord::Migration.[](5.0) もしくはこの方がわかりやすいか。
-class CreateApples &amp;lt; ActiveRecord::Migration.send(&amp;#39;[]&amp;#39;, 5.0) さすがrubyである。</description>
+      <description>rails5でマイグレーションファイルを作成すると、rails5で作成された印がつくようになった。 （まだベータ版だけど） class CreateApples &amp;lt; ActiveRecord::Migration[5.0] def change この[5.0]というのは、ぱっと見るとrubyの（隠された）機能のよ</description>
     </item>
     
     <item>
@@ -242,12 +161,7 @@ class CreateApples &amp;lt; ActiveRecord::Migration.send(&amp;#39;[]&amp;#39;, 5
       <pubDate>Mon, 29 Feb 2016 22:31:13 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1456752673/</guid>
-      <description>いつの間にかrailsのscaffoldで作成したコントローラがbefore_actionで変数を仕込むようになっていた。普段まったく使わないので気付かなかった。
- https://github.com/rails/rails/commit/339e4e80d514bd94fcb0e15689db43e5de83642a  class &amp;lt;%= controller_class_name %&amp;gt;Controller &amp;lt; ApplicationController before_action :set_&amp;lt;%= singular_table_name %&amp;gt;, except: [ :index, :new, :create ] private # Use callbacks to share common setup or constraints between actions. def set_&amp;lt;%= singular_table_name %&amp;gt; @&amp;lt;%= singular_table_name %&amp;gt; = &amp;lt;%= orm_class.find(class_name, &amp;#34;params[:id]&amp;#34;) %&amp;gt; end  Let the scaffold example use the &amp;ldquo;set shared record&amp;rdquo; pattern to explain callbacks
- だけどこれは経験的に知っていることなんだけど、before_actionで変数を代入すると見通しが悪くなるのだ。
-特に多人数で開発しているときに誰かがそれをやりだすと、before_actionに次ぐbefore_actionで、いったいどのアクションがどのbefore_actionを呼んでいるのか、わけがわからなくなる。
-同じことを考えてる人は結構いる。
- http://craftingruby.com/posts/2015/05/31/dont-use-before-action-to-load-data.html http://blog.thefrontiergroup.com.au/2014/02/before_action_an_anti_pattern/ http://jgaskins.org/blog/2014/08/25/better-alternative-to-rails-before_action-to-load-objects http://stackoverflow.com/questions/31442005/rails-set-locals-via-before-action-without-using-instance-variables  だからrailsオフィシャルがscaffoldでbefore_actionを使ってくるのには違和感がある。</description>
+      <description>いつの間にかrailsのscaffoldで作成したコントローラがbefore_actionで変数を仕込むようになっていた。普段まったく使わないので気付かなかった。 https://github.com/rails/rails/commit/339e4e80d514bd94fcb0e15689db43e5de83642a class &amp;lt;%= controller_class_name %&amp;gt;Controller &amp;lt; ApplicationController before_action :set_&amp;lt;%= singular_table_name %&amp;gt;, except: [ :index, :new, :create ] private #</description>
     </item>
     
     <item>
@@ -256,19 +170,7 @@ class CreateApples &amp;lt; ActiveRecord::Migration.send(&amp;#39;[]&amp;#39;, 5
       <pubDate>Sun, 20 Apr 2014 11:40:46 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1397961646/</guid>
-      <description>そういえば学生のころ、私は書き起こしが趣味だったのでした。
- これちゃんとした挨拶するの？じゃあ一応、式典らしくちゃんとした挨拶しますね。
-みなさん卒業おめでとうございます。4年前をちょっと思い出してください。ひょっとしたら5、6年前の人いるかもしれないけど。
-たぶんみなさんはAO入試とか、一般入試とか、帰国とか、いろんな形で入ってきて、ワクワクドキドキしてたと思うんですね。で、いまみなさんの横にいるのは、たぶん友達だったり、ゼミ、研究会の仲間だったり、サークルの仲間だったと思うんですね。
-まあ、この4年間、ずいぶんいろんなことがあったと思いますけども、まずいま横にいる人を非常に大切にして社会人になってください。またバラバラになっちゃうんだけども、また仲間をつくってですね、ぜひSFCらしさを世の中に広めていってほしいと思います。
-たぶんこういうスピーチには何か贈る言葉を用意しなきゃいけないんだけど。昨日いろいろ考えて、かっこいい言葉をひとつ言うと「因習は闇を生み、輝ける星は混沌に宿す」これコピペだからね、大丈夫。
-「因習は闇を生む」ってのはよく言われますけども、最近見た映画の中でもそういった言葉が使われてました。それから「輝ける星は混沌に宿す」というのは、ニーチェの言葉ですね。「ツァラトゥストラはかく語りき」の中に出てくる言葉です。因習っていうのは伝統とか慣習、トラディションですね。そういったものはネガティブな要素があると。闇を生むっていうことをみなさん自覚してほしいです。
-私は数学を教えたんだけども、数学の命題、最初にみなさん習ったと思うけど、対偶って覚えてます？覚えてる？闇の否定は光で、因習の否定はカオス、混沌ですよね。だから「輝ける星は混沌に宿す」というのは、最初に言った「因習は闇を生む」のまったく同じ意味です。
-私はみなさんに輝ける星になってほしいと思ってます。ということはどういうことが大事かというと、カオスの中に、混沌の中にみなさんはいてほしい。で、最初に、4年前を思い出してもらったのは、4年前みなさんはたぶん混沌としてたと思うんですね。SFCでどう過ごしたらいいか。自分は何をしようかと。非常に混沌の中にあったと思うんです。
-でもいまみなさんは、もう因習の中に足を踏み入れてると思う。ね。それを自覚ほしいです。これから社会に出てって、たぶん大手の会社とか、非常にいいところに就職した人は、もっと因習の中に入っていくと思います。そういう人はたぶん輝ける星になれない。ね。ほんとほんと。
-だから私が言いたいのは、もし人生でこれから選択することがあったら、右へ行こうか左へ行こうか、そういう時があったらば、ぜひ、混沌の方、カオスのある方を選んでください。それはもう失敗かもしれないし、損になるかもしれない。でも、みなさんが輝ける星になるには、混沌とした方をぜひ選んでほしい。
-私が贈る言葉は以上です。卒業おめでとうございます。
- </description>
+      <description>そういえば学生のころ、私は書き起こしが趣味だったのでした。 これちゃんとした挨拶するの？じゃあ一応、式典らしくちゃんとした挨拶しますね。 みなさん卒業おめでとうございます。4年前をちょっと思い出してくださ</description>
     </item>
     
     <item>
@@ -277,10 +179,7 @@ class CreateApples &amp;lt; ActiveRecord::Migration.send(&amp;#39;[]&amp;#39;, 5
       <pubDate>Wed, 26 Mar 2014 18:11:38 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1395825098/</guid>
-      <description>rails4のroutes.rbで
-resources :books, param: :name とやると/books/:nameでアクセスできるようになる。でもその状態で
-form_for Book.find(1) とかやってもformのactionは/books/1のまま。
-class Book &amp;lt; ActiveRecord::Base def to_param name end end を追加すればいいだけなんだけど冗長な気がした。</description>
+      <description>rails4のroutes.rbで resources :books, param: :name とやると/books/:nameでアクセスできるようになる。でもその状態で form_for Book.find(1) とかやってもformのactionは/books/1のまま。 class Book &amp;lt; ActiveRecord::Base def to_param name end end を</description>
     </item>
     
     <item>
@@ -289,14 +188,7 @@ class Book &amp;lt; ActiveRecord::Base def to_param name end end を追加すれ
       <pubDate>Wed, 08 Aug 2012 16:48:09 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1344412089/</guid>
-      <description>クラウドで将棋の局面図を提供するサイトをつくりました。
- http://shogipic.jp  ひっそりこっそりリリースしたら数日後に若島さんに使ってもらえたのでだいぶ満足しました。
- http://twitter.com/propara/status/230633209719844864  もういつ閉鎖してもいいです。嘘です。閉鎖はしないです。
-将棋ブログでも取り上げていただきました。ありがとうございます。
- http://clickshogi.exblog.jp/16566340/
- http://d.hatena.ne.jp/hokaze153/20120805/1344146598
-  最終手を強調表示する機能を追加しました。詰将棋の出題には不要なので省いてました。
-&amp;ldquo;Done is better than perfect.&amp;ldquo;の精神でやっています。今後もよろしくお願いします。</description>
+      <description>クラウドで将棋の局面図を提供するサイトをつくりました。 http://shogipic.jp ひっそりこっそりリリースしたら数日後に若島さんに使ってもらえたのでだいぶ満足しました。 http://twitter.com/propara/status/230633209719844864 もういつ閉鎖してもいいです。嘘です。閉鎖はしないです。 将</description>
     </item>
     
     <item>
@@ -305,14 +197,7 @@ class Book &amp;lt; ActiveRecord::Base def to_param name end end を追加すれ
       <pubDate>Sun, 22 Jul 2012 23:38:29 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1342967909/</guid>
-      <description>YouTubeで見たジェイク・シマブクロの発言がオシャレだった。
- マイナーコードの中にも特に悲しい音がある
-ベートーベンはDマイナーが一番悲しい音だと言っていた
-Dマイナーに限らずDの音は全般的に人の心に訴える力があるね
-高校の成績はDが多かった
-いい面もある
-だからミュージシャンはDをよく取るのかな
-  http://www.youtube.com/watch?v=MJ4NxmawgzI  </description>
+      <description>YouTubeで見たジェイク・シマブクロの発言がオシャレだった。 マイナーコードの中にも特に悲しい音がある ベートーベンはDマイナーが一番悲しい音だと言っていた Dマイナーに限らずDの音は全般的に人の心に訴</description>
     </item>
     
     <item>
@@ -321,10 +206,7 @@ Dマイナーに限らずDの音は全般的に人の心に訴える力がある
       <pubDate>Sat, 21 Jul 2012 20:40:25 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1342870825/</guid>
-      <description>Lionにマウス挿してホイール使ったら、スクロール方向がWindowsと逆になってて面食らった。
-環境設定からホイールのスクロール方向を逆にしたら治ったけど、今度はそれに連動してトラックパッドのスクロール方向が今までの逆になった。
-マウスとトラックパッドのスクロール方向を別々にはできないらしい。
-適当なソフト使えば改善できるらしいけど、それくらいは標準で対応しておいてほしいよ。</description>
+      <description>Lionにマウス挿してホイール使ったら、スクロール方向がWindowsと逆になってて面食らった。 環境設定からホイールのスクロール方向を逆にしたら治ったけど、今度はそれに連動してトラックパッドのスクロー</description>
     </item>
     
     <item>
@@ -333,12 +215,7 @@ Dマイナーに限らずDの音は全般的に人の心に訴える力がある
       <pubDate>Sun, 15 Jul 2012 23:50:51 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1342363851/</guid>
-      <description>最近はバラエティ番組を見てると、スポンサーをアナウンスする場面で、後ろに映ってる出演者の着てるＴシャツのロゴとか、名札とか、とにかく文字すべてにモザイクがかかってることに気付く。
- http://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q1432189114 http://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q1232100427  まあ、普通に考えたらテロップとかぶって邪魔だから消してるんだろうけど、さっきガキの使いを見てたらテロップの出てないところでも文字にモザイクがかけられていて、あれ？と思った。
- CMってチャンネル変えるタイミングの上位ですので、またいでも見てもらうため敢えて興味をそそるようにしているんです。
-http://okwave.jp/qa/q5615956.html
- さすがにそれは無いだろと思うんだけど。
-文字へのモザイクがけが自動化されていて、提供テロップが入りそうな場面では勝手にモザイクがかかっちゃうのかなあ。</description>
+      <description>最近はバラエティ番組を見てると、スポンサーをアナウンスする場面で、後ろに映ってる出演者の着てるＴシャツのロゴとか、名札とか、とにかく文字すべてにモザイクがかかってることに気付く。 http://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q1432189114 http://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q1232100427 まあ、普通に考えた</description>
     </item>
     
     <item>
@@ -347,10 +224,7 @@ http://okwave.jp/qa/q5615956.html
       <pubDate>Sat, 14 Jul 2012 00:43:57 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1342194237/</guid>
-      <description>よく見るのはこれ。
-(function(){})();  JSLintはカッコを中に入れろというらしい
-(function(){}());  knockout.jsでは初めの書き方と次の書き方が混在してる。
-!function(){}();  値を返さない即時関数はこれでバイト数を削減しようってことかな。</description>
+      <description>よく見るのはこれ。 (function(){})(); JSLintはカッコを中に入れろというらしい (function(){}()); knockout.jsでは初めの書き方と次の書き方が混在してる。 !function(){}(); 値を返さない即時関数はこれでバイト数を削減しようってことかな。</description>
     </item>
     
     <item>
@@ -359,13 +233,7 @@ http://okwave.jp/qa/q5615956.html
       <pubDate>Wed, 20 Jun 2012 22:57:36 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1340200656/</guid>
-      <description>ホームレスになりたいというわけではない。
-先週末に熊本に行き、そこでJR水前寺駅というものを見たのだ。
- 直営駅で、みどりの窓口が設置されている。駅舎には美容室などの商業施設、3階以上にはマンションを併設している。改札口やみどりの窓口、キヨスクなど駅機能は2階にある。
-http://ja.wikipedia.org/wiki/%E6%B0%B4%E5%89%8D%E5%AF%BA%E9%A7%85
- 駅の上にマンションが建ってる。徒歩何分というレベルではない。改札を抜けたらもう我が家だ。さすがにそれは言い過ぎだけど。
-これを見て、都内でも同じことができないか考えて、すこし検索したけどあまり出てこなかった。都民は駅に住みたくないのか？
- http://www.goodrooms.jp//sch/detail.php/001/693406/?k_number=693406&amp;amp;div=001 http://www.mansion-catalog.com/minamiaoyama/ http://www.m-standard.co.jp/rent/%E3%82%A2%E3%82%AF%E3%82%B7%E3%82%A2%E9%BA%BB%E5%B8%83/  （当たり前だけど）家賃が高かったり、駅上じゃなくて駅直結だったり、いまいち決定打に欠けるので、いつか暇なときに都内の駅の上を全て見てまわりたいと思う。</description>
+      <description>ホームレスになりたいというわけではない。 先週末に熊本に行き、そこでJR水前寺駅というものを見たのだ。 直営駅で、みどりの窓口が設置されている。駅舎には美容室などの商業施設、3階以上にはマンションを併設し</description>
     </item>
     
     <item>
@@ -374,13 +242,7 @@ http://ja.wikipedia.org/wiki/%E6%B0%B4%E5%89%8D%E5%AF%BA%E9%A7%85
       <pubDate>Mon, 28 May 2012 23:21:54 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1338214914/</guid>
-      <description>ブログに書きたいことは、つまり人に話したいことだから、ブログをどんどん書くと、いざ人に会ったときに話すことがなくなってしまう。
-「ねえねえ聞いてよこの前さあ――あ、ごめん、この話はブログに書いたんだった」
-お前のブログなんて誰も読んでねーよと言われるだろうけど、でもそうは言ってもインターネットで（一応は）全世界に向けて発信した話を、もう一度誰かにするのは気が引ける。
-別に誰かに話したいわけでもない話をブログに書くのも、それはそれでなんのために書いてるんだか分からないし。
-そこでひとつ思いついたのが「続きはリアルで」だ。
-ブログには途中まで書いておいて、肝心の部分は実際に会ったときに話す。これでブログも書けるし、話題も尽きない。
-これ、かなり画期的な手法だろうと思ったけど、300年以上前にフェルマーがやってた。</description>
+      <description>ブログに書きたいことは、つまり人に話したいことだから、ブログをどんどん書くと、いざ人に会ったときに話すことがなくなってしまう。 「ねえねえ聞いてよこの前さあ――あ、ごめん、この話はブログに書いたんだった</description>
     </item>
     
     <item>

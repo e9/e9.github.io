@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>2016/03 on e9.github.io</title>
+    <link>https://e9.github.io/archives/2016/03/</link>
+    <description>Recent content in 2016/03 on e9.github.io</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    
+	<atom:link href="https://e9.github.io/archives/2016/03/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Rails5のマイグレーションファイル</title>
+      <link>https://e9.github.io/posts/1458562442/</link>
+      <pubDate>Mon, 21 Mar 2016 21:14:02 +0900</pubDate>
+      
+      <guid>https://e9.github.io/posts/1458562442/</guid>
+      <description>rails5でマイグレーションファイルを作成すると、rails5で作成された印がつくようになった。 （まだベータ版だけど） class CreateApples &amp;lt; ActiveRecord::Migration[5.0] def change この[5.0]というのは、ぱっと見るとrubyの（隠された）機能のよ</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>2016/02 on e9.github.io</title>
+    <link>https://e9.github.io/archives/2016/02/</link>
+    <description>Recent content in 2016/02 on e9.github.io</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    
+	<atom:link href="https://e9.github.io/archives/2016/02/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>before_actionで変数を代入する是非</title>
+      <link>https://e9.github.io/posts/1456752673/</link>
+      <pubDate>Mon, 29 Feb 2016 22:31:13 +0900</pubDate>
+      
+      <guid>https://e9.github.io/posts/1456752673/</guid>
+      <description>いつの間にかrailsのscaffoldで作成したコントローラがbefore_actionで変数を仕込むようになっていた。普段まったく使わないので気付かなかった。 https://github.com/rails/rails/commit/339e4e80d514bd94fcb0e15689db43e5de83642a class &amp;lt;%= controller_class_name %&amp;gt;Controller &amp;lt; ApplicationController before_action :set_&amp;lt;%= singular_table_name %&amp;gt;, except: [ :index, :new, :create ] private #</description>
+    </item>
+    
+  </channel>
+</rss>

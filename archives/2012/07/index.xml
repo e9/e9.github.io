@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>2012/07 on e9.github.io</title>
+    <link>https://e9.github.io/archives/2012/07/</link>
+    <description>Recent content in 2012/07 on e9.github.io</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    
+	<atom:link href="https://e9.github.io/archives/2012/07/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>ミュージシャンジョーク</title>
+      <link>https://e9.github.io/posts/1342967909/</link>
+      <pubDate>Sun, 22 Jul 2012 23:38:29 +0900</pubDate>
+      
+      <guid>https://e9.github.io/posts/1342967909/</guid>
+      <description>YouTubeで見たジェイク・シマブクロの発言がオシャレだった。 マイナーコードの中にも特に悲しい音がある ベートーベンはDマイナーが一番悲しい音だと言っていた Dマイナーに限らずDの音は全般的に人の心に訴</description>
+    </item>
+    
+    <item>
+      <title>Mac OS X Lionのスクロール方向に今更はまる</title>
+      <link>https://e9.github.io/posts/1342870825/</link>
+      <pubDate>Sat, 21 Jul 2012 20:40:25 +0900</pubDate>
+      
+      <guid>https://e9.github.io/posts/1342870825/</guid>
+      <description>Lionにマウス挿してホイール使ったら、スクロール方向がWindowsと逆になってて面食らった。 環境設定からホイールのスクロール方向を逆にしたら治ったけど、今度はそれに連動してトラックパッドのスクロー</description>
+    </item>
+    
+    <item>
+      <title>CM前にやたらモザイクがかかる謎</title>
+      <link>https://e9.github.io/posts/1342363851/</link>
+      <pubDate>Sun, 15 Jul 2012 23:50:51 +0900</pubDate>
+      
+      <guid>https://e9.github.io/posts/1342363851/</guid>
+      <description>最近はバラエティ番組を見てると、スポンサーをアナウンスする場面で、後ろに映ってる出演者の着てるＴシャツのロゴとか、名札とか、とにかく文字すべてにモザイクがかかってることに気付く。 http://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q1432189114 http://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q1232100427 まあ、普通に考えた</description>
+    </item>
+    
+    <item>
+      <title>JavaScriptの即時関数パターンの書き方</title>
+      <link>https://e9.github.io/posts/1342194237/</link>
+      <pubDate>Sat, 14 Jul 2012 00:43:57 +0900</pubDate>
+      
+      <guid>https://e9.github.io/posts/1342194237/</guid>
+      <description>よく見るのはこれ。 (function(){})(); JSLintはカッコを中に入れろというらしい (function(){}()); knockout.jsでは初めの書き方と次の書き方が混在してる。 !function(){}(); 値を返さない即時関数はこれでバイト数を削減しようってことかな。</description>
+    </item>
+    
+  </channel>
+</rss>
