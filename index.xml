@@ -36,7 +36,7 @@
       
       <guid>https://e9.github.io/posts/1548328800/</guid>
       <description>gomobileでiOS向けのライブラリを書いている。
-$ gomobile version gomobile version +dc07713 Mon Jan 7 16:22:57 2019 +0000 (android,ios); androidSDK= 1package main 2 3import &amp;#34;app/x&amp;#34; 4 5func main() { 6	x.</description>
+1$ gomobile version 2gomobile version +dc07713 Mon Jan 7 16:22:57 2019 +0000 (android,ios); androidSDK= 1package main 2 3import &amp;#34;app/x&amp;#34; 4 5func main() { 6	x.</description>
     </item>
     
     <item>
@@ -154,7 +154,7 @@ $ gomobile version gomobile version +dc07713 Mon Jan 7 16:22:57 2019 +0000 (andr
       <pubDate>Thu, 19 May 2016 13:54:13 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1463633653/</guid>
-      <description>$ bin/rails -v Rails 5.</description>
+      <description>1$ bin/rails -v 2Rails 5.</description>
     </item>
     
     <item>

@@ -66,9 +66,9 @@
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>git log --first-parent --merges --reverse --pretty<span style="color:#f92672">=</span><span style="color:#d88200">&#39;%s %b&#39;</span> origin/master..origin/develop
 </code></pre></div><p>プルリクエストのマージコミットに余計なコメントを入れていると改行が入ってややこしいが、そんなところにコメント書いてる人は見たことが無いので大丈夫。</p>
 <p>こんな風に表示される。</p>
-<pre><code>Merge pull request #1 from e9/second-branch second commit
-Merge pull request #2 from e9/third-branch third commit
-</code></pre><p>これをコピーしてGitHubのイシューやプルリクエストに貼り付ければ#の部分がリンクになって都合がよい。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>Merge pull request #1 from e9/second-branch second commit
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>Merge pull request #2 from e9/third-branch third commit
+</code></pre></div><p>これをコピーしてGitHubのイシューやプルリクエストに貼り付ければ#の部分がリンクになって都合がよい。</p>
 <p>だけど貼り付ける先がGitHubじゃないときもある。esaとかbacklogとか。そういうときはマークダウンでリンクにしてあげたい。#の数字を切り取るのは簡単だけど、レポジトリのURLを手に入れるのは大変なので、ここは横着してgit-openを使う。</p>
 <ul>
 <li><a href="https://github.com/paulirish/git-open">https://github.com/paulirish/git-open</a></li>
@@ -81,9 +81,9 @@ Merge pull request #2 from e9/third-branch third commit
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span style="color:#111">echo</span> <span style="color:#d88200">&#34;- [</span><span style="color:#111">$line</span><span style="color:#d88200">](</span><span style="color:#111">$url</span><span style="color:#d88200">)&#34;</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span style="color:#00a8c8">done</span>
 </code></pre></div><p>これでマークダウンのリンクになるので、どこにでも貼れる。</p>
-<pre><code>- [Merge pull request #1 from e9/second-branch second commit](https://github.com/e9/xxx/issues/1)
-- [Merge pull request #2 from e9/third-branch third commit](https://github.com/e9/xxx/issues/2)
-</code></pre><p>イシューへのリンクになっているけど、リダイレクトされるので大丈夫。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>- [Merge pull request #1 from e9/second-branch second commit](https://github.com/e9/xxx/issues/1)
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>- [Merge pull request #2 from e9/third-branch third commit](https://github.com/e9/xxx/issues/2)
+</code></pre></div><p>イシューへのリンクになっているけど、リダイレクトされるので大丈夫。</p>
 
     </div>
 </article>

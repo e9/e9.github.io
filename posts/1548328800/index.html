@@ -62,9 +62,9 @@
     
     <div class="post-content markdown-body">
         <p>gomobileでiOS向けのライブラリを書いている。</p>
-<pre><code>$ gomobile version
-gomobile version +dc07713 Mon Jan 7 16:22:57 2019 +0000 (android,ios); androidSDK=
-</code></pre><div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#f92672">package</span> <span style="color:#75af00">main</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>$ gomobile version
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>gomobile version +dc07713 Mon Jan 7 16:22:57 2019 +0000 (android,ios); androidSDK=
+</code></pre></div><div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#f92672">package</span> <span style="color:#75af00">main</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span style="color:#f92672">import</span> <span style="color:#d88200">&#34;app/x&#34;</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span>
@@ -105,8 +105,8 @@ gomobile version +dc07713 Mon Jan 7 16:22:57 2019 +0000 (android,ios); androidSD
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span>	<span style="color:#111">})()</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span style="color:#111">}</span>
 </code></pre></div><p>ところがどっこいこの関数はgomobile bindの対象にはならないのだ。</p>
-<pre><code>// skipped function X with unsupported parameter or return types
-</code></pre><p>関数はよくても関数型はだめらしい。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>// skipped function X with unsupported parameter or return types
+</code></pre></div><p>関数はよくても関数型はだめらしい。</p>
 <ul>
 <li><a href="https://godoc.org/golang.org/x/mobile/cmd/gobind#hdr-Type_restrictions">https://godoc.org/golang.org/x/mobile/cmd/gobind#hdr-Type_restrictions</a></li>
 </ul>
