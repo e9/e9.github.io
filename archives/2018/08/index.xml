@@ -16,7 +16,7 @@
       
       <guid>https://e9.github.io/posts/1535546215/</guid>
       <description>マークダウンで書けるブログサービスの選択肢が少ないのでgithub.ioを使うことにした。 いまどきはJekyllよりHugoらしい。わりと簡単に作れた。こんな感じで。
-1 2 3 4  hugo new site blog cd blog git init git remote add origin git@github.</description>
+1hugo new site blog 2cd blog 3git init 4git remote add origin git@github.</description>
     </item>
     
   </channel>

@@ -28,7 +28,7 @@ header.masthead .site-heading {
 }
 
 header.masthead .site-heading h1 {
-  font-size: 40px;
+  font-size: 30px;
   font-weight: 800;
 }
 
@@ -38,7 +38,7 @@ header.masthead .site-heading h1 {
   }
 
   header.masthead .site-heading h1 {
-    font-size: 80px;
+    font-size: 50px;
   }
 }
 
@@ -48,9 +48,9 @@ header.masthead .site-heading h1 {
 
 .navbar-home a {
   color: white !important;
+  display: none;
 }
 
 .navbar-brand {
-  font-weight: 800;
   color: #212529 !important;
 }

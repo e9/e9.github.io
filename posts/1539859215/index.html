@@ -10,10 +10,6 @@
     
 
     <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap"
-      rel="stylesheet"
-    />
-    <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
       integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
@@ -54,35 +50,16 @@
         <p>Python。dict か list のいずれかが入っている変数に対して、ループで回してある処理をすることになった。</p>
 <p>型が違うのだから違うコードで回すべきだという論もあるだろうが、せっかく LL で書いているのだから、全く同じコードで処理したいところ。</p>
 <p>結局自分はこうした。</p>
-<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">items</span> <span style="color:#f92672">=</span> <span style="color:#111">dict_or_list</span><span style="color:#f92672">.</span><span style="color:#111">items</span><span style="color:#111">()</span> <span style="color:#00a8c8">if</span> <span style="color:#111">isinstance</span><span style="color:#111">(</span><span style="color:#111">dict_or_list</span><span style="color:#111">,</span> <span style="color:#111">dict</span><span style="color:#111">)</span> <span style="color:#00a8c8">else</span> <span style="color:#111">enumerate</span><span style="color:#111">(</span><span style="color:#111">dict_or_list</span><span style="color:#111">)</span>
-<span style="color:#00a8c8">for</span> <span style="color:#111">key</span><span style="color:#111">,</span> <span style="color:#111">value</span> <span style="color:#f92672">in</span> <span style="color:#111">items</span><span style="color:#111">:</span>
-    <span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#111">key</span><span style="color:#111">,</span> <span style="color:#111">value</span><span style="color:#111">)</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>条件分岐があまり美しくない気がしたけど、より良い方法が思いつかなかった。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#111">items</span> <span style="color:#f92672">=</span> <span style="color:#111">dict_or_list</span><span style="color:#f92672">.</span><span style="color:#111">items</span><span style="color:#111">()</span> <span style="color:#00a8c8">if</span> <span style="color:#111">isinstance</span><span style="color:#111">(</span><span style="color:#111">dict_or_list</span><span style="color:#111">,</span> <span style="color:#111">dict</span><span style="color:#111">)</span> <span style="color:#00a8c8">else</span> <span style="color:#111">enumerate</span><span style="color:#111">(</span><span style="color:#111">dict_or_list</span><span style="color:#111">)</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span style="color:#00a8c8">for</span> <span style="color:#111">key</span><span style="color:#111">,</span> <span style="color:#111">value</span> <span style="color:#f92672">in</span> <span style="color:#111">items</span><span style="color:#111">:</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>    <span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#111">key</span><span style="color:#111">,</span> <span style="color:#111">value</span><span style="color:#111">)</span>
+</code></pre></div><p>条件分岐があまり美しくない気がしたけど、より良い方法が思いつかなかった。</p>
 <p>Ruby だともうちょっと美しく書ける。</p>
-<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#111">hash_or_array</span><span style="color:#f92672">.</span><span style="color:#111">each_with_index</span><span style="color:#111">{</span> <span style="color:#f92672">|</span><span style="color:#111">(</span><span style="color:#111">k</span><span style="color:#111">,</span> <span style="color:#111">v</span><span style="color:#111">),</span> <span style="color:#111">i</span><span style="color:#f92672">|</span>
-  <span style="color:#111">value</span><span style="color:#111">,</span> <span style="color:#111">key</span> <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#111">v</span><span style="color:#111">,</span> <span style="color:#111">k</span><span style="color:#111">,</span> <span style="color:#111">i</span><span style="color:#f92672">].</span><span style="color:#111">compact</span>
-  <span style="color:#111">p</span> <span style="color:#f92672">[</span><span style="color:#111">key</span><span style="color:#111">,</span> <span style="color:#111">value</span><span style="color:#f92672">]</span>
-<span style="color:#111">}</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>まあ、これが美しいコードなのかは異論あるだろうけど、条件分岐が無いのが売りである。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#111">hash_or_array</span><span style="color:#f92672">.</span><span style="color:#111">each_with_index</span><span style="color:#111">{</span> <span style="color:#f92672">|</span><span style="color:#111">(</span><span style="color:#111">k</span><span style="color:#111">,</span> <span style="color:#111">v</span><span style="color:#111">),</span> <span style="color:#111">i</span><span style="color:#f92672">|</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>  <span style="color:#111">value</span><span style="color:#111">,</span> <span style="color:#111">key</span> <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#111">v</span><span style="color:#111">,</span> <span style="color:#111">k</span><span style="color:#111">,</span> <span style="color:#111">i</span><span style="color:#f92672">].</span><span style="color:#111">compact</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>  <span style="color:#111">p</span> <span style="color:#f92672">[</span><span style="color:#111">key</span><span style="color:#111">,</span> <span style="color:#111">value</span><span style="color:#f92672">]</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span style="color:#111">}</span>
+</code></pre></div><p>まあ、これが美しいコードなのかは異論あるだろうけど、条件分岐が無いのが売りである。</p>
 
     </div>
 </article>

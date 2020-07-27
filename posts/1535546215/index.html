@@ -10,10 +10,6 @@
     
 
     <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap"
-      rel="stylesheet"
-    />
-    <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
       integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
@@ -53,163 +49,73 @@
     <div class="post-content markdown-body">
         <p>マークダウンで書けるブログサービスの選択肢が少ないのでgithub.ioを使うことにした。
 いまどきはJekyllよりHugoらしい。わりと簡単に作れた。こんな感じで。</p>
-<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">hugo new site blog
-<span style="color:#111">cd</span> blog
-git init
-git remote add origin git@github.com:e9/blog.git
-</code></pre></td></tr></table>
-</div>
-</div><p>空のディレクトリばかりなのでfirst commitの前に.gitkeepを置いておく。</p>
-<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#00a8c8">for</span> dir in <span style="color:#d88200">`</span>find . -not -path <span style="color:#d88200">&#39;*/\.*&#39;</span> -not -name <span style="color:#d88200">&#39;.*&#39;</span> -type d<span style="color:#d88200">`</span><span style="color:#111">;</span> <span style="color:#00a8c8">do</span> touch <span style="color:#111">$dir</span>/.gitkeep<span style="color:#111">;</span> <span style="color:#00a8c8">done</span>
-git add .
-git commit -m <span style="color:#d88200">&#39;hugo new site&#39;</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>テーマはダウンロードして直接置いてもいいけど、gitのsubmoduleにしておくのがスマートだろう。</p>
-<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git submodule add https://github.com/mismith0227/hugo_theme_pickles.git themes/pickles
-git add .
-git commit -m <span style="color:#d88200">&#39;Add themes/pickles&#39;</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>あとはpublicをgithub.ioのレポジトリのsubmoduleにして、publicに出力したファイルをpushするのがオーソドックスなやり方らしいんだけど、せっかくなんでCIサービスから自動でデプロイさせることにした。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>hugo new site blog
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span style="color:#111">cd</span> blog
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>git init
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span>git remote add origin git@github.com:e9/blog.git
+</code></pre></div><p>空のディレクトリばかりなのでfirst commitの前に.gitkeepを置いておく。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#00a8c8">for</span> dir in <span style="color:#d88200">`</span>find . -not -path <span style="color:#d88200">&#39;*/\.*&#39;</span> -not -name <span style="color:#d88200">&#39;.*&#39;</span> -type d<span style="color:#d88200">`</span><span style="color:#111">;</span> <span style="color:#00a8c8">do</span> touch <span style="color:#111">$dir</span>/.gitkeep<span style="color:#111">;</span> <span style="color:#00a8c8">done</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>git add .
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>git commit -m <span style="color:#d88200">&#39;hugo new site&#39;</span>
+</code></pre></div><p>テーマはダウンロードして直接置いてもいいけど、gitのsubmoduleにしておくのがスマートだろう。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>git submodule add https://github.com/mismith0227/hugo_theme_pickles.git themes/pickles
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>git add .
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>git commit -m <span style="color:#d88200">&#39;Add themes/pickles&#39;</span>
+</code></pre></div><p>あとはpublicをgithub.ioのレポジトリのsubmoduleにして、publicに出力したファイルをpushするのがオーソドックスなやり方らしいんだけど、せっかくなんでCIサービスから自動でデプロイさせることにした。</p>
 <p>いまどきはgithubのプライベートレポジトリは作り放題だし、Circle CIは1コンテナだけなら無料で使える。</p>
 <p>.circleci/config.ymlはこんな感じ。あらかじめCircleCIの鍵をGitHubに登録しておく。</p>
-<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#00a8c8">version</span><span style="color:#111">:</span> <span style="color:#ae81ff">2</span>
-<span style="color:#00a8c8">jobs</span><span style="color:#111">:</span>
-  <span style="color:#00a8c8">build</span><span style="color:#111">:</span>
-    <span style="color:#00a8c8">branches</span><span style="color:#111">:</span>
-      <span style="color:#00a8c8">only</span><span style="color:#111">:</span>
-        - master
-    <span style="color:#00a8c8">docker</span><span style="color:#111">:</span>
-      - <span style="color:#00a8c8">image</span><span style="color:#111">:</span> circleci/golang<span style="color:#111">:</span>stretch
-    <span style="color:#00a8c8">steps</span><span style="color:#111">:</span>
-      - checkout
-      - <span style="color:#00a8c8">run</span><span style="color:#111">:</span>
-          <span style="color:#00a8c8">command</span><span style="color:#111">:</span> git submodule update --init --recursive
-      - <span style="color:#00a8c8">run</span><span style="color:#111">:</span>
-          <span style="color:#00a8c8">command</span><span style="color:#111">:</span> <span style="color:#d88200">|
-</span><span style="color:#d88200">            git clone https://github.com/e9/e9.github.io.git public</span>
-            rm -rf public/*
-      - <span style="color:#00a8c8">run</span><span style="color:#111">:</span>
-          <span style="color:#00a8c8">command</span><span style="color:#111">:</span> <span style="color:#d88200">|
-</span><span style="color:#d88200">            wget https://github.com/gohugoio/hugo/releases/download/v0.47.1/hugo_0.47.1_Linux-64bit.tar.gz</span>
-            tar xzf hugo_0<span style="color:#ae81ff">.47</span>.1_Linux-64bit.tar.gz
-            ./hugo -v
-      - <span style="color:#00a8c8">run</span><span style="color:#111">:</span>
-          <span style="color:#00a8c8">environment</span><span style="color:#111">:</span>
-            <span style="color:#00a8c8">EMAIL</span><span style="color:#111">:</span> &lt;<span style="color:#d88200">&gt;
-</span><span style="color:#d88200">            GIT_AUTHOR_NAME: CircleCI</span>
-            <span style="color:#00a8c8">GIT_COMMITTER_NAME</span><span style="color:#111">:</span> CircleCI
-          <span style="color:#00a8c8">command</span><span style="color:#111">:</span> <span style="color:#d88200">|
-</span><span style="color:#d88200">            cd public</span>
-            git add .
-            git commit -m <span style="color:#d88200">&#39;rebuilding site&#39;</span>
-            git push origin master
-</code></pre></td></tr></table>
-</div>
-</div><p>.travis.ymlならこんな感じ。あらかじめ環境変数CI_USER_TOKENに値を入れておく。</p>
-<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#00a8c8">language</span><span style="color:#111">:</span> go
-<span style="color:#00a8c8">sudo</span><span style="color:#111">:</span> <span style="color:#00a8c8">false</span>
-<span style="color:#00a8c8">dist</span><span style="color:#111">:</span> trusty
-<span style="color:#00a8c8">before_install</span><span style="color:#111">:</span>
-- echo -e <span style="color:#d88200">&#34;machine github.com\n  login $CI_USER_TOKEN&#34;</span> &gt; ~/.netrc
-<span style="color:#00a8c8">install</span><span style="color:#111">:</span>
-- wget https<span style="color:#111">:</span>//github.com/gohugoio/hugo/releases/download/v0<span style="color:#ae81ff">.47.1</span>/hugo_0<span style="color:#ae81ff">.47</span>.1_Linux-64bit.tar.gz
-- tar xzf hugo_0<span style="color:#ae81ff">.47</span>.1_Linux-64bit.tar.gz
-<span style="color:#00a8c8">before_script</span><span style="color:#111">:</span>
-- git clone https<span style="color:#111">:</span>//github.com/e9/e9.github.io.git public
-- rm -rf public/*
-<span style="color:#00a8c8">script</span><span style="color:#111">:</span>
-- ./hugo -v
-<span style="color:#00a8c8">deploy</span><span style="color:#111">:</span>
-  <span style="color:#00a8c8">provider</span><span style="color:#111">:</span> script
-  <span style="color:#00a8c8">script</span><span style="color:#111">:</span> (cd public <span style="color:#75715e">&amp;&amp;</span> git add . <span style="color:#75715e">&amp;&amp;</span> git commit -m <span style="color:#d88200">&#39;rebuilding site&#39;</span> <span style="color:#75715e">&amp;&amp;</span> git push origin master)
-  <span style="color:#00a8c8">skip_cleanup</span><span style="color:#111">:</span> <span style="color:#00a8c8">true</span>
-  <span style="color:#00a8c8">on</span><span style="color:#111">:</span>
-    <span style="color:#00a8c8">branch</span><span style="color:#111">:</span> master
-</code></pre></td></tr></table>
-</div>
-</div><p>新しい記事を書くときに<code>hugo new f.md</code>だとトップページに反映されなかった。<code>hugo new d/f.md</code>とひとつ階層を切らないといけないようだ。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#00a8c8">version</span><span style="color:#111">:</span> <span style="color:#ae81ff">2</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span style="color:#00a8c8">jobs</span><span style="color:#111">:</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span>  <span style="color:#00a8c8">build</span><span style="color:#111">:</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span>    <span style="color:#00a8c8">branches</span><span style="color:#111">:</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span>      <span style="color:#00a8c8">only</span><span style="color:#111">:</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span>        - master
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span>    <span style="color:#00a8c8">docker</span><span style="color:#111">:</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span>      - <span style="color:#00a8c8">image</span><span style="color:#111">:</span> circleci/golang<span style="color:#111">:</span>stretch
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span>    <span style="color:#00a8c8">steps</span><span style="color:#111">:</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span>      - checkout
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span>      - <span style="color:#00a8c8">run</span><span style="color:#111">:</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span>          <span style="color:#00a8c8">command</span><span style="color:#111">:</span> git submodule update --init --recursive
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span>      - <span style="color:#00a8c8">run</span><span style="color:#111">:</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span>          <span style="color:#00a8c8">command</span><span style="color:#111">:</span> <span style="color:#d88200">|
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span style="color:#d88200">            git clone https://github.com/e9/e9.github.io.git public</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span>            rm -rf public/*
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span>      - <span style="color:#00a8c8">run</span><span style="color:#111">:</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span>          <span style="color:#00a8c8">command</span><span style="color:#111">:</span> <span style="color:#d88200">|
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span style="color:#d88200">            wget https://github.com/gohugoio/hugo/releases/download/v0.47.1/hugo_0.47.1_Linux-64bit.tar.gz</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span>            tar xzf hugo_0<span style="color:#ae81ff">.47</span>.1_Linux-64bit.tar.gz
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span>            ./hugo -v
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span>      - <span style="color:#00a8c8">run</span><span style="color:#111">:</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span>          <span style="color:#00a8c8">environment</span><span style="color:#111">:</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span>            <span style="color:#00a8c8">EMAIL</span><span style="color:#111">:</span> &lt;<span style="color:#d88200">&gt;
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25</span><span style="color:#d88200">            GIT_AUTHOR_NAME: CircleCI</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26</span>            <span style="color:#00a8c8">GIT_COMMITTER_NAME</span><span style="color:#111">:</span> CircleCI
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27</span>          <span style="color:#00a8c8">command</span><span style="color:#111">:</span> <span style="color:#d88200">|
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28</span><span style="color:#d88200">            cd public</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29</span>            git add .
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30</span>            git commit -m <span style="color:#d88200">&#39;rebuilding site&#39;</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31</span>            git push origin master
+</code></pre></div><p>.travis.ymlならこんな感じ。あらかじめ環境変数CI_USER_TOKENに値を入れておく。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#00a8c8">language</span><span style="color:#111">:</span> go
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span style="color:#00a8c8">sudo</span><span style="color:#111">:</span> <span style="color:#00a8c8">false</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span style="color:#00a8c8">dist</span><span style="color:#111">:</span> trusty
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span style="color:#00a8c8">before_install</span><span style="color:#111">:</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span>- echo -e <span style="color:#d88200">&#34;machine github.com\n  login $CI_USER_TOKEN&#34;</span> &gt; ~/.netrc
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span style="color:#00a8c8">install</span><span style="color:#111">:</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span>- wget https<span style="color:#111">:</span>//github.com/gohugoio/hugo/releases/download/v0<span style="color:#ae81ff">.47.1</span>/hugo_0<span style="color:#ae81ff">.47</span>.1_Linux-64bit.tar.gz
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span>- tar xzf hugo_0<span style="color:#ae81ff">.47</span>.1_Linux-64bit.tar.gz
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span style="color:#00a8c8">before_script</span><span style="color:#111">:</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span>- git clone https<span style="color:#111">:</span>//github.com/e9/e9.github.io.git public
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span>- rm -rf public/*
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span style="color:#00a8c8">script</span><span style="color:#111">:</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span>- ./hugo -v
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span style="color:#00a8c8">deploy</span><span style="color:#111">:</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span>  <span style="color:#00a8c8">provider</span><span style="color:#111">:</span> script
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span>  <span style="color:#00a8c8">script</span><span style="color:#111">:</span> (cd public <span style="color:#75715e">&amp;&amp;</span> git add . <span style="color:#75715e">&amp;&amp;</span> git commit -m <span style="color:#d88200">&#39;rebuilding site&#39;</span> <span style="color:#75715e">&amp;&amp;</span> git push origin master)
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span>  <span style="color:#00a8c8">skip_cleanup</span><span style="color:#111">:</span> <span style="color:#00a8c8">true</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span>  <span style="color:#00a8c8">on</span><span style="color:#111">:</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span>    <span style="color:#00a8c8">branch</span><span style="color:#111">:</span> master
+</code></pre></div><p>新しい記事を書くときに<code>hugo new f.md</code>だとトップページに反映されなかった。<code>hugo new d/f.md</code>とひとつ階層を切らないといけないようだ。</p>
 
     </div>
 </article>

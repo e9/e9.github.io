@@ -16,7 +16,7 @@
       
       <guid>https://e9.github.io/posts/1543931855/</guid>
       <description>Pythonで
-1  x, y = 1 if true_or_false else 2, 3   というコードを目にした。ぱっと見での自分の解釈ではこうなる。</description>
+1x, y = 1 if true_or_false else 2, 3 というコードを目にした。ぱっと見での自分の解釈ではこうなる。</description>
     </item>
     
   </channel>

@@ -37,7 +37,7 @@
       
       <guid>https://e9.github.io/posts/1541765899/</guid>
       <description>数年放置したRailsプロジェクトのフロントエンドをどうにかしたくなったので、手っ取り早くfrontendディレクトリの中で create-react-appして、その成果物をRailsのアセットパイプラインから参照することにした。
-1  Rails.</description>
+1Rails.application.config.assets.paths &amp;lt;&amp;lt; Rails.</description>
     </item>
     
   </channel>

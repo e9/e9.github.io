@@ -16,7 +16,7 @@
       
       <guid>https://e9.github.io/posts/1458562442/</guid>
       <description>rails5でマイグレーションファイルを作成すると、rails5で作成された印がつくようになった。 （まだベータ版だけど）
-1 2  class CreateApples &amp;lt; ActiveRecord::Migration[5.</description>
+1class CreateApples &amp;lt; ActiveRecord::Migration[5.</description>
     </item>
     
   </channel>

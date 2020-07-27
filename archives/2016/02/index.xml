@@ -16,7 +16,7 @@
       
       <guid>https://e9.github.io/posts/1456752673/</guid>
       <description>いつの間にかrailsのscaffoldで作成したコントローラがbefore_actionで変数を仕込むようになっていた。普段まったく使わないので気付かなかった。
- https://github.com/rails/rails/commit/339e4e80d514bd94fcb0e15689db43e5de83642a  1 2 3 4 5 6 7 8  class &amp;lt;%= controller_class_name %&amp;gt;Controller &amp;lt; ApplicationController before_action :set_&amp;lt;%= singular_table_name %&amp;gt;, except: [ :index, :new, :create ] private # Use callbacks to share common setup or constraints between actions.</description>
+ https://github.com/rails/rails/commit/339e4e80d514bd94fcb0e15689db43e5de83642a  1class &amp;lt;%= controller_class_name %&amp;gt;Controller &amp;lt; ApplicationController 2before_action :set_&amp;lt;%= singular_table_name %&amp;gt;, except: [ :index, :new, :create ] 34private 5# Use callbacks to share common setup or constraints between actions.</description>
     </item>
     
   </channel>

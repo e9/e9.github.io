@@ -10,10 +10,6 @@
     
 
     <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap"
-      rel="stylesheet"
-    />
-    <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
       integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
@@ -52,47 +48,18 @@
     
     <div class="post-content markdown-body">
         <p>Pythonで</p>
-<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#111">x</span><span style="color:#111">,</span> <span style="color:#111">y</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#00a8c8">if</span> <span style="color:#111">true_or_false</span> <span style="color:#00a8c8">else</span> <span style="color:#ae81ff">2</span><span style="color:#111">,</span> <span style="color:#ae81ff">3</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>というコードを目にした。ぱっと見での自分の解釈ではこうなる。</p>
-<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#111">x</span><span style="color:#111">,</span> <span style="color:#111">y</span> <span style="color:#f92672">=</span> <span style="color:#111">(</span><span style="color:#ae81ff">1</span><span style="color:#111">)</span> <span style="color:#00a8c8">if</span> <span style="color:#111">true_or_false</span> <span style="color:#00a8c8">else</span> <span style="color:#111">(</span><span style="color:#ae81ff">2</span><span style="color:#111">,</span> <span style="color:#ae81ff">3</span><span style="color:#111">)</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>これはtrue_or_falseがTrueのときにyの値が足りずランタイムエラーになる。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#111">x</span><span style="color:#111">,</span> <span style="color:#111">y</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#00a8c8">if</span> <span style="color:#111">true_or_false</span> <span style="color:#00a8c8">else</span> <span style="color:#ae81ff">2</span><span style="color:#111">,</span> <span style="color:#ae81ff">3</span>
+</code></pre></div><p>というコードを目にした。ぱっと見での自分の解釈ではこうなる。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#111">x</span><span style="color:#111">,</span> <span style="color:#111">y</span> <span style="color:#f92672">=</span> <span style="color:#111">(</span><span style="color:#ae81ff">1</span><span style="color:#111">)</span> <span style="color:#00a8c8">if</span> <span style="color:#111">true_or_false</span> <span style="color:#00a8c8">else</span> <span style="color:#111">(</span><span style="color:#ae81ff">2</span><span style="color:#111">,</span> <span style="color:#ae81ff">3</span><span style="color:#111">)</span>
+</code></pre></div><p>これはtrue_or_falseがTrueのときにyの値が足りずランタイムエラーになる。</p>
 <p>ので、レビューにそう書こうと思ったんだけど、ちゃんと確かめると、実際にはこのように動くらしい。</p>
-<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#111">x</span><span style="color:#111">,</span> <span style="color:#111">y</span> <span style="color:#f92672">=</span> <span style="color:#111">((</span><span style="color:#ae81ff">1</span> <span style="color:#00a8c8">if</span> <span style="color:#111">true_or_false</span> <span style="color:#00a8c8">else</span> <span style="color:#ae81ff">2</span><span style="color:#111">),</span> <span style="color:#ae81ff">3</span><span style="color:#111">)</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>なのでエラーにならない。なるほどー。これは気付きづらい。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#111">x</span><span style="color:#111">,</span> <span style="color:#111">y</span> <span style="color:#f92672">=</span> <span style="color:#111">((</span><span style="color:#ae81ff">1</span> <span style="color:#00a8c8">if</span> <span style="color:#111">true_or_false</span> <span style="color:#00a8c8">else</span> <span style="color:#ae81ff">2</span><span style="color:#111">),</span> <span style="color:#ae81ff">3</span><span style="color:#111">)</span>
+</code></pre></div><p>なのでエラーにならない。なるほどー。これは気付きづらい。</p>
 <p>だけど、まあ、普通はこう書きますわな。
 </p>
-<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#111">x</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#00a8c8">if</span> <span style="color:#111">true_or_false</span> <span style="color:#00a8c8">else</span> <span style="color:#ae81ff">2</span>
-<span style="color:#111">y</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
-</code></pre></td></tr></table>
-</div>
-</div>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#111">x</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#00a8c8">if</span> <span style="color:#111">true_or_false</span> <span style="color:#00a8c8">else</span> <span style="color:#ae81ff">2</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span style="color:#111">y</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+</code></pre></div>
     </div>
 </article>
 
