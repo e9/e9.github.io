@@ -5,7 +5,6 @@
     <link>https://e9.github.io/archives/2018/10/</link>
     <description>Recent content in 2018/10 on e9.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ja</language>
     
 	<atom:link href="https://e9.github.io/archives/2018/10/index.xml" rel="self" type="application/rss+xml" />
     
@@ -16,7 +15,7 @@
       <pubDate>Wed, 31 Oct 2018 19:36:34 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1540982193/</guid>
-      <description>普段は Redis の読み書きなんてフレームワークにまかせていて、オブジェクトならだいたいシリアライズして保存されているわけだけど、今回たまたま Redis を直で使うことがあった。ハッシュ、連想配列、辞書、まあとにかくそん</description>
+      <description>普段は Redis の読み書きなんてフレームワークにまかせていて、オブジェクトならだいたいシリアライズして保存されているわけだけど、今回たまたま Redis を直で使うことがあった。ハッシュ、連想配列、辞書、まあとにかくそんなものを保存したい。</description>
     </item>
     
     <item>
@@ -25,7 +24,7 @@
       <pubDate>Thu, 18 Oct 2018 19:40:15 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1539859215/</guid>
-      <description>Python。dict か list のいずれかが入っている変数に対して、ループで回してある処理をすることになった。 型が違うのだから違うコードで回すべきだという論もあるだろうが、せっかく LL で書いているのだから、全</description>
+      <description>Python。dict か list のいずれかが入っている変数に対して、ループで回してある処理をすることになった。</description>
     </item>
     
   </channel>

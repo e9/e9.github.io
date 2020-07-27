@@ -5,7 +5,6 @@
     <link>https://e9.github.io/posts/</link>
     <description>Recent content in Posts on e9.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ja</language>
     <lastBuildDate>Wed, 15 Apr 2020 02:05:47 +0900</lastBuildDate>
     
 	<atom:link href="https://e9.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
@@ -17,7 +16,8 @@
       <pubDate>Wed, 15 Apr 2020 02:05:47 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1586883947/</guid>
-      <description>単純に実装すると、webworkerの中からwasmはimportできない。エラーメッセージでググれば同じ轍を踏んだ先人が何人も見つかる。 https://github.com/webpack/webpack/issues/7647 https://www.mizdra.net/entry/2018/10/17/080000 https://imasanari.github.io/blog/wasm-bindgen-with-worker/ craをejectすれば解決はできるんだけど、信条として</description>
+      <description>単純に実装すると、webworkerの中からwasmはimportできない。エラーメッセージでググれば同じ轍を踏んだ先人が何人も見つかる。
+ https://github.com/webpack/webpack/issues/7647 https://www.</description>
     </item>
     
     <item>
@@ -26,7 +26,8 @@
       <pubDate>Thu, 24 Jan 2019 20:20:00 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1548328800/</guid>
-      <description>gomobileでiOS向けのライブラリを書いている。 $ gomobile version gomobile version +dc07713 Mon Jan 7 16:22:57 2019 +0000 (android,ios); androidSDK= package main import &amp;quot;app/x&amp;quot; func main() { x.X() } package x func X() { } この関数Xが非同期で動くとして、その結果をメインに返したいとき、セオリーとしてはコールバ</description>
+      <description>gomobileでiOS向けのライブラリを書いている。
+$ gomobile version gomobile version +dc07713 Mon Jan 7 16:22:57 2019 +0000 (android,ios); androidSDK=  package main import &amp;quot;app/x&amp;quot; func main() { x.</description>
     </item>
     
     <item>
@@ -35,7 +36,8 @@
       <pubDate>Tue, 04 Dec 2018 22:57:36 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1543931855/</guid>
-      <description>Pythonで x, y = 1 if true_or_false else 2, 3 というコードを目にした。ぱっと見での自分の解釈ではこうなる。 x, y = (1) if true_or_false else (2, 3) これはtrue_or_falseがTrueのときにyの値が足りずランタイムエラーになる</description>
+      <description>Pythonで
+x, y = 1 if true_or_false else 2, 3  というコードを目にした。ぱっと見での自分の解釈ではこうなる。</description>
     </item>
     
     <item>
@@ -44,7 +46,9 @@
       <pubDate>Fri, 30 Nov 2018 21:21:52 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1543580512/</guid>
-      <description>XとYという2つのウェブサイトを開発している。ユーザーはXでアクションAを起こすと、Yにリダイレクトされ、YでアクションBを起こすと、再びXにリダイレクトで帰ってくる。まあ、単純な話だ。 だけどそれを普</description>
+      <description>XとYという2つのウェブサイトを開発している。ユーザーはXでアクションAを起こすと、Yにリダイレクトされ、YでアクションBを起こすと、再びXにリダイレクトで帰ってくる。まあ、単純な話だ。
+だけどそれを普通に作ったら、なぜかはじめにXで張ったセッションが帰ってきたときには消えていて、別のユーザーとして扱われるという不可解なバグに悩まされた。
+セッションを張るというのは、仕組みとしてはセッションIDをクッキーに書き込んでいるだけなので、つまり行って帰ってくるとクッキーが消えるのだ。不思議。</description>
     </item>
     
     <item>
@@ -53,7 +57,8 @@
       <pubDate>Tue, 20 Nov 2018 20:07:07 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1542712026/</guid>
-      <description>assert_equalの引数は、だいたいの言語ではexpectedが先で http://test-unit.github.io/test-unit/en/Test/Unit/Assertions.html#assert_equal-instance_method https://phpunit.de/manual/6.5/en/appendixes.assertions.html#appendixes.assertions.assertEquals http://junit.sourceforge.net/javadoc/org/junit/Assert.html#assertEquals(double,%20double) めずらしくnodeはactualが先なんだけど https://nodejs.org/api/assert.html#assert_assert_equal_actual_expected_message Pythonはfirstとsecondになっていて、すごい割り切り方だと</description>
+      <description>assert_equalの引数は、だいたいの言語ではexpectedが先で
+ http://test-unit.github.io/test-unit/en/Test/Unit/Assertions.html#assert_equal-instance_method https://phpunit.</description>
     </item>
     
     <item>
@@ -62,7 +67,8 @@
       <pubDate>Fri, 09 Nov 2018 21:18:20 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1541765899/</guid>
-      <description>数年放置したRailsプロジェクトのフロントエンドをどうにかしたくなったので、手っ取り早くfrontendディレクトリの中で create-react-appして、その成果物をRailsのアセットパイプ</description>
+      <description>数年放置したRailsプロジェクトのフロントエンドをどうにかしたくなったので、手っ取り早くfrontendディレクトリの中で create-react-appして、その成果物をRailsのアセットパイプラインから参照することにした。
+Rails.application.config.assets.paths &amp;lt;&amp;lt; Rails.</description>
     </item>
     
     <item>
@@ -71,7 +77,7 @@
       <pubDate>Wed, 31 Oct 2018 19:36:34 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1540982193/</guid>
-      <description>普段は Redis の読み書きなんてフレームワークにまかせていて、オブジェクトならだいたいシリアライズして保存されているわけだけど、今回たまたま Redis を直で使うことがあった。ハッシュ、連想配列、辞書、まあとにかくそん</description>
+      <description>普段は Redis の読み書きなんてフレームワークにまかせていて、オブジェクトならだいたいシリアライズして保存されているわけだけど、今回たまたま Redis を直で使うことがあった。ハッシュ、連想配列、辞書、まあとにかくそんなものを保存したい。</description>
     </item>
     
     <item>
@@ -80,7 +86,7 @@
       <pubDate>Thu, 18 Oct 2018 19:40:15 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1539859215/</guid>
-      <description>Python。dict か list のいずれかが入っている変数に対して、ループで回してある処理をすることになった。 型が違うのだから違うコードで回すべきだという論もあるだろうが、せっかく LL で書いているのだから、全</description>
+      <description>Python。dict か list のいずれかが入っている変数に対して、ループで回してある処理をすることになった。</description>
     </item>
     
     <item>
@@ -89,7 +95,7 @@
       <pubDate>Fri, 28 Sep 2018 22:58:00 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1538143080/</guid>
-      <description>指定回数ループしたいときがある。Rubyだとわかりやすく10.times { }と書ける。範囲オブジェクトを作って回す手もある。for i in 0..&amp;lt;10 { }みたいな。いまのはSwiftだけど。 JavaScriptにつ</description>
+      <description>指定回数ループしたいときがある。Rubyだとわかりやすく10.times { }と書ける。範囲オブジェクトを作って回す手もある。for i in 0.</description>
     </item>
     
     <item>
@@ -98,7 +104,8 @@
       <pubDate>Mon, 10 Sep 2018 21:06:00 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1536581159/</guid>
-      <description>RubyにもPythonにもloggerはある。loggerに重い処理を渡してしまった場合を考えよう。 logger.debug(long_time_method()) どういう状況だこれは。 では遅延評価されるオブジェクトを途中でデバッグ出力してるとしよう。これなら</description>
+      <description>RubyにもPythonにもloggerはある。loggerに重い処理を渡してしまった場合を考えよう。
+logger.debug(long_time_method())  どういう状況だこれは。</description>
     </item>
     
     <item>
@@ -107,7 +114,8 @@
       <pubDate>Tue, 04 Sep 2018 20:14:01 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1536059641/</guid>
-      <description>例えばこんなパッケージがあったとして。 package x func X() string { return &amp;quot;x&amp;quot; } package x_test import ( &amp;quot;testing&amp;quot; &amp;quot;app/x&amp;quot; ) func TestX(t *testing.T) { if !assert(x.X(), &amp;quot;x&amp;quot;) { t.Fatal(&amp;quot;not x&amp;quot;) } } func assert(a string, b string) bool { return a == b } assert関数を他のパッケージのテストでも使いたくなったとする。 その場合、ass</description>
+      <description>例えばこんなパッケージがあったとして。
+package x func X() string { return &amp;quot;x&amp;quot; }  package x_test import ( &amp;quot;testing&amp;quot; &amp;quot;app/x&amp;quot; ) func TestX(t *testing.</description>
     </item>
     
     <item>
@@ -116,7 +124,9 @@
       <pubDate>Mon, 03 Sep 2018 21:19:34 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1535977174/</guid>
-      <description>developをmasterに入れるときでも、masterをリリースブランチに入れるときでも、なんでもいいんだけど、2つのブランチの差分から、次に何がデプロイされるのかをだいたいで知りたいときがある。</description>
+      <description>developをmasterに入れるときでも、masterをリリースブランチに入れるときでも、なんでもいいんだけど、2つのブランチの差分から、次に何がデプロイされるのかをだいたいで知りたいときがある。
+当然プルリクエストベースで開発しているはずなので、そういうときはマージコミットだけに注目すればよい。
+git log --first-parent --merges --reverse --pretty=&#39;%s %b&#39; origin/master.</description>
     </item>
     
     <item>
@@ -125,7 +135,8 @@
       <pubDate>Wed, 29 Aug 2018 21:36:55 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1535546215/</guid>
-      <description>マークダウンで書けるブログサービスの選択肢が少ないのでgithub.ioを使うことにした。 いまどきはJekyllよりHugoらしい。わりと簡単に作れた。こんな感じで。 hugo new site blog cd blog git init git remote add origin git@github.com:e9/blog.git 空のディ</description>
+      <description>マークダウンで書けるブログサービスの選択肢が少ないのでgithub.ioを使うことにした。 いまどきはJekyllよりHugoらしい。わりと簡単に作れた。こんな感じで。
+hugo new site blog cd blog git init git remote add origin git@github.</description>
     </item>
     
     <item>
@@ -134,7 +145,7 @@
       <pubDate>Thu, 19 May 2016 13:54:13 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1463633653/</guid>
-      <description>$ bin/rails -v Rails 5.0.0.rc1 こういうモデルがあるとする。 class Apple &amp;lt; ApplicationRecord attr_accessor :y end 実装内容の良し悪しはさておき、下記を実行する。 irb(main):001:0&amp;gt; apple = Apple.select(&amp;quot;1 as x&amp;quot;, &amp;quot;2 as y&amp;quot;).first irb(main):002:0&amp;gt; apple.x =&amp;gt; 1 ではapple.yには何が入っているか。 irb(main):003:0&amp;gt; apple.y =&amp;gt; nil irb(main):004:0&amp;gt; apple.as_json =&amp;gt; {&amp;quot;id&amp;quot;=&amp;gt;nil, &amp;quot;x&amp;quot;=&amp;gt;1, &amp;quot;y&amp;quot;=&amp;gt;nil} nilなのだ。a</description>
+      <description>$ bin/rails -v Rails 5.</description>
     </item>
     
     <item>
@@ -143,7 +154,8 @@
       <pubDate>Mon, 21 Mar 2016 21:14:02 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1458562442/</guid>
-      <description>rails5でマイグレーションファイルを作成すると、rails5で作成された印がつくようになった。 （まだベータ版だけど） class CreateApples &amp;lt; ActiveRecord::Migration[5.0] def change この[5.0]というのは、ぱっと見るとrubyの（隠された）機能のよ</description>
+      <description>rails5でマイグレーションファイルを作成すると、rails5で作成された印がつくようになった。 （まだベータ版だけど）
+class CreateApples &amp;lt; ActiveRecord::Migration[5.</description>
     </item>
     
     <item>
@@ -152,7 +164,8 @@
       <pubDate>Mon, 29 Feb 2016 22:31:13 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1456752673/</guid>
-      <description>いつの間にかrailsのscaffoldで作成したコントローラがbefore_actionで変数を仕込むようになっていた。普段まったく使わないので気付かなかった。 https://github.com/rails/rails/commit/339e4e80d514bd94fcb0e15689db43e5de83642a class &amp;lt;%= controller_class_name %&amp;gt;Controller &amp;lt; ApplicationController before_action :set_&amp;lt;%= singular_table_name %&amp;gt;, except: [ :index, :new, :create ] private #</description>
+      <description>いつの間にかrailsのscaffoldで作成したコントローラがbefore_actionで変数を仕込むようになっていた。普段まったく使わないので気付かなかった。
+ https://github.com/rails/rails/commit/339e4e80d514bd94fcb0e15689db43e5de83642a  class &amp;lt;%= controller_class_name %&amp;gt;Controller &amp;lt; ApplicationController before_action :set_&amp;lt;%= singular_table_name %&amp;gt;, except: [ :index, :new, :create ] private # Use callbacks to share common setup or constraints between actions.</description>
     </item>
     
     <item>
@@ -161,7 +174,8 @@
       <pubDate>Sun, 20 Apr 2014 11:40:46 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1397961646/</guid>
-      <description>そういえば学生のころ、私は書き起こしが趣味だったのでした。 これちゃんとした挨拶するの？じゃあ一応、式典らしくちゃんとした挨拶しますね。 みなさん卒業おめでとうございます。4年前をちょっと思い出してくださ</description>
+      <description>そういえば学生のころ、私は書き起こしが趣味だったのでした。
+ これちゃんとした挨拶するの？じゃあ一応、式典らしくちゃんとした挨拶しますね。</description>
     </item>
     
     <item>
@@ -170,7 +184,8 @@
       <pubDate>Wed, 26 Mar 2014 18:11:38 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1395825098/</guid>
-      <description>rails4のroutes.rbで resources :books, param: :name とやると/books/:nameでアクセスできるようになる。でもその状態で form_for Book.find(1) とかやってもformのactionは/books/1のまま。 class Book &amp;lt; ActiveRecord::Base def to_param name end end を</description>
+      <description>rails4のroutes.rbで
+resources :books, param: :name  とやると/books/:nameでアクセスできるようになる。でもその状態で</description>
     </item>
     
     <item>
@@ -179,7 +194,8 @@
       <pubDate>Wed, 08 Aug 2012 16:48:09 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1344412089/</guid>
-      <description>クラウドで将棋の局面図を提供するサイトをつくりました。 http://shogipic.jp ひっそりこっそりリリースしたら数日後に若島さんに使ってもらえたのでだいぶ満足しました。 http://twitter.com/propara/status/230633209719844864 もういつ閉鎖してもいいです。嘘です。閉鎖はしないです。 将</description>
+      <description>クラウドで将棋の局面図を提供するサイトをつくりました。
+ http://shogipic.jp  ひっそりこっそりリリースしたら数日後に若島さんに使ってもらえたのでだいぶ満足しました。</description>
     </item>
     
     <item>
@@ -188,7 +204,8 @@
       <pubDate>Sun, 22 Jul 2012 23:38:29 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1342967909/</guid>
-      <description>YouTubeで見たジェイク・シマブクロの発言がオシャレだった。 マイナーコードの中にも特に悲しい音がある ベートーベンはDマイナーが一番悲しい音だと言っていた Dマイナーに限らずDの音は全般的に人の心に訴</description>
+      <description>YouTubeで見たジェイク・シマブクロの発言がオシャレだった。
+ マイナーコードの中にも特に悲しい音がある</description>
     </item>
     
     <item>
@@ -197,7 +214,9 @@
       <pubDate>Sat, 21 Jul 2012 20:40:25 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1342870825/</guid>
-      <description>Lionにマウス挿してホイール使ったら、スクロール方向がWindowsと逆になってて面食らった。 環境設定からホイールのスクロール方向を逆にしたら治ったけど、今度はそれに連動してトラックパッドのスクロー</description>
+      <description>Lionにマウス挿してホイール使ったら、スクロール方向がWindowsと逆になってて面食らった。
+環境設定からホイールのスクロール方向を逆にしたら治ったけど、今度はそれに連動してトラックパッドのスクロール方向が今までの逆になった。
+マウスとトラックパッドのスクロール方向を別々にはできないらしい。</description>
     </item>
     
     <item>
@@ -206,7 +225,8 @@
       <pubDate>Sun, 15 Jul 2012 23:50:51 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1342363851/</guid>
-      <description>最近はバラエティ番組を見てると、スポンサーをアナウンスする場面で、後ろに映ってる出演者の着てるＴシャツのロゴとか、名札とか、とにかく文字すべてにモザイクがかかってることに気付く。 http://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q1432189114 http://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q1232100427 まあ、普通に考えた</description>
+      <description>最近はバラエティ番組を見てると、スポンサーをアナウンスする場面で、後ろに映ってる出演者の着てるＴシャツのロゴとか、名札とか、とにかく文字すべてにモザイクがかかってることに気付く。
+ http://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q1432189114 http://detail.</description>
     </item>
     
     <item>
@@ -215,7 +235,8 @@
       <pubDate>Sat, 14 Jul 2012 00:43:57 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1342194237/</guid>
-      <description>よく見るのはこれ。 (function(){})(); JSLintはカッコを中に入れろというらしい (function(){}()); knockout.jsでは初めの書き方と次の書き方が混在してる。 !function(){}(); 値を返さない即時関数はこれでバイト数を削減しようってことかな。</description>
+      <description>よく見るのはこれ。
+(function(){})();  JSLintはカッコを中に入れろというらしい</description>
     </item>
     
     <item>
@@ -224,7 +245,9 @@
       <pubDate>Wed, 20 Jun 2012 22:57:36 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1340200656/</guid>
-      <description>ホームレスになりたいというわけではない。 先週末に熊本に行き、そこでJR水前寺駅というものを見たのだ。 直営駅で、みどりの窓口が設置されている。駅舎には美容室などの商業施設、3階以上にはマンションを併設し</description>
+      <description>ホームレスになりたいというわけではない。
+先週末に熊本に行き、そこでJR水前寺駅というものを見たのだ。
+ 直営駅で、みどりの窓口が設置されている。駅舎には美容室などの商業施設、3階以上にはマンションを併設している。改札口やみどりの窓口、キヨスクなど駅機能は2階にある。</description>
     </item>
     
     <item>
@@ -233,7 +256,9 @@
       <pubDate>Mon, 28 May 2012 23:21:54 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1338214914/</guid>
-      <description>ブログに書きたいことは、つまり人に話したいことだから、ブログをどんどん書くと、いざ人に会ったときに話すことがなくなってしまう。 「ねえねえ聞いてよこの前さあ――あ、ごめん、この話はブログに書いたんだった</description>
+      <description>ブログに書きたいことは、つまり人に話したいことだから、ブログをどんどん書くと、いざ人に会ったときに話すことがなくなってしまう。
+「ねえねえ聞いてよこの前さあ――あ、ごめん、この話はブログに書いたんだった」
+お前のブログなんて誰も読んでねーよと言われるだろうけど、でもそうは言ってもインターネットで（一応は）全世界に向けて発信した話を、もう一度誰かにするのは気が引ける。</description>
     </item>
     
     <item>

@@ -5,7 +5,6 @@
     <link>https://e9.github.io/archives/2019/01/</link>
     <description>Recent content in 2019/01 on e9.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ja</language>
     
 	<atom:link href="https://e9.github.io/archives/2019/01/index.xml" rel="self" type="application/rss+xml" />
     
@@ -16,7 +15,8 @@
       <pubDate>Thu, 24 Jan 2019 20:20:00 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1548328800/</guid>
-      <description>gomobileでiOS向けのライブラリを書いている。 $ gomobile version gomobile version +dc07713 Mon Jan 7 16:22:57 2019 +0000 (android,ios); androidSDK= package main import &amp;quot;app/x&amp;quot; func main() { x.X() } package x func X() { } この関数Xが非同期で動くとして、その結果をメインに返したいとき、セオリーとしてはコールバ</description>
+      <description>gomobileでiOS向けのライブラリを書いている。
+$ gomobile version gomobile version +dc07713 Mon Jan 7 16:22:57 2019 +0000 (android,ios); androidSDK=  package main import &amp;quot;app/x&amp;quot; func main() { x.</description>
     </item>
     
   </channel>

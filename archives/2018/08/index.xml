@@ -5,7 +5,6 @@
     <link>https://e9.github.io/archives/2018/08/</link>
     <description>Recent content in 2018/08 on e9.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ja</language>
     
 	<atom:link href="https://e9.github.io/archives/2018/08/index.xml" rel="self" type="application/rss+xml" />
     
@@ -16,7 +15,8 @@
       <pubDate>Wed, 29 Aug 2018 21:36:55 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1535546215/</guid>
-      <description>マークダウンで書けるブログサービスの選択肢が少ないのでgithub.ioを使うことにした。 いまどきはJekyllよりHugoらしい。わりと簡単に作れた。こんな感じで。 hugo new site blog cd blog git init git remote add origin git@github.com:e9/blog.git 空のディ</description>
+      <description>マークダウンで書けるブログサービスの選択肢が少ないのでgithub.ioを使うことにした。 いまどきはJekyllよりHugoらしい。わりと簡単に作れた。こんな感じで。
+hugo new site blog cd blog git init git remote add origin git@github.</description>
     </item>
     
   </channel>

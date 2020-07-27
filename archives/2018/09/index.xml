@@ -5,7 +5,6 @@
     <link>https://e9.github.io/archives/2018/09/</link>
     <description>Recent content in 2018/09 on e9.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ja</language>
     
 	<atom:link href="https://e9.github.io/archives/2018/09/index.xml" rel="self" type="application/rss+xml" />
     
@@ -16,7 +15,7 @@
       <pubDate>Fri, 28 Sep 2018 22:58:00 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1538143080/</guid>
-      <description>指定回数ループしたいときがある。Rubyだとわかりやすく10.times { }と書ける。範囲オブジェクトを作って回す手もある。for i in 0..&amp;lt;10 { }みたいな。いまのはSwiftだけど。 JavaScriptにつ</description>
+      <description>指定回数ループしたいときがある。Rubyだとわかりやすく10.times { }と書ける。範囲オブジェクトを作って回す手もある。for i in 0.</description>
     </item>
     
     <item>
@@ -25,7 +24,8 @@
       <pubDate>Mon, 10 Sep 2018 21:06:00 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1536581159/</guid>
-      <description>RubyにもPythonにもloggerはある。loggerに重い処理を渡してしまった場合を考えよう。 logger.debug(long_time_method()) どういう状況だこれは。 では遅延評価されるオブジェクトを途中でデバッグ出力してるとしよう。これなら</description>
+      <description>RubyにもPythonにもloggerはある。loggerに重い処理を渡してしまった場合を考えよう。
+logger.debug(long_time_method())  どういう状況だこれは。</description>
     </item>
     
     <item>
@@ -34,7 +34,8 @@
       <pubDate>Tue, 04 Sep 2018 20:14:01 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1536059641/</guid>
-      <description>例えばこんなパッケージがあったとして。 package x func X() string { return &amp;quot;x&amp;quot; } package x_test import ( &amp;quot;testing&amp;quot; &amp;quot;app/x&amp;quot; ) func TestX(t *testing.T) { if !assert(x.X(), &amp;quot;x&amp;quot;) { t.Fatal(&amp;quot;not x&amp;quot;) } } func assert(a string, b string) bool { return a == b } assert関数を他のパッケージのテストでも使いたくなったとする。 その場合、ass</description>
+      <description>例えばこんなパッケージがあったとして。
+package x func X() string { return &amp;quot;x&amp;quot; }  package x_test import ( &amp;quot;testing&amp;quot; &amp;quot;app/x&amp;quot; ) func TestX(t *testing.</description>
     </item>
     
     <item>
@@ -43,7 +44,9 @@
       <pubDate>Mon, 03 Sep 2018 21:19:34 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1535977174/</guid>
-      <description>developをmasterに入れるときでも、masterをリリースブランチに入れるときでも、なんでもいいんだけど、2つのブランチの差分から、次に何がデプロイされるのかをだいたいで知りたいときがある。</description>
+      <description>developをmasterに入れるときでも、masterをリリースブランチに入れるときでも、なんでもいいんだけど、2つのブランチの差分から、次に何がデプロイされるのかをだいたいで知りたいときがある。
+当然プルリクエストベースで開発しているはずなので、そういうときはマージコミットだけに注目すればよい。
+git log --first-parent --merges --reverse --pretty=&#39;%s %b&#39; origin/master.</description>
     </item>
     
   </channel>

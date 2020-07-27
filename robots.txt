@@ -1,3 +1,0 @@
-User-agent: *
-
-Sitemap: https://e9.github.io/sitemap.xml

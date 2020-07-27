@@ -216,7 +216,15 @@
   </url>
   
   <url>
+    <loc>https://e9.github.io/archives/</loc>
+  </url>
+  
+  <url>
     <loc>https://e9.github.io/search/</loc>
+  </url>
+  
+  <url>
+    <loc>https://e9.github.io/tags/</loc>
   </url>
   
 </urlset>

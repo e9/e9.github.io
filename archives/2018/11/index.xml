@@ -5,7 +5,6 @@
     <link>https://e9.github.io/archives/2018/11/</link>
     <description>Recent content in 2018/11 on e9.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ja</language>
     
 	<atom:link href="https://e9.github.io/archives/2018/11/index.xml" rel="self" type="application/rss+xml" />
     
@@ -16,7 +15,9 @@
       <pubDate>Fri, 30 Nov 2018 21:21:52 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1543580512/</guid>
-      <description>XとYという2つのウェブサイトを開発している。ユーザーはXでアクションAを起こすと、Yにリダイレクトされ、YでアクションBを起こすと、再びXにリダイレクトで帰ってくる。まあ、単純な話だ。 だけどそれを普</description>
+      <description>XとYという2つのウェブサイトを開発している。ユーザーはXでアクションAを起こすと、Yにリダイレクトされ、YでアクションBを起こすと、再びXにリダイレクトで帰ってくる。まあ、単純な話だ。
+だけどそれを普通に作ったら、なぜかはじめにXで張ったセッションが帰ってきたときには消えていて、別のユーザーとして扱われるという不可解なバグに悩まされた。
+セッションを張るというのは、仕組みとしてはセッションIDをクッキーに書き込んでいるだけなので、つまり行って帰ってくるとクッキーが消えるのだ。不思議。</description>
     </item>
     
     <item>
@@ -25,7 +26,8 @@
       <pubDate>Tue, 20 Nov 2018 20:07:07 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1542712026/</guid>
-      <description>assert_equalの引数は、だいたいの言語ではexpectedが先で http://test-unit.github.io/test-unit/en/Test/Unit/Assertions.html#assert_equal-instance_method https://phpunit.de/manual/6.5/en/appendixes.assertions.html#appendixes.assertions.assertEquals http://junit.sourceforge.net/javadoc/org/junit/Assert.html#assertEquals(double,%20double) めずらしくnodeはactualが先なんだけど https://nodejs.org/api/assert.html#assert_assert_equal_actual_expected_message Pythonはfirstとsecondになっていて、すごい割り切り方だと</description>
+      <description>assert_equalの引数は、だいたいの言語ではexpectedが先で
+ http://test-unit.github.io/test-unit/en/Test/Unit/Assertions.html#assert_equal-instance_method https://phpunit.</description>
     </item>
     
     <item>
@@ -34,7 +36,8 @@
       <pubDate>Fri, 09 Nov 2018 21:18:20 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1541765899/</guid>
-      <description>数年放置したRailsプロジェクトのフロントエンドをどうにかしたくなったので、手っ取り早くfrontendディレクトリの中で create-react-appして、その成果物をRailsのアセットパイプ</description>
+      <description>数年放置したRailsプロジェクトのフロントエンドをどうにかしたくなったので、手っ取り早くfrontendディレクトリの中で create-react-appして、その成果物をRailsのアセットパイプラインから参照することにした。
+Rails.application.config.assets.paths &amp;lt;&amp;lt; Rails.</description>
     </item>
     
   </channel>

@@ -5,7 +5,6 @@
     <link>https://e9.github.io/archives/2018/12/</link>
     <description>Recent content in 2018/12 on e9.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ja</language>
     
 	<atom:link href="https://e9.github.io/archives/2018/12/index.xml" rel="self" type="application/rss+xml" />
     
@@ -16,7 +15,8 @@
       <pubDate>Tue, 04 Dec 2018 22:57:36 +0900</pubDate>
       
       <guid>https://e9.github.io/posts/1543931855/</guid>
-      <description>Pythonで x, y = 1 if true_or_false else 2, 3 というコードを目にした。ぱっと見での自分の解釈ではこうなる。 x, y = (1) if true_or_false else (2, 3) これはtrue_or_falseがTrueのときにyの値が足りずランタイムエラーになる</description>
+      <description>Pythonで
+x, y = 1 if true_or_false else 2, 3  というコードを目にした。ぱっと見での自分の解釈ではこうなる。</description>
     </item>
     
   </channel>
