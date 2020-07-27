@@ -47,7 +47,7 @@
       
       <guid>https://e9.github.io/posts/1342194237/</guid>
       <description>よく見るのはこれ。
-(function(){})();  JSLintはカッコを中に入れろというらしい</description>
+1  (function(){})();   JSLintはカッコを中に入れろというらしい</description>
     </item>
     
   </channel>

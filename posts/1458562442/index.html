@@ -9,7 +9,10 @@
 
     
 
-
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
@@ -20,16 +23,9 @@
   </head>
 
   <body>
-    <nav
-      class="navbar "
-    >
+    <nav class="navbar ">
       <div class="container">
-        <a
-          class="navbar-brand"
-          href="https://e9.github.io"
-          style="font-weight: 800; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; "
-          >e9.github.io</a
-        >
+        <a class="navbar-brand" href="https://e9.github.io">e9.github.io</a>
       </div>
     </nav>
 
@@ -57,24 +53,50 @@
     <div class="post-content markdown-body">
         <p>rails5でマイグレーションファイルを作成すると、rails5で作成された印がつくようになった。
 （まだベータ版だけど）</p>
-<pre><code class="language-rb">class CreateApples &lt; ActiveRecord::Migration[5.0]
-  def change
-</code></pre>
-<p>この<code>[5.0]</code>というのは、ぱっと見るとrubyの（隠された）機能のように見えるが、実は違う。</p>
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rb" data-lang="rb"><span style="color:#00a8c8">class</span> <span style="color:#75af00">CreateApples</span> <span style="color:#f92672">&lt;</span> <span style="color:#00a8c8">ActiveRecord</span><span style="color:#f92672">::</span><span style="color:#00a8c8">Migration</span><span style="color:#f92672">[</span><span style="color:#ae81ff">5</span><span style="color:#f92672">.</span><span style="color:#ae81ff">0</span><span style="color:#f92672">]</span>
+  <span style="color:#00a8c8">def</span> <span style="color:#75af00">change</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>この<code>[5.0]</code>というのは、ぱっと見るとrubyの（隠された）機能のように見えるが、実は違う。</p>
 <ul>
 <li>[https://github.com/rails/rails/commit/6940dc860c4b25bff2eded370f2af4316de15a30#diff-8d3c44120f7b67ff79e2fbe6a40d0ad6R492:title]</li>
 </ul>
 <p>ActiveRecord::Migrationクラスに[]という名前のクラスメソッドが定義されており、そのメソッドが（別の）クラスを返すのだ。</p>
-<pre><code class="language-rb">[1] pry(main)&gt; ActiveRecord::Migration[5.0]
-=&gt; ActiveRecord::Migration::Current
-</code></pre>
-<p>つまりこういうことだ。</p>
-<pre><code class="language-rb">class CreateApples &lt; ActiveRecord::Migration.[](5.0)
-</code></pre>
-<p>もしくはこの方がわかりやすいか。</p>
-<pre><code class="language-rb">class CreateApples &lt; ActiveRecord::Migration.send('[]', 5.0)
-</code></pre>
-<p>さすがrubyである。</p>
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rb" data-lang="rb"><span style="color:#f92672">[</span><span style="color:#ae81ff">1</span><span style="color:#f92672">]</span> <span style="color:#111">pry</span><span style="color:#111">(</span><span style="color:#111">main</span><span style="color:#111">)</span><span style="color:#f92672">&gt;</span> <span style="color:#00a8c8">ActiveRecord</span><span style="color:#f92672">::</span><span style="color:#00a8c8">Migration</span><span style="color:#f92672">[</span><span style="color:#ae81ff">5</span><span style="color:#f92672">.</span><span style="color:#ae81ff">0</span><span style="color:#f92672">]</span>
+<span style="color:#f92672">=&gt;</span> <span style="color:#00a8c8">ActiveRecord</span><span style="color:#f92672">::</span><span style="color:#00a8c8">Migration</span><span style="color:#f92672">::</span><span style="color:#00a8c8">Current</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>つまりこういうことだ。</p>
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rb" data-lang="rb"><span style="color:#00a8c8">class</span> <span style="color:#75af00">CreateApples</span> <span style="color:#f92672">&lt;</span> <span style="color:#00a8c8">ActiveRecord</span><span style="color:#f92672">::</span><span style="color:#00a8c8">Migration</span><span style="color:#f92672">.</span><span style="color:#111">[]</span><span style="color:#111">(</span><span style="color:#ae81ff">5</span><span style="color:#f92672">.</span><span style="color:#ae81ff">0</span><span style="color:#111">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>もしくはこの方がわかりやすいか。</p>
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rb" data-lang="rb"><span style="color:#00a8c8">class</span> <span style="color:#75af00">CreateApples</span> <span style="color:#f92672">&lt;</span> <span style="color:#00a8c8">ActiveRecord</span><span style="color:#f92672">::</span><span style="color:#00a8c8">Migration</span><span style="color:#f92672">.</span><span style="color:#111">send</span><span style="color:#111">(</span><span style="color:#d88200">&#39;[]&#39;</span><span style="color:#111">,</span> <span style="color:#ae81ff">5</span><span style="color:#f92672">.</span><span style="color:#ae81ff">0</span><span style="color:#111">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>さすがrubyである。</p>
 
     </div>
 </article>

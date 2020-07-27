@@ -25,7 +25,7 @@
       
       <guid>https://e9.github.io/posts/1536581159/</guid>
       <description>RubyにもPythonにもloggerはある。loggerに重い処理を渡してしまった場合を考えよう。
-logger.debug(long_time_method())  どういう状況だこれは。</description>
+1  logger.</description>
     </item>
     
     <item>
@@ -35,7 +35,7 @@ logger.debug(long_time_method())  どういう状況だこれは。</description
       
       <guid>https://e9.github.io/posts/1536059641/</guid>
       <description>例えばこんなパッケージがあったとして。
-package x func X() string { return &amp;quot;x&amp;quot; }  package x_test import ( &amp;quot;testing&amp;quot; &amp;quot;app/x&amp;quot; ) func TestX(t *testing.</description>
+1 2 3 4 5  package x func X() string { return &amp;#34;x&amp;#34; }   1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16  package x_test import ( &amp;#34;testing&amp;#34; &amp;#34;app/x&amp;#34; ) func TestX(t *testing.</description>
     </item>
     
     <item>
@@ -46,7 +46,7 @@ package x func X() string { return &amp;quot;x&amp;quot; }  package x_test impor
       <guid>https://e9.github.io/posts/1535977174/</guid>
       <description>developをmasterに入れるときでも、masterをリリースブランチに入れるときでも、なんでもいいんだけど、2つのブランチの差分から、次に何がデプロイされるのかをだいたいで知りたいときがある。
 当然プルリクエストベースで開発しているはずなので、そういうときはマージコミットだけに注目すればよい。
-git log --first-parent --merges --reverse --pretty=&#39;%s %b&#39; origin/master.</description>
+1  git log --first-parent --merges --reverse --pretty=&amp;#39;%s %b&amp;#39; origin/master.</description>
     </item>
     
   </channel>

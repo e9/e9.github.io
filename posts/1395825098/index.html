@@ -9,7 +9,10 @@
 
     
 
-
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
@@ -20,16 +23,9 @@
   </head>
 
   <body>
-    <nav
-      class="navbar "
-    >
+    <nav class="navbar ">
       <div class="container">
-        <a
-          class="navbar-brand"
-          href="https://e9.github.io"
-          style="font-weight: 800; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; "
-          >e9.github.io</a
-        >
+        <a class="navbar-brand" href="https://e9.github.io">e9.github.io</a>
       </div>
     </nav>
 
@@ -56,19 +52,41 @@
     
     <div class="post-content markdown-body">
         <p>rails4のroutes.rbで</p>
-<pre><code class="language-ruby">resources :books, param: :name
-</code></pre>
-<p>とやると/books/:nameでアクセスできるようになる。でもその状態で</p>
-<pre><code class="language-ruby">form_for Book.find(1)
-</code></pre>
-<p>とかやってもformのactionは/books/1のまま。</p>
-<pre><code class="language-ruby">class Book &lt; ActiveRecord::Base
-  def to_param
-    name
-  end
-end
-</code></pre>
-<p>を追加すればいいだけなんだけど冗長な気がした。</p>
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#111">resources</span> <span style="color:#d88200">:books</span><span style="color:#111">,</span> <span style="color:#d88200">param</span><span style="color:#111">:</span> <span style="color:#d88200">:name</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>とやると/books/:nameでアクセスできるようになる。でもその状態で</p>
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#111">form_for</span> <span style="color:#00a8c8">Book</span><span style="color:#f92672">.</span><span style="color:#111">find</span><span style="color:#111">(</span><span style="color:#ae81ff">1</span><span style="color:#111">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>とかやってもformのactionは/books/1のまま。</p>
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#00a8c8">class</span> <span style="color:#75af00">Book</span> <span style="color:#f92672">&lt;</span> <span style="color:#00a8c8">ActiveRecord</span><span style="color:#f92672">::</span><span style="color:#00a8c8">Base</span>
+  <span style="color:#00a8c8">def</span> <span style="color:#75af00">to_param</span>
+    <span style="color:#111">name</span>
+  <span style="color:#00a8c8">end</span>
+<span style="color:#00a8c8">end</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>を追加すればいいだけなんだけど冗長な気がした。</p>
 
     </div>
 </article>

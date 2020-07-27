@@ -1,3 +1,7 @@
+body {
+  font-family: "Noto Sans JP", sans-serif;
+}
+
 header.masthead {
   margin-bottom: 50px;
   background: no-repeat center center;
@@ -26,7 +30,6 @@ header.masthead .site-heading {
 header.masthead .site-heading h1 {
   font-size: 40px;
   font-weight: 800;
-  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 @media (min-width: 768px) {
@@ -39,10 +42,15 @@ header.masthead .site-heading h1 {
   }
 }
 
-.home-navbar {
+.navbar-home {
   position: absolute;
 }
 
-.home-navbar a {
+.navbar-home a {
   color: white !important;
+}
+
+.navbar-brand {
+  font-weight: 800;
+  color: #212529 !important;
 }

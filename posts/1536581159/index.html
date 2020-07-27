@@ -9,7 +9,10 @@
 
     
 
-
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
@@ -20,16 +23,9 @@
   </head>
 
   <body>
-    <nav
-      class="navbar "
-    >
+    <nav class="navbar ">
       <div class="container">
-        <a
-          class="navbar-brand"
-          href="https://e9.github.io"
-          style="font-weight: 800; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; "
-          >e9.github.io</a
-        >
+        <a class="navbar-brand" href="https://e9.github.io">e9.github.io</a>
       </div>
     </nav>
 
@@ -56,23 +52,43 @@
     
     <div class="post-content markdown-body">
         <p>RubyにもPythonにもloggerはある。loggerに重い処理を渡してしまった場合を考えよう。</p>
-<pre><code class="language-py">logger.debug(long_time_method())
-</code></pre>
-<p>どういう状況だこれは。</p>
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#111">logger</span><span style="color:#f92672">.</span><span style="color:#111">debug</span><span style="color:#111">(</span><span style="color:#111">long_time_method</span><span style="color:#111">())</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>どういう状況だこれは。</p>
 <p>では遅延評価されるオブジェクトを途中でデバッグ出力してるとしよう。これならありそう。</p>
-<pre><code class="language-py">query = query.where(...)
-logger.debug(query.all())
-query = query.where(...)
-</code></pre>
-<p>このとき本番環境ではdebugログが出力されないとしても、query.all()は実行されてしまう。Pythonだとこれを回避するのは難しい。</p>
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#111">query</span> <span style="color:#f92672">=</span> <span style="color:#111">query</span><span style="color:#f92672">.</span><span style="color:#111">where</span><span style="color:#111">(</span><span style="color:#f92672">...</span><span style="color:#111">)</span>
+<span style="color:#111">logger</span><span style="color:#f92672">.</span><span style="color:#111">debug</span><span style="color:#111">(</span><span style="color:#111">query</span><span style="color:#f92672">.</span><span style="color:#111">all</span><span style="color:#111">())</span>
+<span style="color:#111">query</span> <span style="color:#f92672">=</span> <span style="color:#111">query</span><span style="color:#f92672">.</span><span style="color:#111">where</span><span style="color:#111">(</span><span style="color:#f92672">...</span><span style="color:#111">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>このとき本番環境ではdebugログが出力されないとしても、query.all()は実行されてしまう。Pythonだとこれを回避するのは難しい。</p>
 <p>debugの行にログレベルを見るifを追加するとか、文字列化まで遅延評価されるクラスを間に挟むとか、苦しいアイデアがスタックオーバフローには書いてあった。</p>
 <ul>
 <li><a href="https://stackoverflow.com/questions/4148790/lazy-logger-message-string-evaluation/22205835#22205835">https://stackoverflow.com/questions/4148790/lazy-logger-message-string-evaluation/22205835#22205835</a></li>
 </ul>
 <p>一方、Rubyは簡単で、ブロックに入れて渡せばよい。</p>
-<pre><code class="language-rb">logger.debug { query.all() }
-</code></pre>
-
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rb" data-lang="rb"><span style="color:#111">logger</span><span style="color:#f92672">.</span><span style="color:#111">debug</span> <span style="color:#111">{</span> <span style="color:#111">query</span><span style="color:#f92672">.</span><span style="color:#111">all</span><span style="color:#111">()</span> <span style="color:#111">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </article>
 

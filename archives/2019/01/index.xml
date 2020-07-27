@@ -16,7 +16,7 @@
       
       <guid>https://e9.github.io/posts/1548328800/</guid>
       <description>gomobileでiOS向けのライブラリを書いている。
-$ gomobile version gomobile version +dc07713 Mon Jan 7 16:22:57 2019 +0000 (android,ios); androidSDK=  package main import &amp;quot;app/x&amp;quot; func main() { x.</description>
+$ gomobile version gomobile version +dc07713 Mon Jan 7 16:22:57 2019 +0000 (android,ios); androidSDK= 1 2 3 4 5 6 7  package main import &amp;#34;app/x&amp;#34; func main() { x.</description>
     </item>
     
   </channel>

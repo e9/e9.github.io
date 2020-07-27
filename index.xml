@@ -36,7 +36,7 @@
       
       <guid>https://e9.github.io/posts/1548328800/</guid>
       <description>gomobileでiOS向けのライブラリを書いている。
-$ gomobile version gomobile version +dc07713 Mon Jan 7 16:22:57 2019 +0000 (android,ios); androidSDK=  package main import &amp;quot;app/x&amp;quot; func main() { x.</description>
+$ gomobile version gomobile version +dc07713 Mon Jan 7 16:22:57 2019 +0000 (android,ios); androidSDK= 1 2 3 4 5 6 7  package main import &amp;#34;app/x&amp;#34; func main() { x.</description>
     </item>
     
     <item>
@@ -46,7 +46,7 @@ $ gomobile version gomobile version +dc07713 Mon Jan 7 16:22:57 2019 +0000 (andr
       
       <guid>https://e9.github.io/posts/1543931855/</guid>
       <description>Pythonで
-x, y = 1 if true_or_false else 2, 3  というコードを目にした。ぱっと見での自分の解釈ではこうなる。</description>
+1  x, y = 1 if true_or_false else 2, 3   というコードを目にした。ぱっと見での自分の解釈ではこうなる。</description>
     </item>
     
     <item>
@@ -77,7 +77,7 @@ x, y = 1 if true_or_false else 2, 3  というコードを目にした。ぱっ�
       
       <guid>https://e9.github.io/posts/1541765899/</guid>
       <description>数年放置したRailsプロジェクトのフロントエンドをどうにかしたくなったので、手っ取り早くfrontendディレクトリの中で create-react-appして、その成果物をRailsのアセットパイプラインから参照することにした。
-Rails.application.config.assets.paths &amp;lt;&amp;lt; Rails.</description>
+1  Rails.</description>
     </item>
     
     <item>
@@ -114,7 +114,7 @@ Rails.application.config.assets.paths &amp;lt;&amp;lt; Rails.</description>
       
       <guid>https://e9.github.io/posts/1536581159/</guid>
       <description>RubyにもPythonにもloggerはある。loggerに重い処理を渡してしまった場合を考えよう。
-logger.debug(long_time_method())  どういう状況だこれは。</description>
+1  logger.</description>
     </item>
     
     <item>
@@ -124,7 +124,7 @@ logger.debug(long_time_method())  どういう状況だこれは。</description
       
       <guid>https://e9.github.io/posts/1536059641/</guid>
       <description>例えばこんなパッケージがあったとして。
-package x func X() string { return &amp;quot;x&amp;quot; }  package x_test import ( &amp;quot;testing&amp;quot; &amp;quot;app/x&amp;quot; ) func TestX(t *testing.</description>
+1 2 3 4 5  package x func X() string { return &amp;#34;x&amp;#34; }   1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16  package x_test import ( &amp;#34;testing&amp;#34; &amp;#34;app/x&amp;#34; ) func TestX(t *testing.</description>
     </item>
     
     <item>
@@ -135,7 +135,7 @@ package x func X() string { return &amp;quot;x&amp;quot; }  package x_test impor
       <guid>https://e9.github.io/posts/1535977174/</guid>
       <description>developをmasterに入れるときでも、masterをリリースブランチに入れるときでも、なんでもいいんだけど、2つのブランチの差分から、次に何がデプロイされるのかをだいたいで知りたいときがある。
 当然プルリクエストベースで開発しているはずなので、そういうときはマージコミットだけに注目すればよい。
-git log --first-parent --merges --reverse --pretty=&#39;%s %b&#39; origin/master.</description>
+1  git log --first-parent --merges --reverse --pretty=&amp;#39;%s %b&amp;#39; origin/master.</description>
     </item>
     
     <item>
@@ -145,7 +145,7 @@ git log --first-parent --merges --reverse --pretty=&#39;%s %b&#39; origin/master
       
       <guid>https://e9.github.io/posts/1535546215/</guid>
       <description>マークダウンで書けるブログサービスの選択肢が少ないのでgithub.ioを使うことにした。 いまどきはJekyllよりHugoらしい。わりと簡単に作れた。こんな感じで。
-hugo new site blog cd blog git init git remote add origin git@github.</description>
+1 2 3 4  hugo new site blog cd blog git init git remote add origin git@github.</description>
     </item>
     
     <item>
@@ -164,7 +164,7 @@ hugo new site blog cd blog git init git remote add origin git@github.</descripti
       
       <guid>https://e9.github.io/posts/1458562442/</guid>
       <description>rails5でマイグレーションファイルを作成すると、rails5で作成された印がつくようになった。 （まだベータ版だけど）
-class CreateApples &amp;lt; ActiveRecord::Migration[5.</description>
+1 2  class CreateApples &amp;lt; ActiveRecord::Migration[5.</description>
     </item>
     
     <item>
@@ -174,7 +174,7 @@ class CreateApples &amp;lt; ActiveRecord::Migration[5.</description>
       
       <guid>https://e9.github.io/posts/1456752673/</guid>
       <description>いつの間にかrailsのscaffoldで作成したコントローラがbefore_actionで変数を仕込むようになっていた。普段まったく使わないので気付かなかった。
- https://github.com/rails/rails/commit/339e4e80d514bd94fcb0e15689db43e5de83642a  class &amp;lt;%= controller_class_name %&amp;gt;Controller &amp;lt; ApplicationController before_action :set_&amp;lt;%= singular_table_name %&amp;gt;, except: [ :index, :new, :create ] private # Use callbacks to share common setup or constraints between actions.</description>
+ https://github.com/rails/rails/commit/339e4e80d514bd94fcb0e15689db43e5de83642a  1 2 3 4 5 6 7 8  class &amp;lt;%= controller_class_name %&amp;gt;Controller &amp;lt; ApplicationController before_action :set_&amp;lt;%= singular_table_name %&amp;gt;, except: [ :index, :new, :create ] private # Use callbacks to share common setup or constraints between actions.</description>
     </item>
     
     <item>
@@ -194,7 +194,7 @@ class CreateApples &amp;lt; ActiveRecord::Migration[5.</description>
       
       <guid>https://e9.github.io/posts/1395825098/</guid>
       <description>rails4のroutes.rbで
-resources :books, param: :name  とやると/books/:nameでアクセスできるようになる。でもその状態で</description>
+1  resources :books, param: :name   とやると/books/:nameでアクセスできるようになる。でもその状態で</description>
     </item>
     
     <item>
@@ -245,7 +245,7 @@ resources :books, param: :name  とやると/books/:nameでアクセスできる
       
       <guid>https://e9.github.io/posts/1342194237/</guid>
       <description>よく見るのはこれ。
-(function(){})();  JSLintはカッコを中に入れろというらしい</description>
+1  (function(){})();   JSLintはカッコを中に入れろというらしい</description>
     </item>
     
     <item>

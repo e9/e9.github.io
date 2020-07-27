@@ -9,7 +9,10 @@
 
     
 
-
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
@@ -20,16 +23,9 @@
   </head>
 
   <body>
-    <nav
-      class="navbar "
-    >
+    <nav class="navbar ">
       <div class="container">
-        <a
-          class="navbar-brand"
-          href="https://e9.github.io"
-          style="font-weight: 800; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; "
-          >e9.github.io</a
-        >
+        <a class="navbar-brand" href="https://e9.github.io">e9.github.io</a>
       </div>
     </nav>
 
@@ -58,82 +54,171 @@
         <p>gomobileでiOS向けのライブラリを書いている。</p>
 <pre><code>$ gomobile version
 gomobile version +dc07713 Mon Jan 7 16:22:57 2019 +0000 (android,ios); androidSDK=
-</code></pre>
-<pre><code class="language-go">package main
+</code></pre><div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#75af00">main</span>
 
-import &quot;app/x&quot;
+<span style="color:#f92672">import</span> <span style="color:#d88200">&#34;app/x&#34;</span>
 
-func main() {
-	x.X()
-}
-</code></pre>
-<pre><code class="language-go">package x
+<span style="color:#00a8c8">func</span> <span style="color:#75af00">main</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+	<span style="color:#75af00">x</span><span style="color:#111">.</span><span style="color:#75af00">X</span><span style="color:#111">()</span>
+<span style="color:#111">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#75af00">x</span>
 
-func X() {
-}
-</code></pre>
-<p>この関数Xが非同期で動くとして、その結果をメインに返したいとき、セオリーとしてはコールバックの追加だろう。</p>
-<pre><code class="language-go">package main
+<span style="color:#00a8c8">func</span> <span style="color:#75af00">X</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+<span style="color:#111">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>この関数Xが非同期で動くとして、その結果をメインに返したいとき、セオリーとしてはコールバックの追加だろう。</p>
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#75af00">main</span>
 
-import (
-	&quot;app/x&quot;
-	&quot;log&quot;
-)
+<span style="color:#f92672">import</span> <span style="color:#111">(</span>
+	<span style="color:#d88200">&#34;app/x&#34;</span>
+	<span style="color:#d88200">&#34;log&#34;</span>
+<span style="color:#111">)</span>
 
-func main() {
-	c := make(chan struct{}, 0)
+<span style="color:#00a8c8">func</span> <span style="color:#75af00">main</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+	<span style="color:#75af00">c</span> <span style="color:#f92672">:=</span> <span style="color:#111">make</span><span style="color:#111">(</span><span style="color:#00a8c8">chan</span> <span style="color:#00a8c8">struct</span><span style="color:#111">{},</span> <span style="color:#ae81ff">0</span><span style="color:#111">)</span>
 
-	x.X(func() {
-		log.Println(&quot;two&quot;)
-		close(c)
-	})
+	<span style="color:#75af00">x</span><span style="color:#111">.</span><span style="color:#75af00">X</span><span style="color:#111">(</span><span style="color:#00a8c8">func</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+		<span style="color:#75af00">log</span><span style="color:#111">.</span><span style="color:#75af00">Println</span><span style="color:#111">(</span><span style="color:#d88200">&#34;two&#34;</span><span style="color:#111">)</span>
+		<span style="color:#111">close</span><span style="color:#111">(</span><span style="color:#75af00">c</span><span style="color:#111">)</span>
+	<span style="color:#111">})</span>
 
-	log.Println(&quot;one&quot;)
-	&lt;-c
-}
-</code></pre>
-<pre><code class="language-go">package x
+	<span style="color:#75af00">log</span><span style="color:#111">.</span><span style="color:#75af00">Println</span><span style="color:#111">(</span><span style="color:#d88200">&#34;one&#34;</span><span style="color:#111">)</span>
+	<span style="color:#f92672">&lt;-</span><span style="color:#75af00">c</span>
+<span style="color:#111">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#75af00">x</span>
 
-import &quot;time&quot;
+<span style="color:#f92672">import</span> <span style="color:#d88200">&#34;time&#34;</span>
 
-func X(callback func()) {
-	go (func() {
-		time.Sleep(1 * time.Second)
-		callback()
-	})()
-}
-</code></pre>
-<p>ところがどっこいこの関数はgomobile bindの対象にはならないのだ。</p>
+<span style="color:#00a8c8">func</span> <span style="color:#75af00">X</span><span style="color:#111">(</span><span style="color:#75af00">callback</span> <span style="color:#00a8c8">func</span><span style="color:#111">())</span> <span style="color:#111">{</span>
+	<span style="color:#00a8c8">go</span> <span style="color:#111">(</span><span style="color:#00a8c8">func</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+		<span style="color:#75af00">time</span><span style="color:#111">.</span><span style="color:#75af00">Sleep</span><span style="color:#111">(</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">*</span> <span style="color:#75af00">time</span><span style="color:#111">.</span><span style="color:#75af00">Second</span><span style="color:#111">)</span>
+		<span style="color:#75af00">callback</span><span style="color:#111">()</span>
+	<span style="color:#111">})()</span>
+<span style="color:#111">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>ところがどっこいこの関数はgomobile bindの対象にはならないのだ。</p>
 <pre><code>// skipped function X with unsupported parameter or return types
-</code></pre>
-<p>関数はよくても関数型はだめらしい。</p>
+</code></pre><p>関数はよくても関数型はだめらしい。</p>
 <ul>
 <li><a href="https://godoc.org/golang.org/x/mobile/cmd/gobind#hdr-Type_restrictions">https://godoc.org/golang.org/x/mobile/cmd/gobind#hdr-Type_restrictions</a></li>
 </ul>
 <p>どうするかというとinterfaceを使う。</p>
-<pre><code class="language-go">package x
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#75af00">x</span>
 
-import &quot;time&quot;
+<span style="color:#f92672">import</span> <span style="color:#d88200">&#34;time&#34;</span>
 
-type I interface {
-	Callback()
-}
+<span style="color:#00a8c8">type</span> <span style="color:#75af00">I</span> <span style="color:#00a8c8">interface</span> <span style="color:#111">{</span>
+	<span style="color:#75af00">Callback</span><span style="color:#111">()</span>
+<span style="color:#111">}</span>
 
-func X(p I) {
-	go (func() {
-		time.Sleep(1 * time.Second)
-		p.Callback()
-	})()
-}
-</code></pre>
-<p>このとき生成されたX.objc.hにはXIプロトコルと共に、同名のクラスが定義されているので</p>
-<pre><code class="language-objc">@protocol XI;
-@class XI;
-</code></pre>
-<p>Swiftでコールバック用のクラスを実装する場合はXIではなくXIProtocolを継承する必要がある。</p>
-<pre><code class="language-swift">class Callback: NSObject, XIProtocol {
-</code></pre>
-<p>この罠にうっかりハマって大変だった。</p>
+<span style="color:#00a8c8">func</span> <span style="color:#75af00">X</span><span style="color:#111">(</span><span style="color:#75af00">p</span> <span style="color:#75af00">I</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+	<span style="color:#00a8c8">go</span> <span style="color:#111">(</span><span style="color:#00a8c8">func</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+		<span style="color:#75af00">time</span><span style="color:#111">.</span><span style="color:#75af00">Sleep</span><span style="color:#111">(</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">*</span> <span style="color:#75af00">time</span><span style="color:#111">.</span><span style="color:#75af00">Second</span><span style="color:#111">)</span>
+		<span style="color:#75af00">p</span><span style="color:#111">.</span><span style="color:#75af00">Callback</span><span style="color:#111">()</span>
+	<span style="color:#111">})()</span>
+<span style="color:#111">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>このとき生成されたX.objc.hにはXIプロトコルと共に、同名のクラスが定義されているので</p>
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc"><span style="color:#00a8c8">@protocol</span> <span style="color:#75af00">XI</span>;
+<span style="color:#00a8c8">@class</span> <span style="color:#75af00">XI</span>;
+</code></pre></td></tr></table>
+</div>
+</div><p>Swiftでコールバック用のクラスを実装する場合はXIではなくXIProtocolを継承する必要がある。</p>
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00a8c8">class</span> <span style="color:#75af00">Callback</span><span style="color:#111">:</span> <span style="color:#111">NSObject</span><span style="color:#111">,</span> <span style="color:#111">XIProtocol</span> <span style="color:#111">{</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>この罠にうっかりハマって大変だった。</p>
 
     </div>
 </article>

@@ -9,7 +9,10 @@
 
     
 
-
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
@@ -20,16 +23,9 @@
   </head>
 
   <body>
-    <nav
-      class="navbar "
-    >
+    <nav class="navbar ">
       <div class="container">
-        <a
-          class="navbar-brand"
-          href="https://e9.github.io"
-          style="font-weight: 800; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; "
-          >e9.github.io</a
-        >
+        <a class="navbar-brand" href="https://e9.github.io">e9.github.io</a>
       </div>
     </nav>
 
@@ -56,13 +52,31 @@
     
     <div class="post-content markdown-body">
         <p>数年放置したRailsプロジェクトのフロントエンドをどうにかしたくなったので、手っ取り早くfrontendディレクトリの中で create-react-appして、その成果物をRailsのアセットパイプラインから参照することにした。</p>
-<pre><code class="language-rb">Rails.application.config.assets.paths &lt;&lt; Rails.root.join('frontend')
-</code></pre>
-<pre><code class="language-scss">//= require_tree ./../../../frontend/build/static/js
-</code></pre>
-<pre><code class="language-scss">//= require_tree ./../../../frontend/build/static/css
-</code></pre>
-<p>雑だけど、とりあえずまあこれで動いた。</p>
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rb" data-lang="rb"><span style="color:#00a8c8">Rails</span><span style="color:#f92672">.</span><span style="color:#111">application</span><span style="color:#f92672">.</span><span style="color:#111">config</span><span style="color:#f92672">.</span><span style="color:#111">assets</span><span style="color:#f92672">.</span><span style="color:#111">paths</span> <span style="color:#f92672">&lt;&lt;</span> <span style="color:#00a8c8">Rails</span><span style="color:#f92672">.</span><span style="color:#111">root</span><span style="color:#f92672">.</span><span style="color:#111">join</span><span style="color:#111">(</span><span style="color:#d88200">&#39;frontend&#39;</span><span style="color:#111">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scss" data-lang="scss"><span style="color:#75715e">//= require_tree ./../../../frontend/build/static/js
+</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scss" data-lang="scss"><span style="color:#75715e">//= require_tree ./../../../frontend/build/static/css
+</span></code></pre></td></tr></table>
+</div>
+</div><p>雑だけど、とりあえずまあこれで動いた。</p>
 <p>数年放置したプロジェクトだけあってRails4系なので、Rails5だとちょっと違うかもしれないけど
 、今回の話の本質はそこではない。</p>
 <p>問題はCSSが参照している画像だ。</p>
@@ -81,23 +95,43 @@
 <li><a href="https://github.com/timarney/react-app-rewired/blob/74480b2/README.md">https://github.com/timarney/react-app-rewired/blob/74480b2/README.md</a></li>
 </ul>
 <p>だいたいこんな感じ。</p>
-<pre><code class="language-js">const rewired = require(&quot;react-app-rewired&quot;)
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#00a8c8">const</span> <span style="color:#75af00">rewired</span> <span style="color:#f92672">=</span> <span style="color:#75af00">require</span><span style="color:#111">(</span><span style="color:#d88200">&#34;react-app-rewired&#34;</span><span style="color:#111">)</span>
 
-module.exports = {
-  webpack: function(config, env) {
-    const loader = rewired.getLoader(
-      config.module.rules,
-      rule =&gt;
-        rule.test &amp;&amp;
-        String(rule.test) ===
-          String([/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/])
-    )
-    loader.options.limit = 500000
-    return config
-  }
-}
-</code></pre>
-<p>とりあえず今回使っている画像は最大でも300KB程度だったので、limitを500KBまで増やすことで無事にすべての画像をCSSに埋め込むことができた。そのおかげでCSSファイルだけで1MBになっちゃったけど。</p>
+<span style="color:#75af00">module</span><span style="color:#111">.</span><span style="color:#75af00">exports</span> <span style="color:#f92672">=</span> <span style="color:#111">{</span>
+  <span style="color:#75af00">webpack</span><span style="color:#f92672">:</span> <span style="color:#00a8c8">function</span><span style="color:#111">(</span><span style="color:#75af00">config</span><span style="color:#111">,</span> <span style="color:#75af00">env</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+    <span style="color:#00a8c8">const</span> <span style="color:#75af00">loader</span> <span style="color:#f92672">=</span> <span style="color:#75af00">rewired</span><span style="color:#111">.</span><span style="color:#75af00">getLoader</span><span style="color:#111">(</span>
+      <span style="color:#75af00">config</span><span style="color:#111">.</span><span style="color:#75af00">module</span><span style="color:#111">.</span><span style="color:#75af00">rules</span><span style="color:#111">,</span>
+      <span style="color:#75af00">rule</span> <span style="color:#111">=&gt;</span>
+        <span style="color:#75af00">rule</span><span style="color:#111">.</span><span style="color:#75af00">test</span> <span style="color:#f92672">&amp;&amp;</span>
+        <span style="color:#111">String</span><span style="color:#111">(</span><span style="color:#75af00">rule</span><span style="color:#111">.</span><span style="color:#75af00">test</span><span style="color:#111">)</span> <span style="color:#f92672">===</span>
+          <span style="color:#111">String</span><span style="color:#111">([</span><span style="color:#d88200">/\.bmp$/</span><span style="color:#111">,</span> <span style="color:#d88200">/\.gif$/</span><span style="color:#111">,</span> <span style="color:#d88200">/\.jpe?g$/</span><span style="color:#111">,</span> <span style="color:#d88200">/\.png$/</span><span style="color:#111">])</span>
+    <span style="color:#111">)</span>
+    <span style="color:#75af00">loader</span><span style="color:#111">.</span><span style="color:#75af00">options</span><span style="color:#111">.</span><span style="color:#75af00">limit</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">500000</span>
+    <span style="color:#00a8c8">return</span> <span style="color:#75af00">config</span>
+  <span style="color:#111">}</span>
+<span style="color:#111">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>とりあえず今回使っている画像は最大でも300KB程度だったので、limitを500KBまで増やすことで無事にすべての画像をCSSに埋め込むことができた。そのおかげでCSSファイルだけで1MBになっちゃったけど。</p>
 
     </div>
 </article>

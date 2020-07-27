@@ -10,7 +10,10 @@
 
     
 
-
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
@@ -21,16 +24,9 @@
   </head>
 
   <body>
-    <nav
-      class="navbar navbar-light fixed-top home-navbar"
-    >
+    <nav class="navbar fixed-top navbar-home">
       <div class="container">
-        <a
-          class="navbar-brand"
-          href="https://e9.github.io"
-          style="font-weight: 800; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; "
-          >e9.github.io</a
-        >
+        <a class="navbar-brand" href="https://e9.github.io">e9.github.io</a>
       </div>
     </nav>
 
@@ -75,7 +71,7 @@
   </div>
   <div>
     例えばこんなパッケージがあったとして。
-package x func X() string { return &quot;x&quot; }  package x_test import ( &quot;testing&quot; &quot;app/x&quot; ) func TestX(t *testing.
+1 2 3 4 5  package x func X() string { return &#34;x&#34; }   1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16  package x_test import ( &#34;testing&#34; &#34;app/x&#34; ) func TestX(t *testing.
 
   </div>
   <hr />
@@ -99,7 +95,7 @@ package x func X() string { return &quot;x&quot; }  package x_test import ( &quo
   <div>
     developをmasterに入れるときでも、masterをリリースブランチに入れるときでも、なんでもいいんだけど、2つのブランチの差分から、次に何がデプロイされるのかをだいたいで知りたいときがある。
 当然プルリクエストベースで開発しているはずなので、そういうときはマージコミットだけに注目すればよい。
-git log --first-parent --merges --reverse --pretty='%s %b' origin/master.
+1  git log --first-parent --merges --reverse --pretty=&#39;%s %b&#39; origin/master.
 
   </div>
   <hr />
@@ -122,7 +118,7 @@ git log --first-parent --merges --reverse --pretty='%s %b' origin/master.
   </div>
   <div>
     マークダウンで書けるブログサービスの選択肢が少ないのでgithub.ioを使うことにした。 いまどきはJekyllよりHugoらしい。わりと簡単に作れた。こんな感じで。
-hugo new site blog cd blog git init git remote add origin git@github.
+1 2 3 4  hugo new site blog cd blog git init git remote add origin git@github.
 
   </div>
   <hr />
@@ -167,7 +163,7 @@ hugo new site blog cd blog git init git remote add origin git@github.
   </div>
   <div>
     rails5でマイグレーションファイルを作成すると、rails5で作成された印がつくようになった。 （まだベータ版だけど）
-class CreateApples &lt; ActiveRecord::Migration[5.
+1 2  class CreateApples &lt; ActiveRecord::Migration[5.
 
   </div>
   <hr />
@@ -190,7 +186,7 @@ class CreateApples &lt; ActiveRecord::Migration[5.
   </div>
   <div>
     いつの間にかrailsのscaffoldで作成したコントローラがbefore_actionで変数を仕込むようになっていた。普段まったく使わないので気付かなかった。
- https://github.com/rails/rails/commit/339e4e80d514bd94fcb0e15689db43e5de83642a  class &lt;%= controller_class_name %&gt;Controller &lt; ApplicationController before_action :set_&lt;%= singular_table_name %&gt;, except: [ :index, :new, :create ] private # Use callbacks to share common setup or constraints between actions.
+ https://github.com/rails/rails/commit/339e4e80d514bd94fcb0e15689db43e5de83642a  1 2 3 4 5 6 7 8  class &lt;%= controller_class_name %&gt;Controller &lt; ApplicationController before_action :set_&lt;%= singular_table_name %&gt;, except: [ :index, :new, :create ] private # Use callbacks to share common setup or constraints between actions.
 
   </div>
   <hr />
@@ -236,7 +232,7 @@ class CreateApples &lt; ActiveRecord::Migration[5.
   </div>
   <div>
     rails4のroutes.rbで
-resources :books, param: :name  とやると/books/:nameでアクセスできるようになる。でもその状態で
+1  resources :books, param: :name   とやると/books/:nameでアクセスできるようになる。でもその状態で
 
   </div>
   <hr />

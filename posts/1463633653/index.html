@@ -9,7 +9,10 @@
 
     
 
-
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
@@ -20,16 +23,9 @@
   </head>
 
   <body>
-    <nav
-      class="navbar "
-    >
+    <nav class="navbar ">
       <div class="container">
-        <a
-          class="navbar-brand"
-          href="https://e9.github.io"
-          style="font-weight: 800; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; "
-          >e9.github.io</a
-        >
+        <a class="navbar-brand" href="https://e9.github.io">e9.github.io</a>
       </div>
     </nav>
 
@@ -57,43 +53,91 @@
     <div class="post-content markdown-body">
         <pre><code>$ bin/rails -v
 Rails 5.0.0.rc1
-</code></pre>
-<p>こういうモデルがあるとする。</p>
-<pre><code class="language-rb">class Apple &lt; ApplicationRecord
-  attr_accessor :y
-end
-</code></pre>
-<p>実装内容の良し悪しはさておき、下記を実行する。</p>
-<pre><code class="language-rb">irb(main):001:0&gt; apple = Apple.select(&quot;1 as x&quot;, &quot;2 as y&quot;).first
-irb(main):002:0&gt; apple.x
-=&gt; 1
-</code></pre>
-<p>では<code>apple.y</code>には何が入っているか。</p>
-<pre><code class="language-rb">irb(main):003:0&gt; apple.y
-=&gt; nil
-irb(main):004:0&gt; apple.as_json
-=&gt; {&quot;id&quot;=&gt;nil, &quot;x&quot;=&gt;1, &quot;y&quot;=&gt;nil}
-</code></pre>
-<p>nilなのだ。attr_accessorの<code>#y</code>が優先されるらしい。SELECTした結果にアクセスするには<code>[:y]</code>とすればよい。</p>
-<pre><code class="language-rb">irb(main):005:0&gt; apple[:y]
-=&gt; 2
-</code></pre>
-<p>attr_accessorをひとつ置いただけで、既存のコードが動かなくなる可能性をはらんでいる。というか、それでさっきハマったのだ。</p>
+</code></pre><p>こういうモデルがあるとする。</p>
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rb" data-lang="rb"><span style="color:#00a8c8">class</span> <span style="color:#75af00">Apple</span> <span style="color:#f92672">&lt;</span> <span style="color:#00a8c8">ApplicationRecord</span>
+  <span style="color:#00a8c8">attr_accessor</span> <span style="color:#d88200">:y</span>
+<span style="color:#00a8c8">end</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>実装内容の良し悪しはさておき、下記を実行する。</p>
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rb" data-lang="rb"><span style="color:#111">irb</span><span style="color:#111">(</span><span style="color:#111">main</span><span style="color:#111">):</span><span style="color:#ae81ff">001</span><span style="color:#111">:</span><span style="color:#ae81ff">0</span><span style="color:#f92672">&gt;</span> <span style="color:#111">apple</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">Apple</span><span style="color:#f92672">.</span><span style="color:#111">select</span><span style="color:#111">(</span><span style="color:#d88200">&#34;1 as x&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;2 as y&#34;</span><span style="color:#111">)</span><span style="color:#f92672">.</span><span style="color:#111">first</span>
+<span style="color:#111">irb</span><span style="color:#111">(</span><span style="color:#111">main</span><span style="color:#111">):</span><span style="color:#ae81ff">002</span><span style="color:#111">:</span><span style="color:#ae81ff">0</span><span style="color:#f92672">&gt;</span> <span style="color:#111">apple</span><span style="color:#f92672">.</span><span style="color:#111">x</span>
+<span style="color:#f92672">=&gt;</span> <span style="color:#ae81ff">1</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>では<code>apple.y</code>には何が入っているか。</p>
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rb" data-lang="rb"><span style="color:#111">irb</span><span style="color:#111">(</span><span style="color:#111">main</span><span style="color:#111">):</span><span style="color:#ae81ff">003</span><span style="color:#111">:</span><span style="color:#ae81ff">0</span><span style="color:#f92672">&gt;</span> <span style="color:#111">apple</span><span style="color:#f92672">.</span><span style="color:#111">y</span>
+<span style="color:#f92672">=&gt;</span> <span style="color:#00a8c8">nil</span>
+<span style="color:#111">irb</span><span style="color:#111">(</span><span style="color:#111">main</span><span style="color:#111">):</span><span style="color:#ae81ff">004</span><span style="color:#111">:</span><span style="color:#ae81ff">0</span><span style="color:#f92672">&gt;</span> <span style="color:#111">apple</span><span style="color:#f92672">.</span><span style="color:#111">as_json</span>
+<span style="color:#f92672">=&gt;</span> <span style="color:#111">{</span><span style="color:#d88200">&#34;id&#34;</span><span style="color:#f92672">=&gt;</span><span style="color:#00a8c8">nil</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;x&#34;</span><span style="color:#f92672">=&gt;</span><span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;y&#34;</span><span style="color:#f92672">=&gt;</span><span style="color:#00a8c8">nil</span><span style="color:#111">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>nilなのだ。attr_accessorの<code>#y</code>が優先されるらしい。SELECTした結果にアクセスするには<code>[:y]</code>とすればよい。</p>
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rb" data-lang="rb"><span style="color:#111">irb</span><span style="color:#111">(</span><span style="color:#111">main</span><span style="color:#111">):</span><span style="color:#ae81ff">005</span><span style="color:#111">:</span><span style="color:#ae81ff">0</span><span style="color:#f92672">&gt;</span> <span style="color:#111">apple</span><span style="color:#f92672">[</span><span style="color:#d88200">:y</span><span style="color:#f92672">]</span>
+<span style="color:#f92672">=&gt;</span> <span style="color:#ae81ff">2</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>attr_accessorをひとつ置いただけで、既存のコードが動かなくなる可能性をはらんでいる。というか、それでさっきハマったのだ。</p>
 <p>このあとxとyにそれぞれ代入すると、さらにわけがわからない。</p>
-<pre><code class="language-rb">irb(main):006:0&gt; apple.x = 3
-irb(main):007:0&gt; apple.y = 4
-irb(main):008:0&gt; apple.as_json
-=&gt; {&quot;id&quot;=&gt;nil, &quot;x&quot;=&gt;3, &quot;y&quot;=&gt;4}
-irb(main):009:0&gt; apple.x
-=&gt; 3
-irb(main):010:0&gt; apple[:x]
-=&gt; 3
-irb(main):011:0&gt; apple.y
-=&gt; 4
-irb(main):012:0&gt; apple[:y]
-=&gt; 1
-</code></pre>
-<p>動的言語は強力だが、ときに怖い。</p>
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rb" data-lang="rb"><span style="color:#111">irb</span><span style="color:#111">(</span><span style="color:#111">main</span><span style="color:#111">):</span><span style="color:#ae81ff">006</span><span style="color:#111">:</span><span style="color:#ae81ff">0</span><span style="color:#f92672">&gt;</span> <span style="color:#111">apple</span><span style="color:#f92672">.</span><span style="color:#111">x</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+<span style="color:#111">irb</span><span style="color:#111">(</span><span style="color:#111">main</span><span style="color:#111">):</span><span style="color:#ae81ff">007</span><span style="color:#111">:</span><span style="color:#ae81ff">0</span><span style="color:#f92672">&gt;</span> <span style="color:#111">apple</span><span style="color:#f92672">.</span><span style="color:#111">y</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+<span style="color:#111">irb</span><span style="color:#111">(</span><span style="color:#111">main</span><span style="color:#111">):</span><span style="color:#ae81ff">00</span><span style="color:#ae81ff">8</span><span style="color:#111">:</span><span style="color:#ae81ff">0</span><span style="color:#f92672">&gt;</span> <span style="color:#111">apple</span><span style="color:#f92672">.</span><span style="color:#111">as_json</span>
+<span style="color:#f92672">=&gt;</span> <span style="color:#111">{</span><span style="color:#d88200">&#34;id&#34;</span><span style="color:#f92672">=&gt;</span><span style="color:#00a8c8">nil</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;x&#34;</span><span style="color:#f92672">=&gt;</span><span style="color:#ae81ff">3</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;y&#34;</span><span style="color:#f92672">=&gt;</span><span style="color:#ae81ff">4</span><span style="color:#111">}</span>
+<span style="color:#111">irb</span><span style="color:#111">(</span><span style="color:#111">main</span><span style="color:#111">):</span><span style="color:#ae81ff">00</span><span style="color:#ae81ff">9</span><span style="color:#111">:</span><span style="color:#ae81ff">0</span><span style="color:#f92672">&gt;</span> <span style="color:#111">apple</span><span style="color:#f92672">.</span><span style="color:#111">x</span>
+<span style="color:#f92672">=&gt;</span> <span style="color:#ae81ff">3</span>
+<span style="color:#111">irb</span><span style="color:#111">(</span><span style="color:#111">main</span><span style="color:#111">):</span><span style="color:#ae81ff">010</span><span style="color:#111">:</span><span style="color:#ae81ff">0</span><span style="color:#f92672">&gt;</span> <span style="color:#111">apple</span><span style="color:#f92672">[</span><span style="color:#d88200">:x</span><span style="color:#f92672">]</span>
+<span style="color:#f92672">=&gt;</span> <span style="color:#ae81ff">3</span>
+<span style="color:#111">irb</span><span style="color:#111">(</span><span style="color:#111">main</span><span style="color:#111">):</span><span style="color:#ae81ff">011</span><span style="color:#111">:</span><span style="color:#ae81ff">0</span><span style="color:#f92672">&gt;</span> <span style="color:#111">apple</span><span style="color:#f92672">.</span><span style="color:#111">y</span>
+<span style="color:#f92672">=&gt;</span> <span style="color:#ae81ff">4</span>
+<span style="color:#111">irb</span><span style="color:#111">(</span><span style="color:#111">main</span><span style="color:#111">):</span><span style="color:#ae81ff">012</span><span style="color:#111">:</span><span style="color:#ae81ff">0</span><span style="color:#f92672">&gt;</span> <span style="color:#111">apple</span><span style="color:#f92672">[</span><span style="color:#d88200">:y</span><span style="color:#f92672">]</span>
+<span style="color:#f92672">=&gt;</span> <span style="color:#ae81ff">1</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>動的言語は強力だが、ときに怖い。</p>
 
     </div>
 </article>

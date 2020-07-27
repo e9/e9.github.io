@@ -9,7 +9,10 @@
 
     
 
-
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
@@ -20,16 +23,9 @@
   </head>
 
   <body>
-    <nav
-      class="navbar "
-    >
+    <nav class="navbar ">
       <div class="container">
-        <a
-          class="navbar-brand"
-          href="https://e9.github.io"
-          style="font-weight: 800; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; "
-          >e9.github.io</a
-        >
+        <a class="navbar-brand" href="https://e9.github.io">e9.github.io</a>
       </div>
     </nav>
 
@@ -59,16 +55,29 @@
 <ul>
 <li><a href="https://github.com/rails/rails/commit/339e4e80d514bd94fcb0e15689db43e5de83642a">https://github.com/rails/rails/commit/339e4e80d514bd94fcb0e15689db43e5de83642a</a></li>
 </ul>
-<pre><code class="language-rb">class &lt;%= controller_class_name %&gt;Controller &lt; ApplicationController
-  before_action :set_&lt;%= singular_table_name %&gt;, except: [ :index, :new, :create ]
-
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_&lt;%= singular_table_name %&gt;
-      @&lt;%= singular_table_name %&gt; = &lt;%= orm_class.find(class_name, &quot;params[:id]&quot;) %&gt;
-    end
-</code></pre>
-<blockquote>
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rb" data-lang="rb"><span style="color:#00a8c8">class</span> <span style="color:#f92672">&lt;</span><span style="color:#d88200">%= controller_class_name %&gt;Controller &lt; ApplicationController
+</span><span style="color:#d88200">  before_action :set_&lt;%=</span> <span style="color:#111">singular_table_name</span> <span style="color:#d88200">%&gt;, except: [ :index, :new, :create ]
+</span><span style="color:#d88200">
+</span><span style="color:#d88200">  private
+</span><span style="color:#d88200">    # Use callbacks to share common setup or constraints between actions.
+</span><span style="color:#d88200">    def set_&lt;%= singular_table_name %&gt;</span>
+      <span style="color:#960050;background-color:#1e0010">@</span><span style="color:#f92672">&lt;</span><span style="color:#d88200">%= singular_table_name %&gt; =</span> <span style="color:#f92672">&lt;%=</span> <span style="color:#111">orm_class</span><span style="color:#f92672">.</span><span style="color:#111">find</span><span style="color:#111">(</span><span style="color:#111">class_name</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;params[:id]&#34;</span><span style="color:#111">)</span> <span style="color:#f92672">%&gt;</span>
+    <span style="color:#00a8c8">end</span>
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
 <p>Let the scaffold example use the &ldquo;set shared record&rdquo; pattern to explain callbacks</p>
 </blockquote>
 <p>だけどこれは経験的に知っていることなんだけど、before_actionで変数を代入すると見通しが悪くなるのだ。</p>
