@@ -1,8 +1,8 @@
 header.masthead {
-  margin-bottom: 50px;
   background: no-repeat center center;
   background-color: #868e96;
   background-attachment: scroll;
+  background-image: url("/img/bg.jpg");
   position: relative;
   background-size: cover;
 }
@@ -16,28 +16,18 @@ header.masthead .overlay {
   background-color: #212529;
   opacity: 0.5;
 }
-
-header.masthead .site-heading {
-  text-align: center;
-  padding: 60px 0;
-}
-
-header.masthead .site-heading h1 {
-  font-size: 30px;
-  font-weight: 800;
-}
-
 header.masthead .site-heading a {
+  font-weight: 800;
   color: white !important;
 }
 
 @media (min-width: 768px) {
   header.masthead .site-heading {
-    padding: 100px 0;
+    padding: 6rem 0 !important;
   }
 
-  header.masthead .site-heading h1 {
-    font-size: 50px;
+  header.masthead .site-heading .title {
+    font-size: 4rem;
   }
 }
 
