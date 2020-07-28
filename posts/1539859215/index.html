@@ -44,24 +44,25 @@
     <main class="container">
       <div class="row">
         <div class="col-md-9">
+
 <article>
-    
-    <h2 class="post-item post-title">
-        <a href="https://e9.github.io/posts/1539859215/">配列と連想配列を同じループで回したい</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span
+  <h2>
+    <a href="https://e9.github.io/posts/1539859215/">配列と連想配列を同じループで回したい</a>
+  </h2>
+
+  <div>
+    <span
   ><ion-icon name="today"></ion-icon>&nbsp;2018-10-18</span
 ><span
   ><ion-icon name="pricetags"></ion-icon
   >&nbsp;No tag</span
 >
 
-    </div>
-    
-    
-    <div class="post-content markdown-body">
-        <p>Python。dict か list のいずれかが入っている変数に対して、ループで回してある処理をすることになった。</p>
+
+  </div>
+
+  <div>
+    <p>Python。dict か list のいずれかが入っている変数に対して、ループで回してある処理をすることになった。</p>
 <p>型が違うのだから違うコードで回すべきだという論もあるだろうが、せっかく LL で書いているのだから、全く同じコードで処理したいところ。</p>
 <p>結局自分はこうした。</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#111">items</span> <span style="color:#f92672">=</span> <span style="color:#111">dict_or_list</span><span style="color:#f92672">.</span><span style="color:#111">items</span><span style="color:#111">()</span> <span style="color:#00a8c8">if</span> <span style="color:#111">isinstance</span><span style="color:#111">(</span><span style="color:#111">dict_or_list</span><span style="color:#111">,</span> <span style="color:#111">dict</span><span style="color:#111">)</span> <span style="color:#00a8c8">else</span> <span style="color:#111">enumerate</span><span style="color:#111">(</span><span style="color:#111">dict_or_list</span><span style="color:#111">)</span>
@@ -75,10 +76,9 @@
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span style="color:#111">}</span>
 </code></pre></div><p>まあ、これが美しいコードなのかは異論あるだろうけど、条件分岐が無いのが売りである。</p>
 
-    </div>
+
+  </div>
 </article>
-
-
 
 </div>
         <aside class="col-md-3"><aside>

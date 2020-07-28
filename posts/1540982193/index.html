@@ -44,24 +44,25 @@
     <main class="container">
       <div class="row">
         <div class="col-md-9">
+
 <article>
-    
-    <h2 class="post-item post-title">
-        <a href="https://e9.github.io/posts/1540982193/">RedisのHGETALLの速さ</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span
+  <h2>
+    <a href="https://e9.github.io/posts/1540982193/">RedisのHGETALLの速さ</a>
+  </h2>
+
+  <div>
+    <span
   ><ion-icon name="today"></ion-icon>&nbsp;2018-10-31</span
 ><span
   ><ion-icon name="pricetags"></ion-icon
   >&nbsp;No tag</span
 >
 
-    </div>
-    
-    
-    <div class="post-content markdown-body">
-        <p>普段は Redis の読み書きなんてフレームワークにまかせていて、オブジェクトならだいたいシリアライズして保存されているわけだけど、今回たまたま Redis を直で使うことがあった。ハッシュ、連想配列、辞書、まあとにかくそんなものを保存したい。</p>
+
+  </div>
+
+  <div>
+    <p>普段は Redis の読み書きなんてフレームワークにまかせていて、オブジェクトならだいたいシリアライズして保存されているわけだけど、今回たまたま Redis を直で使うことがあった。ハッシュ、連想配列、辞書、まあとにかくそんなものを保存したい。</p>
 <p>単純にやるなら JSON 文字列に変換して保存すればいいわけだけど、シリアライズには多少なりとも時間がかかる。そもそも Redis はハッシュが扱えるので、そのままハッシュとして保存すればいいんじゃないか？と思った。</p>
 <p>で、ドキュメントを見たんだけど、Redis のハッシュは O(N)らしいのだ。</p>
 <ul>
@@ -73,10 +74,9 @@
 <li><a href="https://symfoware.blog.fc2.com/blog-entry-1446.html">https://symfoware.blog.fc2.com/blog-entry-1446.html</a></li>
 </ul>
 
-    </div>
+
+  </div>
 </article>
-
-
 
 </div>
         <aside class="col-md-3"><aside>

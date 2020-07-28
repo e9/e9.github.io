@@ -45,92 +45,104 @@
       <div class="row">
         <div class="col-md-9">
 
+<p>2018/09の記事</p>
+
+
+
 
 
 <div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://e9.github.io/posts/1538143080/">forではないループ</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span
+  <h2 class="post-item post-title">
+    <a href="https://e9.github.io/posts/1538143080/">forではないループ</a>
+  </h2>
+  <div class="post-item post-meta">
+    <span
   ><ion-icon name="today"></ion-icon>&nbsp;2018-09-28</span
 ><span
   ><ion-icon name="pricetags"></ion-icon
   >&nbsp;No tag</span
 >
 
-    </div>
-    <div class="post-item post-summary markdown-body">
-        指定回数ループしたいときがある。Rubyだとわかりやすく10.times { }と書ける。範囲オブジェクトを作って回す手もある。for i in 0.
-    </div>
+
+  </div>
+  <div class="post-item post-summary markdown-body">
+    指定回数ループしたいときがある。Rubyだとわかりやすく10.times { }と書ける。範囲オブジェクトを作って回す手もある。for i in 0.
+
+  </div>
+  <hr />
 </div>
 
+
 <div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://e9.github.io/posts/1536581159/">loggerに重い処理を渡すと</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span
+  <h2 class="post-item post-title">
+    <a href="https://e9.github.io/posts/1536581159/">loggerに重い処理を渡すと</a>
+  </h2>
+  <div class="post-item post-meta">
+    <span
   ><ion-icon name="today"></ion-icon>&nbsp;2018-09-10</span
 ><span
   ><ion-icon name="pricetags"></ion-icon
   >&nbsp;No tag</span
 >
 
-    </div>
-    <div class="post-item post-summary markdown-body">
-        RubyにもPythonにもloggerはある。loggerに重い処理を渡してしまった場合を考えよう。
+
+  </div>
+  <div class="post-item post-summary markdown-body">
+    RubyにもPythonにもloggerはある。loggerに重い処理を渡してしまった場合を考えよう。
 1logger.debug(long_time_method()) どういう状況だこれは。
-    </div>
+
+  </div>
+  <hr />
 </div>
 
+
 <div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://e9.github.io/posts/1536059641/">テストでだけ使いたい共通関数はGolangの場合どこに置くのか</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span
+  <h2 class="post-item post-title">
+    <a href="https://e9.github.io/posts/1536059641/">テストでだけ使いたい共通関数はGolangの場合どこに置くのか</a>
+  </h2>
+  <div class="post-item post-meta">
+    <span
   ><ion-icon name="today"></ion-icon>&nbsp;2018-09-04</span
 ><span
   ><ion-icon name="pricetags"></ion-icon
   >&nbsp;No tag</span
 >
 
-    </div>
-    <div class="post-item post-summary markdown-body">
-        例えばこんなパッケージがあったとして。
+
+  </div>
+  <div class="post-item post-summary markdown-body">
+    例えばこんなパッケージがあったとして。
 1package x 2 3func X() string { 4	return &#34;x&#34; 5} 1package x_test 2 3import ( 4	&#34;testing&#34; 5	&#34;app/x&#34; 6) 7 8func TestX(t *testing.
-    </div>
+
+  </div>
+  <hr />
 </div>
 
+
 <div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://e9.github.io/posts/1535977174/">マージコミットだけの差分</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span
+  <h2 class="post-item post-title">
+    <a href="https://e9.github.io/posts/1535977174/">マージコミットだけの差分</a>
+  </h2>
+  <div class="post-item post-meta">
+    <span
   ><ion-icon name="today"></ion-icon>&nbsp;2018-09-03</span
 ><span
   ><ion-icon name="pricetags"></ion-icon
   >&nbsp;No tag</span
 >
 
-    </div>
-    <div class="post-item post-summary markdown-body">
-        developをmasterに入れるときでも、masterをリリースブランチに入れるときでも、なんでもいいんだけど、2つのブランチの差分から、次に何がデプロイされるのかをだいたいで知りたいときがある。
+
+  </div>
+  <div class="post-item post-summary markdown-body">
+    developをmasterに入れるときでも、masterをリリースブランチに入れるときでも、なんでもいいんだけど、2つのブランチの差分から、次に何がデプロイされるのかをだいたいで知りたいときがある。
 当然プルリクエストベースで開発しているはずなので、そういうときはマージコミットだけに注目すればよい。
 1git log --first-parent --merges --reverse --pretty=&#39;%s %b&#39; origin/master.
-    </div>
+
+  </div>
+  <hr />
 </div>
 
-
-
-
-
-
-
-
-
+ 
 </div>
         <aside class="col-md-3"><aside>
   <div>

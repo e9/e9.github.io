@@ -44,24 +44,25 @@
     <main class="container">
       <div class="row">
         <div class="col-md-9">
+
 <article>
-    
-    <h2 class="post-item post-title">
-        <a href="https://e9.github.io/posts/1541765899/">Create React AppのdistをRailsのassetsで使いたい</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span
+  <h2>
+    <a href="https://e9.github.io/posts/1541765899/">Create React AppのdistをRailsのassetsで使いたい</a>
+  </h2>
+
+  <div>
+    <span
   ><ion-icon name="today"></ion-icon>&nbsp;2018-11-09</span
 ><span
   ><ion-icon name="pricetags"></ion-icon
   >&nbsp;No tag</span
 >
 
-    </div>
-    
-    
-    <div class="post-content markdown-body">
-        <p>数年放置したRailsプロジェクトのフロントエンドをどうにかしたくなったので、手っ取り早くfrontendディレクトリの中で create-react-appして、その成果物をRailsのアセットパイプラインから参照することにした。</p>
+
+  </div>
+
+  <div>
+    <p>数年放置したRailsプロジェクトのフロントエンドをどうにかしたくなったので、手っ取り早くfrontendディレクトリの中で create-react-appして、その成果物をRailsのアセットパイプラインから参照することにした。</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rb" data-lang="rb"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#00a8c8">Rails</span><span style="color:#f92672">.</span><span style="color:#111">application</span><span style="color:#f92672">.</span><span style="color:#111">config</span><span style="color:#f92672">.</span><span style="color:#111">assets</span><span style="color:#f92672">.</span><span style="color:#111">paths</span> <span style="color:#f92672">&lt;&lt;</span> <span style="color:#00a8c8">Rails</span><span style="color:#f92672">.</span><span style="color:#111">root</span><span style="color:#f92672">.</span><span style="color:#111">join</span><span style="color:#111">(</span><span style="color:#d88200">&#39;frontend&#39;</span><span style="color:#111">)</span>
 </code></pre></div><div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scss" data-lang="scss"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#75715e">//= require_tree ./../../../frontend/build/static/js
 </span></code></pre></div><div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scss" data-lang="scss"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#75715e">//= require_tree ./../../../frontend/build/static/css
@@ -101,10 +102,9 @@
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span style="color:#111">}</span>
 </code></pre></div><p>とりあえず今回使っている画像は最大でも300KB程度だったので、limitを500KBまで増やすことで無事にすべての画像をCSSに埋め込むことができた。そのおかげでCSSファイルだけで1MBになっちゃったけど。</p>
 
-    </div>
+
+  </div>
 </article>
-
-
 
 </div>
         <aside class="col-md-3"><aside>

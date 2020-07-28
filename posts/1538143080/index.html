@@ -44,24 +44,25 @@
     <main class="container">
       <div class="row">
         <div class="col-md-9">
+
 <article>
-    
-    <h2 class="post-item post-title">
-        <a href="https://e9.github.io/posts/1538143080/">forではないループ</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span
+  <h2>
+    <a href="https://e9.github.io/posts/1538143080/">forではないループ</a>
+  </h2>
+
+  <div>
+    <span
   ><ion-icon name="today"></ion-icon>&nbsp;2018-09-28</span
 ><span
   ><ion-icon name="pricetags"></ion-icon
   >&nbsp;No tag</span
 >
 
-    </div>
-    
-    
-    <div class="post-content markdown-body">
-        <p>指定回数ループしたいときがある。Rubyだとわかりやすく<code>10.times { }</code>と書ける。範囲オブジェクトを作って回す手もある。<code>for i in 0..&lt;10 { }</code>みたいな。いまのはSwiftだけど。</p>
+
+  </div>
+
+  <div>
+    <p>指定回数ループしたいときがある。Rubyだとわかりやすく<code>10.times { }</code>と書ける。範囲オブジェクトを作って回す手もある。<code>for i in 0..&lt;10 { }</code>みたいな。いまのはSwiftだけど。</p>
 <p>JavaScriptについてぐぐると<code>[...Array(10)].forEach(()=&gt;{ })</code>というコードが見つかる。<code>Array(10)</code>だけだと値が無なので<code>[...Array(10)]</code>と、わざわざスプレッドするひと手間が加わっていて、やや黒魔術的だ。</p>
 <ul>
 <li><a href="https://stackoverflow.com/a/37417004">https://stackoverflow.com/a/37417004</a></li>
@@ -74,10 +75,9 @@
 </ul>
 <p>applyの第2引数がArray-like objectを要求するので<code>{length: 10}</code>を渡すことで要素が10個ある配列が生成されるらしい。2018年に書くコードではない気もするが。</p>
 
-    </div>
+
+  </div>
 </article>
-
-
 
 </div>
         <aside class="col-md-3"><aside>
