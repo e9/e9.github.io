@@ -55,46 +55,11 @@
 
 <div>
   <h2 class="title">
-  <a href="https://9x9.dev/posts/1586883947/">create-react-appをejectせずwebworkerからwasmを実行することはできる</a>
+  <a href="https://9x9.dev/posts/1536059641/">テストでだけ使いたい共通関数はGolangの場合どこに置くのか</a>
 </h2>
 
 <div class="subtitle is-6 has-text-grey">
-  <span>2020-04-15</span>
-
-<span>
-  
- 
-
-  <a href="/tags/react">react</a>
-  
-
-  <a href="/tags/wasm">wasm</a>
-  
- 
-
-</span>
-
-
-</div>
-
-
-  <div>
-    単純に実装すると、webworkerの中からwasmはimportできない。エラーメッセージでググれば同じ轍を踏んだ先人が何人も見つかる。
- https://github.com/webpack/webpack/issues/7647 https://www.
-
-  </div>
-  <hr />
-</div>
-
- 
-
-<div>
-  <h2 class="title">
-  <a href="https://9x9.dev/posts/1548328800/">gomobileで非同期な関数を扱いたい</a>
-</h2>
-
-<div class="subtitle is-6 has-text-grey">
-  <span>2019-01-24</span>
+  <span>2018-09-04</span>
 
 <span>
   
@@ -111,8 +76,8 @@
 
 
   <div>
-    gomobileでiOS向けのライブラリを書いている。
-1$ gomobile version 2gomobile version +dc07713 Mon Jan 7 16:22:57 2019 +0000 (android,ios); androidSDK= 1package main 2 3import &#34;app/x&#34; 4 5func main() { 6	x.
+    例えばこんなパッケージがあったとして。
+1package x 2 3func X() string { 4	return &#34;x&#34; 5} 1package x_test 2 3import ( 4	&#34;testing&#34; 5	&#34;app/x&#34; 6) 7 8func TestX(t *testing.
 
   </div>
   <hr />
@@ -122,17 +87,17 @@
 
 <div>
   <h2 class="title">
-  <a href="https://9x9.dev/posts/1543931855/">x, y = 1 if True else 2, 3</a>
+  <a href="https://9x9.dev/posts/1535977174/">マージコミットだけの差分</a>
 </h2>
 
 <div class="subtitle is-6 has-text-grey">
-  <span>2018-12-04</span>
+  <span>2018-09-03</span>
 
 <span>
   
  
 
-  <a href="/tags/python">python</a>
+  <a href="/tags/git">git</a>
   
  
 
@@ -143,8 +108,9 @@
 
 
   <div>
-    Pythonで
-1x, y = 1 if true_or_false else 2, 3 というコードを目にした。ぱっと見での自分の解釈ではこうなる。
+    developをmasterに入れるときでも、masterをリリースブランチに入れるときでも、なんでもいいんだけど、2つのブランチの差分から、次に何がデプロイされるのかをだいたいで知りたいときがある。
+当然プルリクエストベースで開発しているはずなので、そういうときはマージコミットだけに注目すればよい。
+1git log --first-parent --merges --reverse --pretty=&#39;%s %b&#39; origin/master.
 
   </div>
   <hr />
@@ -154,17 +120,17 @@
 
 <div>
   <h2 class="title">
-  <a href="https://9x9.dev/posts/1543580512/">リダイレクトでクッキーが消える</a>
+  <a href="https://9x9.dev/posts/1535546215/">Hugoで記事を書くまで</a>
 </h2>
 
 <div class="subtitle is-6 has-text-grey">
-  <span>2018-11-30</span>
+  <span>2018-08-29</span>
 
 <span>
   
  
 
-  <a href="/tags/cookie">cookie</a>
+  <a href="/tags/hugo">hugo</a>
   
  
 
@@ -175,9 +141,8 @@
 
 
   <div>
-    XとYという2つのウェブサイトを開発している。ユーザーはXでアクションAを起こすと、Yにリダイレクトされ、YでアクションBを起こすと、再びXにリダイレクトで帰ってくる。まあ、単純な話だ。
-だけどそれを普通に作ったら、なぜかはじめにXで張ったセッションが帰ってきたときには消えていて、別のユーザーとして扱われるという不可解なバグに悩まされた。
-セッションを張るというのは、仕組みとしてはセッションIDをクッキーに書き込んでいるだけなので、つまり行って帰ってくるとクッキーが消えるのだ。不思議。
+    マークダウンで書けるブログサービスの選択肢が少ないのでgithub.ioを使うことにした。 いまどきはJekyllよりHugoらしい。わりと簡単に作れた。こんな感じで。
+1hugo new site blog 2cd blog 3git init 4git remote add origin git@github.
 
   </div>
   <hr />
@@ -187,55 +152,11 @@
 
 <div>
   <h2 class="title">
-  <a href="https://9x9.dev/posts/1542712026/">expectedとactualの順序</a>
+  <a href="https://9x9.dev/posts/1463633653/">ActiveRecordでattr_accessorとselectを併用すると</a>
 </h2>
 
 <div class="subtitle is-6 has-text-grey">
-  <span>2018-11-20</span>
-
-<span>
-  
- 
-
-  <a href="/tags/ruby">ruby</a>
-  
-
-  <a href="/tags/php">php</a>
-  
-
-  <a href="/tags/java">java</a>
-  
-
-  <a href="/tags/node">node</a>
-  
-
-  <a href="/tags/python">python</a>
-  
- 
-
-</span>
-
-
-</div>
-
-
-  <div>
-    assert_equalの引数は、だいたいの言語ではexpectedが先で
- http://test-unit.github.io/test-unit/en/Test/Unit/Assertions.html#assert_equal-instance_method https://phpunit.
-
-  </div>
-  <hr />
-</div>
-
- 
-
-<div>
-  <h2 class="title">
-  <a href="https://9x9.dev/posts/1541765899/">Create React AppのdistをRailsのassetsで使いたい</a>
-</h2>
-
-<div class="subtitle is-6 has-text-grey">
-  <span>2018-11-09</span>
+  <span>2016-05-19</span>
 
 <span>
   
@@ -252,8 +173,7 @@
 
 
   <div>
-    数年放置したRailsプロジェクトのフロントエンドをどうにかしたくなったので、手っ取り早くfrontendディレクトリの中で create-react-appして、その成果物をRailsのアセットパイプラインから参照することにした。
-1Rails.application.config.assets.paths &lt;&lt; Rails.
+    1$ bin/rails -v 2Rails 5.
 
   </div>
   <hr />
@@ -263,17 +183,17 @@
 
 <div>
   <h2 class="title">
-  <a href="https://9x9.dev/posts/1540982193/">RedisのHGETALLの速さ</a>
+  <a href="https://9x9.dev/posts/1458562442/">Rails5のマイグレーションファイル</a>
 </h2>
 
 <div class="subtitle is-6 has-text-grey">
-  <span>2018-10-31</span>
+  <span>2016-03-21</span>
 
 <span>
   
  
 
-  <a href="/tags/redis">redis</a>
+  <a href="/tags/rails">rails</a>
   
  
 
@@ -284,7 +204,8 @@
 
 
   <div>
-    普段は Redis の読み書きなんてフレームワークにまかせていて、オブジェクトならだいたいシリアライズして保存されているわけだけど、今回たまたま Redis を直で使うことがあった。ハッシュ、連想配列、辞書、まあとにかくそんなものを保存したい。
+    rails5でマイグレーションファイルを作成すると、rails5で作成された印がつくようになった。 （まだベータ版だけど）
+1class CreateApples &lt; ActiveRecord::Migration[5.
 
   </div>
   <hr />
@@ -294,20 +215,17 @@
 
 <div>
   <h2 class="title">
-  <a href="https://9x9.dev/posts/1539859215/">配列と連想配列を同じループで回したい</a>
+  <a href="https://9x9.dev/posts/1456752673/">before_actionで変数を代入する是非</a>
 </h2>
 
 <div class="subtitle is-6 has-text-grey">
-  <span>2018-10-18</span>
+  <span>2016-02-29</span>
 
 <span>
   
  
 
-  <a href="/tags/python">python</a>
-  
-
-  <a href="/tags/ruby">ruby</a>
+  <a href="/tags/rails">rails</a>
   
  
 
@@ -318,7 +236,8 @@
 
 
   <div>
-    Python。dict か list のいずれかが入っている変数に対して、ループで回してある処理をすることになった。
+    いつの間にかrailsのscaffoldで作成したコントローラがbefore_actionで変数を仕込むようになっていた。普段まったく使わないので気付かなかった。
+ https://github.com/rails/rails/commit/339e4e80d514bd94fcb0e15689db43e5de83642a  1class &lt;%= controller_class_name %&gt;Controller &lt; ApplicationController 2before_action :set_&lt;%= singular_table_name %&gt;, except: [ :index, :new, :create ] 34private 5# Use callbacks to share common setup or constraints between actions.
 
   </div>
   <hr />
@@ -328,20 +247,17 @@
 
 <div>
   <h2 class="title">
-  <a href="https://9x9.dev/posts/1538143080/">forではないループ</a>
+  <a href="https://9x9.dev/posts/1397961646/">河添学部長がSFCの卒業式で浴びせた冷や水</a>
 </h2>
 
 <div class="subtitle is-6 has-text-grey">
-  <span>2018-09-28</span>
+  <span>2014-04-20</span>
 
 <span>
   
  
 
-  <a href="/tags/ruby">ruby</a>
-  
-
-  <a href="/tags/javascript">javascript</a>
+  <a href="/tags/diary">diary</a>
   
  
 
@@ -352,7 +268,8 @@
 
 
   <div>
-    指定回数ループしたいときがある。Rubyだとわかりやすく10.times { }と書ける。範囲オブジェクトを作って回す手もある。for i in 0.
+    そういえば学生のころ、私は書き起こしが趣味だったのでした。
+ これちゃんとした挨拶するの？じゃあ一応、式典らしくちゃんとした挨拶しますね。
 
   </div>
   <hr />
@@ -362,20 +279,17 @@
 
 <div>
   <h2 class="title">
-  <a href="https://9x9.dev/posts/1536581159/">loggerに重い処理を渡すと</a>
+  <a href="https://9x9.dev/posts/1395825098/">rails4の感想</a>
 </h2>
 
 <div class="subtitle is-6 has-text-grey">
-  <span>2018-09-10</span>
+  <span>2014-03-26</span>
 
 <span>
   
  
 
-  <a href="/tags/ruby">ruby</a>
-  
-
-  <a href="/tags/python">python</a>
+  <a href="/tags/rails">rails</a>
   
  
 
@@ -386,8 +300,72 @@
 
 
   <div>
-    RubyにもPythonにもloggerはある。loggerに重い処理を渡してしまった場合を考えよう。
-1logger.debug(long_time_method()) どういう状況だこれは。
+    rails4のroutes.rbで
+1resources :books, param: :name とやると/books/:nameでアクセスできるようになる。でもその状態で
+
+  </div>
+  <hr />
+</div>
+
+ 
+
+<div>
+  <h2 class="title">
+  <a href="https://9x9.dev/posts/1344412089/">ニッチな将棋のウェブサービスつくりました</a>
+</h2>
+
+<div class="subtitle is-6 has-text-grey">
+  <span>2012-08-08</span>
+
+<span>
+  
+ 
+
+  <a href="/tags/diary">diary</a>
+  
+ 
+
+</span>
+
+
+</div>
+
+
+  <div>
+    クラウドで将棋の局面図を提供するサイトをつくりました。
+ http://shogipic.jp  ひっそりこっそりリリースしたら数日後に若島さんに使ってもらえたのでだいぶ満足しました。
+
+  </div>
+  <hr />
+</div>
+
+ 
+
+<div>
+  <h2 class="title">
+  <a href="https://9x9.dev/posts/1342967909/">ミュージシャンジョーク</a>
+</h2>
+
+<div class="subtitle is-6 has-text-grey">
+  <span>2012-07-22</span>
+
+<span>
+  
+ 
+
+  <a href="/tags/diary">diary</a>
+  
+ 
+
+</span>
+
+
+</div>
+
+
+  <div>
+    YouTubeで見たジェイク・シマブクロの発言がオシャレだった。
+ マイナーコードの中にも特に悲しい音がある
 
   </div>
   <hr />
@@ -405,7 +383,7 @@
 
     <li>
       <a
-        class="pagination-link is-current"
+        class="pagination-link"
         href="/search/"
         >1</a
       >
@@ -414,7 +392,7 @@
 
     <li>
       <a
-        class="pagination-link"
+        class="pagination-link is-current"
         href="/search/page/2/"
         >2</a
       >
