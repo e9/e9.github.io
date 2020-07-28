@@ -26,17 +26,19 @@
 
     <link
       rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css"
+      integrity="sha256-aPeK/N8IHpHsvPBCf49iVKMdusfobKo2oxF8lRruWJg="
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="/css/styles.css" />
   </head>
 
   <body>
-    <nav class="navbar fixed-top navbar-home">
-      <div class="container">
-        <a class="navbar-brand" href="https://9x9.dev">開発と運用のサンバ</a>
+    <nav
+      class="navbar navbar-home mb-4"
+    >
+      <div class="navbar-brand">
+        <a class="navbar-item" href="https://9x9.dev">開発と運用のサンバ</a>
       </div>
     </nav>
 
@@ -45,43 +47,45 @@
     <header class="masthead" style="background-image: url('/img/bg.jpg')">
       <div class="overlay"></div>
       <div class="container">
-        <div class="row">
-          <div class="col-lg-8 col-md-10 mx-auto">
-            <div class="site-heading">
-              <h1>
-                開発と運用のサンバ
+        <div class="site-heading">
+          <h1>
+            開発と運用のサンバ
 
-              </h1>
-            </div>
-          </div>
+          </h1>
         </div>
       </div>
     </header>
     
 
-    <main class="container">
-      <div class="row">
-        <div class="col-md-9">
+    <main class="container is-fluid">
+      <div class="columns">
+        <div class="column is-three-quarters">
+          
 
 
 
 <div>
-  <h2>
-    <a href="https://9x9.dev/posts/1536059641/">テストでだけ使いたい共通関数はGolangの場合どこに置くのか</a>
-  </h2>
-  <div>
-    <span
-  ><ion-icon name="today"></ion-icon>&nbsp;2018-09-04</span
-><span
-  ><ion-icon name="pricetags"></ion-icon
-  >&nbsp;<a
-    href="/tags/golang"
-    >golang</a
-  >&nbsp;</span
->
+  <h2 class="title">
+  <a href="https://9x9.dev/posts/1536059641/">テストでだけ使いたい共通関数はGolangの場合どこに置くのか</a>
+</h2>
+
+<div class="subtitle is-6 has-text-grey">
+  <span>2018-09-04</span>
+
+<span>
+  
+ 
+
+  <a href="/tags/golang">golang</a>
+  
+ 
+
+</span>
 
 
-  </div>
+</div>
+
+
   <div>
     例えばこんなパッケージがあったとして。
 1package x 2 3func X() string { 4	return &#34;x&#34; 5} 1package x_test 2 3import ( 4	&#34;testing&#34; 5	&#34;app/x&#34; 6) 7 8func TestX(t *testing.
@@ -90,24 +94,30 @@
   <hr />
 </div>
 
+ 
 
 <div>
-  <h2>
-    <a href="https://9x9.dev/posts/1535977174/">マージコミットだけの差分</a>
-  </h2>
-  <div>
-    <span
-  ><ion-icon name="today"></ion-icon>&nbsp;2018-09-03</span
-><span
-  ><ion-icon name="pricetags"></ion-icon
-  >&nbsp;<a
-    href="/tags/git"
-    >git</a
-  >&nbsp;</span
->
+  <h2 class="title">
+  <a href="https://9x9.dev/posts/1535977174/">マージコミットだけの差分</a>
+</h2>
+
+<div class="subtitle is-6 has-text-grey">
+  <span>2018-09-03</span>
+
+<span>
+  
+ 
+
+  <a href="/tags/git">git</a>
+  
+ 
+
+</span>
 
 
-  </div>
+</div>
+
+
   <div>
     developをmasterに入れるときでも、masterをリリースブランチに入れるときでも、なんでもいいんだけど、2つのブランチの差分から、次に何がデプロイされるのかをだいたいで知りたいときがある。
 当然プルリクエストベースで開発しているはずなので、そういうときはマージコミットだけに注目すればよい。
@@ -117,24 +127,30 @@
   <hr />
 </div>
 
+ 
 
 <div>
-  <h2>
-    <a href="https://9x9.dev/posts/1535546215/">Hugoで記事を書くまで</a>
-  </h2>
-  <div>
-    <span
-  ><ion-icon name="today"></ion-icon>&nbsp;2018-08-29</span
-><span
-  ><ion-icon name="pricetags"></ion-icon
-  >&nbsp;<a
-    href="/tags/hugo"
-    >hugo</a
-  >&nbsp;</span
->
+  <h2 class="title">
+  <a href="https://9x9.dev/posts/1535546215/">Hugoで記事を書くまで</a>
+</h2>
+
+<div class="subtitle is-6 has-text-grey">
+  <span>2018-08-29</span>
+
+<span>
+  
+ 
+
+  <a href="/tags/hugo">hugo</a>
+  
+ 
+
+</span>
 
 
-  </div>
+</div>
+
+
   <div>
     マークダウンで書けるブログサービスの選択肢が少ないのでgithub.ioを使うことにした。 いまどきはJekyllよりHugoらしい。わりと簡単に作れた。こんな感じで。
 1hugo new site blog 2cd blog 3git init 4git remote add origin git@github.
@@ -143,24 +159,30 @@
   <hr />
 </div>
 
+ 
 
 <div>
-  <h2>
-    <a href="https://9x9.dev/posts/1463633653/">ActiveRecordでattr_accessorとselectを併用すると</a>
-  </h2>
-  <div>
-    <span
-  ><ion-icon name="today"></ion-icon>&nbsp;2016-05-19</span
-><span
-  ><ion-icon name="pricetags"></ion-icon
-  >&nbsp;<a
-    href="/tags/rails"
-    >rails</a
-  >&nbsp;</span
->
+  <h2 class="title">
+  <a href="https://9x9.dev/posts/1463633653/">ActiveRecordでattr_accessorとselectを併用すると</a>
+</h2>
+
+<div class="subtitle is-6 has-text-grey">
+  <span>2016-05-19</span>
+
+<span>
+  
+ 
+
+  <a href="/tags/rails">rails</a>
+  
+ 
+
+</span>
 
 
-  </div>
+</div>
+
+
   <div>
     1$ bin/rails -v 2Rails 5.
 
@@ -168,24 +190,30 @@
   <hr />
 </div>
 
+ 
 
 <div>
-  <h2>
-    <a href="https://9x9.dev/posts/1458562442/">Rails5のマイグレーションファイル</a>
-  </h2>
-  <div>
-    <span
-  ><ion-icon name="today"></ion-icon>&nbsp;2016-03-21</span
-><span
-  ><ion-icon name="pricetags"></ion-icon
-  >&nbsp;<a
-    href="/tags/rails"
-    >rails</a
-  >&nbsp;</span
->
+  <h2 class="title">
+  <a href="https://9x9.dev/posts/1458562442/">Rails5のマイグレーションファイル</a>
+</h2>
+
+<div class="subtitle is-6 has-text-grey">
+  <span>2016-03-21</span>
+
+<span>
+  
+ 
+
+  <a href="/tags/rails">rails</a>
+  
+ 
+
+</span>
 
 
-  </div>
+</div>
+
+
   <div>
     rails5でマイグレーションファイルを作成すると、rails5で作成された印がつくようになった。 （まだベータ版だけど）
 1class CreateApples &lt; ActiveRecord::Migration[5.
@@ -194,24 +222,30 @@
   <hr />
 </div>
 
+ 
 
 <div>
-  <h2>
-    <a href="https://9x9.dev/posts/1456752673/">before_actionで変数を代入する是非</a>
-  </h2>
-  <div>
-    <span
-  ><ion-icon name="today"></ion-icon>&nbsp;2016-02-29</span
-><span
-  ><ion-icon name="pricetags"></ion-icon
-  >&nbsp;<a
-    href="/tags/rails"
-    >rails</a
-  >&nbsp;</span
->
+  <h2 class="title">
+  <a href="https://9x9.dev/posts/1456752673/">before_actionで変数を代入する是非</a>
+</h2>
+
+<div class="subtitle is-6 has-text-grey">
+  <span>2016-02-29</span>
+
+<span>
+  
+ 
+
+  <a href="/tags/rails">rails</a>
+  
+ 
+
+</span>
 
 
-  </div>
+</div>
+
+
   <div>
     いつの間にかrailsのscaffoldで作成したコントローラがbefore_actionで変数を仕込むようになっていた。普段まったく使わないので気付かなかった。
  https://github.com/rails/rails/commit/339e4e80d514bd94fcb0e15689db43e5de83642a  1class &lt;%= controller_class_name %&gt;Controller &lt; ApplicationController 2before_action :set_&lt;%= singular_table_name %&gt;, except: [ :index, :new, :create ] 34private 5# Use callbacks to share common setup or constraints between actions.
@@ -220,24 +254,30 @@
   <hr />
 </div>
 
+ 
 
 <div>
-  <h2>
-    <a href="https://9x9.dev/posts/1397961646/">河添学部長がSFCの卒業式で浴びせた冷や水</a>
-  </h2>
-  <div>
-    <span
-  ><ion-icon name="today"></ion-icon>&nbsp;2014-04-20</span
-><span
-  ><ion-icon name="pricetags"></ion-icon
-  >&nbsp;<a
-    href="/tags/diary"
-    >diary</a
-  >&nbsp;</span
->
+  <h2 class="title">
+  <a href="https://9x9.dev/posts/1397961646/">河添学部長がSFCの卒業式で浴びせた冷や水</a>
+</h2>
+
+<div class="subtitle is-6 has-text-grey">
+  <span>2014-04-20</span>
+
+<span>
+  
+ 
+
+  <a href="/tags/diary">diary</a>
+  
+ 
+
+</span>
 
 
-  </div>
+</div>
+
+
   <div>
     そういえば学生のころ、私は書き起こしが趣味だったのでした。
  これちゃんとした挨拶するの？じゃあ一応、式典らしくちゃんとした挨拶しますね。
@@ -246,24 +286,30 @@
   <hr />
 </div>
 
+ 
 
 <div>
-  <h2>
-    <a href="https://9x9.dev/posts/1395825098/">rails4の感想</a>
-  </h2>
-  <div>
-    <span
-  ><ion-icon name="today"></ion-icon>&nbsp;2014-03-26</span
-><span
-  ><ion-icon name="pricetags"></ion-icon
-  >&nbsp;<a
-    href="/tags/rails"
-    >rails</a
-  >&nbsp;</span
->
+  <h2 class="title">
+  <a href="https://9x9.dev/posts/1395825098/">rails4の感想</a>
+</h2>
+
+<div class="subtitle is-6 has-text-grey">
+  <span>2014-03-26</span>
+
+<span>
+  
+ 
+
+  <a href="/tags/rails">rails</a>
+  
+ 
+
+</span>
 
 
-  </div>
+</div>
+
+
   <div>
     rails4のroutes.rbで
 1resources :books, param: :name とやると/books/:nameでアクセスできるようになる。でもその状態で
@@ -272,24 +318,30 @@
   <hr />
 </div>
 
+ 
 
 <div>
-  <h2>
-    <a href="https://9x9.dev/posts/1344412089/">ニッチな将棋のウェブサービスつくりました</a>
-  </h2>
-  <div>
-    <span
-  ><ion-icon name="today"></ion-icon>&nbsp;2012-08-08</span
-><span
-  ><ion-icon name="pricetags"></ion-icon
-  >&nbsp;<a
-    href="/tags/diary"
-    >diary</a
-  >&nbsp;</span
->
+  <h2 class="title">
+  <a href="https://9x9.dev/posts/1344412089/">ニッチな将棋のウェブサービスつくりました</a>
+</h2>
+
+<div class="subtitle is-6 has-text-grey">
+  <span>2012-08-08</span>
+
+<span>
+  
+ 
+
+  <a href="/tags/diary">diary</a>
+  
+ 
+
+</span>
 
 
-  </div>
+</div>
+
+
   <div>
     クラウドで将棋の局面図を提供するサイトをつくりました。
  http://shogipic.jp  ひっそりこっそりリリースしたら数日後に若島さんに使ってもらえたのでだいぶ満足しました。
@@ -298,24 +350,30 @@
   <hr />
 </div>
 
+ 
 
 <div>
-  <h2>
-    <a href="https://9x9.dev/posts/1342967909/">ミュージシャンジョーク</a>
-  </h2>
-  <div>
-    <span
-  ><ion-icon name="today"></ion-icon>&nbsp;2012-07-22</span
-><span
-  ><ion-icon name="pricetags"></ion-icon
-  >&nbsp;<a
-    href="/tags/diary"
-    >diary</a
-  >&nbsp;</span
->
+  <h2 class="title">
+  <a href="https://9x9.dev/posts/1342967909/">ミュージシャンジョーク</a>
+</h2>
+
+<div class="subtitle is-6 has-text-grey">
+  <span>2012-07-22</span>
+
+<span>
+  
+ 
+
+  <a href="/tags/diary">diary</a>
+  
+ 
+
+</span>
 
 
-  </div>
+</div>
+
+
   <div>
     YouTubeで見たジェイク・シマブクロの発言がオシャレだった。
  マイナーコードの中にも特に悲しい音がある
@@ -326,157 +384,168 @@
 
  
 
-<nav>
-  <ul class="pagination">
+
+
+
+
+<nav class="pagination is-rounded is-small">
+  <ul class="pagination-list">
     
 
-    <li class="page-item ">
-      <a class="page-link" href="/">1</a>
+    <li>
+      <a
+        class="pagination-link"
+        href="/"
+        >1</a
+      >
     </li>
     
 
-    <li class="page-item active">
-      <a class="page-link" href="/page/2/">2</a>
+    <li>
+      <a
+        class="pagination-link is-current"
+        href="/page/2/"
+        >2</a
+      >
     </li>
     
 
-    <li class="page-item ">
-      <a class="page-link" href="/page/3/">3</a>
+    <li>
+      <a
+        class="pagination-link"
+        href="/page/3/"
+        >3</a
+      >
     </li>
     
 
   </ul>
 </nav>
 
- </div>
-        <aside class="col-md-3"><aside>
-  <div>
-    <ul class="list-unstyled">
-      
 
-      <li>
-        <a href="/">Home</a>
-      </li>
-      
 
-      <li>
-        <a href="/index.xml">RSS</a>
-      </li>
-      
 
-    </ul>
-  </div>
+        </div>
+        <div class="column"><aside class="content">
+  <ul>
+    
 
-  <div>
-    <ul class="list-unstyled">
-      
+    <li>
+      <a href="/">Home</a>
+    </li>
+    
 
-      <li>
-        <a href="/archives/2020/04/">2020/04</a>
-      </li>
-      
+    <li>
+      <a href="/index.xml">RSS</a>
+    </li>
+    
 
-      <li>
-        <a href="/archives/2019/01/">2019/01</a>
-      </li>
-      
+  </ul>
+  <ul>
+    
 
-      <li>
-        <a href="/archives/2018/12/">2018/12</a>
-      </li>
-      
+    <li>
+      <a href="/archives/2020/04/">2020/04</a>
+    </li>
+    
 
-      <li>
-        <a href="/archives/2018/11/">2018/11</a>
-      </li>
-      
+    <li>
+      <a href="/archives/2019/01/">2019/01</a>
+    </li>
+    
 
-      <li>
-        <a href="/archives/2018/10/">2018/10</a>
-      </li>
-      
+    <li>
+      <a href="/archives/2018/12/">2018/12</a>
+    </li>
+    
 
-      <li>
-        <a href="/archives/2018/09/">2018/09</a>
-      </li>
-      
+    <li>
+      <a href="/archives/2018/11/">2018/11</a>
+    </li>
+    
 
-      <li>
-        <a href="/archives/2018/08/">2018/08</a>
-      </li>
-      
+    <li>
+      <a href="/archives/2018/10/">2018/10</a>
+    </li>
+    
 
-      <li>
-        <a href="/archives/2016/05/">2016/05</a>
-      </li>
-      
+    <li>
+      <a href="/archives/2018/09/">2018/09</a>
+    </li>
+    
 
-      <li>
-        <a href="/archives/2016/03/">2016/03</a>
-      </li>
-      
+    <li>
+      <a href="/archives/2018/08/">2018/08</a>
+    </li>
+    
 
-      <li>
-        <a href="/archives/2016/02/">2016/02</a>
-      </li>
-      
+    <li>
+      <a href="/archives/2016/05/">2016/05</a>
+    </li>
+    
 
-      <li>
-        <a href="/archives/2014/04/">2014/04</a>
-      </li>
-      
+    <li>
+      <a href="/archives/2016/03/">2016/03</a>
+    </li>
+    
 
-      <li>
-        <a href="/archives/2014/03/">2014/03</a>
-      </li>
-      
+    <li>
+      <a href="/archives/2016/02/">2016/02</a>
+    </li>
+    
 
-      <li>
-        <a href="/archives/2012/08/">2012/08</a>
-      </li>
-      
+    <li>
+      <a href="/archives/2014/04/">2014/04</a>
+    </li>
+    
 
-      <li>
-        <a href="/archives/2012/07/">2012/07</a>
-      </li>
-      
+    <li>
+      <a href="/archives/2014/03/">2014/03</a>
+    </li>
+    
 
-      <li>
-        <a href="/archives/2012/06/">2012/06</a>
-      </li>
-      
+    <li>
+      <a href="/archives/2012/08/">2012/08</a>
+    </li>
+    
 
-      <li>
-        <a href="/archives/2012/05/">2012/05</a>
-      </li>
-      
+    <li>
+      <a href="/archives/2012/07/">2012/07</a>
+    </li>
+    
 
-      <li>
-        <a href="/archives/2012/04/">2012/04</a>
-      </li>
-      
+    <li>
+      <a href="/archives/2012/06/">2012/06</a>
+    </li>
+    
 
-    </ul>
-  </div>
+    <li>
+      <a href="/archives/2012/05/">2012/05</a>
+    </li>
+    
 
-  <div>
-    <ul class="list-unstyled">
-      
+    <li>
+      <a href="/archives/2012/04/">2012/04</a>
+    </li>
+    
 
-      <li>
-        <a href="https://github.com/e9" target="_blank">GitHub</a>
-      </li>
-      
+  </ul>
+  <ul>
+    
 
-      <li>
-        <a href="https://twitter.com/sfc" target="_blank">Twitter</a>
-      </li>
-      
+    <li>
+      <a href="https://github.com/e9" target="_blank">GitHub</a>
+    </li>
+    
 
-    </ul>
-  </div>
+    <li>
+      <a href="https://twitter.com/sfc" target="_blank">Twitter</a>
+    </li>
+    
+
+  </ul>
 </aside>
-</aside>
+</div>
       </div>
     </main>
 

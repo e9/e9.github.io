@@ -25,53 +25,60 @@
 
     <link
       rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css"
+      integrity="sha256-aPeK/N8IHpHsvPBCf49iVKMdusfobKo2oxF8lRruWJg="
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="/css/styles.css" />
   </head>
 
   <body>
-    <nav class="navbar ">
-      <div class="container">
-        <a class="navbar-brand" href="https://9x9.dev">開発と運用のサンバ</a>
+    <nav
+      class="navbar is-light mb-4"
+    >
+      <div class="navbar-brand">
+        <a class="navbar-item" href="https://9x9.dev">開発と運用のサンバ</a>
       </div>
     </nav>
 
     
 
-    <main class="container">
-      <div class="row">
-        <div class="col-md-9">
+    <main class="container is-fluid">
+      <div class="columns">
+        <div class="column is-three-quarters">
+          
 
-<p>2018/09の記事</p>
-
-
-
+<div class="title is-4">2018/09</div>
 
 
-<div class="post">
-  <h2 class="post-item post-title">
-    <a href="https://9x9.dev/posts/1538143080/">forではないループ</a>
-  </h2>
-  <div class="post-item post-meta">
-    <span
-  ><ion-icon name="today"></ion-icon>&nbsp;2018-09-28</span
-><span
-  ><ion-icon name="pricetags"></ion-icon
-  >&nbsp;<a
-    href="/tags/ruby"
-    >ruby</a
-  >&nbsp;<a
-    href="/tags/javascript"
-    >javascript</a
-  >&nbsp;</span
->
 
 
-  </div>
-  <div class="post-item post-summary markdown-body">
+<div>
+  <h2 class="title">
+  <a href="https://9x9.dev/posts/1538143080/">forではないループ</a>
+</h2>
+
+<div class="subtitle is-6 has-text-grey">
+  <span>2018-09-28</span>
+
+<span>
+  
+ 
+
+  <a href="/tags/ruby">ruby</a>
+  
+
+  <a href="/tags/javascript">javascript</a>
+  
+ 
+
+</span>
+
+
+</div>
+
+
+  <div>
     指定回数ループしたいときがある。Rubyだとわかりやすく10.times { }と書ける。範囲オブジェクトを作って回す手もある。for i in 0.
 
   </div>
@@ -79,27 +86,33 @@
 </div>
 
 
-<div class="post">
-  <h2 class="post-item post-title">
-    <a href="https://9x9.dev/posts/1536581159/">loggerに重い処理を渡すと</a>
-  </h2>
-  <div class="post-item post-meta">
-    <span
-  ><ion-icon name="today"></ion-icon>&nbsp;2018-09-10</span
-><span
-  ><ion-icon name="pricetags"></ion-icon
-  >&nbsp;<a
-    href="/tags/ruby"
-    >ruby</a
-  >&nbsp;<a
-    href="/tags/python"
-    >python</a
-  >&nbsp;</span
->
+
+<div>
+  <h2 class="title">
+  <a href="https://9x9.dev/posts/1536581159/">loggerに重い処理を渡すと</a>
+</h2>
+
+<div class="subtitle is-6 has-text-grey">
+  <span>2018-09-10</span>
+
+<span>
+  
+ 
+
+  <a href="/tags/ruby">ruby</a>
+  
+
+  <a href="/tags/python">python</a>
+  
+ 
+
+</span>
 
 
-  </div>
-  <div class="post-item post-summary markdown-body">
+</div>
+
+
+  <div>
     RubyにもPythonにもloggerはある。loggerに重い処理を渡してしまった場合を考えよう。
 1logger.debug(long_time_method()) どういう状況だこれは。
 
@@ -108,24 +121,30 @@
 </div>
 
 
-<div class="post">
-  <h2 class="post-item post-title">
-    <a href="https://9x9.dev/posts/1536059641/">テストでだけ使いたい共通関数はGolangの場合どこに置くのか</a>
-  </h2>
-  <div class="post-item post-meta">
-    <span
-  ><ion-icon name="today"></ion-icon>&nbsp;2018-09-04</span
-><span
-  ><ion-icon name="pricetags"></ion-icon
-  >&nbsp;<a
-    href="/tags/golang"
-    >golang</a
-  >&nbsp;</span
->
+
+<div>
+  <h2 class="title">
+  <a href="https://9x9.dev/posts/1536059641/">テストでだけ使いたい共通関数はGolangの場合どこに置くのか</a>
+</h2>
+
+<div class="subtitle is-6 has-text-grey">
+  <span>2018-09-04</span>
+
+<span>
+  
+ 
+
+  <a href="/tags/golang">golang</a>
+  
+ 
+
+</span>
 
 
-  </div>
-  <div class="post-item post-summary markdown-body">
+</div>
+
+
+  <div>
     例えばこんなパッケージがあったとして。
 1package x 2 3func X() string { 4	return &#34;x&#34; 5} 1package x_test 2 3import ( 4	&#34;testing&#34; 5	&#34;app/x&#34; 6) 7 8func TestX(t *testing.
 
@@ -134,24 +153,30 @@
 </div>
 
 
-<div class="post">
-  <h2 class="post-item post-title">
-    <a href="https://9x9.dev/posts/1535977174/">マージコミットだけの差分</a>
-  </h2>
-  <div class="post-item post-meta">
-    <span
-  ><ion-icon name="today"></ion-icon>&nbsp;2018-09-03</span
-><span
-  ><ion-icon name="pricetags"></ion-icon
-  >&nbsp;<a
-    href="/tags/git"
-    >git</a
-  >&nbsp;</span
->
+
+<div>
+  <h2 class="title">
+  <a href="https://9x9.dev/posts/1535977174/">マージコミットだけの差分</a>
+</h2>
+
+<div class="subtitle is-6 has-text-grey">
+  <span>2018-09-03</span>
+
+<span>
+  
+ 
+
+  <a href="/tags/git">git</a>
+  
+ 
+
+</span>
 
 
-  </div>
-  <div class="post-item post-summary markdown-body">
+</div>
+
+
+  <div>
     developをmasterに入れるときでも、masterをリリースブランチに入れるときでも、なんでもいいんだけど、2つのブランチの差分から、次に何がデプロイされるのかをだいたいで知りたいときがある。
 当然プルリクエストベースで開発しているはずなので、そういうときはマージコミットだけに注目すればよい。
 1git log --first-parent --merges --reverse --pretty=&#39;%s %b&#39; origin/master.
@@ -160,136 +185,135 @@
   <hr />
 </div>
 
- 
+
+
+
+
+
+
+
+
+        </div>
+        <div class="column"><aside class="content">
+  <ul>
+    
+
+    <li>
+      <a href="/">Home</a>
+    </li>
+    
+
+    <li>
+      <a href="/index.xml">RSS</a>
+    </li>
+    
+
+  </ul>
+  <ul>
+    
+
+    <li>
+      <a href="/archives/2020/04/">2020/04</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2019/01/">2019/01</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2018/12/">2018/12</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2018/11/">2018/11</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2018/10/">2018/10</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2018/09/">2018/09</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2018/08/">2018/08</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2016/05/">2016/05</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2016/03/">2016/03</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2016/02/">2016/02</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2014/04/">2014/04</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2014/03/">2014/03</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2012/08/">2012/08</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2012/07/">2012/07</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2012/06/">2012/06</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2012/05/">2012/05</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2012/04/">2012/04</a>
+    </li>
+    
+
+  </ul>
+  <ul>
+    
+
+    <li>
+      <a href="https://github.com/e9" target="_blank">GitHub</a>
+    </li>
+    
+
+    <li>
+      <a href="https://twitter.com/sfc" target="_blank">Twitter</a>
+    </li>
+    
+
+  </ul>
+</aside>
 </div>
-        <aside class="col-md-3"><aside>
-  <div>
-    <ul class="list-unstyled">
-      
-
-      <li>
-        <a href="/">Home</a>
-      </li>
-      
-
-      <li>
-        <a href="/index.xml">RSS</a>
-      </li>
-      
-
-    </ul>
-  </div>
-
-  <div>
-    <ul class="list-unstyled">
-      
-
-      <li>
-        <a href="/archives/2020/04/">2020/04</a>
-      </li>
-      
-
-      <li>
-        <a href="/archives/2019/01/">2019/01</a>
-      </li>
-      
-
-      <li>
-        <a href="/archives/2018/12/">2018/12</a>
-      </li>
-      
-
-      <li>
-        <a href="/archives/2018/11/">2018/11</a>
-      </li>
-      
-
-      <li>
-        <a href="/archives/2018/10/">2018/10</a>
-      </li>
-      
-
-      <li>
-        <a href="/archives/2018/09/">2018/09</a>
-      </li>
-      
-
-      <li>
-        <a href="/archives/2018/08/">2018/08</a>
-      </li>
-      
-
-      <li>
-        <a href="/archives/2016/05/">2016/05</a>
-      </li>
-      
-
-      <li>
-        <a href="/archives/2016/03/">2016/03</a>
-      </li>
-      
-
-      <li>
-        <a href="/archives/2016/02/">2016/02</a>
-      </li>
-      
-
-      <li>
-        <a href="/archives/2014/04/">2014/04</a>
-      </li>
-      
-
-      <li>
-        <a href="/archives/2014/03/">2014/03</a>
-      </li>
-      
-
-      <li>
-        <a href="/archives/2012/08/">2012/08</a>
-      </li>
-      
-
-      <li>
-        <a href="/archives/2012/07/">2012/07</a>
-      </li>
-      
-
-      <li>
-        <a href="/archives/2012/06/">2012/06</a>
-      </li>
-      
-
-      <li>
-        <a href="/archives/2012/05/">2012/05</a>
-      </li>
-      
-
-      <li>
-        <a href="/archives/2012/04/">2012/04</a>
-      </li>
-      
-
-    </ul>
-  </div>
-
-  <div>
-    <ul class="list-unstyled">
-      
-
-      <li>
-        <a href="https://github.com/e9" target="_blank">GitHub</a>
-      </li>
-      
-
-      <li>
-        <a href="https://twitter.com/sfc" target="_blank">Twitter</a>
-      </li>
-      
-
-    </ul>
-  </div>
-</aside>
-</aside>
       </div>
     </main>
 

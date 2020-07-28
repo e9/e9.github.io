@@ -1,7 +1,3 @@
-body {
-  font-family: "Noto Sans JP", sans-serif;
-}
-
 header.masthead {
   margin-bottom: 50px;
   background: no-repeat center center;
@@ -44,13 +40,6 @@ header.masthead .site-heading h1 {
 
 .navbar-home {
   position: absolute;
-}
-
-.navbar-home a {
-  color: white !important;
+  background-color: transparent;
   display: none;
-}
-
-.navbar-brand {
-  color: #212529 !important;
 }
