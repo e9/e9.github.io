@@ -1,4 +1,4 @@
-header.masthead {
+header.hero {
   background: no-repeat center center;
   background-color: #868e96;
   background-attachment: scroll;
@@ -7,7 +7,8 @@ header.masthead {
   background-size: cover;
 }
 
-header.masthead .overlay {
+header.hero::before {
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -16,23 +17,7 @@ header.masthead .overlay {
   background-color: #212529;
   opacity: 0.5;
 }
-header.masthead .site-heading a {
-  font-weight: 800;
-  color: white !important;
-}
 
-@media (min-width: 768px) {
-  header.masthead .site-heading {
-    padding: 6rem 0 !important;
-  }
-
-  header.masthead .site-heading .title {
-    font-size: 4rem;
-  }
-}
-
-.navbar-home {
-  position: absolute;
-  background-color: transparent;
-  display: none;
+header.hero .title {
+  font-weight: 900;
 }
