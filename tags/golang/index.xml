@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>golang on 開発と運用のサンバ</title>
+    <link>https://9x9.dev/tags/golang/</link>
+    <description>Recent content in golang on 開発と運用のサンバ</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 24 Jan 2019 20:20:00 +0900</lastBuildDate>
+    
+	<atom:link href="https://9x9.dev/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>gomobileで非同期な関数を扱いたい</title>
+      <link>https://9x9.dev/posts/1548328800/</link>
+      <pubDate>Thu, 24 Jan 2019 20:20:00 +0900</pubDate>
+      
+      <guid>https://9x9.dev/posts/1548328800/</guid>
+      <description>gomobileでiOS向けのライブラリを書いている。
+1$ gomobile version 2gomobile version +dc07713 Mon Jan 7 16:22:57 2019 +0000 (android,ios); androidSDK= 1package main 2 3import &amp;#34;app/x&amp;#34; 4 5func main() { 6	x.</description>
+    </item>
+    
+    <item>
+      <title>テストでだけ使いたい共通関数はGolangの場合どこに置くのか</title>
+      <link>https://9x9.dev/posts/1536059641/</link>
+      <pubDate>Tue, 04 Sep 2018 20:14:01 +0900</pubDate>
+      
+      <guid>https://9x9.dev/posts/1536059641/</guid>
+      <description>例えばこんなパッケージがあったとして。
+1package x 2 3func X() string { 4	return &amp;#34;x&amp;#34; 5} 1package x_test 2 3import ( 4	&amp;#34;testing&amp;#34; 5	&amp;#34;app/x&amp;#34; 6) 7 8func TestX(t *testing.</description>
+    </item>
+    
+  </channel>
+</rss>

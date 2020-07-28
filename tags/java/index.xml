@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>java on 開発と運用のサンバ</title>
+    <link>https://9x9.dev/tags/java/</link>
+    <description>Recent content in java on 開発と運用のサンバ</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 20 Nov 2018 20:07:07 +0900</lastBuildDate>
+    
+	<atom:link href="https://9x9.dev/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>expectedとactualの順序</title>
+      <link>https://9x9.dev/posts/1542712026/</link>
+      <pubDate>Tue, 20 Nov 2018 20:07:07 +0900</pubDate>
+      
+      <guid>https://9x9.dev/posts/1542712026/</guid>
+      <description>assert_equalの引数は、だいたいの言語ではexpectedが先で
+ http://test-unit.github.io/test-unit/en/Test/Unit/Assertions.html#assert_equal-instance_method https://phpunit.</description>
+    </item>
+    
+  </channel>
+</rss>

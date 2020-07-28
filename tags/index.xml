@@ -5,9 +5,145 @@
     <link>https://9x9.dev/tags/</link>
     <description>Recent content in Tags on 開発と運用のサンバ</description>
     <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 15 Apr 2020 02:05:47 +0900</lastBuildDate>
     
 	<atom:link href="https://9x9.dev/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>react</title>
+      <link>https://9x9.dev/tags/react/</link>
+      <pubDate>Wed, 15 Apr 2020 02:05:47 +0900</pubDate>
+      
+      <guid>https://9x9.dev/tags/react/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>wasm</title>
+      <link>https://9x9.dev/tags/wasm/</link>
+      <pubDate>Wed, 15 Apr 2020 02:05:47 +0900</pubDate>
+      
+      <guid>https://9x9.dev/tags/wasm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>golang</title>
+      <link>https://9x9.dev/tags/golang/</link>
+      <pubDate>Thu, 24 Jan 2019 20:20:00 +0900</pubDate>
+      
+      <guid>https://9x9.dev/tags/golang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>https://9x9.dev/tags/python/</link>
+      <pubDate>Tue, 04 Dec 2018 22:57:36 +0900</pubDate>
+      
+      <guid>https://9x9.dev/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cookie</title>
+      <link>https://9x9.dev/tags/cookie/</link>
+      <pubDate>Fri, 30 Nov 2018 21:21:52 +0900</pubDate>
+      
+      <guid>https://9x9.dev/tags/cookie/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>java</title>
+      <link>https://9x9.dev/tags/java/</link>
+      <pubDate>Tue, 20 Nov 2018 20:07:07 +0900</pubDate>
+      
+      <guid>https://9x9.dev/tags/java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>node</title>
+      <link>https://9x9.dev/tags/node/</link>
+      <pubDate>Tue, 20 Nov 2018 20:07:07 +0900</pubDate>
+      
+      <guid>https://9x9.dev/tags/node/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>php</title>
+      <link>https://9x9.dev/tags/php/</link>
+      <pubDate>Tue, 20 Nov 2018 20:07:07 +0900</pubDate>
+      
+      <guid>https://9x9.dev/tags/php/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ruby</title>
+      <link>https://9x9.dev/tags/ruby/</link>
+      <pubDate>Tue, 20 Nov 2018 20:07:07 +0900</pubDate>
+      
+      <guid>https://9x9.dev/tags/ruby/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rails</title>
+      <link>https://9x9.dev/tags/rails/</link>
+      <pubDate>Fri, 09 Nov 2018 21:18:20 +0900</pubDate>
+      
+      <guid>https://9x9.dev/tags/rails/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>redis</title>
+      <link>https://9x9.dev/tags/redis/</link>
+      <pubDate>Wed, 31 Oct 2018 19:36:34 +0900</pubDate>
+      
+      <guid>https://9x9.dev/tags/redis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>javascript</title>
+      <link>https://9x9.dev/tags/javascript/</link>
+      <pubDate>Fri, 28 Sep 2018 22:58:00 +0900</pubDate>
+      
+      <guid>https://9x9.dev/tags/javascript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>git</title>
+      <link>https://9x9.dev/tags/git/</link>
+      <pubDate>Mon, 03 Sep 2018 21:19:34 +0900</pubDate>
+      
+      <guid>https://9x9.dev/tags/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hugo</title>
+      <link>https://9x9.dev/tags/hugo/</link>
+      <pubDate>Wed, 29 Aug 2018 21:36:55 +0900</pubDate>
+      
+      <guid>https://9x9.dev/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>diary</title>
+      <link>https://9x9.dev/tags/diary/</link>
+      <pubDate>Sun, 20 Apr 2014 11:40:46 +0900</pubDate>
+      
+      <guid>https://9x9.dev/tags/diary/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>

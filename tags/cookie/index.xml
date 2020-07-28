@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cookie on 開発と運用のサンバ</title>
+    <link>https://9x9.dev/tags/cookie/</link>
+    <description>Recent content in cookie on 開発と運用のサンバ</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 30 Nov 2018 21:21:52 +0900</lastBuildDate>
+    
+	<atom:link href="https://9x9.dev/tags/cookie/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>リダイレクトでクッキーが消える</title>
+      <link>https://9x9.dev/posts/1543580512/</link>
+      <pubDate>Fri, 30 Nov 2018 21:21:52 +0900</pubDate>
+      
+      <guid>https://9x9.dev/posts/1543580512/</guid>
+      <description>XとYという2つのウェブサイトを開発している。ユーザーはXでアクションAを起こすと、Yにリダイレクトされ、YでアクションBを起こすと、再びXにリダイレクトで帰ってくる。まあ、単純な話だ。
+だけどそれを普通に作ったら、なぜかはじめにXで張ったセッションが帰ってきたときには消えていて、別のユーザーとして扱われるという不可解なバグに悩まされた。
+セッションを張るというのは、仕組みとしてはセッションIDをクッキーに書き込んでいるだけなので、つまり行って帰ってくるとクッキーが消えるのだ。不思議。</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>diary on 開発と運用のサンバ</title>
+    <link>https://9x9.dev/tags/diary/</link>
+    <description>Recent content in diary on 開発と運用のサンバ</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 20 Apr 2014 11:40:46 +0900</lastBuildDate>
+    
+	<atom:link href="https://9x9.dev/tags/diary/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>河添学部長がSFCの卒業式で浴びせた冷や水</title>
+      <link>https://9x9.dev/posts/1397961646/</link>
+      <pubDate>Sun, 20 Apr 2014 11:40:46 +0900</pubDate>
+      
+      <guid>https://9x9.dev/posts/1397961646/</guid>
+      <description>そういえば学生のころ、私は書き起こしが趣味だったのでした。
+ これちゃんとした挨拶するの？じゃあ一応、式典らしくちゃんとした挨拶しますね。</description>
+    </item>
+    
+    <item>
+      <title>ニッチな将棋のウェブサービスつくりました</title>
+      <link>https://9x9.dev/posts/1344412089/</link>
+      <pubDate>Wed, 08 Aug 2012 16:48:09 +0900</pubDate>
+      
+      <guid>https://9x9.dev/posts/1344412089/</guid>
+      <description>クラウドで将棋の局面図を提供するサイトをつくりました。
+ http://shogipic.jp  ひっそりこっそりリリースしたら数日後に若島さんに使ってもらえたのでだいぶ満足しました。</description>
+    </item>
+    
+    <item>
+      <title>ミュージシャンジョーク</title>
+      <link>https://9x9.dev/posts/1342967909/</link>
+      <pubDate>Sun, 22 Jul 2012 23:38:29 +0900</pubDate>
+      
+      <guid>https://9x9.dev/posts/1342967909/</guid>
+      <description>YouTubeで見たジェイク・シマブクロの発言がオシャレだった。
+ マイナーコードの中にも特に悲しい音がある</description>
+    </item>
+    
+    <item>
+      <title>Mac OS X Lionのスクロール方向に今更はまる</title>
+      <link>https://9x9.dev/posts/1342870825/</link>
+      <pubDate>Sat, 21 Jul 2012 20:40:25 +0900</pubDate>
+      
+      <guid>https://9x9.dev/posts/1342870825/</guid>
+      <description>Lionにマウス挿してホイール使ったら、スクロール方向がWindowsと逆になってて面食らった。
+環境設定からホイールのスクロール方向を逆にしたら治ったけど、今度はそれに連動してトラックパッドのスクロール方向が今までの逆になった。
+マウスとトラックパッドのスクロール方向を別々にはできないらしい。</description>
+    </item>
+    
+    <item>
+      <title>CM前にやたらモザイクがかかる謎</title>
+      <link>https://9x9.dev/posts/1342363851/</link>
+      <pubDate>Sun, 15 Jul 2012 23:50:51 +0900</pubDate>
+      
+      <guid>https://9x9.dev/posts/1342363851/</guid>
+      <description>最近はバラエティ番組を見てると、スポンサーをアナウンスする場面で、後ろに映ってる出演者の着てるＴシャツのロゴとか、名札とか、とにかく文字すべてにモザイクがかかってることに気付く。
+ http://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q1432189114 http://detail.</description>
+    </item>
+    
+    <item>
+      <title>わたしは駅に住みたい</title>
+      <link>https://9x9.dev/posts/1340200656/</link>
+      <pubDate>Wed, 20 Jun 2012 22:57:36 +0900</pubDate>
+      
+      <guid>https://9x9.dev/posts/1340200656/</guid>
+      <description>ホームレスになりたいというわけではない。
+先週末に熊本に行き、そこでJR水前寺駅というものを見たのだ。
+ 直営駅で、みどりの窓口が設置されている。駅舎には美容室などの商業施設、3階以上にはマンションを併設している。改札口やみどりの窓口、キヨスクなど駅機能は2階にある。</description>
+    </item>
+    
+    <item>
+      <title>私がブログを書けない100の理由</title>
+      <link>https://9x9.dev/posts/1338214914/</link>
+      <pubDate>Mon, 28 May 2012 23:21:54 +0900</pubDate>
+      
+      <guid>https://9x9.dev/posts/1338214914/</guid>
+      <description>ブログに書きたいことは、つまり人に話したいことだから、ブログをどんどん書くと、いざ人に会ったときに話すことがなくなってしまう。
+「ねえねえ聞いてよこの前さあ――あ、ごめん、この話はブログに書いたんだった」
+お前のブログなんて誰も読んでねーよと言われるだろうけど、でもそうは言ってもインターネットで（一応は）全世界に向けて発信した話を、もう一度誰かにするのは気が引ける。</description>
+    </item>
+    
+    <item>
+      <title>ブログデビュー</title>
+      <link>https://9x9.dev/posts/1333213257/</link>
+      <pubDate>Sun, 01 Apr 2012 02:00:57 +0900</pubDate>
+      
+      <guid>https://9x9.dev/posts/1333213257/</guid>
+      <description>ブログを始めたときに、ひとつめの記事に何を書くかというのは、すごく面倒な問題だ。</description>
+    </item>
+    
+  </channel>
+</rss>

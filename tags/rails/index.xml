@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>rails on 開発と運用のサンバ</title>
+    <link>https://9x9.dev/tags/rails/</link>
+    <description>Recent content in rails on 開発と運用のサンバ</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 09 Nov 2018 21:18:20 +0900</lastBuildDate>
+    
+	<atom:link href="https://9x9.dev/tags/rails/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Create React AppのdistをRailsのassetsで使いたい</title>
+      <link>https://9x9.dev/posts/1541765899/</link>
+      <pubDate>Fri, 09 Nov 2018 21:18:20 +0900</pubDate>
+      
+      <guid>https://9x9.dev/posts/1541765899/</guid>
+      <description>数年放置したRailsプロジェクトのフロントエンドをどうにかしたくなったので、手っ取り早くfrontendディレクトリの中で create-react-appして、その成果物をRailsのアセットパイプラインから参照することにした。
+1Rails.application.config.assets.paths &amp;lt;&amp;lt; Rails.</description>
+    </item>
+    
+    <item>
+      <title>ActiveRecordでattr_accessorとselectを併用すると</title>
+      <link>https://9x9.dev/posts/1463633653/</link>
+      <pubDate>Thu, 19 May 2016 13:54:13 +0900</pubDate>
+      
+      <guid>https://9x9.dev/posts/1463633653/</guid>
+      <description>1$ bin/rails -v 2Rails 5.</description>
+    </item>
+    
+    <item>
+      <title>Rails5のマイグレーションファイル</title>
+      <link>https://9x9.dev/posts/1458562442/</link>
+      <pubDate>Mon, 21 Mar 2016 21:14:02 +0900</pubDate>
+      
+      <guid>https://9x9.dev/posts/1458562442/</guid>
+      <description>rails5でマイグレーションファイルを作成すると、rails5で作成された印がつくようになった。 （まだベータ版だけど）
+1class CreateApples &amp;lt; ActiveRecord::Migration[5.</description>
+    </item>
+    
+    <item>
+      <title>before_actionで変数を代入する是非</title>
+      <link>https://9x9.dev/posts/1456752673/</link>
+      <pubDate>Mon, 29 Feb 2016 22:31:13 +0900</pubDate>
+      
+      <guid>https://9x9.dev/posts/1456752673/</guid>
+      <description>いつの間にかrailsのscaffoldで作成したコントローラがbefore_actionで変数を仕込むようになっていた。普段まったく使わないので気付かなかった。
+ https://github.com/rails/rails/commit/339e4e80d514bd94fcb0e15689db43e5de83642a  1class &amp;lt;%= controller_class_name %&amp;gt;Controller &amp;lt; ApplicationController 2before_action :set_&amp;lt;%= singular_table_name %&amp;gt;, except: [ :index, :new, :create ] 34private 5# Use callbacks to share common setup or constraints between actions.</description>
+    </item>
+    
+    <item>
+      <title>rails4の感想</title>
+      <link>https://9x9.dev/posts/1395825098/</link>
+      <pubDate>Wed, 26 Mar 2014 18:11:38 +0900</pubDate>
+      
+      <guid>https://9x9.dev/posts/1395825098/</guid>
+      <description>rails4のroutes.rbで
+1resources :books, param: :name とやると/books/:nameでアクセスできるようになる。でもその状態で</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ruby on 開発と運用のサンバ</title>
+    <link>https://9x9.dev/tags/ruby/</link>
+    <description>Recent content in ruby on 開発と運用のサンバ</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 20 Nov 2018 20:07:07 +0900</lastBuildDate>
+    
+	<atom:link href="https://9x9.dev/tags/ruby/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>expectedとactualの順序</title>
+      <link>https://9x9.dev/posts/1542712026/</link>
+      <pubDate>Tue, 20 Nov 2018 20:07:07 +0900</pubDate>
+      
+      <guid>https://9x9.dev/posts/1542712026/</guid>
+      <description>assert_equalの引数は、だいたいの言語ではexpectedが先で
+ http://test-unit.github.io/test-unit/en/Test/Unit/Assertions.html#assert_equal-instance_method https://phpunit.</description>
+    </item>
+    
+    <item>
+      <title>配列と連想配列を同じループで回したい</title>
+      <link>https://9x9.dev/posts/1539859215/</link>
+      <pubDate>Thu, 18 Oct 2018 19:40:15 +0900</pubDate>
+      
+      <guid>https://9x9.dev/posts/1539859215/</guid>
+      <description>Python。dict か list のいずれかが入っている変数に対して、ループで回してある処理をすることになった。</description>
+    </item>
+    
+    <item>
+      <title>forではないループ</title>
+      <link>https://9x9.dev/posts/1538143080/</link>
+      <pubDate>Fri, 28 Sep 2018 22:58:00 +0900</pubDate>
+      
+      <guid>https://9x9.dev/posts/1538143080/</guid>
+      <description>指定回数ループしたいときがある。Rubyだとわかりやすく10.times { }と書ける。範囲オブジェクトを作って回す手もある。for i in 0.</description>
+    </item>
+    
+    <item>
+      <title>loggerに重い処理を渡すと</title>
+      <link>https://9x9.dev/posts/1536581159/</link>
+      <pubDate>Mon, 10 Sep 2018 21:06:00 +0900</pubDate>
+      
+      <guid>https://9x9.dev/posts/1536581159/</guid>
+      <description>RubyにもPythonにもloggerはある。loggerに重い処理を渡してしまった場合を考えよう。
+1logger.debug(long_time_method()) どういう状況だこれは。</description>
+    </item>
+    
+  </channel>
+</rss>

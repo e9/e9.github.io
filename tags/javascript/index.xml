@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>javascript on 開発と運用のサンバ</title>
+    <link>https://9x9.dev/tags/javascript/</link>
+    <description>Recent content in javascript on 開発と運用のサンバ</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 28 Sep 2018 22:58:00 +0900</lastBuildDate>
+    
+	<atom:link href="https://9x9.dev/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>forではないループ</title>
+      <link>https://9x9.dev/posts/1538143080/</link>
+      <pubDate>Fri, 28 Sep 2018 22:58:00 +0900</pubDate>
+      
+      <guid>https://9x9.dev/posts/1538143080/</guid>
+      <description>指定回数ループしたいときがある。Rubyだとわかりやすく10.times { }と書ける。範囲オブジェクトを作って回す手もある。for i in 0.</description>
+    </item>
+    
+    <item>
+      <title>JavaScriptの即時関数パターンの書き方</title>
+      <link>https://9x9.dev/posts/1342194237/</link>
+      <pubDate>Sat, 14 Jul 2012 00:43:57 +0900</pubDate>
+      
+      <guid>https://9x9.dev/posts/1342194237/</guid>
+      <description>よく見るのはこれ。
+1(function(){})(); JSLintはカッコを中に入れろというらしい</description>
+    </item>
+    
+  </channel>
+</rss>

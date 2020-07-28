@@ -18,8 +18,28 @@
   </url>
   
   <url>
+    <loc>https://9x9.dev/tags/react/</loc>
+    <lastmod>2020-04-15T02:05:47+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://9x9.dev/tags/</loc>
+    <lastmod>2020-04-15T02:05:47+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://9x9.dev/tags/wasm/</loc>
+    <lastmod>2020-04-15T02:05:47+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://9x9.dev/</loc>
     <lastmod>2020-04-15T02:05:47+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://9x9.dev/tags/golang/</loc>
+    <lastmod>2019-01-24T20:20:00+09:00</lastmod>
   </url>
   
   <url>
@@ -28,8 +48,18 @@
   </url>
   
   <url>
+    <loc>https://9x9.dev/tags/python/</loc>
+    <lastmod>2018-12-04T22:57:36+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://9x9.dev/posts/1543931855/</loc>
     <lastmod>2018-12-04T22:57:36+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://9x9.dev/tags/cookie/</loc>
+    <lastmod>2018-11-30T21:21:52+09:00</lastmod>
   </url>
   
   <url>
@@ -43,8 +73,38 @@
   </url>
   
   <url>
+    <loc>https://9x9.dev/tags/java/</loc>
+    <lastmod>2018-11-20T20:07:07+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://9x9.dev/tags/node/</loc>
+    <lastmod>2018-11-20T20:07:07+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://9x9.dev/tags/php/</loc>
+    <lastmod>2018-11-20T20:07:07+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://9x9.dev/tags/ruby/</loc>
+    <lastmod>2018-11-20T20:07:07+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://9x9.dev/posts/1541765899/</loc>
     <lastmod>2018-11-09T21:18:20+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://9x9.dev/tags/rails/</loc>
+    <lastmod>2018-11-09T21:18:20+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://9x9.dev/tags/redis/</loc>
+    <lastmod>2018-10-31T19:36:34+09:00</lastmod>
   </url>
   
   <url>
@@ -63,6 +123,11 @@
   </url>
   
   <url>
+    <loc>https://9x9.dev/tags/javascript/</loc>
+    <lastmod>2018-09-28T22:58:00+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://9x9.dev/posts/1536581159/</loc>
     <lastmod>2018-09-10T21:06:00+09:00</lastmod>
   </url>
@@ -73,8 +138,18 @@
   </url>
   
   <url>
+    <loc>https://9x9.dev/tags/git/</loc>
+    <lastmod>2018-09-03T21:19:34+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://9x9.dev/posts/1535977174/</loc>
     <lastmod>2018-09-03T21:19:34+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://9x9.dev/tags/hugo/</loc>
+    <lastmod>2018-08-29T21:36:55+09:00</lastmod>
   </url>
   
   <url>
@@ -95,6 +170,11 @@
   <url>
     <loc>https://9x9.dev/posts/1456752673/</loc>
     <lastmod>2016-02-29T22:31:13+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://9x9.dev/tags/diary/</loc>
+    <lastmod>2014-04-20T11:40:46+09:00</lastmod>
   </url>
   
   <url>
@@ -221,10 +301,6 @@
   
   <url>
     <loc>https://9x9.dev/search/</loc>
-  </url>
-  
-  <url>
-    <loc>https://9x9.dev/tags/</loc>
   </url>
   
 </urlset>
