@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>2012/08 on e9.github.io</title>
-    <link>https://e9.github.io/archives/2012/08/</link>
-    <description>Recent content in 2012/08 on e9.github.io</description>
+    <title>2012/08 on 開発と運用のサンバ</title>
+    <link>https://9x9.dev/archives/2012/08/</link>
+    <description>Recent content in 2012/08 on 開発と運用のサンバ</description>
     <generator>Hugo -- gohugo.io</generator>
     
-	<atom:link href="https://e9.github.io/archives/2012/08/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://9x9.dev/archives/2012/08/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>ニッチな将棋のウェブサービスつくりました</title>
-      <link>https://e9.github.io/posts/1344412089/</link>
+      <link>https://9x9.dev/posts/1344412089/</link>
       <pubDate>Wed, 08 Aug 2012 16:48:09 +0900</pubDate>
       
-      <guid>https://e9.github.io/posts/1344412089/</guid>
+      <guid>https://9x9.dev/posts/1344412089/</guid>
       <description>クラウドで将棋の局面図を提供するサイトをつくりました。
  http://shogipic.jp  ひっそりこっそりリリースしたら数日後に若島さんに使ってもらえたのでだいぶ満足しました。</description>
     </item>

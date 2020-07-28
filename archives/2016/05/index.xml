@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>2016/05 on e9.github.io</title>
-    <link>https://e9.github.io/archives/2016/05/</link>
-    <description>Recent content in 2016/05 on e9.github.io</description>
+    <title>2016/05 on 開発と運用のサンバ</title>
+    <link>https://9x9.dev/archives/2016/05/</link>
+    <description>Recent content in 2016/05 on 開発と運用のサンバ</description>
     <generator>Hugo -- gohugo.io</generator>
     
-	<atom:link href="https://e9.github.io/archives/2016/05/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://9x9.dev/archives/2016/05/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>ActiveRecordでattr_accessorとselectを併用すると</title>
-      <link>https://e9.github.io/posts/1463633653/</link>
+      <link>https://9x9.dev/posts/1463633653/</link>
       <pubDate>Thu, 19 May 2016 13:54:13 +0900</pubDate>
       
-      <guid>https://e9.github.io/posts/1463633653/</guid>
+      <guid>https://9x9.dev/posts/1463633653/</guid>
       <description>1$ bin/rails -v 2Rails 5.</description>
     </item>
     

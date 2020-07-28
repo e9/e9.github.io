@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>2018/10 on e9.github.io</title>
-    <link>https://e9.github.io/archives/2018/10/</link>
-    <description>Recent content in 2018/10 on e9.github.io</description>
+    <title>2018/10 on 開発と運用のサンバ</title>
+    <link>https://9x9.dev/archives/2018/10/</link>
+    <description>Recent content in 2018/10 on 開発と運用のサンバ</description>
     <generator>Hugo -- gohugo.io</generator>
     
-	<atom:link href="https://e9.github.io/archives/2018/10/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://9x9.dev/archives/2018/10/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>RedisのHGETALLの速さ</title>
-      <link>https://e9.github.io/posts/1540982193/</link>
+      <link>https://9x9.dev/posts/1540982193/</link>
       <pubDate>Wed, 31 Oct 2018 19:36:34 +0900</pubDate>
       
-      <guid>https://e9.github.io/posts/1540982193/</guid>
+      <guid>https://9x9.dev/posts/1540982193/</guid>
       <description>普段は Redis の読み書きなんてフレームワークにまかせていて、オブジェクトならだいたいシリアライズして保存されているわけだけど、今回たまたま Redis を直で使うことがあった。ハッシュ、連想配列、辞書、まあとにかくそんなものを保存したい。</description>
     </item>
     
     <item>
       <title>配列と連想配列を同じループで回したい</title>
-      <link>https://e9.github.io/posts/1539859215/</link>
+      <link>https://9x9.dev/posts/1539859215/</link>
       <pubDate>Thu, 18 Oct 2018 19:40:15 +0900</pubDate>
       
-      <guid>https://e9.github.io/posts/1539859215/</guid>
+      <guid>https://9x9.dev/posts/1539859215/</guid>
       <description>Python。dict か list のいずれかが入っている変数に対して、ループで回してある処理をすることになった。</description>
     </item>
     

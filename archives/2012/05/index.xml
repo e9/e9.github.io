@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>2012/05 on e9.github.io</title>
-    <link>https://e9.github.io/archives/2012/05/</link>
-    <description>Recent content in 2012/05 on e9.github.io</description>
+    <title>2012/05 on 開発と運用のサンバ</title>
+    <link>https://9x9.dev/archives/2012/05/</link>
+    <description>Recent content in 2012/05 on 開発と運用のサンバ</description>
     <generator>Hugo -- gohugo.io</generator>
     
-	<atom:link href="https://e9.github.io/archives/2012/05/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://9x9.dev/archives/2012/05/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>私がブログを書けない100の理由</title>
-      <link>https://e9.github.io/posts/1338214914/</link>
+      <link>https://9x9.dev/posts/1338214914/</link>
       <pubDate>Mon, 28 May 2012 23:21:54 +0900</pubDate>
       
-      <guid>https://e9.github.io/posts/1338214914/</guid>
+      <guid>https://9x9.dev/posts/1338214914/</guid>
       <description>ブログに書きたいことは、つまり人に話したいことだから、ブログをどんどん書くと、いざ人に会ったときに話すことがなくなってしまう。
 「ねえねえ聞いてよこの前さあ――あ、ごめん、この話はブログに書いたんだった」
 お前のブログなんて誰も読んでねーよと言われるだろうけど、でもそうは言ってもインターネットで（一応は）全世界に向けて発信した話を、もう一度誰かにするのは気が引ける。</description>

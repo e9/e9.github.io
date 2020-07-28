@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>2018/08 on e9.github.io</title>
-    <link>https://e9.github.io/archives/2018/08/</link>
-    <description>Recent content in 2018/08 on e9.github.io</description>
+    <title>2018/08 on 開発と運用のサンバ</title>
+    <link>https://9x9.dev/archives/2018/08/</link>
+    <description>Recent content in 2018/08 on 開発と運用のサンバ</description>
     <generator>Hugo -- gohugo.io</generator>
     
-	<atom:link href="https://e9.github.io/archives/2018/08/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://9x9.dev/archives/2018/08/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Hugoで記事を書くまで</title>
-      <link>https://e9.github.io/posts/1535546215/</link>
+      <link>https://9x9.dev/posts/1535546215/</link>
       <pubDate>Wed, 29 Aug 2018 21:36:55 +0900</pubDate>
       
-      <guid>https://e9.github.io/posts/1535546215/</guid>
+      <guid>https://9x9.dev/posts/1535546215/</guid>
       <description>マークダウンで書けるブログサービスの選択肢が少ないのでgithub.ioを使うことにした。 いまどきはJekyllよりHugoらしい。わりと簡単に作れた。こんな感じで。
 1hugo new site blog 2cd blog 3git init 4git remote add origin git@github.</description>
     </item>
