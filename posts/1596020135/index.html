@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-130853906-1"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "UA-130853906-1");
+    </script>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+
+    <title>Starletteのrequest.url_for()がx-forwarded-hostの値を使わない - 開発と運用のサンバ</title>
+
+    
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css"
+      integrity="sha256-aPeK/N8IHpHsvPBCf49iVKMdusfobKo2oxF8lRruWJg="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+
+  <body>
+    <header
+      class="hero is-dark is-small mb-4"
+    >
+      <div class="hero-body">
+        <div class="container has-text-centered">
+          <h1 class="title is-size-1-tablet">
+            <a href="/">開発と運用のサンバ</a>
+          </h1>
+          <h2 class="subtitle"></h2>
+        </div>
+      </div>
+    </header>
+
+    <main class="container is-fluid">
+      <div class="columns">
+        <div class="column is-three-quarters">
+          
+
+<article>
+  <h2 class="title">
+  <a href="https://9x9.dev/posts/1596020135/">Starletteのrequest.url_for()がx-forwarded-hostの値を使わない</a>
+</h2>
+
+<div class="subtitle is-6 has-text-grey">
+  <span>2020-07-29</span>
+
+<span>
+  
+ 
+
+  <a href="/tags/python">python</a>
+  
+
+  <a href="/tags/starlette">starlette</a>
+  
+ 
+
+</span>
+
+
+</div>
+
+
+  <div class="content">
+    <p>最近はDjangoでもFlaskでもresponderでもなくStarletteを直接使っている。</p>
+<ul>
+<li><a href="https://www.starlette.io">https://www.starlette.io</a></li>
+</ul>
+<p>Starletteを動かすサーバにはprivate.comが振ってあるが、その前段のプロキシサーバがpublic.comになっていて、ユーザーはpublic.comでアクセスする作りになっている。</p>
+<p>この状況で、ビューで<code>request.url_for()</code>を使ったら、URLがprivate.comになってしまい困った。</p>
+<p>しばらくは<code>request.url_for()</code>の代わりに<code>request.scope['router'].url_path_for()</code>を使うことで、ホスト無しのURLでリンクを作っていたのだが、ルーティングに</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>Mount(&#34;/xxx&#34;, routes=[Route(&#34;/&#34;, xxx, methods=[&#34;GET&#34;])])
+</code></pre></div><p>を追加したところ<code>public.com/xxx</code>でのアクセスが自動的に<code>private.com/xxx/</code>にリダイレクトされるようになってしまい完全に詰んだので、本腰を入れて直すことにした。</p>
+<p>間違ったホスト名が使われてしまうのはStarletteが<code>x-forwarded-host</code>を解釈していないせいだ。それを解決するミドルウェアがuvicorn.middlewareに用意されていないのは不思議なのだが、親切な人がStarletteのイシューにコードを書いてくれているので、これを使えばよい。</p>
+<ul>
+<li><a href="https://github.com/encode/starlette/issues/604#issuecomment-543945716">https://github.com/encode/starlette/issues/604#issuecomment-543945716</a></li>
+</ul>
+
+
+  </div>
+</article>
+
+
+
+        </div>
+        <div class="column"><aside class="content">
+  <ul>
+    
+
+    <li>
+      <a href="/">Home</a>
+    </li>
+    
+
+    <li>
+      <a href="/index.xml">RSS</a>
+    </li>
+    
+
+  </ul>
+  <ul>
+    
+
+    <li>
+      <a href="/archives/2020/07/">2020/07</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2020/04/">2020/04</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2019/01/">2019/01</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2018/12/">2018/12</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2018/11/">2018/11</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2018/10/">2018/10</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2018/09/">2018/09</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2018/08/">2018/08</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2016/05/">2016/05</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2016/03/">2016/03</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2016/02/">2016/02</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2014/04/">2014/04</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2014/03/">2014/03</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2012/08/">2012/08</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2012/07/">2012/07</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2012/06/">2012/06</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2012/05/">2012/05</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2012/04/">2012/04</a>
+    </li>
+    
+
+  </ul>
+  <ul>
+    
+
+    <li>
+      <a href="https://github.com/e9" target="_blank">GitHub</a>
+    </li>
+    
+
+    <li>
+      <a href="https://twitter.com/sfc" target="_blank">Twitter</a>
+    </li>
+    
+
+  </ul>
+</aside>
+</div>
+      </div>
+    </main>
+
+    <footer class="footer mt-4">
+      <div class="content has-text-centered"></div>
+    </footer>
+  </body>
+</html>

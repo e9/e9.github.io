@@ -3,6 +3,36 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://9x9.dev/posts/</loc>
+    <lastmod>2020-07-29T19:55:35+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://9x9.dev/tags/python/</loc>
+    <lastmod>2020-07-29T19:55:35+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://9x9.dev/tags/starlette/</loc>
+    <lastmod>2020-07-29T19:55:35+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://9x9.dev/posts/1596020135/</loc>
+    <lastmod>2020-07-29T19:55:35+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://9x9.dev/tags/</loc>
+    <lastmod>2020-07-29T19:55:35+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://9x9.dev/</loc>
+    <lastmod>2020-07-29T19:55:35+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://9x9.dev/about/</loc>
     <lastmod>2020-07-27T03:42:00+09:00</lastmod>
   </url>
@@ -13,27 +43,12 @@
   </url>
   
   <url>
-    <loc>https://9x9.dev/posts/</loc>
-    <lastmod>2020-04-15T02:05:47+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://9x9.dev/tags/react/</loc>
     <lastmod>2020-04-15T02:05:47+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://9x9.dev/tags/</loc>
-    <lastmod>2020-04-15T02:05:47+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://9x9.dev/tags/wasm/</loc>
-    <lastmod>2020-04-15T02:05:47+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://9x9.dev/</loc>
     <lastmod>2020-04-15T02:05:47+09:00</lastmod>
   </url>
   
@@ -45,11 +60,6 @@
   <url>
     <loc>https://9x9.dev/posts/1548328800/</loc>
     <lastmod>2019-01-24T20:20:00+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://9x9.dev/tags/python/</loc>
-    <lastmod>2018-12-04T22:57:36+09:00</lastmod>
   </url>
   
   <url>
@@ -293,6 +303,10 @@
   
   <url>
     <loc>https://9x9.dev/archives/2020/04/</loc>
+  </url>
+  
+  <url>
+    <loc>https://9x9.dev/archives/2020/07/</loc>
   </url>
   
   <url>

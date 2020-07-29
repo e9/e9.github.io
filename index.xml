@@ -5,10 +5,20 @@
     <link>https://9x9.dev/</link>
     <description>Recent content on 開発と運用のサンバ</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 15 Apr 2020 02:05:47 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 29 Jul 2020 19:55:35 +0900</lastBuildDate>
     
 	<atom:link href="https://9x9.dev/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Starletteのrequest.url_for()がx-forwarded-hostの値を使わない</title>
+      <link>https://9x9.dev/posts/1596020135/</link>
+      <pubDate>Wed, 29 Jul 2020 19:55:35 +0900</pubDate>
+      
+      <guid>https://9x9.dev/posts/1596020135/</guid>
+      <description>最近はDjangoでもFlaskでもresponderでもなくStarletteを直接使っている。
+ https://www.starlette.io  Starletteを動かすサーバにはprivate.</description>
+    </item>
     
     <item>
       <title>私について</title>
