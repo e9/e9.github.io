@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>2020/08 on 開発と運用のサンバ</title>
+    <link>https://9x9.dev/archives/2020/08/</link>
+    <description>Recent content in 2020/08 on 開発と運用のサンバ</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	<atom:link href="https://9x9.dev/archives/2020/08/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>FizzBuzz以前の問題</title>
+      <link>https://9x9.dev/posts/1596463679/</link>
+      <pubDate>Mon, 03 Aug 2020 23:07:59 +0900</pubDate>
+      
+      <guid>https://9x9.dev/posts/1596463679/</guid>
+      <description>1def f(): 2 if x == y: 3 return True 4 else: 5 return False というコードを書く人、半年に1回は見るんだけど、あれは宗派か何かなんだろうか。やめてほしい。</description>
+    </item>
+    
+    <item>
+      <title>next. jsでcsvを読み込みたい</title>
+      <link>https://9x9.dev/posts/1596462635/</link>
+      <pubDate>Mon, 03 Aug 2020 22:50:35 +0900</pubDate>
+      
+      <guid>https://9x9.dev/posts/1596462635/</guid>
+      <description>csvファイルをfs.readで読み込むのは、ローカル開発では動いても、コンパイル後はcsvファイルが含まれないので動かなくなる。
+イシューを見ても解決できると言ってたり、できないと言ってたり混乱している。
+ https://github.</description>
+    </item>
+    
+  </channel>
+</rss>
