@@ -88,7 +88,7 @@
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span>mount -o remount,exec /var/lib/nvidia
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span style="color:#111">HOME</span><span style="color:#f92672">=</span>/tmp docker-credential-gcr configure-docker
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span style="color:#111">HOME</span><span style="color:#f92672">=</span>/tmp docker run -d -p 8000:8000 --volume /var/lib/nvidia/lib64:/usr/local/nvidia/lib64 --volume /var/lib/nvidia/bin:/usr/local/nvidia/bin --device /dev/nvidia0:/dev/nvidia0 --device /dev/nvidia-uvm:/dev/nvidia-uvm --device /dev/nvidiactl:/dev/nvidiactl asia.gcr.io/********/********
-</code></pre></div><p>HOMEを指定しないとdocker-credential-gcrの保存先が無くて、そのあとのDockerイメージのプルも成功しないからだ。rootでdocker runしてるのもお行儀が悪いので、docker runするユーザーをホームディレクトリありで先に作ってから、そいつでdocker-credential-gcrとdocker runをするのがよいのではないかと思うけど、いまはとりあえず動かせたことに満足している。</p>
+</code></pre></div><p>HOMEを指定しているのは、そうしないとdocker-credential-gcrの保存先が無くて、そのあとのDockerイメージのプルも成功しないからだ。rootでdocker runしてるのもお行儀が悪いので、docker runするユーザーをホームディレクトリありで先に作ってから、そいつでdocker-credential-gcrとdocker runをするのがよいのではないかと思うけど、いまはとりあえず動かせたことに満足している。</p>
 
 
   </div>
