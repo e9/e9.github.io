@@ -5,10 +5,20 @@
     <link>https://9x9.dev/posts/</link>
     <description>Recent content in Posts on 開発と運用のサンバ</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 03 Aug 2020 23:07:59 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 24 Feb 2021 01:02:02 +0900</lastBuildDate>
     
 	<atom:link href="https://9x9.dev/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>GCPのVMでGPUを使うDockerコンテナを動かすのに苦労した</title>
+      <link>https://9x9.dev/posts/1614096121/</link>
+      <pubDate>Wed, 24 Feb 2021 01:02:02 +0900</pubDate>
+      
+      <guid>https://9x9.dev/posts/1614096121/</guid>
+      <description>苦労した。そもそもGCPを使うのも初めてだった。
+まずブートディスクを決める必要がある。GCPの公開イメージには「Deep Learning on Linux」というものがある。これを使うとNVIDIAドライバのインストールなどがあらかじめ済ませてあるようだ。ところが自分はDockerコンテナでGPUを利用したいのだ。VM作成の画面に「この VM インスタンスにコンテナ イメージをデプロイします。」というチェックボックスがあるので、これにチェックを入れるとブートディスクは「Container-Optimized OS」しか選べないようになってしまう。</description>
+    </item>
     
     <item>
       <title>FizzBuzz以前の問題</title>

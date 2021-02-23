@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-130853906-1"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "UA-130853906-1");
+    </script>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+
+    <title>GCPのVMでGPUを使うDockerコンテナを動かすのに苦労した - 開発と運用のサンバ</title>
+
+    
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css"
+      integrity="sha256-aPeK/N8IHpHsvPBCf49iVKMdusfobKo2oxF8lRruWJg="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+
+  <body>
+    <header
+      class="hero is-dark is-small mb-4"
+    >
+      <div class="hero-body">
+        <div class="container has-text-centered">
+          <h1 class="title is-size-1-tablet">
+            <a href="/">開発と運用のサンバ</a>
+          </h1>
+          <h2 class="subtitle"></h2>
+        </div>
+      </div>
+    </header>
+
+    <main class="container is-fluid">
+      <div class="columns">
+        <div class="column is-three-quarters">
+          
+
+<article>
+  <h2 class="title">
+  <a href="https://9x9.dev/posts/1614096121/">GCPのVMでGPUを使うDockerコンテナを動かすのに苦労した</a>
+</h2>
+
+<div class="subtitle is-6 has-text-grey">
+  <span>2021-02-24</span>
+
+<span>
+  
+ 
+
+  <a href="/tags/gcp">GCP</a>
+  
+
+  <a href="/tags/docker">Docker</a>
+  
+ 
+
+</span>
+
+
+</div>
+
+
+  <div class="content">
+    <p>苦労した。そもそもGCPを使うのも初めてだった。</p>
+<p>まずブートディスクを決める必要がある。GCPの公開イメージには「Deep Learning on Linux」というものがある。これを使うとNVIDIAドライバのインストールなどがあらかじめ済ませてあるようだ。ところが自分はDockerコンテナでGPUを利用したいのだ。VM作成の画面に「この VM インスタンスにコンテナ イメージをデプロイします。」というチェックボックスがあるので、これにチェックを入れるとブートディスクは「Container-Optimized OS」しか選べないようになってしまう。</p>
+<p>それで「コンテナ イメージ」に動かしたいイメージを指定して、動いてくれるならいいんだけど、それでは全然動かない。NVIDIAのドライバが無いのもさることながら、そもそも自分のイメージは起動オプションとして&ndash;volumeや&ndash;deviceのオプションを指定する必要があるのだ。ところが「コンテナの詳細オプション」からはdeviceを指定することができない。困った。</p>
+<p>ここから数々の試行錯誤を行ったのだが、省略して結論を書くと、無理してGCPのお世話機能を使おうとせず、VMの起動スクリプトで自分でドライバのインストールからdocker runまで行えばよいようだ。</p>
+<p>その場合ブートディスクはなんでもいいんだけど、せっかくだから「Container-Optimized OS」を選んで、あとは起動スクリプトを書くだけ。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#75715e">#! /bin/bash
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span style="color:#75715e"></span>cos-extensions install gpu
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>mount --bind /var/lib/nvidia /var/lib/nvidia
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span>mount -o remount,exec /var/lib/nvidia
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span style="color:#111">HOME</span><span style="color:#f92672">=</span>/tmp docker-credential-gcr configure-docker
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span style="color:#111">HOME</span><span style="color:#f92672">=</span>/tmp docker run -d -p 8000:8000 --volume /var/lib/nvidia/lib64:/usr/local/nvidia/lib64 --volume /var/lib/nvidia/bin:/usr/local/nvidia/bin --device /dev/nvidia0:/dev/nvidia0 --device /dev/nvidia-uvm:/dev/nvidia-uvm --device /dev/nvidiactl:/dev/nvidiactl asia.gcr.io/********/********
+</code></pre></div><p>HOMEを指定しないとdocker-credential-gcrの保存先が無くて、そのあとのDockerイメージのプルも成功しないからだ。rootでdocker runしてるのもお行儀が悪いので、docker runするユーザーをホームディレクトリありで先に作ってから、そいつでdocker-credential-gcrとdocker runをするのがよいのではないかと思うけど、いまはとりあえず動かせたことに満足している。</p>
+
+
+  </div>
+</article>
+
+
+
+        </div>
+        <div class="column"><aside class="content">
+  <ul>
+    
+
+    <li>
+      <a href="/">Home</a>
+    </li>
+    
+
+    <li>
+      <a href="/index.xml">RSS</a>
+    </li>
+    
+
+  </ul>
+  <ul>
+    
+
+    <li>
+      <a href="/archives/2021/02/">2021/02</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2020/08/">2020/08</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2020/07/">2020/07</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2020/04/">2020/04</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2019/01/">2019/01</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2018/12/">2018/12</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2018/11/">2018/11</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2018/10/">2018/10</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2018/09/">2018/09</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2018/08/">2018/08</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2016/05/">2016/05</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2016/03/">2016/03</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2016/02/">2016/02</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2014/04/">2014/04</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2014/03/">2014/03</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2012/08/">2012/08</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2012/07/">2012/07</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2012/06/">2012/06</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2012/05/">2012/05</a>
+    </li>
+    
+
+    <li>
+      <a href="/archives/2012/04/">2012/04</a>
+    </li>
+    
+
+  </ul>
+  <ul>
+    
+
+    <li>
+      <a href="https://github.com/e9" target="_blank">GitHub</a>
+    </li>
+    
+
+    <li>
+      <a href="https://twitter.com/sfc" target="_blank">Twitter</a>
+    </li>
+    
+
+  </ul>
+</aside>
+</div>
+      </div>
+    </main>
+
+    <footer class="footer mt-4">
+      <div class="content has-text-centered"></div>
+    </footer>
+  </body>
+</html>

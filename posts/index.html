@@ -55,6 +55,41 @@
 
 <div>
   <h2 class="title">
+  <a href="https://9x9.dev/posts/1614096121/">GCPのVMでGPUを使うDockerコンテナを動かすのに苦労した</a>
+</h2>
+
+<div class="subtitle is-6 has-text-grey">
+  <span>2021-02-24</span>
+
+<span>
+  
+ 
+
+  <a href="/tags/gcp">GCP</a>
+  
+
+  <a href="/tags/docker">Docker</a>
+  
+ 
+
+</span>
+
+
+</div>
+
+
+  <div>
+    苦労した。そもそもGCPを使うのも初めてだった。
+まずブートディスクを決める必要がある。GCPの公開イメージには「Deep Learning on Linux」というものがある。これを使うとNVIDIAドライバのインストールなどがあらかじめ済ませてあるようだ。ところが自分はDockerコンテナでGPUを利用したいのだ。VM作成の画面に「この VM インスタンスにコンテナ イメージをデプロイします。」というチェックボックスがあるので、これにチェックを入れるとブートディスクは「Container-Optimized OS」しか選べないようになってしまう。
+
+  </div>
+  <hr />
+</div>
+
+ 
+
+<div>
+  <h2 class="title">
   <a href="https://9x9.dev/posts/1596463679/">FizzBuzz以前の問題</a>
 </h2>
 
@@ -355,37 +390,6 @@
 
  
 
-<div>
-  <h2 class="title">
-  <a href="https://9x9.dev/posts/1540982193/">RedisのHGETALLの速さ</a>
-</h2>
-
-<div class="subtitle is-6 has-text-grey">
-  <span>2018-10-31</span>
-
-<span>
-  
- 
-
-  <a href="/tags/redis">redis</a>
-  
- 
-
-</span>
-
-
-</div>
-
-
-  <div>
-    普段は Redis の読み書きなんてフレームワークにまかせていて、オブジェクトならだいたいシリアライズして保存されているわけだけど、今回たまたま Redis を直で使うことがあった。ハッシュ、連想配列、辞書、まあとにかくそんなものを保存したい。
-
-  </div>
-  <hr />
-</div>
-
- 
-
 
 
 
@@ -444,6 +448,11 @@
 
   </ul>
   <ul>
+    
+
+    <li>
+      <a href="/archives/2021/02/">2021/02</a>
+    </li>
     
 
     <li>
